@@ -1,7 +1,7 @@
 This wiki is **currently under construction**. For the microbiome helper pipeline please see the main [GitHub page](https://github.com/mlangill/microbiome_helper).
 
 
-# Before getting started:
+### Before getting started:
 
 * These workflows starts with raw paired-end MiSeq data in demultiplexed fastq format.
 
