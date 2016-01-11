@@ -2,7 +2,7 @@ This wiki is **currently under construction**. For the microbiome helper pipelin
 
 Microbiome helper is a series of scripts that help process and automate various microbiome and metagenomic bioinformatic tools. The main workflows are for analyzing **16S** and **metagenomic** data.
 
-These scripts were produced by members of the [Integrated Microbiome Resource](http://cgeb-imr.ca/index.html).
+These scripts were produced as part of the [Integrated Microbiome Resource](http://cgeb-imr.ca/index.html).
 
 ### Before getting started:
 
