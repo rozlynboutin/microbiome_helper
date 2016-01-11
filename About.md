@@ -1,5 +1,8 @@
 This wiki is **currently under construction**. For the microbiome helper pipeline please see the main [GitHub page](https://github.com/mlangill/microbiome_helper).
 
+Microbiome helper is a series of scripts that help process and automate various microbiome and metagenomic bioinformatic tools. The main workflows are for analyzing **16S** and **metagenomic** data.
+
+These scripts were produced by members of the [Integrated Microbiome Resource](http://cgeb-imr.ca/index.html).
 
 ### Before getting started:
 
