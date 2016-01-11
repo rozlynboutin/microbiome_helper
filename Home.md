@@ -27,4 +27,4 @@ _italic test_
 
 *** teeeest
 
-[test link](https://github.com/mlangill/microbiome_helper/wiki/Home/_edit#header-type-1)
+[test link](https://github.com/mlangill/microbiome_helper/wiki/Page-2)
