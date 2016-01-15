@@ -9,6 +9,7 @@
     * Functional profiling
 
 * [16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-Workflow)
+    * [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial)
     * Sequence QC
     * Stitch reads
     * Remove low quality reads
