@@ -1,4 +1,4 @@
-* [About](https://github.com/mlangill/microbiome_helper/wiki/Home)
+* [Home](https://github.com/mlangill/microbiome_helper/wiki/Home)
 * [Requirements](https://github.com/mlangill/microbiome_helper/wiki/Requirements)
 
 * [Metagenomic Workflow](https://github.com/mlangill/microbiome_helper/wiki/Metagenomic-Workflow)
