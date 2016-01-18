@@ -8,7 +8,7 @@ We first run FastQC in order to check the quality of the sequencing runs:
 
     fastqc -t 4 raw_data/* -o fastqc_out/
 
-In the fastqc_out folder an html file is created for each fastq file. When you open these html files in your browser you can look over a number of quality metrics (a number of the metrics do not give useful results due to the nature of 16S sequencing, read more [here](link to fastqc page)). The most informative metric for our purposes is the "Per base sequence quality", which shows the Phred quality score distribution along the read. Generally these distributions are skewed lower near the 3' read ends. 
+In the fastqc_out folder an html file is created for each fastq file. When you open these html files in your browser you can look over a number of quality metrics (a number of the metrics do not give useful results due to the nature of 16S sequencing, read more [here](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)). The most informative metric for our purposes is the "Per base sequence quality", which shows the Phred quality score distribution along the read. Generally these distributions are skewed lower near the 3' read ends. 
 
 
 ![](https://www.dropbox.com/s/2upj9evprw7a8yv/FastQC_boxplot_example.jpg?raw=1)
