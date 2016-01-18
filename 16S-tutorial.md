@@ -1,4 +1,4 @@
-*** Note this tutorial is under construction
+### Note this tutorial is under construction
 
 This tutorial will demonstrate how to analyze and interpret example 16S sequencing data using our pipeline.
 
