@@ -10,9 +10,8 @@ We first run FastQC in order to check the quality of the sequencing runs:
 
 In the fastqc_out folder an html file is created for each fastq file. When you open these html files in your browser you can look over a number of quality metrics (a number of the metrics do not give useful results due to the nature of 16S sequencing, read more [here](link to fastqc page)). The most informative metric for our purposes is the "Per base sequence quality", which shows the Phred quality score distribution along the read. Generally these distributions are skewed lower near the 3' read ends. 
 
-Here is what an example distribution looks like (1CMK6WT_S218_L001_R1_001_fastqc.html):   
+[Click here](https://www.dropbox.com/s/7mqavuiwpie2mxo/1CMK6WT_S218_L001_R1_001_fastqc.html?dl=0) to see an example FastQC output. 
 
-![](https://www.dropbox.com/s/7mqavuiwpie2mxo/1CMK6WT_S218_L001_R1_001_fastqc.html?dl=0)
 
 
 
