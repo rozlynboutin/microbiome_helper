@@ -19,4 +19,6 @@
 
 * Additional QIIME Analysis
 
-* PICRUSt workflow (for 16S data)
+* PICRUSt workflow (for 16S data)\
+
+* FAQ
