@@ -11,6 +11,8 @@ Commands below assume that 4 CPUs are available for use.
   
 ### Stitch paired-end reads together
 
+The raw reads are in [FASTQ format](https://en.wikipedia.org/wiki/FASTQ_format) and (in this case) paired-end. 
+
 We first stitch the paired-end reads together using PEAR:
 
     run_pear.pl -p 4 -o stitched_reads raw_data/*
@@ -81,3 +83,28 @@ Here is the corresponding distribution of quality scores after filtering the rea
 ![](https://www.dropbox.com/s/s45mmmjx49pnmia/combined_stitched_filtered_FastQC.jpg?raw=1)
 
 As before, if you'd like to see more details (such as how the read length distribution has changed), you can see that [here] - **need to add once uploaded on dropbox**.
+
+  
+### Convert to FASTA and remove chimeric reads
+
+The next steps in the pipeline require the sequences to be in [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), which we will generate using this command:
+
+    run_fastq_to_fasta.pl -p 4 -o fasta_files filtered_reads/*fastq
+
+Note that this command removes any sequences containing "N" sequences, which is << 1% of the reads after the read filtering steps above.
+
+Now that we have FASTA files we can run the chimera filtering:
+
+    chimeraFilter.pl -type 1 -thread 4 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb fasta_files/*
+
+You will need to replace "/home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb" with your local path to the DB. See a more detailed description of this script [here] **need to add page**.
+
+This script will remove any reads called as chimeric or called ambiguously and output the remaining reads in the "non_chimeras" folder by default. This step is important for microbiome work since otherwise these reads would be called as novel OTUs (and in fact it is likely that not all chimeric reads will be removed by this step).
+
+By default the logfile "chimeraFilter_log.txt" is generated containing the counts and percentages of reads filtered out for each sample. In this case, ~5-18% of reads are filtered out depending on the sample.
+
+
+
+  
+
+  
