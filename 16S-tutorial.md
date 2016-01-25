@@ -9,7 +9,7 @@ This dataset was originally used in a project to determine whether knocking out 
 Commands below assume that 4 CPUs are available for use.
 
 
-# Stitch paired-end reads together
+### Stitch paired-end reads together
 
 We first stitch the paired-end reads together using PEAR:
 
@@ -35,7 +35,7 @@ Note that the return values are the number of lines in each type of FASTQ (when 
 * Unassembled - 202,582 (1.35%)
 
 
-# Quality metrics of stitched reads
+### Quality metrics of stitched reads
 
 Quality metrics of the 7,384,944 stitched reads can now be determined using FastQC.
 
@@ -60,7 +60,7 @@ In the output folder(s) an HTML file is created for each FASTQ file (or 1 file i
 You can see the full FastQC report for all stitched reads combined [here] - **need to add once uploaded on dropbox**.
 
 
-# Read filtering based on quality and length
+### Read filtering based on quality and length
 
 Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria:
  
