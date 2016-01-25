@@ -30,9 +30,9 @@ To get an idea of how many reads have been successfully stitched you can compare
 
 Note that the return values are the number of lines in each type of FASTQ (when they are concatenated). The number of reads can be calculated by dividing each value by 4. Also, note that the reads in the "assembled" FASTQs are stitched, while the others are not, so the count for these files should be multiplied by 2 for this comparison, resulting in these read counts:
 
-Assembled - 14,769,888 (98.6%).
-Discarded - 1,306 (0.0087%).
-Unassembled - 202,582 (1.35%).
+* Assembled - 14,769,888 (98.6%)
+* Discarded - 1,306 (0.0087%)
+* Unassembled - 202,582 (1.35%)
 
 
 # Quality metrics of stitched reads
