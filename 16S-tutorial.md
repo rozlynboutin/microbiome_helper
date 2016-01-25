@@ -8,6 +8,9 @@ This dataset was originally used in a project to determine whether knocking out 
 
 Commands below assume that 4 CPUs are available for use.
 
+
+# Stitch paired-end reads together
+
 We first stitch the paired-end reads together using PEAR:
 
     run_pear.pl -p 4 -o stitched_reads raw_data/*
@@ -31,6 +34,9 @@ Assembled - 14,769,888 (98.6%)
 Discarded - 1,306 (0.0087%)
 Unassembled - 202,582 (1.35%)
 
+
+# Quality metrics of stitched reads
+
 Quality metrics of the 7,384,944 stitched reads can now be determined using FastQC.
 
 This can be done for each sample separately:
@@ -47,8 +53,31 @@ Or one quality report can be output for all of the stitched reads:
     mv stdin_fastqc.html combined_fastqc.html
     mv stdin_fastqc.zip combined_fastqc.zip
 
-In the output folder(s) an HTML file is created for each FASTQ file (or 1 file in the case of the combined approach above). When you open these HTML files in your browser you can look over a number of quality metrics (a number of the metrics do not give useful results due to the nature of 16S sequencing, read more [here](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)). The most informative metric for our purposes is the "Per base sequence quality", which shows the Phred quality score distribution along the reads. Generally these distributions are skewed lower near the 3' read ends. Also, since all reads have the same forward primer sequence there is no variation at the first few positions, as in the below image for 1CMK6WT_S218_L001_R1_001.fastq:
+In the output folder(s) an HTML file is created for each FASTQ file (or 1 file in the case of the combined approach above). When you open these HTML files in your browser you can look over a number of quality metrics (a number of the metrics do not give useful results due to the nature of 16S sequencing, read more [here](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)). The most informative metric for our purposes is the "Per base sequence quality", which shows the Phred quality score distribution along the reads. Generally these distributions are skewed lower near the 3' read ends. Also, since all reads have the same forward primer sequence there is no variation at the first few positions, as in the below image for all of the stitched FASTQs combined:
 
-![](https://www.dropbox.com/s/2upj9evprw7a8yv/FastQC_boxplot_example.jpg?raw=1)
+![](https://www.dropbox.com/s/v4eaiifsj7jxoyw/combined_stitched_FastQC.jpg?raw=1)
 
-By looking at a few of these plots you can catch any major sequencing errors that may have occurred. Since we are dealing with paired-end reads, these quality scores will increase once the reads are stitched together. We will first stitch the reads together before  
+You can see the full FastQC report for all stitched reads combined [here] - **need to add once uploaded on dropbox**.
+
+
+# Read filtering based on quality and length
+
+Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria:
+ 
+    readFilter.pl -q 30 -p 90 -l 400 -thread 4 stitched_reads/*.assembled*fastq
+
+By default this script will output filtered FASTQs in a folder called "filtered_reads" and the percent of reads thrown out after each filtering step is recorded in "readFilter_log.txt".
+
+If you look in this logfile you will note that ~40% of reads were filtered out for each sample. To confirm that the reads were filtered like we wanted we can re-generate the combined FastQC result as before (this would not normally be necessary):
+
+    mkdir fastqc_out_combined_filtered
+    cat filtered_reads/*.fastq | fastqc -t 4 stdin -o fastqc_out_combined_filtered
+
+    cd fastqc_out_combined_filtered
+    mv stdin_fastqc.html combined_filtered_fastqc.html
+    mv stdin_fastqc.zip combined_filtered_fastqc.zip
+
+Here is the corresponding distribution of quality scores after filtering the reads:
+![](https://www.dropbox.com/s/s45mmmjx49pnmia/combined_stitched_filtered_FastQC.jpg?raw=1)
+
+As before, if you'd like to see more details (such as how the read length distribution has changed), you can see that [here] - **need to add once uploaded on dropbox**.
