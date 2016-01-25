@@ -7,10 +7,8 @@ You can download the example data [here](https://www.dropbox.com/s/t0q0p88czo9hk
 This dataset was originally used in a project to determine whether knocking out the protein [chemerin](https://en.wikipedia.org/wiki/Chemerin) affects gut microbial composition. 116 mouse samples acquired from two different facilities were used for this project. Metadata associated with each sample is indicated in the mapping file (map.txt). In this mapping file the genotypes of interest can be seen: wildtype (WT and WT_BZ), chemerin knockout (chemerin_KO), chemerin receptor knockout (CMKLR1_KO) and a heterozygote for the receptor knockout (HET). Also of importance are the two source facilities: "BZ" and "CJS". It is generally a good idea to include as much metadata as possible, since this data can easily be explored later on.
 
 Commands below assume that 4 CPUs are available for use.
-
-
-
-
+  
+  
 ### Stitch paired-end reads together
 
 We first stitch the paired-end reads together using PEAR:
@@ -35,10 +33,8 @@ Note that the return values are the number of lines in each type of FASTQ (when 
 * Assembled - 14,769,888 (98.6%)
 * Discarded - 1,306 (0.0087%)
 * Unassembled - 202,582 (1.35%)
-
-
-
-
+  
+  
 ### Quality metrics of stitched reads
 
 Quality metrics of the 7,384,944 stitched reads can now be determined using FastQC.
@@ -62,10 +58,8 @@ In the output folder(s) an HTML file is created for each FASTQ file (or 1 file i
 ![](https://www.dropbox.com/s/v4eaiifsj7jxoyw/combined_stitched_FastQC.jpg?raw=1)
 
 You can see the full FastQC report for all stitched reads combined [here] - **need to add once uploaded on dropbox**.
-
-
-
-
+  
+  
 ### Read filtering based on quality and length
 
 Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria:
