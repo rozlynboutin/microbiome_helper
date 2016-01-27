@@ -251,3 +251,6 @@ Just by looking at these PCAs it's clear that if there is any difference it is e
 
     compare_categories.py -i final_otu_tables/otu_table_CJS.biom --method adonis -i plots/bdiv_otu_CJS/weighted_unifrac_dm.txt -m map_CJS.txt -c genotype -o beta_div_tests
     mv beta_div_tests/adonis_results.txt  beta_div_tests/adonis_results_CJS.txt 
+
+You can take a look at the output files to see significance values and test statistics. The P-values for all four of these tests is > 0.05 so there is no significant difference in the Unifrac beta diversities of different genotypes within each source facility.
+
