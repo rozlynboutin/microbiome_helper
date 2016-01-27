@@ -186,4 +186,10 @@ Open the weighted HTML file in your browser and take a look, you should see this
 
 ![](https://www.dropbox.com/s/dotwkcw37c16jcu/16S_tutorial_weighted_no_meta.jpg?raw=1)
 
+The actual metadata we are most interested in for this dataset is the "genotype" column of the mapping file, which contains the different genotypes I described at the beginning of this tutorial. Go to the "color" tab of the Emperor plot (which is what we were just looking at) and change the selection from "BarcodeSequence" (default) to "genotype". You should see this:
 
+![](https://www.dropbox.com/s/2n2kqv2l15nm2r5/16S_tutorial_weighted_genotype.jpg?raw=1)
+
+Hmm... There are two distinct groups of genotypes, but not the ones we want! It would have made more sense if the WT genotypes all grouped together and the two different chemerin KOs were a separate group. Instead it looks like half of the WTs are split across each group. The fact that all of the WT genotypes called "WT_BZ" gives an important clue of what is going on here - could it be possible that beta diversity is determined much more by which facility the mice came from rather than what genotype they have? To investigate this question we can simply change the selection under the "color" tab from "genotype" to "Source":
+
+![](https://www.dropbox.com/s/n3fzy7g8fkvgjem/16S_tutorial_weighted_source.jpg?raw=1)
