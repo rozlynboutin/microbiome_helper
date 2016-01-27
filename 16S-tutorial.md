@@ -228,8 +228,26 @@ These commands mean that the first line (the header) should be ignored and then 
     beta_diversity_through_plots.py -m map_BZ.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table_BZ.biom -o plots/bdiv_otu_BZ 
     beta_diversity_through_plots.py -m map_CJS.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table_CJS.biom -o plots/bdiv_otu_CJS 
 
+We can now take a look at the re-generated beta diversity PCAs for each source facility separately.
 
+For the BZ source facility:
 
+![](https://www.dropbox.com/s/yjgc3i9mo0l1pv1/16S_tutorial_weighted_genotype_BZ.jpg?raw=1)
 
+And for the CJS source facility:
 
+![](https://www.dropbox.com/s/f8flg3cwjl1fku1/16S_tutorial_weighted_genotype_CJS.jpg?raw=1)
 
+Just by looking at these PCAs it's clear that if there is any difference it is extremely subtle. To statistically evaluate whether the weighted Unifrac beta diversities differ between genotypes within each source facility, we will two common tests: ANOSIM and ADONIS.
+
+    compare_categories.py -i final_otu_tables/otu_table_BZ.biom --method anosim -i plots/bdiv_otu_BZ/weighted_unifrac_dm.txt -m map_BZ.txt -c genotype -o beta_div_tests
+    mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_BZ.txt 
+
+    compare_categories.py -i final_otu_tables/otu_table_CJS.biom --method anosim -i plots/bdiv_otu_CJS/weighted_unifrac_dm.txt -m map_CJS.txt -c genotype -o beta_div_tests
+    mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_CJS.txt 
+
+    compare_categories.py -i final_otu_tables/otu_table_BZ.biom --method adonis -i plots/bdiv_otu_BZ/weighted_unifrac_dm.txt -m map_BZ.txt -c genotype -o beta_div_tests
+    mv beta_div_tests/adonis_results.txt  beta_div_tests/adonis_results_BZ.txt 
+
+    compare_categories.py -i final_otu_tables/otu_table_CJS.biom --method adonis -i plots/bdiv_otu_CJS/weighted_unifrac_dm.txt -m map_CJS.txt -c genotype -o beta_div_tests
+    mv beta_div_tests/adonis_results.txt  beta_div_tests/adonis_results_CJS.txt 
