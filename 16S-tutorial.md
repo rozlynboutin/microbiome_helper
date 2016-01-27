@@ -156,3 +156,34 @@ In contrast, the first four lines of  clustering/otu_table_high_conf_summary.txt
 
 The number of OTUs has dropped from 140,817 to 4,558 (kept only 3.2% of the OTUs!). However, the numbers of reads only dropped from 4,204,125 to 3,840,858 (so 91% of the reads were kept!). You can also see that the table density went up by a lot as well, as we would expect.
 
+We now need to subsample the number of reads for each sample to the same depth (rarefaction), which is necessary for several downstream analyses. There is actually quite a lot of debate about whether rarefaction is necessary (since it throws out data!), but it is still the standard method used in microbiome studies. We want to rarify the read depth to the sample with the lowest "reasonable" number of reads. Of course, a "reasonable" read depth is quite subjective and depends on how much variation there is between samples. 
+
+You can look at the read depth per sample in clustering/otu_table_high_conf_summary.txt, here are the first five samples (they are sorted from smallest to largest):
+
+* Counts/sample detail:
+* 57CMK8WT: 12452.0
+* 31CMK6WT: 12518.0
+* 47CMK8KO: 14749.0
+* 75CMK8KO: 14760.0
+* 105CHE6WT: 15540.0
+
+We will rarify to 12,452 reads, since the lowest depth is not a major outlier:
+
+    single_rarefaction.py -i clustering/otu_table_high_conf.biom -o final_otu_tables/otu_table.biom -d 12452
+
+This QIIME command produced another BIOM table with each sample rarified to 12,452 reads. In this case no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in low-frequency OTUs being lost from the analysis.
+
+We will now create Unifrac beta diversity (both weighted and unweighted) PCA plots:
+
+    beta_diversity_through_plots.py -m map.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table.biom -o plots/bdiv_otu
+
+This QIIME script takes as input the final OTU table as well as file which contains the phylogenetic relatedness between all clustered OTUs. One HTML file will be generated for the weighted and unweighted beta diversity distances:
+
+* plots/bdiv_otu/weighted_unifrac_emperor_pcoa_plot/index.html
+* plots/bdiv_otu/unweighted_unifrac_emperor_pcoa_plot/index.html
+
+Open the weighted HTML file in your browser and take a look, you should see this PCA:
+
+![](https://www.dropbox.com/s/dotwkcw37c16jcu/16S_tutorial_weighted_no_meta.jpg?raw=1)
+
+
