@@ -193,3 +193,45 @@ The actual metadata we are most interested in for this dataset is the "genotype"
 Hmm... There are two distinct groups of genotypes, but not the ones we want! It would have made more sense if the WT genotypes all grouped together and the two different chemerin KOs were a separate group. Instead it looks like half of the WTs are split across each group. The fact that all of the WT genotypes called "WT_BZ" gives an important clue of what is going on here - could it be possible that beta diversity is determined much more by which facility the mice came from rather than what genotype they have? To investigate this question we can simply change the selection under the "color" tab from "genotype" to "Source":
 
 ![](https://www.dropbox.com/s/n3fzy7g8fkvgjem/16S_tutorial_weighted_source.jpg?raw=1)
+
+Yes, there is a clear qualitative difference between the microbiota of mice from the two source facilities. This can also be seen based on rarefaction plots (alpha diversity plots, which show the OTU richness per sample):
+
+    alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 1000 --max_rare_depth 12000 --num_steps 12
+
+Note that setting the num_steps higher will give you better resolution, but will take longer. As for the beta diversity plots, you can open the resulting HTML file to view the plots: plots/alpha_rarefaction_plot/alpha_rarefaction_plots/rarefaction_plots.html
+
+Choose "observed_otus" as the metric and "Source" as the category. You should see this plot:
+
+![](https://www.dropbox.com/s/jcbmov0n0zfxc1c/16S_tutorial_alpha_rarefaction_source.jpg?raw=1)
+
+There are clearly more OTUs identified in the guts of mice from the BZ facility than the CJS facility. So what's the next step? Since we know that source facility is such an important factor, we could analyze samples from each facility separately. This will lower our statistical power to detect a signal, but otherwise we cannot easily test for a difference between genotypes. 
+
+To compare the genotypes within the two source facilities separately we fortunately don't need to re-run the OTU-picking. Instead, we can just take different subsets of samples from the final OTU table. First though we need to make two new mapping files with the samples we want to subset:
+
+    head -n 1 map.txt >> map_BZ.txt; awk '{ if ( $3 == "BZ" ) { print $0 } }' map.txt >>map_BZ.txt
+    head -n 1 map.txt >> map_CJS.txt; awk '{ if ( $3 == "CJS" ) { print $0 } }' map.txt >>map_CJS.txt
+
+These commands are split into 2 parts (separated by ";"). The first part writes the header line to each new mapping file. The second part is an awk command that prints any line where the 3rd column equals the id of the source facility. Note that awk splits be any whitespace by default, which is why the source facility IDs are in the 3rd column according to awk, even though we know this isn't true when the file is tab-delimited.
+
+The BIOM "subset-table" command requires a text file with 1 sample name per line, which we can generate by these quick bash commands:
+
+    tail -n +2  map_BZ.txt | awk '{print $1}' > samples_BZ.txt
+    tail -n +2  map_CJS.txt | awk '{print $1}' > samples_CJS.txt
+
+These commands mean that the first line (the header) should be ignored and then the first column should be printed to a new file. We can now take the two subsets of samples from the BIOM file:
+
+    biom subset-table -j final_otu_tables/otu_table.biom -a sample -s samples_BZ.txt -o final_otu_tables/otu_table_BZ.biom
+    biom subset-table -j final_otu_tables/otu_table.biom -a sample -s samples_CJS.txt -o final_otu_tables/otu_table_CJS.biom
+
+ We can now re-create the beta diversity plots for each subset:
+
+    beta_diversity_through_plots.py -m map_BZ.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table_BZ.biom
+ -o plots/bdiv_otu_BZ &
+    beta_diversity_through_plots.py -m map_CJS.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table_CJS.biom
+ -o plots/bdiv_otu_CJS &
+
+
+
+
+
+
