@@ -173,6 +173,8 @@ We will rarify to 12,452 reads, since the lowest depth is not a major outlier:
 
 This QIIME command produced another BIOM table with each sample rarified to 12,452 reads. In this case no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in low-frequency OTUs being lost from the analysis.
 
+### Diversity analyses
+
 We will now create Unifrac beta diversity (both weighted and unweighted) PCA plots:
 
     beta_diversity_through_plots.py -m map.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table.biom -o plots/bdiv_otu
