@@ -26,7 +26,7 @@ Four FASTQ files will be generated for each set of paired-end reads:
 To get an idea of how many reads have been successfully stitched you can compare the sizes of each of the files: 
 
     cat *.assembled.fastq | wc -l #returned 29539776
-    cat *.discarded.fastq | wc -l #return 5224
+    cat *.discarded.fastq | wc -l #returned 5224
     cat *.unassembled.forward.fastq | wc -l #returned 405164
     cat *.unassembled.reverse.fastq | wc -l #returned 405164
 
@@ -104,7 +104,35 @@ This script will remove any reads called as chimeric or called ambiguously and o
 By default the logfile "chimeraFilter_log.txt" is generated containing the counts and percentages of reads filtered out for each sample. In this case, ~5-18% of reads are filtered out depending on the sample.
 
 
+### Run OTU picking pipeline
 
-  
+Now that we have adequately prepared the reads, we can now run OTU picking using QIIME. 
+QIIME requires FASTA files to be input in a specific format (specifically, sample names need to be at the beginning of each header line). We have provided the mapping file ("map.txt"), which links filenames to sample names and metadata.
 
+If you open up map.txt (e.g. with vim) you will notice that 2 columns are present without any data: "BarcodeSequence" and "LinkerPrimerSequence". We don't need to use these columns, so we have left them blank. 
+
+Also, you will see that the "FileInput" column contains the names of each FASTA file, which is what we need to specify for the command below.
+
+This command will correctly format the input FASTA files and output a single FASTA:
+
+    add_qiime_labels.py -i non_chimeras/ -m map.txt -c FileInput -o combined_fasta 
   
+IF you take a look at combined_fasta/combined_seqs.fna you can see that the first column of header line is a sample name taken from the mapping file.
+
+Now that the input file has been correctly formatted we can run the actual OTU picking program!
+
+Several parameters for this program can be specified into a text file, which will be read in by "pick_open_reference_otus.py":
+
+    echo "pick_otus:threads 4" >> clustering_params.txt
+    echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
+
+We will be using the sortmerna_sumaclust method of OTU picking and subsampling 10% of failed reads for de novo clustering. Lowering the "-s" parameter's value will greatly affect running speed. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory.
+
+    pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1  
+
+We will now remove low confidence OTUs, i.e. those that are called by a low number of reads. It's difficult to choose a hard cut-off for how many reads are needed for an OTU to be confidently called, since of course OTUs are often at low frequency within a community. A reasonable approach is to remove any OTU identified by fewer than 0.1% of the reads (0.1% is the estimated amount of bleed through between runs on the Illumina Miseq):
+
+    remove_low_confidence_otus.py -i $PWD/clustering/otu_table_mc1_w_tax_no_pynast_failures.biom -o $PWD/clustering/otu_table_high_conf.biom
+
+    
+ 
