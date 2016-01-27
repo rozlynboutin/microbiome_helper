@@ -134,5 +134,26 @@ We will now remove low confidence OTUs, i.e. those that are called by a low numb
 
     remove_low_confidence_otus.py -i $PWD/clustering/otu_table_mc1_w_tax_no_pynast_failures.biom -o $PWD/clustering/otu_table_high_conf.biom
 
+We can compare the summaries of these two BIOM files:
+
+    biom summarize-table -i clustering/otu_table_mc1_w_tax_no_pynast_failures.biom -o clustering/otu_table_mc1_w_tax_no_pynast_failures_summary.txt
     
- 
+    biom summarize-table -i clustering/otu_table_high_conf.biom -o clustering/otu_table_high_conf_summary.txt
+
+The first four lines of clustering/otu_table_mc1_w_tax_no_pynast_failures_summary.txt are:
+   Num samples: 116
+   Num observations: 140817
+   Total count: 4205125
+   Table density (fraction of non-zero values): 0.032
+
+This means that for the 116 separate samples, 140,817 OTUs were called based on 4,205,125 reads. Only 3.2% of the values in the sample x OTU table are non-zero (meaning that most OTUs are in a small number of samples).
+
+In contrast, the first four lines of  clustering/otu_table_high_conf_summary.txt are:
+   Num samples: 116
+   Num observations: 4558
+   Total count: 3840858
+   Table density (fraction of non-zero values): 0.408
+
+The number of OTUs has dropped from 140,817 to 4,558 (kept only 3.2% of the OTUs!). However, the numbers of reads only dropped from 4,204,125 to 3,840,858 (so 91% of the reads were kept!). You can also see that the table density went up by a lot as well, as we would expect.
+
+
