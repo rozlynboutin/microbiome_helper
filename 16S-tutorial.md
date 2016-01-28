@@ -1,6 +1,6 @@
 ### Note this tutorial is under construction
 
-This tutorial will demonstrate how to analyze and interpret example 16S sequencing data using the Microbiome Helper Standard Operating Procedure (SOP).
+This tutorial will demonstrate how to analyze and interpret example 16S sequencing data using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-Workflow).
 
 You can download the example data (2.65GB) [here](https://www.dropbox.com/s/t0q0p88czo9hk6g/16S_tutorial.tar.gz?dl=1).
 
