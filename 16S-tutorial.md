@@ -8,7 +8,6 @@ This dataset was originally used in a project to determine whether knocking out 
 
 Commands below assume that 4 CPUs are available for use. Running times are listed for the longest running jobs (if a time is not listed then it should take <= 1 min on 4 CPU). The expected total running time on 4 CPUs is 12.7 hours.
 
-
   
 ### Stitch paired-end reads together
 
