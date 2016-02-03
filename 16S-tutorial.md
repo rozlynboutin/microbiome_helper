@@ -6,14 +6,15 @@ You can download the example data (2.65GB) [here](https://www.dropbox.com/s/t0q0
 
 This dataset was originally used in a project to determine whether knocking out the protein [chemerin](https://en.wikipedia.org/wiki/Chemerin) affects gut microbial composition. 116 mouse samples acquired from two different facilities were used for this project. Metadata associated with each sample is indicated in the mapping file (map.txt). In this mapping file the genotypes of interest can be seen: wildtype (WT and WT_BZ), chemerin knockout (chemerin_KO), chemerin receptor knockout (CMKLR1_KO) and a heterozygote for the receptor knockout (HET). Also of importance are the two source facilities: "BZ" and "CJS". It is generally a good idea to include as much metadata as possible, since this data can easily be explored later on.
 
-Commands below assume that 4 CPUs are available for use.
-  
+Commands below assume that 4 CPUs are available for use. Running times are listed for the longest running jobs (if a time is not listed then it should take <= 1 min on 4 CPU). The expected total running time on 4 CPUs is 12.7 hours.
+
+
   
 ### Stitch paired-end reads together
 
 The raw reads are in [FASTQ format](https://en.wikipedia.org/wiki/FASTQ_format) and (in this case) paired-end. 
 
-We first stitch the paired-end reads together using PEAR:
+We first stitch the paired-end reads together using PEAR (~50 min on 4 CPUs):
 
     run_pear.pl -p 4 -o stitched_reads raw_data/*
 
@@ -41,7 +42,7 @@ Note that the return values are the number of lines in each type of FASTQ (when 
 
 Quality metrics of the 7,384,944 stitched reads can now be determined using FastQC.
 
-This can be done for each sample separately:
+This can be done for each sample separately (~3 min on 4 CPUs):
 
     mkdir fastqc_out
     fastqc -t 4 stitched_reads/*.assembled.fastq -o fastqc_out
@@ -64,7 +65,7 @@ You can see the full FastQC report for all stitched reads combined [here] - **ne
   
 ### Read filtering based on quality and length
 
-Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria:
+Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria (~22 min on 4 CPUs):
  
     readFilter.pl -q 30 -p 90 -l 400 -thread 4 stitched_reads/*.assembled*fastq
 
@@ -87,13 +88,13 @@ As before, if you'd like to see more details (such as how the read length distri
   
 ### Convert to FASTA and remove chimeric reads
 
-The next steps in the pipeline require the sequences to be in [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), which we will generate using this command:
+The next steps in the pipeline require the sequences to be in [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), which we will generate using this command (~5 min on 4 CPUs):
 
     run_fastq_to_fasta.pl -p 4 -o fasta_files filtered_reads/*fastq
 
 Note that this command removes any sequences containing "N" sequences, which is << 1% of the reads after the read filtering steps above.
 
-Now that we have FASTA files we can run the chimera filtering:
+Now that we have FASTA files we can run the chimera filtering (~3.3 hours on 4 CPUs):
 
     chimeraFilter.pl -type 1 -thread 4 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb fasta_files/*
 
@@ -126,7 +127,7 @@ Several parameters for this program can be specified into a text file, which wil
     echo "pick_otus:threads 4" >> clustering_params.txt
     echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
 
-We will be using the sortmerna_sumaclust method of OTU picking and subsampling 10% of failed reads for de novo clustering. Lowering the "-s" parameter's value will greatly affect running speed. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory.
+We will be using the sortmerna_sumaclust method of OTU picking and subsampling 10% of failed reads for de novo clustering. Lowering the "-s" parameter's value will greatly affect running speed. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7.8 hours on 4 CPUs.
 
     pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1  
 
@@ -196,7 +197,7 @@ Hmm... There are two distinct groups of genotypes, but not the ones we want! It 
 
 ![](https://www.dropbox.com/s/n3fzy7g8fkvgjem/16S_tutorial_weighted_source.jpg?raw=1)
 
-Yes, there is a clear qualitative difference between the microbiota of mice from the two source facilities. This can also be seen based on rarefaction plots (alpha diversity plots, which show the OTU richness per sample):
+Yes, there is a clear qualitative difference between the microbiota of mice from the two source facilities. This can also be seen based on rarefaction plots (alpha diversity plots, which show the OTU richness per sample; takes ~9 min on 4 CPU):
 
     alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 1000 --max_rare_depth 12000 --num_steps 12
 
