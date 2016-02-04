@@ -19,21 +19,21 @@ Options:
 *    -o, --out_dir <file> <br>
         The name of the output directory to place all PEAR output files.
 
-*    -p, --parallel [<# of proc]>
+*    -p, --parallel [<# of proc]> <br>
         Using this option without a value will use all CPUs on machine, while
         giving it a value will limit to that many CPUs. Without option only
         one CPU is used.
 
-*    -g, --gzip_output
+*    -g, --gzip_output <br>
         Gzip the PEAR output files.
 
-*    -f, --full_log <file>
+*    -f, --full_log <file> <br>
         The location to write the PEAR full log file. Default is
         "pear_full_log.txt"
 
-*    -s, --summary_log <file>
+*    -s, --summary_log <file> <br>
         The location to write teh PEAR summary log file. Default is
         "pear_summary_log.txt"
 
-*    -h, --help
+*    -h, --help <br>
         Displays the entire help documentation.
