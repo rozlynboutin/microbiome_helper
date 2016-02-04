@@ -7,9 +7,9 @@ Our run_pear.pl wrapper script can simply be used like so:
 Where "raw_data" is a folder that contains FASTQs with either "_R1_" and "_R2_" in their names (alternatively just "_1" and "_2" in the filenames will work). 
 
 Four FASTQs are created for each sample: 
-* assembled reads (typically ~98% of reads, although this can depend on your data type / quality).
+* assembled reads (typically ~98% of reads, although this can depend on your data type / quality)
 * discarded reads (e.g. reads that are all Ns)
-* unassembled reads, 1 FASTQ for each direction (we discard these for downstream analyses).
+* unassembled reads, 1 FASTQ for each direction (we discard these for downstream analyses)
 
 This script generates a summary of the percents of assembled, discarded and unassembled reads for each sample (by default: "pear_summary_log.txt").
 
