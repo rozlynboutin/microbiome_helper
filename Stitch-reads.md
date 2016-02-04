@@ -16,7 +16,7 @@ Four FASTQs are created for each sample:
 This script generates a summary of the percents of assembled, discarded and unassembled reads for each sample (by default: "pear_summary_log.txt").
 
 Options:
-*    -o, --out_dir <file>\s
+*    -o, --out_dir <file> <br>
         The name of the output directory to place all PEAR output files.
 
 *    -p, --parallel [<# of proc]>
