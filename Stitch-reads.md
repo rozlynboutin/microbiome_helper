@@ -4,7 +4,7 @@ Our run_pear.pl wrapper script can simply be used like so:
 
     run_pear.pl raw_data/*
 
-Where "raw_data" is a folder that contains FASTQs with either "_R1_" and "_R2_" in their names (alternatively just "_1" and "_2" in the filenames will work). 
+Where "raw_data" is a folder that contains FASTQs with either "\_R1\_" and "\_R2\_" in their names (alternatively just "_1" and "_2" in the filenames will work). 
 
 Four FASTQs are created for each sample: 
 * assembled reads (typically ~98% of reads, although this can depend on your data type / quality)
