@@ -12,10 +12,10 @@
     * [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial)
     * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
     * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
-    * Remove low quality reads
-    * Remove chimeric reads
-    * Taxonomic composition
-    * Plot taxonomic diversity
+    * [Remove low quality reads](https://github.com/mlangill/microbiome_helper/wiki/Remove-low-quality-reads)
+    * [Remove chimeric reads](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads)
+    * [Taxonomic composition](https://github.com/mlangill/microbiome_helper/wiki/Taxonomic-composition)
+    * [Plot taxonomic diversity](https://github.com/mlangill/microbiome_helper/wiki/Plot-taxonomic-diversity)
 
 * Additional QIIME Analysis
 
