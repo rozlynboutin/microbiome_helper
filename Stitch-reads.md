@@ -1,5 +1,3 @@
-### Stitch reads
-
 We use [PEAR](http://sco.h-its.org/exelixis/web/software/pear/) to stitch pair-end reads together.
 
 Our run_pear.pl wrapper script can simply be used like so:
