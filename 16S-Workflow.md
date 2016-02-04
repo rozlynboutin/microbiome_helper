@@ -17,7 +17,7 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
 									
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
 
-        run_fastq_to_fasta.pl -p -o fasta_files filtered_reads/*
+        run_fastq_to_fasta.pl -p -o fasta_files filtered_reads/*fastq
 
 5. Remove chimeric sequences with UCHIME (summary written to "chimeraFilter_log.txt" by default).
 
