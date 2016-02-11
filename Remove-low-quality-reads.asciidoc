@@ -1,4 +1,4 @@
 We use two useful tools to filter stitched reads:
 
-* [FASTX-Toolkit](http://hannonlab.cshl.edu/fastx_toolkit/)
+* (FASTX-Toolkit)[http://hannonlab.cshl.edu/fastx_toolkit/]
 * [BBmap](https://sourceforge.net/projects/bbmap/)
