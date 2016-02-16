@@ -17,5 +17,8 @@ Also, these commands should be used for the OTU picking step:
     echo "pick_otus:threads 4" >> clustering_params.txt
     echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
     echo "pick_otus:similarity 0.99" >> clustering_params.txt
+    echo "align_seqs:template_fp /home/shared/rRNA_db/Silva_119_rep_set90_aligned_18S.fna"
+    echo "assign_taxonomy:id_to_taxonomy_fp /home/shared/rRNA_db/Silva_119_rep_set99_18S_taxonomy_7_levels.txt"
+    echo "assign_taxonomy:reference_seqs_fp /home/shared/rRNA_db/Silva_119_rep_set99_18S.fna"
 
-    pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1 -r /home/shared/rRNA_db/Silva_111_post/eukaryotes_only/rep_set_euks/99_Silva_111_rep_set_euk.fasta.gz
+    pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1 -r /home/shared/rRNA_db/Silva_119_rep_set99_18S.fna
