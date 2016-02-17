@@ -15,9 +15,8 @@ Note that by default.
 
 Options: 
 
-* -h, --help 
-
- Displays the entire help documentation.
+* -h, --help <br>
+   Displays the entire help documentation.
 
 * -v, --version
 
