@@ -17,7 +17,7 @@ Options:
 *    -o, --out_dir <file> <br>
         The name of the output directory to place all PEAR output files.
 
-*    -p, --parallel [<# of proc]> <br>
+*    -p, --parallel [<# of proc>] <br>
         Using this option without a value will use all CPUs on machine, while
         giving it a value will limit to that many CPUs. Without option only
         one CPU is used.
