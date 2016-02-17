@@ -1,7 +1,6 @@
 * [Home](https://github.com/mlangill/microbiome_helper/wiki/Home)
 * [Requirements](https://github.com/mlangill/microbiome_helper/wiki/Requirements)
 * [Description of scripts](https://github.com/mlangill/microbiome_helper/wiki/Description-of-scripts)
-
 * [Metagenomic Workflow](https://github.com/mlangill/microbiome_helper/wiki/Metagenomic-Workflow)
     * Sequence QC
     * Stitch reads
