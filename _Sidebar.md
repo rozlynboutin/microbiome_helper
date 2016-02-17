@@ -15,7 +15,7 @@
     * [Remove low quality reads](https://github.com/mlangill/microbiome_helper/wiki/Remove-low-quality-reads)
     * [Remove chimeric reads](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads)
     * [OTU picking](https://github.com/mlangill/microbiome_helper/wiki/OTU-picking)
-    * [Plot taxonomic diversity](https://github.com/mlangill/microbiome_helper/wiki/Plot-taxonomic-diversity)
+    * [Alpha and beta diversities](https://github.com/mlangill/microbiome_helper/wiki/Alpha-and-beta-diversities)
 
 * [Changes to 16S workflow for 18S data](https://github.com/mlangill/microbiome_helper/wiki/Changes-to-16S-workflow-for-18S-data)
 
