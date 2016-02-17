@@ -16,7 +16,7 @@ Options:
 * -v, --version <br>
    Displays version number and exits.
 
-* -type <0 or 1> <br>
+* -type < 0 or 1 > <br>
    Non-chimeric output type, either only sequences that are clearly non-chimeric (1) <br>
    or <br>
    all sequences that are not called as chimeric ( 0 - includes borderline sequences, "?" in uchime output).
