@@ -17,9 +17,7 @@ Options:
    Displays version number and exits.
 
 * -type <[0|1]> <br>
-   Non-chimeric output type, either only sequences that are clearly non-chimeric (1) <br>
-   or <br>
-   all sequences that are not called as chimeric ( 0 - includes borderline sequences, "?" in uchime output).
+   Non-chimeric output type, either only sequences that are clearly non-chimeric (1) or all sequences that are not called as chimeric ( 0 - includes borderline sequences, "?" in uchime output).
 
 * -mindiv <float> <br>
    Min % divergence between query and target sequence (default 1.5, note that this differs from the uchime default of 0.8).
