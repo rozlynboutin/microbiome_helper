@@ -22,5 +22,7 @@ Finally we can run the actual OTU picking step, specifying that we will be using
 
     pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1 
 
-After OTU picking it can be difficult to distinguish low frequency OTUs from noise. We filter out OTUs that supported by less than 0.1% reads (this is because Illumina reported that 0.1% of reads are expected to be bleed-through from previous runs on an Illumina MiSeq). 
-Note that we retain singletons (OTUs identified by 1 read) for this step so that the threshold for 0.1% of reads can be correctly calculated in the next step.
+After OTU picking it can be difficult to distinguish low frequency OTUs from noise. We filter out OTUs that supported by less than 0.1% reads (this is because Illumina reported that 0.1% of reads are expected to be bleed-through from previous runs on an Illumina MiSeq). Note that we retained singletons (OTUs identified by 1 read) in the previous step so that the threshold for 0.1% of reads can be correctly calculated.
+
+    remove_low_confidence_otus.py -i $PWD/clustering/otu_table_mc1_w_tax_no_pynast_failures.biom -o $PWD/clustering/otu_table_high_conf.biom
+
