@@ -8,6 +8,8 @@ Where "-type 1" means that any reads clearly called as chimeric AND reads that a
 
 Note that a DB file needs to be input as well. If you'd like to use the [UDB](http://www.drive5.com/usearch/manual/udb_files.html) format rather than FASTA then you'll need to use the "-makeudb_usearch" function of usearch v6.1 (the same usearch version as used for chimera checking). 
 
+Note that it is possible that the settings of "mindiv" and "minh" (see http://www.drive5.com/usearch/manual/UCHIME_score.html) could have significant effects on results. So far we have found that adjusting these parameters has only a subtle effect on sensitivity and specificity when running chimera checking for 16S sequences.
+
 Options:
 
 * -h, --help <br>
