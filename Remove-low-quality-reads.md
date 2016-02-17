@@ -46,7 +46,7 @@ Options:
    Reverse primer to match at end of all reads (IUPAC format, default: TTGYACWCACYGCCCGT, which is the reverse complement of the primer ACGGGCRGTGWGTRCAA).
 
 * -b, --bbmap <PATH> <br>
-   bbmap directory containing sh files (default: /usr/local/prg/bbmap).
+   BBMap directory containing sh files (default: /usr/local/prg/bbmap).
 
 * -pc, --primer_check <[both|forward]> <br>
    Either "both" or "forward", indicating whether to check both forward (5') and reverse (3') primer sequences or only the forward primer respectively (default: both).
