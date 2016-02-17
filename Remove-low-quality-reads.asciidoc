@@ -16,10 +16,10 @@ Options:
 * -h, --help <br>
    Displays the entire help documentation.
 
-* -v, --version <br>
+* -v, --version <br />
    Displays script version and exits.
 
-* -o, --out_dir <file> <br>
+* -o, --out_dir <file>  
    Output directory for filtered fastq files. Default is "filtered_reads".
 
 * -thread [<# of CPUs]> <br>
