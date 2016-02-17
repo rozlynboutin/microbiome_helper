@@ -21,6 +21,4 @@
 
 * [Additional QIIME analysis](https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis)
 
-* PICRUSt workflow (for 16S data)
-
-* FAQ
+* [PICRUSt workflow (for 16S data)](https://github.com/mlangill/microbiome_helper/wiki/PICRUSt-workflow)
