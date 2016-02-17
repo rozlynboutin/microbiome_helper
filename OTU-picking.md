@@ -1,0 +1,1 @@
+We use [QIIME](http://qiime.org) for OTU picking
