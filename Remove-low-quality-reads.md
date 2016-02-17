@@ -18,46 +18,35 @@ Options:
 * -h, --help <br>
    Displays the entire help documentation.
 
-* -v, --version
+* -v, --version <br>
+   Displays script version and exits.
 
-Displays script version and exits.
+* -o, --out_dir <file> <br> 
+   Output directory for filtered fastq files. Default is "filtered_reads".
 
-* -o, --out_dir <file>  
+* -thread <# of CPUs> <br>
+   Using this option without a value will use all CPUs on machine, while giving it a value will limit to that many CPUs. Without option only one CPU is used.
 
-Output directory for filtered fastq files. Default is "filtered_reads".
+* -log <file> <br>
+   The location to write the log file.
 
-* -thread [<# of CPUs]>
+* -q, --min_quality <#> <br>
+   Minimum base quality.
 
-Using this option without a value will use all CPUs on machine, while giving it a value will limit to that many CPUs. Without option only one CPU is used.
+* -p, --percent <#> <br>
+   Minimum percent of bases per read that pass quality cut-off
 
-* -log <file>
+* -l, --min_length <#> <br>
+   Minimum read length.
 
-The location to write the log file.
+* -f, --forward <oligo> <br>
+   Forward primer to match at beginning of all reads (IUPAC format, default: ACGCGHNRAACCTTACC).
 
-* -q, --min_quality
+* -r, --reverse <oligo> <br>
+   Reverse primer to match at end of all reads (IUPAC format, default: TTGYACWCACYGCCCGT, which is the reverse complement of the primer ACGGGCRGTGWGTRCAA).
 
-Minimum base quality.
+* -b, --bbmap <PATH> <br>
+   bbmap directory containing sh files (default: /usr/local/prg/bbmap).
 
-* -p, --percent
-
-Minimum percent of bases per read that pass quality cut-off
-
-* -l, --min_length
-
-Minimum read length.
-
-* -f, --forward
-
-Forward primer to match at beginning of all reads (IUPAC format, default: ACGCGHNRAACCTTACC).
-
-* -r, --reverse
-
-Reverse primer to match at end of all reads (IUPAC format, default: TTGYACWCACYGCCCGT, which is the reverse complement of the primer ACGGGCRGTGWGTRCAA).
-
-* -b, --bbmap
-
-bbmap directory containing sh files (default: /usr/local/prg/bbmap).
-
-* -pc, --primer_check
-
-Either "both" or "forward", indicating whether to check both forward (5') and reverse (3') primer sequences or only the forward primer respectively (default: both).
+* -pc, --primer_check <[both|forward]> <br>
+   Either "both" or "forward", indicating whether to check both forward (5') and reverse (3') primer sequences or only the forward primer respectively (default: both).
