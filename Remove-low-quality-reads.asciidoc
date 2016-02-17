@@ -11,6 +11,10 @@ Here is an example of how this script is run:
 
 Note that by default 
 
+Options:
+*    -o, --out_dir <file> <br>
+        The name of the output directory to place all PEAR output files.
+
 Options: 
 
 * -h, --help <br>
