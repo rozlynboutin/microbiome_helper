@@ -9,11 +9,7 @@ Here is an example of how this script is run:
 
     readFilter.pl -thread 4 -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
 
-Note that by default 
-
-Options:
-*    -o, --out_dir <file> <br>
-        The name of the output directory to place all PEAR output files.
+Note that by default.
 
 Options: 
 
