@@ -13,16 +13,16 @@ Note that by default
 
 Options: 
 
-* -h, --help  <br>  
+* -h, --help <br>
    Displays the entire help documentation.
 
-* -v, --version  <br>  
+* -v, --version <br>
    Displays script version and exits.
 
-* -o, --out_dir <file> <br>  
+* -o, --out_dir <file> <br>
    Output directory for filtered fastq files. Default is "filtered_reads".
 
-* -thread [<# of CPUs]>  <br>  
+* -thread [<# of CPUs]> <br>
    Using this option without a value will use all CPUs on machine, while giving it a value will limit to that many CPUs. Without option only one CPU is used.
 
     -log <file>
