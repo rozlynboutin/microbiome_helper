@@ -48,9 +48,8 @@ To convert the BIOM file to STAMP format run:
 
 The last two lines are necessary since there are a few OTUs where the genus Clostridium is within the wrong family, so we remove them (grep with the "-v" options means output everything except what matches the string). 
 
-Adding sample metadata to the BIOM file allows it to be used with Phinch, phyloseq and other tools. 
+Adding sample metadata to the BIOM file allows it to be used with Phinch, phyloseq and other tools: 
 
     biom add-metadata -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_with_metadata.biom -m map.txt
 
-
-
+To run additional QIIME analyses on your data, such as testing for significant differences in beta diversities, check out (this page)[https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis].
