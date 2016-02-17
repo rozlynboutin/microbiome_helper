@@ -15,6 +15,8 @@ Note that by default the primer sequences checked for are ACGCGHNRAACCTTACC and 
 
 This script assumes FASTX-Toolkit is in the user's PATH. You will likely need to point the program to where the jar files for BBMap are installed with the "--bbmap" option (it assumes the jar files are in /usr/local/prg/bbmap by default). 
 
+By default the numbers (and %) of reads filtered out at each step are reported in "readFilter_log.txt".
+
 Options: 
 
 * -h, --help <br>
