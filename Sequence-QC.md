@@ -10,8 +10,8 @@ Alternatively, if you want to look at the QC metrics for all of your FASTQs comb
     mkdir fastqc_out_combined
     cat stitched_reads/*.assembled.fastq | fastqc stdin -o fastqc_out_combined
 
-See example output [here](https://www.dropbox.com/s/97n67yvah7x9ncb/combined_fastqc.html). 
+See example output [here](https://www.dropbox.com/s/97n67yvah7x9ncb/combined_fastqc.html) for 16S reads. 
 
-Note that all of the reads should begin with same forward primer sequence, which explains why the "Per base sequence content" plot has peaks of 100% base content in the first few positions.
+Note that for 16S data all of the reads should begin with same forward primer sequence, which explains why the "Per base sequence content" plot has peaks of 100% base content in the first few positions.
 
-Also, note that a number of metrics ("Sequence Duplication Levels" , "Overrepresented sequences" and "Kmer Content") should not be used to evaluate data quality since of course we are looking at sequencing data for only a single gene, so an excess of highly similar sequences are expected.
+Also for 16S data, note that a number of metrics ("Sequence Duplication Levels" , "Overrepresented sequences" and "Kmer Content") should not be used to evaluate data quality since of course we are looking at sequencing data for only a single gene, so an excess of highly similar sequences are expected.
