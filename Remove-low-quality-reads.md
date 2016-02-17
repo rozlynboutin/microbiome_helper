@@ -1,7 +1,7 @@
 We use the readFilter.pl script to wrap two useful tools:
 
-* http://hannonlab.cshl.edu/fastx_toolkit/[FASTX-Toolkit]
-* https://sourceforge.net/projects/bbmap/[BBMap]
+* [FASTX-Toolkit](http://hannonlab.cshl.edu/fastx_toolkit/)
+* [BBMap]https://sourceforge.net/projects/bbmap/)
 
 FASTX-Toolkit is used to filter out reads with a given proportion of sites under a set quality threshold and also reads less than a specified length. BBMap is then used to filter out reads that do not match either the forward or reverse primer sequences (which should be at each end of the read).
 
