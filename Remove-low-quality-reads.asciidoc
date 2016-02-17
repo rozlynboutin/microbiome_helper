@@ -11,21 +11,19 @@ Here is an example of how this script is run:
 
 Note that by default 
 
-Options:
+Options: <br>
 
-* -h, --help 
-Displays the entire help documentation.
+* -h, --help  <br>
+   Displays the entire help documentation.
 
-* -v, --version 
-Displays script version and exits.
+* -v, --version  <br>
+   Displays script version and exits.
 
-* -o, --out_dir <file>
-Output directory for filtered fastq files. Default is "filtered_reads".
+* -o, --out_dir <file> <br>
+   Output directory for filtered fastq files. Default is "filtered_reads".
 
-    -thread [<# of CPUs]>
-        Using this option without a value will use all CPUs on machine, while
-        giving it a value will limit to that many CPUs. Without option only
-        one CPU is used.
+* -thread [<# of CPUs]>  <br>
+   Using this option without a value will use all CPUs on machine, while giving it a value will limit to that many CPUs. Without option only one CPU is used.
 
     -log <file>
         The location to write the log file.
