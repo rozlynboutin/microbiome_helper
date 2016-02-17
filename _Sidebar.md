@@ -19,7 +19,7 @@
 
 * [Changes to 16S workflow for 18S data](https://github.com/mlangill/microbiome_helper/wiki/Changes-to-16S-workflow-for-18S-data)
 
-* Additional QIIME Analysis
+* [Additional QIIME analysis](https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis)
 
 * PICRUSt workflow (for 16S data)
 
