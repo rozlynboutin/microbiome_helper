@@ -17,7 +17,7 @@ Options:
 
 * -h, --help 
 
-Displays the entire help documentation.
+  Displays the entire help documentation.
 
 * -v, --version
 
