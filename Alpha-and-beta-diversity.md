@@ -21,7 +21,9 @@ Using DESeq2 is still not mainstream, although that could be changing.
 <br>
 <br>
 
-Once the OTU table has been normalized the diversity plots can be generated. Note that these steps require metadata to be added into the mapping file as different columns (e.g. to classify samples into healthy vs disease). Also, if you want to compare subsets of your samples based upon metadata then you should first run the biom "subset-table" command to create a new BIOM file (i.e. you do not need to re-run OTU-picking to compare a different subset of your data). See the [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial#diversity-analyses) for an example for how to do this. 
+Once the OTU table has been normalized the diversity plots can be generated. Note that these steps require metadata to be added into the mapping file as different columns (e.g. to classify samples into healthy vs disease). 
+
+Also, if you want to compare subsets of your samples based upon metadata then you should first run the biom "subset-table" command to create a new BIOM file (i.e. you do not need to re-run OTU-picking to compare a different subset of your data). See the [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial#diversity-analyses) for an example for how to do this. 
 
  
 
