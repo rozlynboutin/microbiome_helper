@@ -12,11 +12,9 @@ Here is an example of how this script is run:
 Note that by default 
 
 Options:
-    -h, --help
-        Displays the entire help documentation.
+* -h, --help Displays the entire help documentation.
 
-    -v, --version
-        Displays script version and exits.
+* -v, --version Displays script version and exits.
 
     -o, --out_dir <file>
         Output directory for filtered fastq files. Default is
