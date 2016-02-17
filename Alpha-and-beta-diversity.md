@@ -52,4 +52,4 @@ Adding sample metadata to the BIOM file allows it to be used with Phinch, phylos
 
     biom add-metadata -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_with_metadata.biom -m map.txt
 
-To run additional QIIME analyses on your data, such as testing for significant differences in beta diversities, check out (this page)[https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis].
+To run additional QIIME analyses on your data, such as testing for significant differences in beta diversities, check out [this page](https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis).
