@@ -14,7 +14,7 @@
     * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
     * [Remove low quality reads](https://github.com/mlangill/microbiome_helper/wiki/Remove-low-quality-reads)
     * [Remove chimeric reads](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads)
-    * [Taxonomic composition](https://github.com/mlangill/microbiome_helper/wiki/Taxonomic-composition)
+    * [OTU picking](https://github.com/mlangill/microbiome_helper/wiki/OTU-picking)
     * [Plot taxonomic diversity](https://github.com/mlangill/microbiome_helper/wiki/Plot-taxonomic-diversity)
 
 * [Changes to 16S workflow for 18S data](https://github.com/mlangill/microbiome_helper/wiki/Changes-to-16S-workflow-for-18S-data)
