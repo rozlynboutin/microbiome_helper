@@ -41,6 +41,7 @@ Note that the values for min_rare_depth, max_rare_depth and num_steps are depend
 Finally several other tools can be useful for downstream analyses, such as [STAMP](http://kiwi.cs.dal.ca/Software/STAMP), [Phinch](https://github.com/PitchInteractiveInc/Phinch) and [phyloseq](http://bioconductor.org/packages/release/bioc/html/phyloseq.html). Before using your data with these tools some slight formatting is needed.
 
 To convert the BIOM file to STAMP format run:
+
     biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
     grep -P -v "f__Erysipelotrichaceae\tg__Cl" otu_table.spf > tmp.spf
     mv tmp.spf otu_table.spf
