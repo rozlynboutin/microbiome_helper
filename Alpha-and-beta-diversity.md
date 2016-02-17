@@ -19,7 +19,6 @@ Other normalization methods such as [DESeq2](https://bioconductor.org/packages/r
 Using DESeq2 is still not mainstream, although that could be changing. 
 
 <br>
-<br>
 
 Once the OTU table has been normalized the diversity plots can be generated. Note that these steps require metadata to be added into the mapping file as different columns (e.g. to classify samples into healthy vs disease). 
 
