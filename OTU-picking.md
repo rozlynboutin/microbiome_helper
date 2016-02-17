@@ -18,7 +18,7 @@ The next script, pick_open_reference_otus.py, takes in parameters from a "parame
 These parameters mean that we want to thread the pick_otus.py script over 4 CPUs and set the minimum percent query alignable coverage to be 80% (for SortMeRNA, as specified below).
 
 
-Finally we can run the actual OTU picking step, specifying that we will be using SortMeRNA for reference picking and sumaclust for _de novo_ OTU picking (~24 hours):
+Finally we can run the actual OTU picking step, specifying that we will be using [SortMeRNA](http://bioinfo.lifl.fr/RNA/sortmerna/) for reference picking and [SUMACLUST](http://metabarcoding.org/sumatra) for _de novo_ OTU picking (~24 hours):
 
     pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1 
 
