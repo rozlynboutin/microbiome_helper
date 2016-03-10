@@ -10,7 +10,7 @@ Note that a DB file needs to be input as well. If you'd like to use the [UDB](ht
 
 Note that it is possible that the settings of "mindiv" and "minh" (see http://www.drive5.com/usearch/manual/UCHIME_score.html) could have significant effects on results. However, so far we have found that small adjustments in these parameters has only a minor effect on sensitivity and specificity when running chimera checking for 16S sequences.
 
-You can download the DB used in the above example [here] (https://www.dropbox.com/s/8qr42doaez48oc3/Bacteria_RDP_trainset15_092015.udb?dl=0) (70 MB).
+You can download the DB used in the above example [here] (https://www.dropbox.com/s/8qr42doaez48oc3/Bacteria_RDP_trainset15_092015.udb?dl=0) (70 MB), which is originally from the Ribosome Database Project (RDP) and then parsed to include on bacteria.
 
 Options:
 
