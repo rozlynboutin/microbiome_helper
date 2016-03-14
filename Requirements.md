@@ -25,6 +25,4 @@ The following programs should be installed with commands accessible from the use
 
 
 **Databases (dropbox download links)**
-* 16S chimera checking: [Bacteria_RDP_trainset15_092015.udb](https://www.dropbox.com/s/8qr42doaez48oc3/Bacteria_RDP_trainset15_092015.udb?dl=0) (70 MB)
-* 18S chimera checking:
-* 18S OTU picking: 
+* 16S chimera checking: [Bacteria_RDP_trainset15_092015.udb](https://www.dropbox.com/s/8qr42doaez48oc3/Bacteria_RDP_trainset15_092015.udb?dl=0) (70 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include on bacteria. Note that all .udb files on this page were created with the usearch61 -makeudb_usearch command.
