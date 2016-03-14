@@ -22,3 +22,9 @@ The following programs should be installed with commands accessible from the use
 
 **Visualization**
 * STAMP: http://kiwi.cs.dal.ca/Software/STAMP
+
+
+**Databases (dropbox download links)**
+* 16S chimera checking: 
+* 18S chimera checking:
+* 18S OTU picking: 
