@@ -1,6 +1,6 @@
 * [Home](https://github.com/mlangill/microbiome_helper/wiki/Home)
 * [Requirements](https://github.com/mlangill/microbiome_helper/wiki/Requirements)
-* [Virtual Box Image](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box-Image)
+* [Virtual Box image](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box-image)
 * [Brief description of scripts](https://github.com/mlangill/microbiome_helper/wiki/Brief-description-of-scripts)
 * [Metagenomic Workflow](https://github.com/mlangill/microbiome_helper/wiki/Metagenomic-Workflow)
     * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
