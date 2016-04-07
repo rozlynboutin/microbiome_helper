@@ -4,6 +4,8 @@ Microbiome helper is a series of scripts that help process and automate various 
 
 These scripts were produced as part of the [Integrated Microbiome Resource](http://cgeb-imr.ca/index.html). It is important that you **cite** the [tools](https://github.com/mlangill/microbiome_helper/wiki/Requirements) that are wrapped by our scripts.
 
+If you're looking for the MicrobiomeHelper Virtual Box Image, it can be found [here](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box-Image).
+
 ### Before getting started:
 
 * These workflows starts with raw paired-end MiSeq data in demultiplexed fastq format.
