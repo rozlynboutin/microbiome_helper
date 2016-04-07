@@ -53,4 +53,6 @@ Options:
    BBMap directory containing sh files (default: /usr/local/prg/bbmap).
 
 * -pc, --primer_check <[both|forward]> <br>
-   Either "both" or "forward", indicating whether to check both forward (5') and reverse (3') primer sequences or only the forward primer respectively (default: both).
+   Either "both" or "forward", indicating whether to check both forward (5') and reverse (3') primer sequences or only the forward primer respectively (default: both).  
+
+Note that if you don't want to check for primer sequences then you can just set "-f N" and "-r N".
