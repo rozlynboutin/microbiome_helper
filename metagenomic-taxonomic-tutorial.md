@@ -1,6 +1,6 @@
 
-=Metagenomics Taxonomic Composition Lab=
-==Introduction==
+# Metagenomics Taxonomic Composition Lab
+## Introduction
 
 This lab is set-up to walk you through the process of determining the taxonomic composition of several metagenomic samples. 
 
