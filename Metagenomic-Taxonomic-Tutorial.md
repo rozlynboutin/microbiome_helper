@@ -1,5 +1,4 @@
 
-# Metagenomics Taxonomic Composition Lab
 ## Introduction
 
 This lab is set-up to walk you through the process of determining the taxonomic composition of several metagenomic samples. 
@@ -9,7 +8,7 @@ Throughout the tutorial, there are several questions which you can answer in a s
 This lab component will use samples collected and sequenced through the Human Microbiome Project.  We will be analyzing samples collected from 3 oral sites including subgingival, supragingival, and the tongue. These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and placed in the directory:
 ~/CourseData/hmp_metagenomics/
 
-== Preliminaries ==
+## Preliminaries
 === Amazon node ===
 Read [http://bioinformatics.ca/workshop_wiki/index.php/Analysis_of_Metagenomic_Data_2015_Workshop_Wiki#Logging_into_the_Amazon_cloud these directions] for information on how to log in to your assigned Amazon node.
 
