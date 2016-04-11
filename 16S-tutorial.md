@@ -57,7 +57,7 @@ In the output folder(s) an HTML file is created for each FASTQ file (or 1 file i
 
 ![](https://www.dropbox.com/s/v4eaiifsj7jxoyw/combined_stitched_FastQC.jpg?raw=1)
 
-You can see the full FastQC report for all stitched reads combined [here] - **need to add once uploaded on dropbox**.
+You can see the full FastQC report for all stitched reads combined [here](https://www.dropbox.com/s/qm0ush9o8u8s399/combined_fastqc.html).
   
   
 ### Read filtering based on quality and length
