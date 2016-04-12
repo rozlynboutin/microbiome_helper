@@ -4,7 +4,7 @@
 * [Virtual Box image](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box-image)
 
 **Metagenomic resources**
-   * [Metagenomic SOP](https://github.com/mlangill/microbiome_helper/wiki/Metagenomic-Workflow)
+   * [Metagenomic SOP](https://github.com/mlangill/microbiome_helper/wiki/Metagenomic-standard-operating-procedure)
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
    * [Screen out human sequences](https://github.com/mlangill/microbiome_helper/wiki/Screen-out-human-sequences)
@@ -12,7 +12,7 @@
    * [Functional profiling](https://github.com/mlangill/microbiome_helper/wiki/Functional-profiling)
 
 **16S resources**
-   * [16S SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-Workflow)
+   * [16S SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure)
    * [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial)
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
