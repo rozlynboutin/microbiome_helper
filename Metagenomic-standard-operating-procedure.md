@@ -1,6 +1,3 @@
-Metagenomics Workflow
----------------------
-
 Below is the quick and dirty description of our recommended metagenomics pipeline. See the sidebar menu for more detailed descriptions.
 
 1. (Optional) Run FastQC to allow manual inspection of the quality of sequences.
