@@ -25,7 +25,10 @@ The following programs should be installed with commands accessible from the use
 
 
 **Databases (dropbox download links)**
-* 16S chimera checking: [Bacteria_RDP_trainset15_092015.udb](https://www.dropbox.com/s/8qr42doaez48oc3/Bacteria_RDP_trainset15_092015.udb?dl=0) (70 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include only bacteria. Note that all .udb files on this page were created with the usearch61 -makeudb_usearch command.
+* 16S chimera checking: [Bacteria_RDP_trainset15_092015.udb](https://www.dropbox.com/s/8qr42doaez48oc3/Bacteria_RDP_trainset15_092015.udb?dl=0) (70 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include only bacteria. 
+* 18S chimera checking: [Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.udb] (https://www.dropbox.com/s/uxgsf5biqy9l7yd/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.udb?dl=0) (475 MB). This DB was taken from SILVA and was parsed to include only eukaryotes and all Us were converted to Ts.
+
+Note that all .udb files on this page were created with the usearch61 -makeudb_usearch command.
 
 **Eukaryotic OTU-picking files, as discussed [here](https://github.com/mlangill/microbiome_helper/wiki/Changes-to-16S-workflow-for-18S-data)**
 * [Silva_119_rep_set90_aligned_18S.fna](https://www.dropbox.com/s/cw77k375ayaqh0n/Silva_119_rep_set90_aligned_18S.fna?dl=0)
