@@ -12,6 +12,8 @@ These scripts were produced as part of the [Integrated Microbiome Resource](http
 
 **Metagenomic resources**
    * [Metagenomic SOP](https://github.com/mlangill/microbiome_helper/wiki/Metagenomic-standard-operating-procedure)
+
+   More detail on particular steps:
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
    * [Screen out human sequences](https://github.com/mlangill/microbiome_helper/wiki/Screen-out-human-sequences)
@@ -21,6 +23,8 @@ These scripts were produced as part of the [Integrated Microbiome Resource](http
 **16S resources**
    * [16S SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure)
    * [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial)
+
+   More detail on particular steps:
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
    * [Remove low quality reads](https://github.com/mlangill/microbiome_helper/wiki/Remove-low-quality-reads)
