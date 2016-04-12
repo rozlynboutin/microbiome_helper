@@ -30,7 +30,7 @@ The following programs should be installed with commands accessible from the use
 
 Note that all .udb files on this page were created with the usearch61 -makeudb_usearch command.
 
-*Eukaryotic OTU-picking files, as discussed [here](https://github.com/mlangill/microbiome_helper/wiki/Changes-to-16S-workflow-for-18S-data)**
+* Eukaryotic OTU-picking files, as discussed [here](https://github.com/mlangill/microbiome_helper/wiki/Changes-to-16S-workflow-for-18S-data)
    * [Silva_119_rep_set99_18S_taxonomy_7_levels.txt] (https://www.dropbox.com/s/lj44kqjx3u1u2ei/Silva_119_rep_set99_18S_taxonomy_7_levels.txt?dl=0) (5MB)
    * [Silva_119_rep_set99_18S.fna](https://www.dropbox.com/s/muq4up1lp5al5pz/Silva_119_rep_set99_18S.fna?dl=0) (60 MB)
    * [Silva_119_rep_set90_aligned_18S.fna](https://www.dropbox.com/s/cw77k375ayaqh0n/Silva_119_rep_set90_aligned_18S.fna?dl=0) (112 MB)
