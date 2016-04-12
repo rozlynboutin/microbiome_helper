@@ -4,7 +4,7 @@ Microbiome helper is a series of scripts that help process and automate various 
 
 These scripts were produced as part of the [Integrated Microbiome Resource](http://cgeb-imr.ca/index.html). It is important that you **cite** the [tools](https://github.com/mlangill/microbiome_helper/wiki/Requirements) that are wrapped by our scripts.
 
-## Wiki table of contents:
+## Table of contents:
 
 * [Requirements](https://github.com/mlangill/microbiome_helper/wiki/Requirements)
 * [Brief description of scripts](https://github.com/mlangill/microbiome_helper/wiki/Brief-description-of-scripts)
