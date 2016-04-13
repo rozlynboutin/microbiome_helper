@@ -95,7 +95,7 @@ Now that we have FASTA files we can run the chimera filtering (~3.3 hours on 4 C
 
     chimeraFilter.pl -type 1 -thread 4 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb fasta_files/*
 
-You will need to replace "/home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb" with your local path to the DB. See a more detailed description of this script [here] **need to add page**.
+You will need to replace "/home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb" with your local path to the DB. See a more detailed description of this script [here](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads).
 
 This script will remove any reads called as chimeric or called ambiguously and output the remaining reads in the "non_chimeras" folder by default. This step is important for microbiome work since otherwise these reads would be called as novel OTUs (and in fact it is likely that not all chimeric reads will be removed by this step).
 
@@ -253,4 +253,3 @@ Just by looking at these PCAs it's clear that if there is any difference it is e
     mv beta_div_tests/adonis_results.txt  beta_div_tests/adonis_results_CJS.txt 
 
 You can take a look at the output files to see significance values and test statistics. The P-values for all four of these tests is > 0.05 so there is no significant difference in the Unifrac beta diversities of different genotypes within each source facility.
-
