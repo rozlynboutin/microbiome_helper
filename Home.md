@@ -8,7 +8,7 @@ These scripts were produced by the [Integrated Microbiome Resource](http://cgeb-
 
 Use the sidebar menu to navigate the wiki.
 
-# Before getting started:
+Before getting started:
 
 * These workflows start with raw paired-end MiSeq data in demultiplexed fastq format.
 
