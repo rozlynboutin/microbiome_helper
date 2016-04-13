@@ -71,7 +71,7 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
         
         biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
 
-        #Note: the genus Clostridium is within two families, which can cause downstream problems. To get around this, we convert the genus name to "Clostridium" in one of the families:
+Note: the genus Clostridium is within two families, which can cause downstream problems. To get around this, we add quotations around the genus name so that it is "Clostridium" in one of the families:
 
         sed -i 's/f__Erysipelotrichaceae\tg__Clostridium/f__Erysipelotrichaceae\tg__"Clostridium"/g' final_otu_tables/otu_table.spf
 
