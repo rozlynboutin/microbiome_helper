@@ -9,7 +9,7 @@ These scripts were produced as part of the [Integrated Microbiome Resource](http
 * [Virtual Box image](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box-image)
 
 ### Metagenomic resources
-   * [Metagenomic SOP](https://github.com/mlangill/microbiome_helper/wiki/Metagenomic-standard-operating-procedure)
+   * [Metagenomic standard operating procedure](https://github.com/mlangill/microbiome_helper/wiki/Metagenomic-standard-operating-procedure)
 
 **More detail on particular steps:**
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
@@ -19,7 +19,7 @@ These scripts were produced as part of the [Integrated Microbiome Resource](http
    * [Functional profiling](https://github.com/mlangill/microbiome_helper/wiki/Functional-profiling)
 
 ### 16S resources
-   * [16S SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure)
+   * [16S standard operating procedure](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure)
    * [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial)
 
 **More detail on particular steps:**
@@ -35,7 +35,7 @@ These scripts were produced as part of the [Integrated Microbiome Resource](http
 
 ### Before getting started:
 
-* These workflows starts with raw paired-end MiSeq data in demultiplexed fastq format.
+* These workflows start with raw paired-end MiSeq data in demultiplexed fastq format.
 
 * Most of the commands allow parallel threads to be used with the -p option. Adjust according to your computer hardware abilities.
 
