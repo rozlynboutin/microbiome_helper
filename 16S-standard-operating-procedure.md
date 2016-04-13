@@ -63,7 +63,11 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
 
         alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 1000 --max_rare_depth 35000 --num_steps 35
 
-16. Convert BIOM OTU table to STAMP.
+16. Convert BIOM OTU table to tab-separated file to be opened/explored in text editors or Excel, etc.
+
+        biom convert -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_w_tax.txt --to-tsv --header-key taxonomy
+
+17. Convert BIOM OTU table to STAMP.
         
         biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
 
@@ -71,6 +75,6 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
         grep -P -v "f__Erysipelotrichaceae\tg__Cl" otu_table.spf > tmp.spf
         mv tmp.spf otu_table.spf
 
-17. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
+18. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
 
         biom add-metadata -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_with_metadata.biom -m map.txt
