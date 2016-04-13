@@ -22,3 +22,15 @@ Also, these commands should be used for the OTU picking step:
     echo "assign_taxonomy:reference_seqs_fp /home/shared/rRNA_db/Silva_119_rep_set99_18S.fna" >> clustering_params.txt
 
     pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1 -r /home/shared/rRNA_db/Silva_119_rep_set99_18S.fna
+
+The current 18S reference database we are using has some naming conflicts when used with STAMP, which we are temporarily getting around with the below commands when converting from BIOM to STAMP:
+
+    biom convert -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_w_tax.txt --to-tsv --header-key taxonomy
+
+    TmpFixBIOM.pl final_otu_tables/otu_table_w_tax.txt  > final_otu_tables/otu_table_w_tax_cleaned.txt
+
+    biom convert -i  final_otu_tables/otu_table_w_tax_cleaned.txt -o final_otu_tables/otu_table_cleaned.biom --to-hdf5 --process-obs-metadata taxonomy --table-type="OTU table"
+
+    biom_to_stamp.py -m taxonomy final_otu_tables/otu_table_cleaned.biom >final_otu_tables/otu_table_w_tax_cleaned.spf
+
+    sed -i 's/D_4__Chlorarachniophyta\tD_5__NOR26/D_4__Chlorarachniophyta\tD_5__NOR26_Chlorarachniophyta/g’  final_otu_tables/otu_table_w_tax_cleaned.spf
