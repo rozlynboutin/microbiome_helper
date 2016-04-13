@@ -1,6 +1,10 @@
-Microbiome helper is a series of scripts that help process and automate various microbiome and metagenomic bioinformatic tools. The main workflows are for analyzing 16S and metagenomic data. These tools are contained in an [Ubuntu virtual box image](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box-image) for those who don't want to set up their own work environment.
+Microbiome Helper is a repository that contains several resources to help researchers working with microbial sequencing data: 
+* a series of scripts that help process and automate various microbiome and metagenomic bioinformatic tools. 
+* workflows for analyzing 16S/18S rRNA and metagenomic data using these tools. 
+* tutorials for researchers new to rRNA and/or metagenomic analyses.
+* a Virtual Box image that can be used to run our workflows with little or not configuration.
 
-These scripts were produced as part of the [Integrated Microbiome Resource](http://cgeb-imr.ca/index.html). It is important that you cite the [tools](https://github.com/mlangill/microbiome_helper/wiki/Requirements) that are wrapped by our scripts.
+These scripts were produced by the [Integrated Microbiome Resource](http://cgeb-imr.ca/index.html). It is important that you cite the [tools](https://github.com/mlangill/microbiome_helper/wiki/Requirements) that are wrapped by our scripts.
 
 Use the sidebar menu to navigate the wiki.
 
