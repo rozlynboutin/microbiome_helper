@@ -80,7 +80,7 @@ If you look in this logfile you will note that ~40% of reads were filtered out f
 Here is the corresponding distribution of quality scores after filtering the reads:
 ![](https://www.dropbox.com/s/s45mmmjx49pnmia/combined_stitched_filtered_FastQC.jpg?raw=1)
 
-As before, if you'd like to see more details (such as how the read length distribution has changed), you can see that [here] - **need to add once uploaded on dropbox**.
+As before, if you'd like to see more details (such as how the read length distribution has changed), you can see that [here](https://www.dropbox.com/s/d3wbvrdfqpnkpz1/combined_filtered_fastqc.html).
 
   
 ### Convert to FASTA and remove chimeric reads
