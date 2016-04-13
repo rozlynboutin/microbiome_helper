@@ -71,7 +71,7 @@ Below is the quick and dirty description of our recommended 18S pipeline. See th
 
         biom convert -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_w_tax.txt --to-tsv --header-key taxonomy
 
-17. Convert BIOM OTU table to STAMP. Note that the current 18S reference database we are using has some conflicting naming, which we are temporarily getting around with the below commands:
+17. Convert BIOM OTU table to STAMP. Note that the current 18S reference database we are using has some naming conflicts, which we are temporarily getting around with the below commands:
 
         TmpFixBIOM.pl final_otu_tables/otu_table_w_tax.txt  > final_otu_tables/otu_table_w_tax_cleaned.txt
 
