@@ -71,9 +71,10 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
         
         biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
 
-        #Note: there are a few OTUs where the genus Clostridium is within the wrong family. Filter these out here manually.
-        grep -P -v "f__Erysipelotrichaceae\tg__Cl" otu_table.spf > tmp.spf
-        mv tmp.spf otu_table.spf
+        #Note: the genus Clostridium is within two families, which can cause downstream problems. To get around this, we convert the genus name to "Clostridium" in one of the families:
+
+        sed -i 's/f__Erysipelotrichaceae\tg__Clostridium/f__Erysipelotrichaceae\tg__"Clostridium"/g' final_otu_tables/otu_table.spf
+
 
 18. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
 
