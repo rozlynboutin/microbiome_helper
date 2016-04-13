@@ -9,6 +9,8 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
 
         run_pear.pl -p 4 -o stitched_reads raw_data/*
 
+Note: it is important to check the % read assembled. It may be better to simply concatenate the forward and reverse reads together if the assembly % is too low.
+
 3. Run Bowtie2 to screen out human sequences (Note: you can use run_deconseq.pl instead but it is much slower).
     
         run_human_filter.pl -p 4 -o screened_reads/ stitched_reads/*.assembled*
