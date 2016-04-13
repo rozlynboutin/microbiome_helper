@@ -43,10 +43,9 @@ Finally several other tools can be useful for downstream analyses, such as [STAM
 To convert the BIOM file to STAMP format run:
 
     biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
-    grep -P -v "f__Erysipelotrichaceae\tg__Cl" otu_table.spf > tmp.spf
-    mv tmp.spf otu_table.spf
+    sed -i 's/f__Erysipelotrichaceae\tg__Clostridium/f__Erysipelotrichaceae\tg__"Clostridium"/g' final_otu_tables/otu_table.spf
 
-The last two lines are necessary since there are a few OTUs where the genus Clostridium is within the wrong family, so we remove them (grep with the "-v" options means output everything except what matches the string). 
+The last line is necessary since there are a few OTUs where the genus Clostridium is within a different family, so we change the genus name to "Clostridium" in the other family to distinguish them. 
 
 Adding sample metadata to the BIOM file allows it to be used with Phinch, phyloseq and other tools: 
 
