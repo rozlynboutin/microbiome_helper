@@ -38,3 +38,6 @@ Note that all .udb files on this page were created with the usearch61 -makeudb_u
 * To use "run_human_filter.pl" you will need to download the appropriate [Bowtie2 index](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml). 
 
 * To use "run_pre_humann.pl" you will need to use a [database of KEGG orthologs](https://www.dropbox.com/s/hzduqabilbrqr36/kegg.reduced.dmnd?dl=0).
+
+You will also need the following Perl modules: 
+    File::Basename Getopt::Long List::Util Parallel::ForkManager Pod::Usage
