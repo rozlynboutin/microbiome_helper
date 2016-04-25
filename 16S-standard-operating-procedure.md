@@ -73,7 +73,7 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
 
 Note: the genus Clostridium is within two families, which can cause downstream problems. To get around this, we add quotations around the genus name so that it is "Clostridium" in one of the families:
 
-        sed -i 's/f__Erysipelotrichaceae\tg__Clostridium/f__Erysipelotrichaceae\tg__"Clostridium"/g' final_otu_tables/otu_table.spf
+        sed -i 's/f__Erysipelotrichaceae\tg__Clostridium/f__Erysipelotrichaceae\tg__"Clostridium"/g' final_otu_tables/otu_table.spf  
 
 
 18. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
