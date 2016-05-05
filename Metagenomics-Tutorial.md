@@ -10,7 +10,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 ## Requirements
 
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
-* Microbiome Helper VirtualBox (install it and ensure it is working)
+* [Microbiome Helper VirtualBox] (MicrobiomeHelper-Virtual-Box) (install it and ensure it is working)
 * Tutorial Data
 
 ## Initial Setup
