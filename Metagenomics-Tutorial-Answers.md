@@ -13,7 +13,7 @@ Taxonomic section:
 9. metaphlan_out
 10. Yes, there is separation between the tongue samples and the plaque samples but there appears to be no separation between subgingival and supragingival. The separation occurs along PC1.
 
-
+  
 Functional section:
 
 1. SRS015893
