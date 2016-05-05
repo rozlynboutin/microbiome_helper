@@ -43,7 +43,7 @@ Remember you can count the lines of a file using 'wc -l'. For example,
 
 **Q1)** How many samples are there in total (you can either look at the hmp_map.txt file or count the fastq files)?
 
-**Q2)** How many sample are from each of the different sample sites?
+**Q2)** How many samples are from each of the different sample sites?
 
 **Q3)** How many sequences are there in each of the samples? Remember there are 4 lines in a fastq file for each sequence. 
 
