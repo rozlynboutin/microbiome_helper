@@ -82,9 +82,10 @@ The command line parameters are:
 * `-o SRS015044.txt`: Indicates the name of output file that metaphlan will use to write results to.
 * `fastq/SRS015044.fastq`: Metaphlan takes the input file containing our metagenomic reads as the last argument
 
+Now we are going to run metaphlan on another sample "SRS015893".  but this time use 2 threads of our server by adding the option `-–nproc 2`:
 
-Now we are going to run metaphlan on another sample, '''SRS015893''', but this time use all 4 cores of our server by adding the option ''''-–nproc 4'''':
-    metaphlan2.py --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015893.txt --nproc 4 hmp_metagenomics/fastq/SRS015893.fastq  
+    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015893.txt --nproc 2 fastq/SRS015893.fastq  
+
 
 ### Metaphlan Output
 You can inspect the output of these two commands by using the ''less'' command (or your favourite editor): 
