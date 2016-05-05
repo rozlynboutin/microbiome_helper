@@ -9,12 +9,15 @@ This lab component will use samples collected and sequenced through the Human Mi
 
 ## Requirements
 
-* Basic unix skills (This is a good intro tutorial: http://korflab.ucdavis.edu/bootcamp.html)
+* Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * Microbiome Helper VirtualBox (install it and ensure it is working)
 * Tutorial Data
 
+## Initial Setup
 
-=== Work directory ===
+* If you haven't already, launch the Microbiome Helper VirtualBox and open this tutorial within Ubuntu
+* Download the tutorial data and place it in: 
+
 Create a new directory that will store all of the files created in this lab.
 
     rm -rf ~/workspace/module3
@@ -22,9 +25,7 @@ Create a new directory that will store all of the files created in this lab.
     cd ~/workspace/module3
     ln -s ~/CourseData/hmp_metagenomics ./
 
-'''Notes''':
 
-* The `ln -s` command adds a symbolic link to the (read-only) `~/CourseData/hmp_metagenomics` directory.
 
 == Main Lab Steps ==
 === Explore Samples ===
