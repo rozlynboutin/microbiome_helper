@@ -19,7 +19,6 @@ This lab component will use samples collected and sequenced through the Human Mi
 * [Tutorial Data](https://www.dropbox.com/s/l87mmmjs0fr85ir/hmp_metagenomics.zip?dl=1)
 
 ## Initial Setup
-
 * Open this tutorial within the Microbiome Helper VirtualBox
 * Download the tutorial data, save it to the Desktop (within Ubuntu), and extract the files. 
 
@@ -36,27 +35,17 @@ Lets take a look at the **hmp_map.txt** using _less_ (type q to quit out of the 
 
     less hmp_map.txt
 
-Note 2, you can count the lines of a file using 'wc -l'. For example,
+You will have noticed that this map file contains three columns with the first being sample ids, the middle column being the body site, and the third being the sex of the person. 
+
+Remember you can count the lines of a file using 'wc -l'. For example,
 
     wc -l hmp_map.txt
 
-Q1) How many samples are there in total (you can either look at the hmp_map.txt file or count the fastq files)?
+**Q1)** How many samples are there in total (you can either look at the hmp_map.txt file or count the fastq files)?
 
+**Q2)** How many sample are from each of the different sample sites?
 
-Q2) How many sample are from each of the different sample sites?
-<div class="toccolours mw-collapsible mw-collapsed" style="width:200px">
-Hint:
-<div class="mw-collapsible-content">
-    less hmp_map.txt
-</div>
-</div>
-Q3) How many sequences are there in each of the samples?
-<div class="toccolours mw-collapsible mw-collapsed" style="width:200px">
-Hint:
-<div class="mw-collapsible-content">
-Remember there are 4 lines in a fastq file for each sequence. 
-</div>
-</div>
+**Q3)** How many sequences are there in each of the samples? Remember there are 4 lines in a fastq file for each sequence. 
 
 ### Taxonomic Profiling with Metaphlan2
 We will use Metaphlan2 to determine the taxonomic composition of each sample.  Metaphlan2 has already been installed. Similar to other bioinformatic programs you can get the full help for the program by typing the ‘-h’ option after the program name:
