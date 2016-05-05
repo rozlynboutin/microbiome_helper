@@ -1,5 +1,3 @@
-{{toclimit|limit=2}}
-
 ## Introduction
 
 This tutorial is set-up to walk you through the process of determining the taxonomic and functional composition of several metagenomic samples. It covers the use of [Metaphlan2](http://huttenhower.sph.harvard.edu/metaphlan2) (for taxonomy), [HUMAnN](https://huttenhower.sph.harvard.edu/humann) (for functional) and [STAMP](http://kiwi.cs.dal.ca/Software/STAMP) (for visualization and statistical evaluation).  
@@ -244,6 +242,10 @@ You can also order the list of Genera by the most significant by clicking on the
 Explore each of the different visualizations by changing "Bar plot" to each of the other options available (e.g. Heatmap plot, Post-hoc plot, and Box plot).
 
 **Q11)** Create a box plot for the family Streptococcaceae (Change "Profile Level" to "Family" in the top left). Save the box plot as a .png image by using the File->Save plot feature in STAMP.
+
+## test1
+
+## test2 
 
 
 =Metagenomics Functional Composition Lab=
