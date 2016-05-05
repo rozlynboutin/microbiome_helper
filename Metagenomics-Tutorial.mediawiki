@@ -1,4 +1,4 @@
-{{toclimit|limit=1}}
+{{toclimit|limit=2}}
 
 ## Introduction
 
