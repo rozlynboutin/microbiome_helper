@@ -5,9 +5,9 @@ This tutorial is set-up to walk you through the process of determining the taxon
 
 Throughout the tutorial, there are several questions to ensure that you are understanding the process (and not just copy and pasting). You can check the answer sheet after you have answered them yourself.
 
-This lab component will use samples collected and sequenced through the Human Microbiome Project.  We will be analyzing samples collected from 3 oral sites including subgingival, supragingival, and the tongue. These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and have been randomly subsampled to a much smaller number of reads to allow faster computation time. Real data will require more waiting time between each step :)
+This lab component will use samples collected and sequenced through the Human Microbiome Project.  We will be analyzing samples collected from 3 oral sites including subgingival, supragingival, and the tongue. These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and have been randomly subsampled to a much smaller number of reads to allow faster computation time. Real data will require more waiting time between each step!
 
-## Preliminaries
+### Preliminaries
 
 
 
