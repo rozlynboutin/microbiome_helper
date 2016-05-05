@@ -68,19 +68,19 @@ First change back to your module 3 directory:
 
     cd ~/Desktop/hmp_metagenomics
 
-Now run metaphlan with the following (long) command:
+Now we are going to run metaphlan on a single example with the following (long) command:
     
-    metaphlan2.py --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015044.txt hmp_metagenomics/fastq/SRS015044.fastq
+    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015044.txt fastq/SRS015044.fastq
 
 The command will run for 1-2 minutes on this single sample.
 
 The command line parameters are:
-* `--mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan marker database is located which contains metadata information about each of the markers
+* `--mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan marker database is located which contains metadata information about each of the markers
 * `--input_type fastq`: Indicates that our input files are in fastq format. (If we wanted to use fasta files as input then we would change this to 'fasta').
-* `--bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
+* `--bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
 * `--no_map` We use this flag to prevent metaphlan from storing the intermediate bowtie output files. 
 * `-o SRS015044.txt`: Indicates the name of output file that metaphlan will use to write results to.
-* `hmp_metagenomics/fastq/SRS015044.fastq`: Metaphlan takes the input file containing our metagenomic reads as the last argument
+* `fastq/SRS015044.fastq`: Metaphlan takes the input file containing our metagenomic reads as the last argument
 
 
 Now we are going to run metaphlan on another sample, '''SRS015893''', but this time use all 4 cores of our server by adding the option ''''-–nproc 4'''':
