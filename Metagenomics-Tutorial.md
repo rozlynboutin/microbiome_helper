@@ -86,7 +86,7 @@ Now we are going to run metaphlan on another sample "SRS015893".
 
 Note: If you have altered the settings off your virtualbox  to use more cores, than you can make this command faster by adding the following option (assuming you have two cores enabled) `-–nproc 2`:
 
-    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015893.txt fastq/SRS015893.fastq --nproc 2
+    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015893.txt fastq/SRS015893.fastq 
 
 
 ### Metaphlan Output
