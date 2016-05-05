@@ -7,12 +7,12 @@ Throughout the tutorial, there are several questions to ensure that you are unde
 
 This lab component will use samples collected and sequenced through the Human Microbiome Project.  We will be analyzing samples collected from 3 oral sites including subgingival, supragingival, and the tongue. These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and have been randomly subsampled to a much smaller number of reads to allow faster computation time. Real data will require more waiting time between each step!
 
-### Preliminaries
+## Requirements
 
+* Basic unix skills (This is a good intro tutorial: http://korflab.ucdavis.edu/bootcamp.html)
+* Microbiome Helper VirtualBox (install it and ensure it is working)
+* Tutorial Data
 
-
-=== Amazon node ===
-Read [http://bioinformatics.ca/workshop_wiki/index.php/Analysis_of_Metagenomic_Data_2015_Workshop_Wiki#Logging_into_the_Amazon_cloud these directions] for information on how to log in to your assigned Amazon node.
 
 === Work directory ===
 Create a new directory that will store all of the files created in this lab.
