@@ -48,7 +48,9 @@ Remember you can count the lines of a file using 'wc -l'. For example,
 **Q3)** How many sequences are there in each of the samples? Remember there are 4 lines in a fastq file for each sequence. 
 
 ### Taxonomic Profiling with Metaphlan2
-We will use Metaphlan2 to determine the taxonomic composition of each sample.  Metaphlan2 has already been installed. Similar to other bioinformatic programs you can get the full help for the program by typing the ‘-h’ option after the program name:
+We will use Metaphlan2 to determine the taxonomic composition of each sample.  As with all other tools, Metaphlan2 has already been installed within the Microbiome Helper Virtualbox. 
+
+Similar to other bioinformatic programs you can get the full help for the program by typing the ‘-h’ option after the program name:
  metaphlan2.py –h
 
 As you can see there are quite a few options. We won’t explore all of these in this tutorial, but it may be worth reading on your own time. 
