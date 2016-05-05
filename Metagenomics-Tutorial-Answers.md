@@ -1,6 +1,7 @@
 These are the answers to the questions from the Metagenomics Tutorial
 
 Taxonomic section:
+
 1. 30
 1. 10
 1. 200,000/sample
@@ -13,6 +14,7 @@ Taxonomic section:
 1. Yes, there is separation between the tongue samples and the plaque samples but there appears to be no separation between subgingival and supragingival. The separation occurs along PC1.
 
 Functional section:
+
 A1): SRS015893
 A2): No
 A3): 246 (KOs different across body sites)
