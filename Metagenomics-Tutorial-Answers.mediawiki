@@ -15,11 +15,11 @@ Taxonomic section:
 
 Functional section:
 
-A1): SRS015893
-A2): No
-A3): 246 (KOs different across body sites)
-A4) 16 (KEGG Pathways different across body sites)
-A5) ko00281: Geraniol degradation . corrected p-value: 5.19e-6
-A6) 22
-A7) Lower in the tongue samples.
-A8) Should look like this:
+1. SRS015893
+1. No
+1. 246 (KOs different across body sites)1
+1. 16 (KEGG Pathways different across body sites)
+1. ko00281: Geraniol degradation . corrected p-value: 5.19e-6
+1. 22
+1. Lower in the tongue samples.
+1. Should look like this:
