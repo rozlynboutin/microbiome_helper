@@ -30,13 +30,9 @@ Open a terminal/console and change to the directory containing the tutorial data
 
     cd ~/Desktop/hmp_metagenomics
 
-Change to this directory so we can explore the files in more details:
+The tutorial data consists of a "map file" containing information about each of the samples called **hmp_map.txt**, along with the sequence data for each sample being contained within a separate fastq file within the directory **fastq**.
 
-    cd hmp_metagenomics
-
-Using your unix skills attempt to answer the following questions.
-
-Remember you can view the contents of a file using 'less' (type q to quit out of the program). For example,
+Lets take a look at the **hmp_map.txt** using _less_ (type q to quit out of the program when done)
 
     less hmp_map.txt
 
@@ -46,16 +42,6 @@ Note 2, you can count the lines of a file using 'wc -l'. For example,
 
 Q1) How many samples are there in total (you can either look at the hmp_map.txt file or count the fastq files)?
 
-<div class="toccolours mw-collapsible mw-collapsed" style="width:200px">
-Hint:
-<div class="mw-collapsible-content">
-* Can manually count lines in the hmp_map.txt file or count the number of files in the fastq directory
-OR
-* Can ‘wc –l’ the hmp_map.txt file and subtract 1 for the header 
-OR
-* Can ‘ls fastq/* | wc –l’
-</div>
-</div>
 
 Q2) How many sample are from each of the different sample sites?
 <div class="toccolours mw-collapsible mw-collapsed" style="width:200px">
