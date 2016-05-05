@@ -1,4 +1,3 @@
-* auto-gen TOC:
 {:toc}
 
 ## Introduction
