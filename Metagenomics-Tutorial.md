@@ -51,13 +51,14 @@ Remember you can count the lines of a file using 'wc -l'. For example,
 We will use Metaphlan2 to determine the taxonomic composition of each sample.  As with all other tools, Metaphlan2 has already been installed within the Microbiome Helper Virtualbox. 
 
 Similar to other bioinformatic programs you can get the full help for the program by typing the ‘-h’ option after the program name:
- metaphlan2.py –h
+ 
+    metaphlan2.py –h
 
 As you can see there are quite a few options. We won’t explore all of these in this tutorial, but it may be worth reading on your own time. 
 
 Find the option which tells you the version of Metaphlan2 you are using. 
 
-Q4) From the help what is the exact version of metaphlan that you are using and when was it released?
+Q4) What version of Metaphlan are you using?
 
 ### Running Metaphlan
 
@@ -65,7 +66,7 @@ Now we are going to run metaphlan on the sample '''SRS015044'''.
 
 First change back to your module 3 directory:
 
-    cd ~/workspace/module3/
+    cd ~/Desktop/hmp_metagenomics
 
 Now run metaphlan with the following (long) command:
     
