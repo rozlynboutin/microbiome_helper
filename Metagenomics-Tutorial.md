@@ -14,12 +14,12 @@ Last Edited: Spring 2016 for CCBC, Toronto
 
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * [Microbiome Helper VirtualBox] (MicrobiomeHelper-Virtual-Box) (install it and ensure it is working)
-* [Tutorial Data](https://www.dropbox.com/s/xztirse75q7k3bn/hmp_metagenomics.zip?dl=1)
+* [Tutorial Data](https://www.dropbox.com/s/l87mmmjs0fr85ir/hmp_metagenomics.zip?dl=1)
 
 ## Initial Setup
 
 * Open this tutorial within the Microbiome Helper VirtualBox
-* Download the tutorial data and place it in: 
+* Download the tutorial data, save it to you
 
 Create a new directory that will store all of the files created in this lab.
 
