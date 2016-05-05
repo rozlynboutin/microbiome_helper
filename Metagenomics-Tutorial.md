@@ -122,6 +122,7 @@ For example lets pull out all the reads assigned to the family "Leptotrichiaceae
 
 You should get output like this:
 
+```
     k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae	3.28846
     k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia	2.58466
     k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichiaceae_unclassified	0.7038
@@ -132,7 +133,7 @@ You should get output like this:
  k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_buccalis|t__GCF_000023905	0.49568
  k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_wadei|t__Leptotrichia_wadei_unclassified	0.05468
  k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_hofstadii|t__GCF_000162955	0.04395
-
+```
 You can see that 3.28846% of the metagenome is predicted from organisms in the family Leptotrichiaceae. Of those ~2.6% are assigned to the genus ''Leptotrichia'', while ~0.7% are assigned to ''g__Leptotrichiaceae_unclassifie'' which means metaphlan doesn't know what genus to actually call them. 
 
 Q5) What is the relative abundance of organisms unclassified at the species level for the genus ''Neisseria'' in sample SRS015044? (Remember to use the grep command)
