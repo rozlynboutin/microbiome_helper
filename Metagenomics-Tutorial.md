@@ -221,7 +221,7 @@ As you can see there is no obvious separation in the data points when coloured b
 
 Now change the group field (top right) to “body_site” and the PCA will be coloured according to that grouping instead.  
 
-Q10) Do you see any separation in the samples when coloured by body site? If so, describe the body sites that separate and which PC axis differentiates these samples.
+**Q10)** Do you see any separation in the samples when coloured by body site? If so, describe the body sites that separate and which PC axis differentiates these samples.
 
 Now lets test what is significantly different between the groups at the Genus rank. 
 
@@ -241,4 +241,4 @@ You can also order the list of Genera by the most significant by clicking on the
 
 Explore each of the different visualizations by changing "Bar plot" to each of the other options available (e.g. Heatmap plot, Post-hoc plot, and Box plot).
 
-Q11) Create a box plot for the family Streptococcaceae (Change "Profile Level" to "Family" in the top left). Save the box plot as a .png image by using the File->Save plot feature in STAMP.
+**Q11)** Create a box plot for the family Streptococcaceae (Change "Profile Level" to "Family" in the top left). Save the box plot as a .png image by using the File->Save plot feature in STAMP.
