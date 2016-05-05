@@ -6,9 +6,11 @@ Throughout the tutorial, there are several questions to ensure that you are unde
 
 This lab component will use samples collected and sequenced through the Human Microbiome Project.  We will be analyzing samples collected from three oral sites including subgingival, supragingival, and the tongue. These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and have been randomly subsampled to a much smaller number of reads to allow faster computation time. Real data will require more waiting time between each step!
 
-Author: Morgan Langille
-First Created: Summer 2015 for CBW Metagenomics
-Last Edited: Spring 2016 for CCBC, Toronto
+**Author**: Morgan Langille
+
+**First Created**: Summer 2015 for CBW Metagenomics
+
+**Last Edited**: Spring 2016 for CCBC, Toronto
 
 ## Requirements
 
@@ -19,19 +21,14 @@ Last Edited: Spring 2016 for CCBC, Toronto
 ## Initial Setup
 
 * Open this tutorial within the Microbiome Helper VirtualBox
-* Download the tutorial data, save it to you
-
-Create a new directory that will store all of the files created in this lab.
-
-    rm -rf ~/workspace/module3
-    mkdir -p ~/workspace/module3
-    cd ~/workspace/module3
-    ln -s ~/CourseData/hmp_metagenomics ./
+* Download the tutorial data, save it to the Desktop (within Ubuntu), and extract the files. 
 
 ## Main Lab Steps
 ### Explore Samples
 
-The “hmp_metagenomics/fastq” directory contains all of the fastq files (one for each sample) and the hmp_map.txt which describes the metadata for each sample.
+Open a terminal/console and change to the directory containing the tutorial data.
+
+    cd ~/Desktop/hmp_metagenomics
 
 Change to this directory so we can explore the files in more details:
 
