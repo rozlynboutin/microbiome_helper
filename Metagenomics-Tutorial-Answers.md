@@ -3,7 +3,7 @@ These are the answers to the questions from the Metagenomics Tutorial:
 1. 30
 1. 10
 1. 200,000/sample
-1. MetaPhlAn version 2.1.0 (28 April 2015)
+1. MetaPhlAn version 2.5.0 (28 April 2015)
 1. s__Neisseria_unclassified	7.76249
 1. SRS015044: p__Actinobacteria & SRS015893: p_Firmicutes
 1. Phylum Candidatus_Saccharibacteria, Present only in sample SRS015044
