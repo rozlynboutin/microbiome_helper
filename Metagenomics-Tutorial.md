@@ -25,10 +25,8 @@ Create a new directory that will store all of the files created in this lab.
     cd ~/workspace/module3
     ln -s ~/CourseData/hmp_metagenomics ./
 
-
-
-== Main Lab Steps ==
-=== Explore Samples ===
+## Main Lab Steps
+### Explore Samples
 
 The “hmp_metagenomics/fastq” directory contains all of the fastq files (one for each sample) and the hmp_map.txt which describes the metadata for each sample.
 
