@@ -149,10 +149,10 @@ Now lets combine all of the metaphlan output files into a single merged output f
 
  /usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt SRS015893.txt SRS097871.txt > metaphlan_merged.txt
 
-Note that this script 'merge_metaphlan_tables.py' takes one or more metaphlan output files as input and combines them into a single output file. The output file is indicated using the stdout redirect symbol '>' and is written in this case to ''metaphlan_merged.txt''
+Note that this script 'merge_metaphlan_tables.py' takes one or more metaphlan output files as input and combines them into a single output file. The output file is indicated using the stdout redirect symbol '>' and is written in this case to **metaphlan_merged.txt**
 
 The merged output file should look like this:
-
+```
  ID      SRS015044       SRS015893       SRS097871
  #SampleID       Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis
  k__Bacteria     100.0   100.0   100.0
@@ -160,18 +160,18 @@ The merged output file should look like this:
  k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.58989        23.49742        66.06867
  k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales      33.58989        22.83325        66.06867
  k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae  4.60715 22.27157        20.84159
-
+```
 Now each sample is listed as a different column within this output file. You can view this file again using 'less' or you can import it into your favourite spreadsheet program.
 
-Q7) What phylum is present in one of the samples but is absent in the others? What sample is this phylum in? 
+**Q7)** What phylum is present in one of the samples but is absent in the others? What sample is this phylum in? 
 
 To get information about the individual samples you can look in the hmp_map.txt file using 'less':
 
  less hmp_metagenomics/hmp_map.txt
 
-Q8) What body site is the sample taken from that contains the unique phylum from question 6?
+**Q8)** What body site is the sample taken from that contains the unique phylum from question 6?
 
-====Running Metaphlan on a large number of samples using Microbiome Helper====
+### Running Metaphlan on a large number of samples using Microbiome Helper
 
 Running metaphlan on more than a few samples can be tedious. 
 
@@ -187,12 +187,12 @@ This command uses the following options:
 * ' hmp_metagenomics/fastq/*' indicates that all of the files within this directory will be used as input. 
 
 On your screen you should see the commands that the microbiome helper script is running automatically for you:
-
+```
  cat hmp_metagenomics/fastq/SRS014477.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS014477
  cat hmp_metagenomics/fastq/SRS011343.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS011343
  cat hmp_metagenomics/fastq/SRS019129.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS019129
-
-Q9) Based on the commands being written to the screen, what directory are the metaphlan individual output files being stored in?
+```
+**Q9)** Based on the commands being written to the screen, what directory are the metaphlan individual output files being stored in?
 
 ===STAMP===
 While Metaphlan is running lets prepare to use STAMP. You should have already installed STAMP on your laptop before the workshop, if not, then do so now.
