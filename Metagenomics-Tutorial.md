@@ -72,7 +72,7 @@ Remember there are 4 lines in a fastq file for each sequence.
 </div>
 </div>
 
-=== Metaphlan2 ===
+### Taxonomic Profiling with Metaphlan2
 We will use Metaphlan2 to determine the taxonomic composition of each sample.  Metaphlan2 has already been installed. Similar to other bioinformatic programs you can get the full help for the program by typing the ‘-h’ option after the program name:
  metaphlan2.py –h
 
@@ -82,7 +82,7 @@ Find the option which tells you the version of Metaphlan2 you are using.
 
 Q4) From the help what is the exact version of metaphlan that you are using and when was it released?
 
-====Running Metaphlan====
+### Running Metaphlan
 
 Now we are going to run metaphlan on the sample '''SRS015044'''. 
 
@@ -108,7 +108,7 @@ The command line parameters are:
 Now we are going to run metaphlan on another sample, '''SRS015893''', but this time use all 4 cores of our server by adding the option ''''-–nproc 4'''':
     metaphlan2.py --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015893.txt --nproc 4 hmp_metagenomics/fastq/SRS015893.fastq  
 
-====Metaphlan Output====
+### Metaphlan Output
 You can inspect the output of these two commands by using the ''less'' command (or your favourite editor): 
 
     less SRS015044.txt
@@ -161,7 +161,7 @@ Q6) What phylum has the highest relative abundance in sample SRS015044? And SRS0
 
 Now try running metaphlan using the same options as above but for sample SRS097871. (Make sure to change the input and output files)
 
-====Merging Metaphlan Results====
+### Merging Metaphlan Results 
 
 Now lets combine all of the metaphlan output files into a single merged output file:
 
