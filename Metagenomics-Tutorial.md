@@ -1,7 +1,7 @@
 
 ## Introduction
 
-This tutorial is set-up to walk you through the process of determining the taxonomic and functional composition of several metagenomic samples. It covers the use of [Metaphlan2](http://huttenhower.sph.harvard.edu/metaphlan2) (for taxonomy) and Humann (for functional) and STAMP (for statistical evaluation).  
+This tutorial is set-up to walk you through the process of determining the taxonomic and functional composition of several metagenomic samples. It covers the use of [Metaphlan2](http://huttenhower.sph.harvard.edu/metaphlan2) (for taxonomy) and [Humann](https://huttenhower.sph.harvard.edu/humann) (for functional) and [STAMP](http://kiwi.cs.dal.ca/Software/STAMP) (for visualization and statistical evaluation).  
 
 Throughout the tutorial, there are several questions to ensure that you are understanding the process (and not just copy and pasting). You can check the answer sheet after you have answered them yourself.
 
