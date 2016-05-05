@@ -15,7 +15,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 
 ## Initial Setup
 
-* If you haven't already, launch the Microbiome Helper VirtualBox and open this tutorial within Ubuntu
+* Open this tutorial within the Microbiome Helper VirtualBox
 * Download the tutorial data and place it in: 
 
 Create a new directory that will store all of the files created in this lab.
