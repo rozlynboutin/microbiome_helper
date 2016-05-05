@@ -194,7 +194,7 @@ On your screen you should see the commands that the microbiome helper script is 
 ```
 **Q9)** Based on the commands being written to the screen, what directory are the metaphlan individual output files being stored in?
 
-===STAMP===
+### STAMP
 While Metaphlan is running lets prepare to use STAMP. You should have already installed STAMP on your laptop before the workshop, if not, then do so now.
 
 STAMP takes two main files as input the profile data which is a table that contains the abundance of features (i.e. taxonomic or functions) and a group metadata file which provides more information about each of the samples in the profile data file. 
