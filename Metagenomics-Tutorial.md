@@ -39,7 +39,7 @@ Lets take a look at the **hmp_map.txt** using _less_ (type q to quit out of the 
 
 You will have noticed that this map file contains three columns with the first being sample ids, the middle column being the body site, and the third being the sex of the person. 
 
-Remember you can count the lines of a file using 'wc -l'. For example,
+Remember you can count the lines of a file using _wc -l_. For example,
 
     wc -l hmp_map.txt
 
@@ -91,7 +91,7 @@ Note: If you have altered the settings off your virtualbox  to use more cores, t
     metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map --nproc 2 -o SRS015893.txt fastq/SRS015893.fastq  
 
 ### Metaphlan2 Output
-You can inspect the output of these two commands by using the ''less'' command (or your favourite editor): 
+You can inspect the output of these two commands by using the _less_ command (or your favourite editor): 
 
     less SRS015044.txt
     less SRS015893.txt
