@@ -229,7 +229,7 @@ Now lets test what is significantly different between the groups at the Genus ra
 
 Under the “Multiple groups” dialog on the left, check that ANOVA is being used as the statistical test, and select “Benjamini-Hochberg FDR” for the multiple test correction. The box at bottom will say how the “Number of active features” using these set of statistics and should indicate that there are 12 organisms at the genus level that are statistically different in their means across the three body sites. 
 
-[[File:STAMP_Stats.png]]
+![](https://www.dropbox.com/s/49q3sd4w2a2d97x/STAMP_Stats.png?raw=1)
 
 Now lets look at visualizations of these different taxonomic groups. 
 
@@ -239,7 +239,7 @@ A new window will show a list of all the Genera. You can filter this list to jus
 
 You can also order the list of Genera by the most significant by clicking on the "corrected p-value" header. Now if you click on the feature "g_Granulicatella" you should see a bar chart representing the relative abundance for each sample for this Genera along with the mean value for the group indicated by a horizontal line. The plot should look like this:
 
-[[File:Metaphlan_module4_genera_bar.png|600px]]
+![](https://www.dropbox.com/s/va0ouzec32bb8o2/600px-Metaphlan_module4_genera_bar.png?raw=1)
 
 Explore each of the different visualizations by changing "Bar plot" to each of the other options available (e.g. Heatmap plot, Post-hoc plot, and Box plot).
 
@@ -417,7 +417,7 @@ Now load the "pathways.spf" file into STAMP using the same "hmp_map.txt" file.
 
 Choose "Box plot" instead of PCA plot, and then expand the list of KEGG Pathways so you can see the corrected p-value. Order the list by corrected p-value by clicking on that column header. 
 
-[[File:STAMP_ordered_p-value.png]]
+![](https://www.dropbox.com/s/zchzthm9ug3v3x5/STAMP_ordered_p-value.png?raw=1)
 
 **Q5)** What is the most significantly different KEGG Pathway? What is the corrected p-value for this KEGG Pathway?
 
