@@ -289,16 +289,15 @@ Each column tells us different information about the match:
 11.	e-value  
 12.	bit score  
 
-Now run DIAMOND for samples SRS015893 against the KEGG database and convert output to BLAST tabular format.
+We have already run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database and converted the output to BLAST tabular format. The output files are in "pre-computed_results/pre_humann". 
 
-    diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -q ./fastq/SRS015893.fastq -a pre_humann/SRS015893
-    diamond view -a pre_humann/SRS015893.daa -o pre_humann/SRS015893.txt
+Copy the BLAST tabular format output files to the folder you just created:
 
-Repeat the above commands once again for sample SRS097871.
+    cp pre-computed_results/pre_humann/*txt pre_humann
 
 ### Running HUMAnN
  
-Now, we are going to run HUMAnN. To use HUMAnN you are going to make a symbolic link between the alignments we just made and the HUMAnN "input" directory (HUMAnN reads in input files from this directory):
+Now, we are going to run HUMAnN on the sample you processed along with the two we pre-processed. To use HUMAnN you are going to make a symbolic link between the BLAST tabular format files and the HUMAnN "input" directory (HUMAnN reads in input files from this directory):
 
     ln -s $PWD/pre_humann/* /usr/local/prg/humann-0.99/input
 
