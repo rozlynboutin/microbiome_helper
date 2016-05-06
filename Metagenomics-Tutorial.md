@@ -60,37 +60,37 @@ As you can see there are quite a few options. We won’t explore all of these in
 
 Find the option which tells you the version of Metaphlan2 you are using. 
 
-**Q4)** What version of Metaphlan are you using?
+**Q4)** What version of Metaphlan2 are you using?
 
-### Running Metaphlan
+### Running Metaphlan2
 
-Now we are going to run metaphlan on the sample "SRS015044". 
+Now we are going to run Metaphlan2 on the sample "SRS015044". 
 
 First change back to your working directory:
 
     cd ~/Desktop/hmp_metagenomics
 
-Now we are going to run metaphlan on a single example with the following (long) command:
+Now we are going to run Metaphlan2 on a single example with the following (long) command:
     
     metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015044.txt fastq/SRS015044.fastq
 
 The command will run for 1-2 minutes on this single sample.
 
 The command line parameters are:
-* `--mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan marker database is located which contains metadata information about each of the markers
+* `--mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan2 marker database is located which contains metadata information about each of the markers
 * `--input_type fastq`: Indicates that our input files are in fastq format. (If we wanted to use fasta files as input then we would change this to 'fasta').
 * `--bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
-* `--no_map` We use this flag to prevent metaphlan from storing the intermediate bowtie output files. 
-* `-o SRS015044.txt`: Indicates the name of output file that metaphlan will use to write results to.
-* `fastq/SRS015044.fastq`: Metaphlan takes the input file containing our metagenomic reads as the last argument
+* `--no_map` We use this flag to prevent Metaphlan2 from storing the intermediate bowtie output files. 
+* `-o SRS015044.txt`: Indicates the name of output file that Metaphlan2 will use to write results to.
+* `fastq/SRS015044.fastq`: Metaphlan2 takes the input file containing our metagenomic reads as the last argument
 
-Now we are going to run metaphlan on another sample "SRS015893". 
+Now we are going to run Metaphlan2 on another sample "SRS015893". 
 
 Note: If you have altered the settings off your virtualbox  to use more cores, than you can make this command faster by adding the following option (assuming you have two cores enabled) `-–nproc 2`:
 
     metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015893.txt fastq/SRS015893.fastq 
 
-### Metaphlan Output
+### Metaphlan2 Output
 You can inspect the output of these two commands by using the ''less'' command (or your favourite editor): 
 
     less SRS015044.txt
@@ -145,13 +145,13 @@ You can see that 3.2895% of the metagenome is predicted from organisms in the fa
 
 Now try running metaphlan using the same options as above but for sample **SRS097871**. (Remember to change the input and output files)
 
-### Merging Metaphlan Results 
+### Merging Metaphlan2 Results 
 
-Now lets combine all of the metaphlan output files into a single merged output file:
+Now lets combine all of the Metaphlan2 output files into a single merged output file:
 
  /usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt SRS015893.txt SRS097871.txt > metaphlan_merged.txt
 
-Note that this script 'merge_metaphlan_tables.py' takes one or more metaphlan output files as input and combines them into a single output file. The output file is indicated using the stdout redirect symbol '>' and is written in this case to **metaphlan_merged.txt**
+Note that this script 'merge_metaphlan_tables.py' takes one or more Metaphlan2 output files as input and combines them into a single output file. The output file is indicated using the stdout redirect symbol '>' and is written in this case to **metaphlan_merged.txt**
 
 The merged output file should look like this:
 ```
@@ -173,13 +173,13 @@ To get information about the individual samples you can look in the hmp_map.txt 
 
 **Q8)** What body site is the sample taken from that contains the unique phylum from question 6?
 
-### Running Metaphlan on a large number of samples using Microbiome Helper
+### Running Metaphlan2 on a large number of samples using Microbiome Helper
 
-Running metaphlan on more than a few samples can be tedious. 
+Running Metaphlan2 on more than a few samples can be tedious. 
 
 To make this process simpler we are going to use a script I wrote as part of the package “Microbiome Helper” (https://github.com/mlangill/microbiome_helper).
 
-Run metahplan on all of the sample using 'run_metaphlan2.pl' (this will take over an hour):
+Run Metaphlan2 on all of the sample using 'run_metaphlan2.pl' (this will take over an hour):
 
     run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt hmp_metagenomics/fastq/*
 
@@ -205,11 +205,11 @@ You will also need the profile data file which is in a different format than met
 
     metaphlan_to_stamp.pl metaphlan_merged_all.txt > metaphlan_merged_all.spf
 
-As you can see this file takes the metaphlan output file (from all the merged samples) as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
+As you can see this file takes the Metaphlan2 output file (from all the merged samples) as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
 
-Now download the '''metaphlan_merged_all.spf''' file to your computer as well.
+Now download the **metaphlan_merged_all.spf** file to your computer as well.
 
-Now load the profile file (metaphlan_merged_all.spf" and the metadata file (hmp_metadata.txt) files by going to ”File->load data” within STAMP:
+Now load the profile file (metaphlan_merged_all.spf and the metadata file (hmp_metadata.txt) files by going to "File->load data" within STAMP:
 
 [[File:STAMP_File_Menu.png]]
 
