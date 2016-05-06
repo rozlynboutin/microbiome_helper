@@ -179,12 +179,12 @@ Running metaphlan on more than a few samples can be tedious.
 
 To make this process simpler we are going to use a script I wrote as part of the package “Microbiome Helper” (https://github.com/mlangill/microbiome_helper).
 
-Run metahplan on all of the sample using 'run_metaphlan2.pl' (this will take about 15 minutes):
+Run metahplan on all of the sample using 'run_metaphlan2.pl' (this will take over an hour):
 
-    run_metaphlan2.pl -p 8 -o metaphlan_merged_all.txt hmp_metagenomics/fastq/*
+    run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt hmp_metagenomics/fastq/*
 
 This command uses the following options:
-* '-p 8' runs metaphlan in parallel using 8 processors.
+* '-p 2' runs metaphlan in parallel using 8 processors.
 * '-o' is the name for the merged output file.
 * ' hmp_metagenomics/fastq/*' indicates that all of the files within this directory will be used as input. 
 
