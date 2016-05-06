@@ -357,16 +357,16 @@ So what about all of our samples? To do the DIAMOND searches for all 30 you coul
 
 However, this would take several hours to complete (this is much faster when more CPUs are used). The HUMAnN step would take an additional 10 minutes to complete.  
 
-To make things easier the output for all 30 samples has been pre-computed and is located in  “./humann_output”. 
+To make things easier the output for all 30 samples has been pre-computed and is located in  “./pre-computed_results/humann_output”. 
 
 If you browse the output using _less_ you can see that they are in the same format but with 30 columns representing the 30 samples:
 
     cd /home/vagrant/Desktop
-    less ./humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
+    less ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
 
 You will notice that the output looks fairly messy because the terminal will automatically line wrap and it becomes hard to see where one line ends and the next begins. I often find the "cut" command useful to browse data like this. "cut" allows you to just look at particular columns from the data. For example:
 
-    cut -f 1-5 ./humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt | less
+    cut -f 1-5 ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt | less
 
 * '-f 1-5' indicates that we want to look at the first 5 columns. We could just have easily used '-f 1,3,10' (to view columns 1, 3 and 10) or '-f 1-3,20-' (to view columns 1 to 3 and columns 20 onwards).
 * '| less' "pipes" the output from the "cut" command and lets us view the output one screen at a time using our 'less' tool.  
@@ -375,9 +375,9 @@ Now, we are going to use STAMP to visualize the humann output just like we did w
 
 First, we need to convert the HUMAnN output files file into STAMP format:
 
-    humann_to_stamp.pl ./humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt > pathways.spf
-    humann_to_stamp.pl ./humann_output/04b-hit-keg-mpm-cop-nul-nve-nve.txt > modules.spf
-    humann_to_stamp.pl ./humann_output/01b-hit-keg-cat.txt > kos.spf
+    humann_to_stamp.pl ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt > pathways.spf
+    humann_to_stamp.pl ./pre-computed_results/humann_output/04b-hit-keg-mpm-cop-nul-nve-nve.txt > modules.spf
+    humann_to_stamp.pl ./pre-computed_results/humann_output/01b-hit-keg-cat.txt > kos.spf
 
 You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in the current directory. You can check to make sure they are there with 'ls'
 
