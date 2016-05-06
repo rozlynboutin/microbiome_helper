@@ -211,13 +211,13 @@ Now download the **metaphlan_merged_all.spf** file to your computer as well.
 
 Now load the profile file (metaphlan_merged_all.spf and the metadata file (hmp_metadata.txt) files by going to "File->load data" within STAMP:
 
-[[File:STAMP_File_Menu.png]]
+![](https://www.dropbox.com/s/o20hvb0m2fsgcyq/STAMP_File_Menu.png?raw=1)
 
 Change the “Profile level” (top left) to “Genus”, ensure that the Group legend (top right) has been set to “sex”, and that “PCA plot” has been set below the large middle window. 
 
 You should now be looking at a PCA plot that is coloured by the samples being male or female like this:
 
-[[File:Metaphlan_module4_sex.png|600px]]
+![](https://www.dropbox.com/s/zlj8csslwfgm7j2/600px-Metaphlan_module4_sex.png?raw=1)
 
 As you can see there is no obvious separation in the data points when coloured by sex of the person giving the sample. 
 
