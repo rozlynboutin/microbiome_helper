@@ -184,7 +184,7 @@ Run Metaphlan2 on all of the sample using 'run_metaphlan2.pl' (this will take ov
     run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt hmp_metagenomics/fastq/*
 
 This command uses the following options:
-* '-p 2' runs metaphlan in parallel using 8 processors.
+* '-p 2' runs metaphlan in parallel using 2 processors.
 * '-o' is the name for the merged output file.
 * ' hmp_metagenomics/fastq/*' indicates that all of the files within this directory will be used as input. 
 
