@@ -307,11 +307,11 @@ Then move into the HUMAnN directory:
  
     cd /usr/local/prg/humann-0.99
 
-To being running HUMAnN on all the samples you pre-processed with DIAMOND, you use the “scons” command (using 2 cores):
+To being running HUMAnN on all the samples you pre-processed with DIAMOND, you use the “scons” command (using 2 cores). Note this will take ~20 minutes.
 
     scons -j 2
 
-A bunch of messages will pass on your screen and it should finish in ~2 minutes. All of the output is contained in the “/usr/local/prg/humann-0.99/output” directory. To see a list of them type:
+A bunch of messages will pass on your screen as this command runs. All of the output is contained in the “/usr/local/prg/humann-0.99/output” directory. To see a list of them, once the job is done, type:
  
     ls output
 
@@ -386,11 +386,9 @@ You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in 
 Your output should look like this:
 
     vagrant@MicrobiomeHelper:~/Desktop/hmp_metagenomics ls
-    kos.spf  modules.spf  pathways.spf  pre_humann
+    fastq  hmp_map.txt  kos.spf  metaphlan_merged_all.spf  metaphlan_merged.txt  modules.spf  pathways.spf  pre-computed_results  pre_humann  SRS015044.txt
 
 ### STAMP with HUMAnN Output
-
-Copy the 'pathways.spf', 'modules.spf', and 'kos.spf' along with the previously used "hmp_map.txt" file locally onto your computer. 
 
 Load the kos.spf file along with the original hmp_map.txt file into STAMP. (File->Load)
 
