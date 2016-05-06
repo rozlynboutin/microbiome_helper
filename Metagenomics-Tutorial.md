@@ -169,7 +169,7 @@ Now each sample is listed as a different column within this output file. You can
 
 To get information about the individual samples you can look in the hmp_map.txt file using 'less':
 
- less hmp_metagenomics/hmp_map.txt
+ less hmp_map.txt
 
 **Q8)** What body site is the sample taken from that contains the unique phylum from question 6?
 
@@ -181,18 +181,18 @@ To make this process simpler we are going to use a script I wrote as part of the
 
 Run Metaphlan2 on all of the sample using 'run_metaphlan2.pl' (this will take over an hour):
 
-    run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt hmp_metagenomics/fastq/*
+    run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt ./fastq/*
 
 This command uses the following options:
 * '-p 2' runs metaphlan in parallel using 2 processors.
 * '-o' is the name for the merged output file.
-* ' hmp_metagenomics/fastq/*' indicates that all of the files within this directory will be used as input. 
+* ' ./fastq/*' indicates that all of the files within this directory will be used as input. 
 
 On your screen you should see the commands that the microbiome helper script is running automatically for you:
 ```
- cat hmp_metagenomics/fastq/SRS014477.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS014477
- cat hmp_metagenomics/fastq/SRS011343.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS011343
- cat hmp_metagenomics/fastq/SRS019129.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS019129
+ cat ./fastq/SRS014477.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS014477
+ cat ./fastq/SRS011343.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS011343
+ cat ./fastq/SRS019129.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS019129
 ```
 **Q9)** Based on the commands being written to the screen, what directory are the metaphlan individual output files being stored in?
 
@@ -200,7 +200,7 @@ On your screen you should see the commands that the microbiome helper script is 
 
 STAMP takes two main files as input the profile data which is a table that contains the abundance of features (i.e. taxonomic or functions) and a group metadata file which provides more information about each of the samples in the profile data file. 
 
-The metadata file is the ''''hmp_metagenomics/hmp_map.txt'''' file. Download this file locally to your computer using an appropriate method (e.g. WinSCP, etc.)
+The metadata file is the **hmp_map.txt** file. Download this file locally to your computer using an appropriate method (e.g. WinSCP, etc.)
 You will also need the profile data file which is in a different format than metaphlan outputs. Therefore we first need to convert it using a script from the microbiome helper package. Once metaphlan is finished running do the conversion like this:
 
     metaphlan_to_stamp.pl metaphlan_merged_all.txt > metaphlan_merged_all.spf
@@ -262,14 +262,14 @@ First we will make a directory to store our sequence search outputs:
 
 Now we will run DIAMOND on our metagenomic sequences for the sample SRS015044:
  
-    diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -q hmp_metagenomics/fastq/SRS015044.fastq -a pre_humann/SRS015044
+    diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -q ./fastq/SRS015044.fastq -a pre_humann/SRS015044
 
 The options used in this command are:
 
 * 'blastx': Tells DIAMOND to run in “blastx” mode meaning that we will search a nucleotide query against a protein database in all 6 frame translations (3 forward and 3 reverse).
 * '-p 2': Indicates that DAMOND should use 2 threads to do the search.
 *  '-d kegg/kegg.reduced' points at the KEGG database which has already been formatted for use with DIAMOND
-* '-q hmp_metagenomics/fastq/SRS015044.fastq' is the input metagenomic sample
+* '-q ./fastq/SRS015044.fastq' is the input metagenomic sample
 * '-a pre_humann/SRS015044' is the name of the output file (Note: DIAMOND appends a '.daa' automatically to the end of the output file name)
 * Note: That the default e-value cutoff used by DIAMOND is 0.001.
 
@@ -299,7 +299,7 @@ Each column tells us different information about the match:
 
 Now run DIAMOND for samples SRS015893 aagainst the KEGG database and convert output to BLAST tabular format.
 
-    diamond blastx -p 4 -d /home/shared/kegg/diamond_db/kegg.reduced -q hmp_metagenomics/fastq/SRS015893.fastq -a pre_humann/SRS015893
+    diamond blastx -p 4 -d /home/shared/kegg/diamond_db/kegg.reduced -q ./fastq/SRS015893.fastq -a pre_humann/SRS015893
     diamond view -a pre_humann/SRS015893.daa -o pre_humann/SRS015893.txt
 
 Repeat the above commands once again for sample SRS097871.
@@ -360,20 +360,20 @@ Now, use less to look at the KO predictions and the KEGG Module predictions:
 
 So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper package called run_pre_humann.pl. All 30 samples _could be_ processed with a single command like:
 
-    run_pre_humann.pl -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -o pre_humann hmp_metagenomics/fastq/*
+    run_pre_humann.pl -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -o pre_humann ./fastq/*
 
 However, this would take about 25 minutes to complete. The HUMAnN step would take an additional 10 minutes to complete.  
 
-To make things easier the output for all 30 samples has been pre-computed and is located in  “hmp_metagenomics/humann_output”. 
+To make things easier the output for all 30 samples has been pre-computed and is located in  “./humann_output”. 
 
 If you browse the output using _less_ you can see that they are in the same format but with 30 columns representing the 30 samples:
 
     cd /home/vagrant/Desktop
-    less hmp_metagenomics/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
+    less ./humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
 
 You will notice that the output looks fairly messy because the terminal will automatically line wrap and it becomes hard to see where one line ends and the next begins. I often find the "cut" command useful to browse data like this. "cut" allows you to just look at particular columns from the data. For example:
 
-    cut -f 1-5 hmp_metagenomics/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt | less
+    cut -f 1-5 ./humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt | less
 
 * '-f 1-5' indicates that we want to look at the first 5 columns. We could just have easily used '-f 1,3,10' (to view columns 1, 3 and 10) or '-f 1-3,20-' (to view columns 1 to 3 and columns 20 onwards).
 * '| less' "pipes" the output from the "cut" command and lets us view the output one screen at a time using our 'less' tool.  
@@ -382,9 +382,9 @@ Now, we are going to use STAMP to visualize the humann output just like we did w
 
 First, we need to convert the HUMAnN output files file into STAMP format:
 
-    humann_to_stamp.pl hmp_metagenomics/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt > pathways.spf
-    humann_to_stamp.pl hmp_metagenomics/humann_output/04b-hit-keg-mpm-cop-nul-nve-nve.txt > modules.spf
-    humann_to_stamp.pl hmp_metagenomics/humann_output/01b-hit-keg-cat.txt > kos.spf
+    humann_to_stamp.pl ./humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt > pathways.spf
+    humann_to_stamp.pl ./humann_output/04b-hit-keg-mpm-cop-nul-nve-nve.txt > modules.spf
+    humann_to_stamp.pl ./humann_output/01b-hit-keg-cat.txt > kos.spf
 
 You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in the current directory. You can check to make sure they are there with 'ls'
 
@@ -392,8 +392,8 @@ You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in 
 
 Your output should look like this:
 
-    vagrant@MicrobiomeHelper:~$ ls
-    hmp_metagenomics  humann-0.99  kegg  kos.spf  modules.spf  pathways.spf  pre_humann
+    vagrant@MicrobiomeHelper:~/Desktop/hmp_metagenomics ls
+    kos.spf  modules.spf  pathways.spf  pre_humann
 
 ### STAMP with HUMAnN Output
 
