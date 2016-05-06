@@ -24,3 +24,6 @@ Functional section:
 6. 22
 7. Lower in the tongue samples.
 8. Should look like this:
+
+![](https://www.dropbox.com/s/1f6hd9fse1i68oj/STAMP_pathways.png?raw=1)
+
