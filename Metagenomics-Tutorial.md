@@ -258,14 +258,14 @@ First we will make a directory to store our sequence search outputs:
 
     mkdir pre_humann
 
-Now we will run DIAMON on our metagenomic sequences for the sample SRS015044.
+Now we will run DIAMOND on our metagenomic sequences for the sample SRS015044:
  
- diamond blastx -p 4 -d kegg/kegg.reduced -q hmp_metagenomics/fastq/SRS015044.fastq -a pre_humann/SRS015044
+    diamond blastx -p 2 -d kegg/kegg.reduced -q hmp_metagenomics/fastq/SRS015044.fastq -a pre_humann/SRS015044
 
 The options used in this command are:
 
 * 'blastx': Tells DIAMOND to run in “blastx” mode meaning that we will search a nucleotide query against a protein database in all 6 frame translations (3 forward and 3 reverse).
-* '-p 4': Indicates that DAMOND should use 4 threads to do the search.
+* '-p 2': Indicates that DAMOND should use 2 threads to do the search.
 *  '-d kegg/kegg.reduced' points at the KEGG database which has already been formatted for use with DIAMOND
 * '-q hmp_metagenomics/fastq/SRS015044.fastq' is the input metagenomic sample
 * '-a pre_humann/SRS015044' is the name of the output file (Note: DIAMOND appends a '.daa' automatically to the end of the output file name)
