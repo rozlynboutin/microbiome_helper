@@ -275,18 +275,19 @@ You can see the output using _less_:
     less pre_humann/SRS015044.txt
 
 Each column tells us different information about the match:
-1.	Query
-2.	Subject
-3.	% id
-4.	alignment length
-5.	Mistmatches
-6.	gap openings
-7.	q.start
-8.	q.end
-9.	s.start
-10.	s.end
-11.	e-value
-12.	bit score
+
+1.	Query  
+2.	Subject  
+3.	% id  
+4.	alignment length  
+5.	Mistmatches  
+6.	gap openings  
+7.	q.start  
+8.	q.end  
+9.	s.start  
+10.	s.end  
+11.	e-value  
+12.	bit score  
 
 Now run DIAMOND for samples SRS015893 against the KEGG database and convert output to BLAST tabular format.
 
