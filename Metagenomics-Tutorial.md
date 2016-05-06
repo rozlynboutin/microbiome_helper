@@ -338,16 +338,16 @@ These files contain relative abundances for each of these different functional c
 
 The output should look like this:
 
- ID      NAME    SRS015044-hit-keg-mpt-cop-nul-nve-nve   SRS015893-hit-keg-mpt-cop-nul-nve-nve   SRS097871-hit-keg-mpt-cop-nul-nve-nve
- InverseSimpson  InverseSimpson  63.9654 59.6469 62.4902
- Shannon Shannon 4.30945 4.25267 4.30185
- Pielou  Pielou  0.858922        0.847606        0.857407
- Richness        Richness        1       1       1
- ko00564 ko00564: Glycerophospholipid metabolism 0.00827982      0.00612454      0.00641725
- ko00680 ko00680: Methane metabolism     0.00564549      0.00529206      0.00536557
- ko00562 ko00562: Inositol phosphate metabolism  0.00241117      0.00268946      0.0048378
- ko00563 ko00563: Glycosylphosphatidylinositol(GPI)-anchor biosynthesis  5.69937e-05     0       0
- ko00561 ko00561: Glycerolipid metabolism        0.00496728      0.00468482      0.00548291
+ID      NAME    SRS015044-hit-keg-mpt-cop-nul-nve-nve   SRS015893-hit-keg-mpt-cop-nul-nve-nve   SRS097871-hit-keg-mpt-cop-nul-nve-nve    
+InverseSimpson  InverseSimpson  63.9654 59.6469 62.4902    
+Shannon Shannon 4.30945 4.25267 4.30185   
+Pielou  Pielou  0.858922        0.847606        0.857407  
+Richness        Richness        1       1       1  
+ko00564 ko00564: Glycerophospholipid metabolism 0.00827982      0.00612454      0.00641725  
+ko00680 ko00680: Methane metabolism     0.00564549      0.00529206      0.00536557  
+ko00562 ko00562: Inositol phosphate metabolism  0.00241117      0.00268946      0.0048378   
+ko00563 ko00563: Glycosylphosphatidylinositol(GPI)-anchor biosynthesis  5.69937e-05     0       0  
+ko00561 ko00561: Glycerolipid metabolism        0.00496728      0.00468482      0.00548291  
 
 * The first line indicates that the first column is a short id for the KEGG Pathway, the second column is a longer description of the KEGG Pathway, and the remaining columns represent the sample identifiers. 
 * The next 4 lines calculate different alpha-diversity metrics for each sample, but in general these are usually not that useful and can be ignored.
