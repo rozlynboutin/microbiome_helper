@@ -4,7 +4,7 @@ This tutorial is set-up to walk you through the process of determining the taxon
 
 Throughout the tutorial, there are several questions to ensure that you are understanding the process (and not just copy and pasting). You can check the [answer sheet](Metagenomics-Tutorial-Answers) after you have answered them yourself.
 
-This lab component will use samples collected and sequenced through the Human Microbiome Project.  We will be analyzing samples collected from three oral sites including subgingival, supragingival, and the tongue. These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and have been randomly subsampled to a much smaller number of reads to allow faster computation time. Real data will require more waiting time between each step!
+This lab component will use samples collected and sequenced through the Human Microbiome Project (HMP).  We will be analyzing samples collected from three oral sites including subgingival, supragingival, and the tongue. These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and have been randomly subsampled to a much smaller number of reads to allow faster computation time. Real data will require more waiting time between each step!
 
 **Author**: Morgan Langille
 
@@ -246,43 +246,17 @@ Explore each of the different visualizations by changing "Bar plot" to each of t
 **Q11)** Create a box plot for the family Streptococcaceae (Change "Profile Level" to "Family" in the top left). Save the box plot as a .png image by using the File->Save plot feature in STAMP.
 
 
-=Metagenomics Functional Composition Lab=
-==Introduction==
+### Determining Functional Composition with HUMAnN
 
-This lab is set-up to walk you through the process of determining the functional composition of several metagenomic samples. 
+We will now functionally annotate the metagenomes using HUMAnN. Note, that we will be using the same HMP samples used above.
 
-Throughout the tutorial, there are several questions which you can answer in a separate Word Doc. These questions are meant to make you think while doing the tutorial.
+## Running DIAMOND search against KEGG
 
-This lab component will use the same samples as was used in [[Metagenomics_Taxonomic_Composition_Lab]].
-
-== Preliminaries ==
-=== Amazon node ===
-Read [http://bioinformatics.ca/workshop_wiki/index.php/Analysis_of_Metagenomic_Data_2015_Workshop_Wiki#Logging_into_the_Amazon_cloud these directions] for information on how to log in to your assigned Amazon node.
-
-=== Work directory ===
-Create a new directory that will store all of the files created in this lab.
-
-    rm -rf ~/workspace/module4
-    mkdir -p ~/workspace/module4
-    cd ~/workspace/module4
-    ln -s ~/CourseData/hmp_metagenomics ./
-    ln -s ~/CourseData/refs/kegg/ ./
-
-'''Notes''':
-
-* The `ln -s` command adds a symbolic link to the (read-only) `~/CourseData/hmp_metagenomics` directory as well as the kegg database that we will be using with Humann.
-
-== Main Lab Steps ==
-
-We are now going to functionally annotate our metagenome using Humann. Note, that we will be using the same HMP samples that we taxonomically annotated using Metaphlan2. 
-
-===Running DIAMOND search against KEGG===
-
-The first step of humann requires a similarity search against the kegg database. This database is located at “~/CourseData/refs/kegg/”. This is a reduced KEGG database that the authors of Humann created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called DIAMOND (http://ab.inf.uni-tuebingen.de/software/diamond/).
+Before running HUMAnN, it is first necessary run a similarity search against the KEGG database. This database is located at “/home/shared/kegg/diamond_db” on the Virtual Box. This is a reduced KEGG database that the authors of HUMAnN created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called [DIAMOND](http://ab.inf.uni-tuebingen.de/software/diamond/).
 
 First we will make a directory to store our sequence search outputs:
 
- mkdir pre_humann
+    mkdir pre_humann
 
 Now we will run DIAMON on our metagenomic sequences for the sample SRS015044.
  
@@ -328,13 +302,13 @@ Now run DIAMOND for samples SRS015893 aagainst the KEGG database and convert out
 
 Repeat the above commands once again for sample SRS097871.
 
-===Running Humann===
+===Running HUMAnN===
  
-Now, we are going to run HUMANN. To use human you are going to copy the entire program to your working directory. The human program is in “ ~/CourseData/refs/humann-0.99/”:
+Now, we are going to run HUMAnN. To use human you are going to copy the entire program to your working directory. The human program is in “ ~/CourseData/refs/humann-0.99/”:
 
  cp -r ~/CourseData/refs/humann-0.99/ ./
 
-Then move into the humann directory:
+Then move into the HUMAnN directory:
  
  cd humann-0.99
 
