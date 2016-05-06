@@ -246,6 +246,12 @@ Explore each of the different visualizations by changing "Bar plot" to each of t
 **Q11)** Create a box plot for the family Streptococcaceae (Change "Profile Level" to "Family" in the top left). Save the box plot as a .png image by using the File->Save plot feature in STAMP.
 
 
+***
+
+***
+
+***
+
 ## Determining Functional Composition with HUMAnN
 
 We will now functionally annotate the metagenomes using HUMAnN. Note, that we will be using the same HMP samples used above.
