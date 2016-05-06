@@ -273,9 +273,9 @@ The options used in this command are:
 * '-a pre_humann/SRS015044' is the name of the output file (Note: DIAMOND appends a '.daa' automatically to the end of the output file name)
 * Note: That the default e-value cutoff used by DIAMOND is 0.001.
 
-The previous command is comparing 200k sequences vs. the KEGG database (~1.3 million sequences) and takes about 3 minutes. If we had used the NCBI BLASTX it would have taken a couple of days!
+The previous command is comparing 200k sequences vs. the KEGG database (~1.3 million sequences) and takes about 3 minutes with 2 CPU. If we had used the NCBI BLASTX it would have taken a couple of days!
 
-The  output from diamond is a special binary format that we can then turn into either SAM or BLAST tabular output with the latter being the default.
+The  output from DIAMOND is a special binary format that we can then turn into either SAM or BLAST tabular output with the latter being the default.
 
     diamond view -a pre_humann/SRS015044.daa -o pre_humann/SRS015044.txt
 
@@ -297,9 +297,9 @@ Each column tells us different information about the match:
 11.	e-value
 12.	bit score
 
-Now run DIAMOND for samples SRS015893 aagainst the KEGG database and convert output to BLAST tabular format.
+Now run DIAMOND for samples SRS015893 against the KEGG database and convert output to BLAST tabular format.
 
-    diamond blastx -p 4 -d /home/shared/kegg/diamond_db/kegg.reduced -q ./fastq/SRS015893.fastq -a pre_humann/SRS015893
+    diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -q ./fastq/SRS015893.fastq -a pre_humann/SRS015893
     diamond view -a pre_humann/SRS015893.daa -o pre_humann/SRS015893.txt
 
 Repeat the above commands once again for sample SRS097871.
@@ -362,7 +362,7 @@ So what about all of our samples? To do the DIAMOND searches for all 30 you coul
 
     run_pre_humann.pl -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -o pre_humann ./fastq/*
 
-However, this would take about 25 minutes to complete. The HUMAnN step would take an additional 10 minutes to complete.  
+However, this would take several hours to complete (this is much faster when more CPUs are used). The HUMAnN step would take an additional 10 minutes to complete.  
 
 To make things easier the output for all 30 samples has been pre-computed and is located in  “./humann_output”. 
 
