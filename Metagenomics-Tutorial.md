@@ -356,7 +356,7 @@ Now, use less to look at the KO predictions and the KEGG Module predictions:
 
 **Q1)** Which of the three samples has the highest relative abundance of the KEGG Module: “M00319: Manganese/zinc/iron transport system”?
 
-## Running all samples with Microbiome Helper
+### Running all samples with Microbiome Helper
 
 So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper package called run_pre_humann.pl. All 30 samples _could be_ processed with a single command like:
 
@@ -395,7 +395,7 @@ Your output should look like this:
     vagrant@MicrobiomeHelper:~$ ls
     hmp_metagenomics  humann-0.99  kegg  kos.spf  modules.spf  pathways.spf  pre_humann
 
-## STAMP with HUMAnN Output
+### STAMP with HUMAnN Output
 
 Copy the 'pathways.spf', 'modules.spf', and 'kos.spf' along with the previously used "hmp_map.txt" file locally onto your computer. 
 
