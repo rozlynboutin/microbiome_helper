@@ -352,7 +352,7 @@ Now, use less to look at the KO predictions and the KEGG Module predictions:
     less output/01b-hit-keg-cat.txt
     less output/04b-hit-keg-mpm-cop-nul-nve-nve.txt
 
-Q1) Which of the three samples has the highest relative abundance of the KEGG Module: “M00319: Manganese/zinc/iron transport system”?
+**Q1)** Which of the three samples has the highest relative abundance of the KEGG Module: “M00319: Manganese/zinc/iron transport system”?
 
 ## Running all samples with Microbiome Helper
 
@@ -401,23 +401,23 @@ Load the kos.spf file along with the original hmp_map.txt file into STAMP. (File
 
 Click on the "Two Groups" tab and choose "Benjamini-Hochberg FDR" for Multiple Test Correction. Look at the "Number of active features" to determine if there are any significant different features.
 
-Q2) Using a two group test with multiple test correction applied are there any significant differences between male and female samples?
+**Q2)** Using a two group test with multiple test correction applied are there any significant differences between male and female samples?
 
 Change to a Multiple Group Test using the same multiple test correction and change the Group field (top right) to "body_site".
 
-Q3) Are there any significant differences in KOs across the body sites? If so, how many?
+**Q3)** Are there any significant differences in KOs across the body sites? If so, how many?
 
 Now load the "pathways.spf" file into STAMP using the same "hmp_map.txt" file. 
 
 (Note: STAMP has a bug that will not load a new dataset on top of another, so you need to completely close and restart STAMP first before loading in a different dataset)
 
-Q4) When comparing samples by body site, how many KEGG Pathways are significantly different when using a group test (ANOVA) with Benjamini-Hochberg FDR?
+**Q4)** When comparing samples by body site, how many KEGG Pathways are significantly different when using a group test (ANOVA) with Benjamini-Hochberg FDR?
 
 Choose "Box plot" instead of PCA plot, and then expand the list of KEGG Pathways so you can see the corrected p-value. Order the list by corrected p-value by clicking on that column header. 
 
 [[File:STAMP_ordered_p-value.png]]
 
-Q5) What is the most significantly different KEGG Pathway? What is the corrected p-value for this KEGG Pathway?
+**Q5)** What is the most significantly different KEGG Pathway? What is the corrected p-value for this KEGG Pathway?
 
 Compare the tongue samples to all other samples using a Two Group test. First select “tongue_dorsum” for Group 1 (on the left hand side) and then select “All other samples” as Group 2. Use the default Welch’s t-test with BH FDR.
 
@@ -425,10 +425,10 @@ Your PCA plot should look like this:
 
 [[File:STAMP_tongue_pca.png|600px]]
 
-Q6) How many KEGG Pathways are significantly different between the tongue and the plaque samples combined?
+**Q6)** How many KEGG Pathways are significantly different between the tongue and the plaque samples combined?
 
 Create a "Bar plot" for "ko00020: Citrate cycle (TCA cycle)".
 
-Q7) Is the relative abundance of “Citrate cycle (TCA cycle)” higher or lower in the tongue compared to the plaque samples?
+**Q7)** Is the relative abundance of “Citrate cycle (TCA cycle)” higher or lower in the tongue compared to the plaque samples?
 
-Q8) Create an “Extended error bar” plot and save the image as a .png using the File->Save Plot option.
+**Q8)** Create an “Extended error bar” plot and save the image as a .png using the File->Save Plot option.
