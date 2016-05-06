@@ -66,7 +66,7 @@ Find the option which tells you the version of Metaphlan2 you are using.
 
 Now we are going to run metaphlan on the sample "SRS015044". 
 
-First change back to your module 3 directory:
+First change back to your working directory:
 
     cd ~/Desktop/hmp_metagenomics
 
@@ -250,7 +250,7 @@ Explore each of the different visualizations by changing "Bar plot" to each of t
 
 ### Determining Functional Composition with HUMAnN
 
-We will now functionally annotate the metagenomes using HUMAnN. Note, that we will be using the same HMP samples used above.
+We will now functionally annotate the metagenomes using HUMAnN.
 
 ### Running DIAMOND search against KEGG
 
