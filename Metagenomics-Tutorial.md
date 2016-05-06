@@ -425,7 +425,7 @@ Compare the tongue samples to all other samples using a Two Group test. First se
 
 Your PCA plot should look like this:
 
-[[File:STAMP_tongue_pca.png|600px]]
+![](https://www.dropbox.com/s/2u1mde0msxzms7j/600px-STAMP_tongue_pca.png?raw=1)
 
 **Q6)** How many KEGG Pathways are significantly different between the tongue and the plaque samples combined?
 
