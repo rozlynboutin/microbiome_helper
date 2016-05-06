@@ -246,11 +246,11 @@ Explore each of the different visualizations by changing "Bar plot" to each of t
 **Q11)** Create a box plot for the family Streptococcaceae (Change "Profile Level" to "Family" in the top left). Save the box plot as a .png image by using the File->Save plot feature in STAMP.
 
 
-### Determining Functional Composition with HUMAnN
+## Determining Functional Composition with HUMAnN
 
 We will now functionally annotate the metagenomes using HUMAnN. Note, that we will be using the same HMP samples used above.
 
-## Running DIAMOND search against KEGG
+### Running DIAMOND search against KEGG
 
 Before running HUMAnN, it is first necessary run a similarity search against the KEGG database. This database is located at “/home/shared/kegg/diamond_db” on the Virtual Box. This is a reduced KEGG database that the authors of HUMAnN created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called [DIAMOND](http://ab.inf.uni-tuebingen.de/software/diamond/).
 
@@ -260,7 +260,7 @@ First we will make a directory to store our sequence search outputs:
 
 Now we will run DIAMOND on our metagenomic sequences for the sample SRS015044:
  
-    diamond blastx -p 2 -d kegg/kegg.reduced -q hmp_metagenomics/fastq/SRS015044.fastq -a pre_humann/SRS015044
+    diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -q hmp_metagenomics/fastq/SRS015044.fastq -a pre_humann/SRS015044
 
 The options used in this command are:
 
@@ -275,64 +275,60 @@ The previous command is comparing 200k sequences vs. the KEGG database (~1.3 mil
 
 The  output from diamond is a special binary format that we can then turn into either SAM or BLAST tabular output with the latter being the default.
 
- diamond view -a pre_humann/SRS015044.daa -o pre_humann/SRS015044.txt
+    diamond view -a pre_humann/SRS015044.daa -o pre_humann/SRS015044.txt
 
-You can see the output using 'less':
+You can see the output using _less_:
 
- less pre_humann/SRS015044.txt
+    less pre_humann/SRS015044.txt
 
 Each column tells us different information about the match:
- 1	Query
- 2	Subject
- 3	% id
- 4	alignment length
- 5	Mistmatches
- 6	gap openings
- 7	q.start
- 8	q.end
- 9	s.start
- 10	s.end
- 11	e-value
- 12	bit score
+1.	Query
+2.	Subject
+3.	% id
+4.	alignment length
+5.	Mistmatches
+6.	gap openings
+7.	q.start
+8.	q.end
+9.	s.start
+10.	s.end
+11.	e-value
+12.	bit score
 
 Now run DIAMOND for samples SRS015893 aagainst the KEGG database and convert output to BLAST tabular format.
 
- diamond blastx -p 4 -d kegg/kegg.reduced -q hmp_metagenomics/fastq/SRS015893.fastq -a pre_humann/SRS015893
- diamond view -a pre_humann/SRS015893.daa -o pre_humann/SRS015893.txt
+    diamond blastx -p 4 -d /home/shared/kegg/diamond_db/kegg.reduced -q hmp_metagenomics/fastq/SRS015893.fastq -a pre_humann/SRS015893
+    diamond view -a pre_humann/SRS015893.daa -o pre_humann/SRS015893.txt
 
 Repeat the above commands once again for sample SRS097871.
 
-===Running HUMAnN===
+### Running HUMAnN
  
-Now, we are going to run HUMAnN. To use human you are going to copy the entire program to your working directory. The human program is in “ ~/CourseData/refs/humann-0.99/”:
+Now, we are going to run HUMAnN. To use HUMAnN you are going to make a symbolic link between the alignments we just made and the HUMAnN "input" directory (HUMAnN reads in input files from this directory):
 
- cp -r ~/CourseData/refs/humann-0.99/ ./
+    ln -s $PWD/pre_humann/* /usr/local/prg/humann-0.99/input
 
 Then move into the HUMAnN directory:
  
- cd humann-0.99
+    cd /usr/local/prg/humann-0.99
 
-Now copy your blast output from your 3 samples into the “human-0.99/input” directory:
+To being running HUMAnN on all the samples you pre-processed with DIAMOND, you use the “scons” command (using 2 cores):
 
- cp ../pre_humann/SRS015044.txt ../pre_humann/SRS015893.txt ../pre_humann/SRS097871.txt ./input/
+    scons -j 2
 
-To being running human on just these 3 samples you use the “scons” command (using 4 cores):
-
- scons -j 4
-
-A bunch of messages will pass on your screen and it should finish in ~2 minutes. All of the output is contained in the “humann-0.99/output” directory. To see a list of them type:
+A bunch of messages will pass on your screen and it should finish in ~2 minutes. All of the output is contained in the “/usr/local/prg/humann-0.99/output” directory. To see a list of them type:
  
- ls output
+    ls output
 
-There are MANY output files from human. The ones we care about are called:
+There are MANY output files from HUMAnN. The ones we care about are called:
 
-* '''01b-hit-keg-cat.txt''' –> KEGG KOs
-* '''04b-hit-keg-mpm-cop-nul-nve-nve.txt''' -> KEGG Modules
-* '''04b-hit-keg-mpt-cop-nul-nve-nve.txt''' -> KEGG Pathways
+* **01b-hit-keg-cat.txt** –> KEGG KOs
+* **04b-hit-keg-mpm-cop-nul-nve-nve.txt** -> KEGG Modules
+* **04b-hit-keg-mpt-cop-nul-nve-nve.txt** -> KEGG Pathways
 
-These files contain relative abundances for each of these different functional classifications. You can look at the format of these using “less”. For example to look at the KEGG Pathways:
+These files contain relative abundances for each of these different functional classifications. You can look at the format of these using _less_. For example to look at the KEGG Pathways:
 
- less output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
+    less output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
 
 The output should look like this:
 
@@ -353,52 +349,51 @@ The output should look like this:
 
 Now, use less to look at the KO predictions and the KEGG Module predictions:
 
- less output/01b-hit-keg-cat.txt
- less output/04b-hit-keg-mpm-cop-nul-nve-nve.txt
+    less output/01b-hit-keg-cat.txt
+    less output/04b-hit-keg-mpm-cop-nul-nve-nve.txt
 
 Q1) Which of the three samples has the highest relative abundance of the KEGG Module: “M00319: Manganese/zinc/iron transport system”?
 
-===Running all samples with Microbiome Helper===
+## Running all samples with Microbiome Helper
 
-So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper  package called run_pre_humann.pl. All 30 samples '''could be''' processed with a single command like:
+So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper package called run_pre_humann.pl. All 30 samples _could be_ processed with a single command like:
 
- run_pre_humann.pl -p 8 -d kegg/kegg.reduced -o pre_humann hmp_metagenomics/fastq/*
+    run_pre_humann.pl -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -o pre_humann hmp_metagenomics/fastq/*
 
-However, this would take about 25 minutes to complete. The humann step would take an additional 10 minutes to complete.  
+However, this would take about 25 minutes to complete. The HUMAnN step would take an additional 10 minutes to complete.  
 
 To make things easier the output for all 30 samples has been pre-computed and is located in  “hmp_metagenomics/humann_output”. 
 
-If you browse the output using 'less' you can see that they are in the same format but with 30 columns representing the 30 samples:
+If you browse the output using _less_ you can see that they are in the same format but with 30 columns representing the 30 samples:
 
- cd ~/workspace/module4
- less hmp_metagenomics/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
+    cd /home/vagrant/Desktop
+    less hmp_metagenomics/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
 
 You will notice that the output looks fairly messy because the terminal will automatically line wrap and it becomes hard to see where one line ends and the next begins. I often find the "cut" command useful to browse data like this. "cut" allows you to just look at particular columns from the data. For example:
 
- cut -f 1-5 hmp_metagenomics/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt | less
+    cut -f 1-5 hmp_metagenomics/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt | less
 
 * '-f 1-5' indicates that we want to look at the first 5 columns. We could just have easily used '-f 1,3,10' (to view columns 1, 3 and 10) or '-f 1-3,20-' (to view columns 1 to 3 and columns 20 onwards).
 * '| less' "pipes" the output from the "cut" command and lets us view the output one screen at a time using our 'less' tool.  
 
 Now, we are going to use STAMP to visualize the humann output just like we did with the taxonomic data. 
 
-First, we need to convert the humann output files file into STAMP format:
+First, we need to convert the HUMAnN output files file into STAMP format:
 
- humann_to_stamp.pl hmp_metagenomics/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt > pathways.spf
- humann_to_stamp.pl hmp_metagenomics/humann_output/04b-hit-keg-mpm-cop-nul-nve-nve.txt > modules.spf
- humann_to_stamp.pl hmp_metagenomics/humann_output/01b-hit-keg-cat.txt > kos.spf
+    humann_to_stamp.pl hmp_metagenomics/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt > pathways.spf
+    humann_to_stamp.pl hmp_metagenomics/humann_output/04b-hit-keg-mpm-cop-nul-nve-nve.txt > modules.spf
+    humann_to_stamp.pl hmp_metagenomics/humann_output/01b-hit-keg-cat.txt > kos.spf
 
 You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in the current directory. You can check to make sure they are there with 'ls'
 
- ls
+    ls
 
 Your output should look like this:
 
- ubuntu@ip-10-157-158-196:~/workspace/module4$ ls
- hmp_metagenomics  humann-0.99  kegg  kos.spf  modules.spf  pathways.spf  pre_humann
- ubuntu@ip-10-157-158-196:~/workspace/module4$
+    vagrant@MicrobiomeHelper:~$ ls
+    hmp_metagenomics  humann-0.99  kegg  kos.spf  modules.spf  pathways.spf  pre_humann
 
-===STAMP with Humann Output===
+## STAMP with HUMAnN Output
 
 Copy the 'pathways.spf', 'modules.spf', and 'kos.spf' along with the previously used "hmp_map.txt" file locally onto your computer. 
 
