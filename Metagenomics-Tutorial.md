@@ -72,7 +72,7 @@ First change back to your working directory:
 
 Now we are going to run Metaphlan2 on a single example with the following (long) command:
     
-    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015044.txt fastq/SRS015044.fastq
+    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map --nproc 2 -o SRS015044.txt fastq/SRS015044.fastq
 
 The command will run for 1-2 minutes on this single sample.
 
@@ -81,36 +81,33 @@ The command line parameters are:
 * `--input_type fastq`: Indicates that our input files are in fastq format. (If we wanted to use fasta files as input then we would change this to 'fasta').
 * `--bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
 * `--no_map` We use this flag to prevent Metaphlan2 from storing the intermediate bowtie output files. 
+* '--nproc 2' Indicates that 2 cores should be used to run this program, but will only work if you have enabled 2 cores already!
 * `-o SRS015044.txt`: Indicates the name of output file that Metaphlan2 will use to write results to.
 * `fastq/SRS015044.fastq`: Metaphlan2 takes the input file containing our metagenomic reads as the last argument
 
-Now we are going to run Metaphlan2 on another sample "SRS015893". 
-
-Note: If you have altered the settings off your virtualbox  to use more cores, than you can make this command faster by adding the following option (assuming you have two cores enabled) `--nproc 2`:
-
-    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map --nproc 2 -o SRS015893.txt fastq/SRS015893.fastq  
+Rather than making you run Metaphlan2 on all of the samples, we have pre-computed the other samples. We are going to explore all of these samples, but we'll start out just by comparing two, SRS015044 (which you just ran) and SRS015893. The Metaphlan2 output file for SRS015893 is here: "pre-computed_results/metaphlan2_out/SRS015893.txt".
 
 ### Metaphlan2 Output
-You can inspect the output of these two commands by using the _less_ command (or your favourite editor): 
+You can inspect the output of these two samples by using the _less_ command (or your favourite editor): 
 
     less SRS015044.txt
-    less SRS015893.txt
+    less pre-computed_results/metaphlan2_out/SRS015893.txt
 
 Your output should looks something like this:
 
     #SampleID       Metaphlan2_Analysis
     k__Bacteria     100.0
-    k__Bacteria|p__Actinobacteria   33.58989
-    k__Bacteria|p__Firmicutes       22.70338
-    k__Bacteria|p__Proteobacteria   17.56533
-    k__Bacteria|p__Bacteroidetes    11.92585
-    k__Bacteria|p__Candidatus_Saccharibacteria      9.31222
-    k__Bacteria|p__Fusobacteria     4.90334
-    k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.58989
-    k__Bacteria|p__Firmicutes|c__Bacilli    12.74551
-    k__Bacteria|p__Bacteroidetes|c__Flavobacteriia  10.80566
-    k__Bacteria|p__Firmicutes|c__Negativicutes      9.95786
-
+    k__Bacteria|p__Actinobacteria   33.60172
+    k__Bacteria|p__Firmicutes       22.68871
+    k__Bacteria|p__Proteobacteria   17.63748
+    k__Bacteria|p__Bacteroidetes    11.92664
+    k__Bacteria|p__Candidatus_Saccharibacteria      9.23652
+    k__Bacteria|p__Fusobacteria     4.90893
+    k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.60172
+    k__Bacteria|p__Firmicutes|c__Bacilli    12.74401
+    k__Bacteria|p__Bacteroidetes|c__Flavobacteriia  10.80909
+    k__Bacteria|p__Proteobacteria|c__Betaproteobacteria     9.94691
+    k__Bacteria|p__Firmicutes|c__Negativicutes      9.9447
 
 You can see that the output contains two columns, with the first column being the taxonomy name and the second column representing the relative abundance of that taxa (out of 100 total).
 
@@ -125,16 +122,16 @@ For example lets pull out all the reads assigned to the family "Leptotrichiaceae
 You should get output like this:
 
 ```
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae	3.2895
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia	2.58678
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichiaceae_unclassified	0.70272
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_unclassified	1.98806
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_buccalis	0.49975
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_wadei	0.05456
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_hofstadii	0.0444
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_buccalis|t__GCF_000023905	0.49975
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_wadei|t__Leptotrichia_wadei_unclassified	0.05456
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_hofstadii|t__GCF_000162955	0.0444
+    k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae	3.2895
+    k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia	2.58678
+    k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichiaceae_unclassified 0.70272
+                                   k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_unclassified	1.98806
+    k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_buccalis	0.49975
+    k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_wadei	0.05456
+    k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_hofstadii	0.0444
+    k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_buccalis|t__GCF_000023905	0.49975
+    k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_wadei|t__Leptotrichia_wadei_unclassified	0.05456
+    k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_hofstadii|t__GCF_000162955	0.0444
 ```
 
 You can see that 3.2895% of the metagenome is predicted from organisms in the family Leptotrichiaceae. Of those ~2.6% are assigned to the genus _Leptotrichia_, while ~0.7% are assigned to _g__Leptotrichiaceae_unclassified_ which means metaphlan doesn't know what genus to actually call them. 
@@ -143,25 +140,24 @@ You can see that 3.2895% of the metagenome is predicted from organisms in the fa
  
 **Q6)** What phylum has the highest relative abundance in sample SRS015044? And SRS015893?
 
-Now try running metaphlan using the same options as above but for sample **SRS097871**. (Remember to change the input and output files)
-
 ### Merging Metaphlan2 Results 
 
-Now lets combine all of the Metaphlan2 output files into a single merged output file:
+We have also pre-computed the Metaphlan2 output for sample SRS097871. Lets combine all of the Metaphlan2 output files into a single merged output file:
 
-    /usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt SRS015893.txt SRS097871.txt > metaphlan_merged.txt
+    /usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt  pre-computed_results/metaphlan2_out/SRS015893.txt pre-computed_results/metaphlan2_out/SRS097871.txt > metaphlan_merged.txt
 
 Note that this script 'merge_metaphlan_tables.py' takes one or more Metaphlan2 output files as input and combines them into a single output file. The output file is indicated using the stdout redirect symbol '>' and is written in this case to **metaphlan_merged.txt**
 
 The merged output file should look like this:
 ```
- ID      SRS015044       SRS015893       SRS097871
- #SampleID       Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis
- k__Bacteria     100.0   100.0   100.0
- k__Bacteria|p__Actinobacteria   33.58989        23.49742        66.06867
- k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.58989        23.49742        66.06867
- k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales      33.58989        22.83325        66.06867
- k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae  4.60715 22.27157        20.84159
+ID      SRS015044       SRS015893       SRS097871
+#SampleID       Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis
+k__Bacteria     100.0   100.0   100.0
+k__Bacteria|p__Actinobacteria   33.60172        23.80783        65.89859
+k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.60172        23.80783        65.89859
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales      33.60172        23.14632        65.89859
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae  4.60639 22.58695        20.94765
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces   4.60639 22.58695        20.94765
 ```
 Now each sample is listed as a different column within this output file. You can view this file again using 'less' or you can import it into your favourite spreadsheet program.
 
