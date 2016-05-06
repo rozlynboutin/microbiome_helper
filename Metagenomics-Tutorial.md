@@ -300,7 +300,7 @@ Copy the BLAST tabular format output files to the folder you just created:
 Now, we are going to run HUMAnN on the sample you processed along with the two we pre-processed. To use HUMAnN you are going to make a symbolic link between the BLAST tabular format files and the HUMAnN "input" directory (HUMAnN reads in input files from this directory):
 
     rm /usr/local/prg/humann-0.99/input/*txt 
-    rm /usr/local/prg/humann-0.99/output/*txt 
+    rm /usr/local/prg/humann-0.99/output/*
     ln -s $PWD/pre_humann/* /usr/local/prg/humann-0.99/input
 
 Then move into the HUMAnN directory:
