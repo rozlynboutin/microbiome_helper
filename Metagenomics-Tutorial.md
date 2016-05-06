@@ -170,11 +170,9 @@ To get information about the individual samples you can look in the hmp_map.txt 
 
 ### Running Metaphlan2 on a large number of samples using Microbiome Helper
 
-Running Metaphlan2 on more than a few samples can be tedious. 
+Running Metaphlan2 on more than a few samples can be tedious. I wrote a script to make this easier as part of the package “Microbiome Helper” (https://github.com/mlangill/microbiome_helper). **Note you do not have to do this today** as we have already pre-computed the combined Metaphlan2 output, but this is how you would do it.
 
-To make this process simpler we are going to use a script I wrote as part of the package “Microbiome Helper” (https://github.com/mlangill/microbiome_helper).
-
-Run Metaphlan2 on all of the sample using 'run_metaphlan2.pl' (this will take over an hour):
+To run Metaphlan2 on all of the sample using 'run_metaphlan2.pl' (this would take over an hour):
 
     run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt ./fastq/*
 
@@ -183,26 +181,24 @@ This command uses the following options:
 * '-o' is the name for the merged output file.
 * ' ./fastq/*' indicates that all of the files within this directory will be used as input. 
 
-On your screen you should see the commands that the microbiome helper script is running automatically for you:
+On your screen you would see the commands that the microbiome helper script is running automatically for you:
 ```
  cat ./fastq/SRS014477.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS014477
  cat ./fastq/SRS011343.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS011343
  cat ./fastq/SRS019129.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS019129
 ```
-**Q9)** Based on the commands being written to the screen, what directory are the metaphlan individual output files being stored in?
+**Q9)** Based on the above example commands being written to the screen, what directory would the Metaphlan2 individual output files be stored in?
 
 ### STAMP
 
 STAMP takes two main files as input the profile data which is a table that contains the abundance of features (i.e. taxonomic or functions) and a group metadata file which provides more information about each of the samples in the profile data file. 
 
-The metadata file is the **hmp_map.txt** file. Download this file locally to your computer using an appropriate method (e.g. WinSCP, etc.)
-You will also need the profile data file which is in a different format than metaphlan outputs. Therefore we first need to convert it using a script from the microbiome helper package. Once metaphlan is finished running do the conversion like this:
+The metadata file is the **hmp_map.txt** file. This file is present already in the "hmp_metagenomics" directory.
+You will also need the profile data file which is in a different format than what Metaphlan2 outputs. Therefore we first need to convert it using a script from the microbiome_helper package. You can convert the pre-computed Metaphlan2 output for all samples like this:
 
-    metaphlan_to_stamp.pl metaphlan_merged_all.txt > metaphlan_merged_all.spf
+    metaphlan_to_stamp.pl pre-computed_results/metaphlan2_out/metaphlan_merged_all.txt > metaphlan_merged_all.spf
 
-As you can see this file takes the Metaphlan2 output file (from all the merged samples) as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
-
-Now download the **metaphlan_merged_all.spf** file to your computer as well.
+As you can see this file takes the Metaphlan2 output file (from all the merged samples), which we already made for you, as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
 
 Now load the profile file (metaphlan_merged_all.spf and the metadata file (hmp_metadata.txt) files by going to "File->load data" within STAMP:
 
