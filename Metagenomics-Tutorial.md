@@ -248,11 +248,7 @@ Explore each of the different visualizations by changing "Bar plot" to each of t
 
 ***
 
-***
-
-***
-
-## Determining Functional Composition with HUMAnN
+### Determining Functional Composition with HUMAnN
 
 We will now functionally annotate the metagenomes using HUMAnN. Note, that we will be using the same HMP samples used above.
 
