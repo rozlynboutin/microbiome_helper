@@ -18,7 +18,7 @@ Functional section:
 
 1. SRS015893
 2. No
-3. 246 (KOs different across body sites)1
+3. 246 (KOs different across body sites)
 4. 16 (KEGG Pathways different across body sites)
 5. ko00281: Geraniol degradation . corrected p-value: 5.19e-6
 6. 22
