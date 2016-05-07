@@ -11,9 +11,7 @@ Taxonomic section:
 7. Phylum Candidatus_Saccharibacteria, Present only in sample SRS015044
 8. SRS015044 supragingival plaque
 9. metaphlan_out
-10. Yes, there is separation between the tongue samples and the plaque samples but there is no clear separation between subgingival and supragingival. The separation occurs along PCs 1 and 2:
-
-![](https://www.dropbox.com/s/96bistjnv53r3iv/bodysite_PCA_taxonomy_downsample.png?raw=1)
+10. Yes, there is separation between the tongue samples and the plaque samples but there is no clear separation between subgingival and supragingival. The separation occurs along PCs 1 and 2: ![](https://www.dropbox.com/s/96bistjnv53r3iv/bodysite_PCA_taxonomy_downsample.png?raw=1)
 
 11. You should see this plot:
 
