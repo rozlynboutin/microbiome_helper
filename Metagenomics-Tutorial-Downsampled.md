@@ -172,7 +172,7 @@ To get information about the individual samples you can look in the hmp_map.txt 
 
 Running Metaphlan2 on more than a few samples can be tedious. I wrote a script to make this easier as part of the package “Microbiome Helper” (https://github.com/mlangill/microbiome_helper). **Note you do not have to do this today** as we have already pre-computed the combined Metaphlan2 output, but this is how you would do it.
 
-To run Metaphlan2 on all of the sample using 'run_metaphlan2.pl' (this would take over an hour):
+To run Metaphlan2 on all of the samples using 'run_metaphlan2.pl' (this would take ~30 min):
 
     run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt ./fastq/*
 
