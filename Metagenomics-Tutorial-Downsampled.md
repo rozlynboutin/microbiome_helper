@@ -384,7 +384,9 @@ You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in 
 Your output should look like this:
 
     vagrant@MicrobiomeHelper:~/Desktop/hmp_metagenomics ls
-    fastq  hmp_map.txt  kos.spf  metaphlan_merged_all.spf  metaphlan_merged.txt  modules.spf  pathways.spf  pre-computed_results  pre_humann  SRS015044.txt
+    fastq        kos.spf                   metaphlan_merged.txt  pathways.spf          SRS015044.txt  SRS097871.txt
+    hmp_map.txt  metaphlan_merged_all.spf  modules.spf           pre-computed_results  SRS015893.txt
+
 
 ### STAMP with HUMAnN Output
 
@@ -406,15 +408,13 @@ Now load the "pathways.spf" file into STAMP using the same "hmp_map.txt" file.
 
 Choose "Box plot" instead of PCA plot, and then expand the list of KEGG Pathways so you can see the corrected p-value. Order the list by corrected p-value by clicking on that column header. 
 
-![](https://www.dropbox.com/s/zchzthm9ug3v3x5/STAMP_ordered_p-value.png?raw=1)
-
 **Q5)** What is the most significantly different KEGG Pathway? What is the corrected p-value for this KEGG Pathway?
 
 Compare the tongue samples to all other samples using a Two Group test. First select “tongue_dorsum” for Group 1 (on the left hand side) and then select “All other samples” as Group 2. Use the default Welch’s t-test with BH FDR.
 
 Your PCA plot should look like this:
 
-![](https://www.dropbox.com/s/2u1mde0msxzms7j/600px-STAMP_tongue_pca.png?raw=1)
+![](https://www.dropbox.com/s/ljdk2o39hopjlfe/functional_tongue_vs_others_downsampled.png?raw=1)
 
 **Q6)** How many KEGG Pathways are significantly different between the tongue and the plaque samples combined?
 
