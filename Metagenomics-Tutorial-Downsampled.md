@@ -97,16 +97,16 @@ Your output should looks something like this:
 
     #SampleID       Metaphlan2_Analysis
     k__Bacteria     100.0
-    k__Bacteria|p__Actinobacteria   40.39801
-    k__Bacteria|p__Bacteroidetes    20.1097
-    k__Bacteria|p__Firmicutes       18.89152
-    k__Bacteria|p__Proteobacteria   11.84198
-    k__Bacteria|p__Candidatus_Saccharibacteria      5.30393
-    k__Bacteria|p__Fusobacteria     3.45485
-    k__Bacteria|p__Actinobacteria|c__Actinobacteria 40.39801
-    k__Bacteria|p__Bacteroidetes|c__Flavobacteriia  20.1097
-    k__Bacteria|p__Firmicutes|c__Negativicutes      9.68419
-
+    k__Bacteria|p__Actinobacteria   33.07678
+    k__Bacteria|p__Firmicutes       24.51694
+    k__Bacteria|p__Proteobacteria   18.5776
+    k__Bacteria|p__Bacteroidetes    11.65762
+    k__Bacteria|p__Candidatus_Saccharibacteria      7.73074
+    k__Bacteria|p__Fusobacteria     4.44031
+    k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.07678
+    k__Bacteria|p__Firmicutes|c__Bacilli    13.6641
+    k__Bacteria|p__Proteobacteria|c__Betaproteobacteria     12.55122
+    k__Bacteria|p__Bacteroidetes|c__Flavobacteriia  11.23596
 
 You can see that the output contains two columns, with the first column being the taxonomy name and the second column representing the relative abundance of that taxa (out of 100 total).
 
@@ -121,13 +121,13 @@ For example lets pull out all the reads assigned to the genus "Veillonella" usin
 You should get output like this:
 
 ```
-k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella	9.68419
-k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_parvula	6.98442
-k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_unclassified	2.69977
-k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_parvula|t__Veillonella_parvula_unclassified	6.98442
+k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella	10.85284
+k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_parvula	9.97732
+k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_unclassified	0.87552
+k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_parvula|t__Veillonella_parvula_unclassified	9.97732
 ```
 
-You can see that 9.68% of the metagenome is predicted from organisms in the genus Veillonella. Of those ~6.98% are assigned to the species _Veillonella parvula_, while ~2.70% are assigned to s__Veillonella_unclassified which means Metaphlan2 doesn't know what species to actually call them. 
+You can see that 10.85% of the metagenome is predicted from organisms in the genus Veillonella. Of those ~9.98% are assigned to the species _Veillonella parvula_, while ~0.88% are assigned to s__Veillonella_unclassified which means Metaphlan2 doesn't know what species to actually call them. 
 
 **Q5)** What is the relative abundance of organisms unclassified at the species level for the genus _Neisseria_ in sample SRS015044? (Remember to use the grep command)
  
@@ -148,15 +148,13 @@ The merged output file should look like this:
 ID      SRS015044       SRS015893       SRS097871
 #SampleID       Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis
 k__Bacteria     100.0   100.0   100.0
-k__Bacteria|p__Actinobacteria   40.39801        3.16825 100.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria 40.39801        3.16825 100.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales      40.39801        3.16825 100.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae  0.0     3.16825 0.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces   0.0     3.16825 0.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces|s__Actinomyces_graevenitzii 0.0     3.16825 0.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces|s__Actinomyces_graevenitzii|t__Actinomyces_graevenitzii_unclassified      0.0     3.16825 0.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Corynebacteriaceae        34.22467        0.0     100.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Corynebacteriaceae|g__Corynebacterium     34.22467        0.0	100.0
+k__Bacteria|p__Actinobacteria   33.07678        7.41456 100.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.07678        7.41456 100.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales      33.07678        7.41456 100.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae  1.75917 7.41456 2.12537
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces   1.75917 7.41456 2.12537
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces|s__Actinomyces_graevenitzii
+       0.0     7.41456 0.0
 ```
 Now each sample is listed as a different column within this output file. You can view this file again using 'less' or you can import it into your favourite spreadsheet program.
 
