@@ -420,8 +420,8 @@ Your PCA plot should look like this:
 
 **Q6)** How many KEGG Pathways are significantly different between the tongue and the plaque samples combined?
 
-Create a "Bar plot" for "ko00020: Citrate cycle (TCA cycle)".
+Create a "Bar plot" for "ko00230: Purine metabolism".
 
-**Q7)** Is the relative abundance of “Citrate cycle (TCA cycle)” higher or lower in the tongue compared to the plaque samples?
+**Q7)** Is the relative abundance of “Purine metabolism” higher or lower in the tongue compared to the plaque samples?
 
 **Q8)** Create an “Extended error bar” plot and save the image as a .png using the File->Save Plot option.
