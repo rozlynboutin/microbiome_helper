@@ -299,19 +299,19 @@ Copy the BLAST tabular format output files to the folder you just created:
  
 Now, we are going to run HUMAnN on the sample you processed along with the two we pre-processed. To use HUMAnN you are going to make a symbolic link between the BLAST tabular format files and the HUMAnN "input" directory (HUMAnN reads in input files from this directory):
 
-    rm /usr/local/prg/humann-0.99/input/*txt 
-    rm /usr/local/prg/humann-0.99/output/*
-    ln -s $PWD/pre_humann/* /usr/local/prg/humann-0.99/input
+    rm /home/shared/humann-0.99/input/*txt 
+    rm /home/shared/humann-0.99/output/*
+    ln -s $PWD/pre_humann/* /home/shared/humann-0.99/input
 
 Then move into the HUMAnN directory:
  
-    cd /usr/local/prg/humann-0.99
+    cd /home/shared/humann-0.99
 
 To being running HUMAnN on all the samples you pre-processed with DIAMOND, you use the “scons” command (using 2 cores). Note this will take ~20 minutes.
 
     scons -j 2
 
-A bunch of messages will pass on your screen as this command runs. All of the output is contained in the “/usr/local/prg/humann-0.99/output” directory. To see a list of them, once the job is done, type:
+A bunch of messages will pass on your screen as this command runs. All of the output is contained in the “/home/shared/humann-0.99/output” directory. To see a list of them, once the job is done, type:
  
     ls output
 
