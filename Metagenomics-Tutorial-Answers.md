@@ -21,7 +21,7 @@ Functional section:
 3. 50 (KOs different across body sites)
 4. 2 (KEGG Pathways different across body sites)
 5. ko00281: Geraniol degradation . corrected p-value: 4.14e-4
-6. 35
+6. 5
 7. Higher in the tongue samples.
 8. Should look like this:
 
