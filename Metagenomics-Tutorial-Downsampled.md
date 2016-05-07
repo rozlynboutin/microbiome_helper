@@ -94,6 +94,7 @@ You can inspect the output of these two samples by using the _less_ command (or 
     less SRS015893.txt
 
 Your output should looks something like this:
+
     #SampleID       Metaphlan2_Analysis
     k__Bacteria     100.0
     k__Bacteria|p__Actinobacteria   40.39801
@@ -113,25 +114,20 @@ This output file provides summaries at each taxonomic level (e.g. phylum, class,
 
 If reads can only be assigned to a certain taxonomic level (e.g. say the family level), then metaphlan will put those unassigned reads into a lower level taxonomic rank with the name "unclassified" appended.
 
-For example lets pull out all the reads assigned to the family "Leptotrichiaceae" using the ''grep'' command:
+For example lets pull out all the reads assigned to the genus "Veillonella" using the ''grep'' command:
 
-    grep f__Leptotrichiaceae SRS015044.txt
+    grep g__Veillonella SRS015044.txt
 
 You should get output like this:
 
 ```
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae	3.2895
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia	2.58678
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichiaceae_unclassified 0.70272 k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_unclassified	1.98806
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_buccalis	0.49975
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_wadei	0.05456
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_hofstadii	0.0444
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_buccalis|t__GCF_000023905	0.49975
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_wadei|t__Leptotrichia_wadei_unclassified	0.05456
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia|o__Fusobacteriales|f__Leptotrichiaceae|g__Leptotrichia|s__Leptotrichia_hofstadii|t__GCF_000162955	0.0444
+k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella	9.68419
+k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_parvula	6.98442
+k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_unclassified	2.69977
+k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_parvula|t__Veillonella_parvula_unclassified	6.98442
 ```
 
-You can see that 3.2895% of the metagenome is predicted from organisms in the family Leptotrichiaceae. Of those ~2.6% are assigned to the genus _Leptotrichia_, while ~0.7% are assigned to _g__Leptotrichiaceae_unclassified_ which means metaphlan doesn't know what genus to actually call them. 
+You can see that 9.68% of the metagenome is predicted from organisms in the genus Veillonella. Of those ~6.98% are assigned to the species _Veillonella parvula_, while ~2.70% are assigned to s__Veillonella_unclassified which means Metaphlan2 doesn't know what species to actually call them. 
 
 **Q5)** What is the relative abundance of organisms unclassified at the species level for the genus _Neisseria_ in sample SRS015044? (Remember to use the grep command)
  
@@ -152,11 +148,15 @@ The merged output file should look like this:
 ID      SRS015044       SRS015893       SRS097871
 #SampleID       Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis
 k__Bacteria     100.0   100.0   100.0
-k__Bacteria|p__Actinobacteria   33.60172        23.80783        65.89859
-k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.60172        23.80783        65.89859
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales      33.60172        23.14632        65.89859
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae  4.60639 22.58695        20.94765
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces   4.60639 22.58695        20.94765
+k__Bacteria|p__Actinobacteria   40.39801        3.16825 100.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria 40.39801        3.16825 100.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales      40.39801        3.16825 100.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae  0.0     3.16825 0.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces   0.0     3.16825 0.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces|s__Actinomyces_graevenitzii 0.0     3.16825 0.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces|s__Actinomyces_graevenitzii|t__Actinomyces_graevenitzii_unclassified      0.0     3.16825 0.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Corynebacteriaceae        34.22467        0.0     100.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Corynebacteriaceae|g__Corynebacterium     34.22467        0.0	100.0
 ```
 Now each sample is listed as a different column within this output file. You can view this file again using 'less' or you can import it into your favourite spreadsheet program.
 
