@@ -94,20 +94,18 @@ You can inspect the output of these two samples by using the _less_ command (or 
     less SRS015893.txt
 
 Your output should looks something like this:
-
     #SampleID       Metaphlan2_Analysis
     k__Bacteria     100.0
-    k__Bacteria|p__Actinobacteria   33.60172
-    k__Bacteria|p__Firmicutes       22.68871
-    k__Bacteria|p__Proteobacteria   17.63748
-    k__Bacteria|p__Bacteroidetes    11.92664
-    k__Bacteria|p__Candidatus_Saccharibacteria      9.23652
-    k__Bacteria|p__Fusobacteria     4.90893
-    k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.60172
-    k__Bacteria|p__Firmicutes|c__Bacilli    12.74401
-    k__Bacteria|p__Bacteroidetes|c__Flavobacteriia  10.80909
-    k__Bacteria|p__Proteobacteria|c__Betaproteobacteria     9.94691
-    k__Bacteria|p__Firmicutes|c__Negativicutes      9.9447
+    k__Bacteria|p__Actinobacteria   40.39801
+    k__Bacteria|p__Bacteroidetes    20.1097
+    k__Bacteria|p__Firmicutes       18.89152
+    k__Bacteria|p__Proteobacteria   11.84198
+    k__Bacteria|p__Candidatus_Saccharibacteria      5.30393
+    k__Bacteria|p__Fusobacteria     3.45485
+    k__Bacteria|p__Actinobacteria|c__Actinobacteria 40.39801
+    k__Bacteria|p__Bacteroidetes|c__Flavobacteriia  20.1097
+    k__Bacteria|p__Firmicutes|c__Negativicutes      9.68419
+
 
 You can see that the output contains two columns, with the first column being the taxonomy name and the second column representing the relative abundance of that taxa (out of 100 total).
 
