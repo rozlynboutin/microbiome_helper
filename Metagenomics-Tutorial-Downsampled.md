@@ -206,7 +206,7 @@ Change the “Profile level” (top left) to “Genus”, ensure that the Group 
 
 You should now be looking at a PCA plot that is coloured by the samples being male or female like this:
 
-![](https://www.dropbox.com/s/zlj8csslwfgm7j2/600px-Metaphlan_module4_sex.png?raw=1)
+![](https://www.dropbox.com/s/znsu3uurh1bejsb/downsample_taxonomic_sex_PCA.png?raw=1)
 
 As you can see there is no obvious separation in the data points when coloured by sex of the person giving the sample. 
 
@@ -218,7 +218,7 @@ Now lets test what is significantly different between the groups at the Genus ra
 
 Under the “Multiple groups” dialog on the left, check that ANOVA is being used as the statistical test, and select “Benjamini-Hochberg FDR” for the multiple test correction. The box at bottom will say how the “Number of active features” using these set of statistics and should indicate that there are 3 organisms at the genus level that are statistically different in their means across the three body sites. 
 
-![](https://www.dropbox.com/s/49q3sd4w2a2d97x/STAMP_Stats.png?raw=1)
+![](https://www.dropbox.com/s/6xxroa5z4jwno5s/taxonomy_bodytype_downsampled_setup.png?raw=1)
 
 Now lets look at visualizations of these different taxonomic groups. 
 
@@ -228,7 +228,7 @@ A new window will show a list of all the Genera. You can filter this list to jus
 
 You can also order the list of Genera by the most significant by clicking on the "corrected p-value" header. Now if you click on the feature "g_Granulicatella" you should see a bar chart representing the relative abundance for each sample for this Genera along with the mean value for the group indicated by a horizontal line. The plot should look like this:
 
-![](https://www.dropbox.com/s/va0ouzec32bb8o2/600px-Metaphlan_module4_genera_bar.png?raw=1)
+![](https://www.dropbox.com/s/q9bwtdse5q33ods/graniculata_downsampled.png?raw=1)
 
 Explore each of the different visualizations by changing "Bar plot" to each of the other options available (e.g. Heatmap plot, Post-hoc plot, and Box plot).
 
