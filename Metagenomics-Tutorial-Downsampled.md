@@ -85,13 +85,13 @@ The command line parameters are:
 * `-o SRS015044.txt`: Indicates the name of output file that Metaphlan2 will use to write results to.
 * `fastq/SRS015044.fastq`: Metaphlan2 takes the input file containing our metagenomic reads as the last argument
 
-Rather than making you run Metaphlan2 on all of the samples, we have pre-computed the other samples. We are going to explore all of these samples, but we'll start out just by comparing two, SRS015044 (which you just ran) and SRS015893. The Metaphlan2 output file for SRS015893 is here: "pre-computed_results/metaphlan2_out/SRS015893.txt".
+Now run Metaphlan2 for sample SRS015893 as well (swap out the sample names for the above command).
 
 ### Metaphlan2 Output
 You can inspect the output of these two samples by using the _less_ command (or your favourite editor): 
 
     less SRS015044.txt
-    less pre-computed_results/metaphlan2_out/SRS015893.txt
+    less SRS015893.txt
 
 Your output should looks something like this:
 
@@ -141,9 +141,11 @@ You can see that 3.2895% of the metagenome is predicted from organisms in the fa
 
 ### Merging Metaphlan2 Results 
 
-We have also pre-computed the Metaphlan2 output for sample SRS097871. Lets combine all of the Metaphlan2 output files into a single merged output file:
+Run Metaphlan2 on sample SRS097871 as well, just like for the other 2 samples.
 
-    /usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt  pre-computed_results/metaphlan2_out/SRS015893.txt pre-computed_results/metaphlan2_out/SRS097871.txt > metaphlan_merged.txt
+Now, lets combine all of the Metaphlan2 output files into a single merged output file:
+
+    /usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt SRS015893.txt SRS097871.txt > metaphlan_merged.txt
 
 Note that this script 'merge_metaphlan_tables.py' takes one or more Metaphlan2 output files as input and combines them into a single output file. The output file is indicated using the stdout redirect symbol '>' and is written in this case to **metaphlan_merged.txt**
 
