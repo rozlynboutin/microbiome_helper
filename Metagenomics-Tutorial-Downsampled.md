@@ -262,7 +262,7 @@ The options used in this command are:
 * '-a pre_humann/SRS015044' is the name of the output file (Note: DIAMOND appends a '.daa' automatically to the end of the output file name)
 * Note: That the default e-value cutoff used by DIAMOND is 0.001.
 
-The previous command is comparing 200k sequences vs. the KEGG database (~1.3 million sequences) and takes about 3 minutes with 2 CPU. If we had used the NCBI BLASTX it would have taken a couple of days!
+The previous command is comparing 60k sequences vs. the KEGG database (~1.3 million sequences) and takes about 3 minutes with 2 CPU. If we had used the NCBI BLASTX it would have taken a couple of days!
 
 The  output from DIAMOND is a special binary format that we can then turn into either SAM or BLAST tabular output with the latter being the default.
 
@@ -287,11 +287,7 @@ Each column tells us different information about the match:
 11.	e-value  
 12.	bit score  
 
-We have already run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database and converted the output to BLAST tabular format. The output files are in "pre-computed_results/pre_humann". 
-
-Copy the BLAST tabular format output files to the folder you just created:
-
-    cp pre-computed_results/pre_humann/*txt pre_humann
+Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database and convert the output to BLAST tabular format as above.
 
 ### Running HUMAnN
  
