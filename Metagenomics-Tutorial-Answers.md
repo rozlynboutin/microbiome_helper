@@ -4,7 +4,7 @@ Taxonomic section:
 
 1. 30
 2. 10
-3. 200,000/sample
+3. 20,000/sample
 4. MetaPhlAn version 2.5.0 (28 April 2015)
 5. s__Neisseria_unclassified	7.76249
 6. SRS015044: p__Actinobacteria & SRS015893: p_Firmicutes
