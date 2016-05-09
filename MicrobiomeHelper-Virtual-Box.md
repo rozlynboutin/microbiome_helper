@@ -2,4 +2,6 @@ We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can b
 
 The current latest version is v0.2.0. Note that this image is **still experimental** and will continually be updated.
 
+Note that this image requires installation of Vagrant (http://www.vagrantup.com/downloads.html) and VirtualBox (https://www.virtualbox.org/wiki/Downloads). For Mac users, the current version of VirtualBox should be installed for OSX 10.8 and higher, whereas those using earlier iterations should download VirtualBox Version 4.3.
+
 Please email gavin[dot]douglas[at]dal[dot]ca if you have any questions or issues!
