@@ -30,7 +30,7 @@ Options:
         "pear_full_log.txt"
 
 *    -s, --summary_log <file> <br>
-        The location to write teh PEAR summary log file. Default is
+        The location to write the PEAR summary log file. Default is
         "pear_summary_log.txt"
 
 *    -h, --help <br>
