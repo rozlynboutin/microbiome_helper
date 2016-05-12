@@ -1,5 +1,3 @@
-<img src="https://github.com/favicon.ico" width="48">
-
 These are the answers to the questions from the Metagenomics Tutorial
 
 Taxonomic section:
