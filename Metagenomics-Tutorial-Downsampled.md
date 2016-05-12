@@ -228,7 +228,7 @@ A new window will show a list of all the Genera. You can filter this list to jus
 
 You can also order the list of Genera by the most significant by clicking on the "corrected p-value" header. Now if you click on the feature "g_Granulicatella" you should see a bar chart representing the relative abundance for each sample for this Genera along with the mean value for the group indicated by a horizontal line. The plot should look like this:
 
-![](https://www.dropbox.com/s/q9bwtdse5q33ods/graniculata_downsampled.png?raw=1)
+<img src="https://www.dropbox.com/s/q9bwtdse5q33ods/graniculata_downsampled.png?raw=1" alt="graniculata" width="300" height="300">
 
 Explore each of the different visualizations by changing "Bar plot" to each of the other options available (e.g. Heatmap plot, Post-hoc plot, and Box plot).
 
