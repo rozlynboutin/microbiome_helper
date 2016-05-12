@@ -6,7 +6,7 @@ Taxonomic section:
 2. 10
 3. 60,000/sample
 4. MetaPhlAn version 2.5.0 (28 April 2015)
-5. s__Neisseria_unclassified	12.55
+5. s__Neisseria_unclassified	11.8%
 6. SRS015044: p__Actinobacteria & SRS015893: p_Firmicutes
 7. Phylum Candidatus_Saccharibacteria, Present only in sample SRS015044
 8. SRS015044 supragingival plaque
