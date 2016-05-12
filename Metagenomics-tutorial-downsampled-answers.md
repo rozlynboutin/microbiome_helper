@@ -27,5 +27,4 @@ Functional section:
 6. 5
 7. Higher in the tongue samples.
 8. Should look like this:
-
-<img src="https://www.dropbox.com/s/ns1oczsnxt78e1f/sig_pathways_downsampled.png?raw=1" width="500" height="600">
+![](https://www.dropbox.com/s/ns1oczsnxt78e1f/sig_pathways_downsampled.png?raw=1)
