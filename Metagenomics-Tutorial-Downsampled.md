@@ -191,7 +191,7 @@ On your screen you would see the commands that the microbiome helper script is r
 
 STAMP takes two main files as input the profile data which is a table that contains the abundance of features (i.e. taxonomic or functions) and a group metadata file which provides more information about each of the samples in the profile data file. 
 
-The metadata file is the **hmp_map.txt** file. This file is present already in the "hmp_metagenomics" directory.
+The metadata file is the **hmp_map.txt** file. This file is present already in the "hmp_metagenomics_downsampled" directory.
 You will also need the profile data file which is in a different format than what Metaphlan2 outputs. Therefore we first need to convert it using a script from the microbiome_helper package. You can convert the pre-computed Metaphlan2 output for all samples like this:
 
     metaphlan_to_stamp.pl pre-computed_results/metaphlan2_out/metaphlan_merged_all.txt > metaphlan_merged_all.spf
