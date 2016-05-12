@@ -206,7 +206,7 @@ Change the “Profile level” (top left) to “Genus”, ensure that the Group 
 
 You should now be looking at a PCA plot that is coloured by the samples being male or female like this:
 
-![](https://www.dropbox.com/s/znsu3uurh1bejsb/downsample_taxonomic_sex_PCA.png?raw=1)
+![](https://www.dropbox.com/s/hs3au04ftlsofyb/sex_PCA_taxonomy_downsampled_redone.png?raw=1)
 
 As you can see there is no obvious separation in the data points when coloured by sex of the person giving the sample. 
 
