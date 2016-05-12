@@ -7,7 +7,7 @@
     * [Metaphlan2 Output](#metaphlan2-output)
     * [Merging Metaphlan2 Results](#merging-metaphlan2-results)
     * [Running Metaphlan2 on a large number of samples](#running-metaphlan2-on-a-large-number-of-samples-using-microbiome-helper)
-    * [STAMP](#stamp)
+    * [Analyzing Metaphlan2 output with STAMP](#analyzing-metaphlan2-output-with-stamp)
   * [Determining Functional Composition with HUMAnN](#determining-functional-composition-with-humann)
     * [Running DIAMOND search against KEGG](#running-diamond-search-against-kegg)
     * [Running HUMAnN](#running-humann)
@@ -202,7 +202,7 @@ On your screen you would see the commands that the microbiome helper script is r
 ```
 **Q9)** Based on the above example commands being written to the screen, what directory would the Metaphlan2 individual output files be stored in?
 
-### STAMP
+### Analyzing Metaphlan2 output with STAMP
 
 STAMP takes two main files as input the profile data which is a table that contains the abundance of features (i.e. taxonomic or functions) and a group metadata file which provides more information about each of the samples in the profile data file. 
 
