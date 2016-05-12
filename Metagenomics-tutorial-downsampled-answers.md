@@ -1,3 +1,5 @@
+<img src="https://github.com/favicon.ico" width="48">
+
 These are the answers to the questions from the Metagenomics Tutorial
 
 Taxonomic section:
@@ -29,4 +31,4 @@ Functional section:
 7. Higher in the tongue samples.
 8. Should look like this:
 
-![](https://www.dropbox.com/s/ns1oczsnxt78e1f/sig_pathways_downsampled.png?raw=1)
+![](https://www.dropbox.com/s/ns1oczsnxt78e1f/sig_pathways_downsampled.png?raw=1)(https://github.com/favicon.ico)
