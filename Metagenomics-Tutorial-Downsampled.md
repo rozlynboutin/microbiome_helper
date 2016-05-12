@@ -251,7 +251,7 @@ First we will make a directory to store our sequence search outputs:
 
 Now we will run DIAMOND on our metagenomic sequences for the sample SRS015044:
  
-    diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -q ./fastq/SRS015044.fastq -a pre_humann/SRS015044
+    diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced.lowMem -q ./fastq/SRS015044.fastq -a pre_humann/SRS015044
 
 The options used in this command are:
 
