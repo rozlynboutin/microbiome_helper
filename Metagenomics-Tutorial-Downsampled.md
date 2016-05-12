@@ -198,7 +198,7 @@ You will also need the profile data file which is in a different format than wha
 
 As you can see this file takes the Metaphlan2 output file (from all the merged samples), which we already made for you, as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
 
-Now load the profile file (metaphlan_merged_all.spf and the metadata file (hmp_metadata.txt) files by going to "File->load data" within STAMP:
+Now load the profile file (metaphlan_merged_all.spf and the metadata file (hmp_map.txt) files by going to "File->load data" within STAMP:
 
 ![](https://www.dropbox.com/s/o20hvb0m2fsgcyq/STAMP_File_Menu.png?raw=1)
 
