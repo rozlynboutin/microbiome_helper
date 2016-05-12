@@ -234,6 +234,7 @@ Explore each of the different visualizations by changing "Bar plot" to each of t
 
 **Q11)** Create a box plot for the family Streptococcaceae (Change "Profile Level" to "Family" in the top left). Save the box plot as a .png image by using the File->Save plot feature in STAMP.
 
+You can exit STAMP once you're done with this section.
 
 ***
 
