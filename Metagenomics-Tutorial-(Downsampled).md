@@ -6,7 +6,7 @@
     * [Running Metaphlan2](#running-metaphlan2)
     * [Metaphlan2 Output](#metaphlan2-output)
     * [Merging Metaphlan2 Results](#merging-metaphlan2-results)
-    * [Running Metaphlan2 on a large number of samples using Microbiome Helper](#running-metaphlan2-on-a-large-number-of-samples-using-microbiome-helper)
+    * [Running Metaphlan2 on a large number of samples](#running-metaphlan2-on-a-large-number-of-samples-using-microbiome-helper)
     * [STAMP](#stamp)
   * [Determining Functional Composition with HUMAnN](#determining-functional-composition-with-humann)
     * [Running DIAMOND search against KEGG](#running-diamond-search-against-kegg)
