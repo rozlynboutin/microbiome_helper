@@ -240,7 +240,7 @@ You can exit STAMP once you're done with this section.
 
 ## Determining Functional Composition with HUMAnN
 
-We will now functionally annotate the metagenomes using HUMAnN.
+We will now functionally annotate the metagenomes using HUMAnN. If you are running this tutorial on our Virtual Box with low memory and a low # of CPUs then you should close everything else except for Terminal.
 
 ### Running DIAMOND search against KEGG
 
