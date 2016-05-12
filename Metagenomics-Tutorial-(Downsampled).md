@@ -6,7 +6,6 @@
     * [Running Metaphlan2](#running-metaphlan2)
     * [Metaphlan2 Output](#metaphlan2-output)
     * [Merging Metaphlan2 Results](#merging-metaphlan2-results)
-* [SampleID       Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis](#sampleid-------metaphlan2_analysis-----metaphlan2_analysis-----metaphlan2_analysis)
     * [Running Metaphlan2 on a large number of samples using Microbiome Helper](#running-metaphlan2-on-a-large-number-of-samples-using-microbiome-helper)
     * [STAMP](#stamp)
   * [Determining Functional Composition with HUMAnN](#determining-functional-composition-with-humann)
