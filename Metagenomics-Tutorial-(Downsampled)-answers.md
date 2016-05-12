@@ -1,6 +1,6 @@
 These are the answers to the questions from the Metagenomics Tutorial
 
-**Taxonomic section:**
+**Introduction and taxonomic section:**
 
 1. 30
 2. 10
