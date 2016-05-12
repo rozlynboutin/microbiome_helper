@@ -326,27 +326,43 @@ These files contain relative abundances for each of these different functional c
 
 The output should look like this:
 
-    ID      NAME    SRS015044-hit-keg-mpt-cop-nul-nve-nve   SRS015893-hit-keg-mpt-cop-nul-nve-nve   SRS097871-hit-keg-mpt-cop-nul-nve-nve    
-    InverseSimpson  InverseSimpson  63.9654 59.6469 62.4902    
-    Shannon Shannon 4.30945 4.25267 4.30185   
-    Pielou  Pielou  0.858922        0.847606        0.857407  
-    Richness        Richness        1       1       1  
-    ko00564 ko00564: Glycerophospholipid metabolism 0.00827982      0.00612454      0.00641725  
-    ko00680 ko00680: Methane metabolism     0.00564549      0.00529206      0.00536557  
-    ko00562 ko00562: Inositol phosphate metabolism  0.00241117      0.00268946      0.0048378   
-    ko00563 ko00563: Glycosylphosphatidylinositol(GPI)-anchor biosynthesis  5.69937e-05     0       0  
-    ko00561 ko00561: Glycerolipid metabolism        0.00496728      0.00468482      0.00548291  
+    ID      NAME    SRS015044-hit-keg-mpt-cop-nul-nve-nve   SRS015893-hit-keg-mpt-cop-nul-nve-nve   SRS097871-hit-keg-mpt-cop-nul-nve-nve
+    RANDSID RANDSID 763901136       764305738        
+    START   START   Q1_2009 Q2_2009  
+    GENDER  GENDER  female  male     
+    VISNO   VISNO   1       1        
+    STSite  STSite  Supragingival_plaque    Tongue_dorsum    
+    Parent_Specimen Parent_Specimen 700023699       700024548        
+    Run ID  Run ID  620DH   61NTL    
+    Lane    Lane    7       7        
+    SRS     SRS     700023699       700024548        
+    Mean Quality    Mean Quality            32.57    
+    Number of Quality Bases Number of Quality Bases         4175865122       
+    Percent of Human Reads  Percent of Human Reads          0.0348   
+    Unique Non-Human Bases  Unique Non-Human Bases          4359898255       
+    InverseSimpson  InverseSimpson  63.0934 59.9058 52.2271
+    Shannon Shannon 4.29404 4.249   4.15629
+    Pielou  Pielou  0.876722        0.867524        0.848597
+    Richness        Richness        1       1       1
+    ko00564 ko00564: Glycerophospholipid metabolism 0.00859336      0.0065723       0.00667417
+    ko00680 ko00680: Methane metabolism     0.00513046      0.00520955      0.00517978
+    ko00562 ko00562: Inositol phosphate metabolism  0.0029209       0.00343245      0.00543941
+    ko00563 ko00563: Glycosylphosphatidylinositol(GPI)-anchor biosynthesis  0.000187998     0       0
+    ko00561 ko00561: Glycerolipid metabolism        0.00500182      0.00491387      0.00500633
+
 
 * The first line indicates that the first column is a short id for the KEGG Pathway, the second column is a longer description of the KEGG Pathway, and the remaining columns represent the sample identifiers. 
-* The next 4 lines calculate different alpha-diversity metrics for each sample, but in general these are usually not that useful and can be ignored.
-* From lines 6 onwards each row indicates the different relative abundance for each KEGG Pathway. Note that these values are small because they have been normalized so that each sample will sum to 1. 
+* The next 13 lines contain metadata for each sample.
+* The following 4 lines (starting at "InverseSimpson") calculate different alpha-diversity metrics for each sample, but in general these are usually not that useful and can be ignored.
+* From line 19 onward, each row indicates the different relative abundance for each KEGG Pathway. Note that these values are small because they have been normalized so that each sample will sum to 1. 
+* It should be noted that whether metadata rows are included or not depends on your settings.
 
 Now, use less to look at the KO predictions and the KEGG Module predictions:
 
     less output/01b-hit-keg-cat.txt
     less output/04b-hit-keg-mpm-cop-nul-nve-nve.txt
 
-**Q1)** Which of the three samples has the highest relative abundance of the KEGG Module: “M00319: Manganese/zinc/iron transport system”?
+**Q1)** Which of the three samples has the lowest relative abundance of the KEGG Module: “M00319: Manganese/zinc/iron transport system”?
 
 ### Running all samples with Microbiome Helper
 
@@ -384,9 +400,10 @@ You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in 
 
 Your output should look like this:
 
-    vagrant@MicrobiomeHelper:~/Desktop/hmp_metagenomics ls
-    fastq        kos.spf                   metaphlan_merged.txt  pathways.spf          SRS015044.txt  SRS097871.txt
-    hmp_map.txt  metaphlan_merged_all.spf  modules.spf           pre-computed_results  SRS015893.txt
+    vagrant@MicrobiomeHelper:~/Desktop/hmp_metagenomics_downsampled$ ls
+    fastq        kos.spf                   metaphlan_merged.txt  pathways.spf          pre_humann     SRS015893.txt
+    hmp_map.txt  metaphlan_merged_all.spf  modules.spf           pre-computed_results  SRS015044.txt  SRS097871.txt
+
 
 
 ### STAMP with HUMAnN Output
