@@ -24,7 +24,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 * Open this tutorial within the Microbiome Helper VirtualBox
 * Download the tutorial data, save it to the Desktop (within Ubuntu), and extract the files. 
 
-## Main Lab Steps
+# Main Lab Steps
 ### Explore Samples
 
 Open a terminal/console and change to the directory containing the tutorial data.
