@@ -217,8 +217,7 @@ Now change the group field (top right) to “body_site” and the PCA will be co
 Now lets test what is significantly different between the groups at the Genus rank. 
 
 Under the “Multiple groups” dialog on the left, check that ANOVA is being used as the statistical test, and select “Benjamini-Hochberg FDR” for the multiple test correction. The box at bottom will say how the “Number of active features” using these set of statistics and should indicate that there are 3 organisms at the genus level that are statistically different in their means across the three body sites. 
-
-![](https://www.dropbox.com/s/6xxroa5z4jwno5s/taxonomy_bodytype_downsampled_setup.png?raw=1)
+<img src="https://www.dropbox.com/s/6xxroa5z4jwno5s/taxonomy_bodytype_downsampled_setup.png?raw=1" alt="body_site config" width="200" height="300">
 
 Now lets look at visualizations of these different taxonomic groups. 
 
