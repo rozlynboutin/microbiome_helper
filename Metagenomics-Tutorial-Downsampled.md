@@ -68,7 +68,7 @@ Now we are going to run Metaphlan2 on the sample "SRS015044".
 
 First change back to your working directory:
 
-    cd ~/Desktop/hmp_metagenomics
+    cd ~/Desktop/hmp_metagenomics_downsampled
 
 Now we are going to run Metaphlan2 on a single example with the following (long) command:
     
