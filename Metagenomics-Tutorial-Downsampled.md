@@ -352,7 +352,7 @@ So what about all of our samples? To do the DIAMOND searches for all 30 you coul
 
     run_pre_humann.pl -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -o pre_humann ./fastq/*
 
-However, this would take several hours to complete (this is much faster when more CPUs are used). The HUMAnN step would take an additional 10 minutes to complete.  
+However, this would take several hours to complete (this is much faster when more CPUs are used). The HUMAnN step would take at least 10 minutes to complete.  
 
 To make things easier the output for all 30 samples has been pre-computed and is located in  “./pre-computed_results/humann_output”. 
 
