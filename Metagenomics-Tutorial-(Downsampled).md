@@ -1,3 +1,21 @@
+  * [Introduction](#introduction)
+  * [Requirements](#requirements)
+  * [Initial Setup](#initial-setup)
+* [Main Lab Steps](#main-lab-steps)
+    * [Explore Samples](#explore-samples)
+  * [Taxonomic Profiling with Metaphlan2](#taxonomic-profiling-with-metaphlan2)
+    * [Running Metaphlan2](#running-metaphlan2)
+    * [Metaphlan2 Output](#metaphlan2-output)
+    * [Merging Metaphlan2 Results](#merging-metaphlan2-results)
+* [SampleID       Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis](#sampleid-------metaphlan2_analysis-----metaphlan2_analysis-----metaphlan2_analysis)
+    * [Running Metaphlan2 on a large number of samples using Microbiome Helper](#running-metaphlan2-on-a-large-number-of-samples-using-microbiome-helper)
+    * [STAMP](#stamp)
+  * [Determining Functional Composition with HUMAnN](#determining-functional-composition-with-humann)
+    * [Running DIAMOND search against KEGG](#running-diamond-search-against-kegg)
+    * [Running HUMAnN](#running-humann)
+    * [Running all samples with Microbiome Helper](#running-all-samples-with-microbiome-helper)
+    * [STAMP with HUMAnN Output](#stamp-with-humann-output)
+
 ## Introduction
 
 This tutorial is set-up to walk you through the process of determining the taxonomic and functional composition of several metagenomic samples. It covers the use of [Metaphlan2](http://huttenhower.sph.harvard.edu/metaphlan2) (for taxonomy), [HUMAnN](https://huttenhower.sph.harvard.edu/humann) (for functional) and [STAMP](http://kiwi.cs.dal.ca/Software/STAMP) (for visualization and statistical evaluation).  
