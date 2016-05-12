@@ -15,10 +15,7 @@ Taxonomic section:
 
 11. You should see this plot:
 
-<img src="https://www.dropbox.com/s/vyko1vrbsyax5z1/taxonomy_f_streptococcaceae_boxplot.png?raw=1" alt="alt text" width="500" height="500">
-
-![](https://www.dropbox.com/s/vyko1vrbsyax5z1/taxonomy_f_streptococcaceae_boxplot.png?raw=1)
-
+<img src="https://www.dropbox.com/s/vyko1vrbsyax5z1/taxonomy_f_streptococcaceae_boxplot.png?raw=1" alt="alt text" width="500" height="600">
 
 Functional section:
 
@@ -31,4 +28,4 @@ Functional section:
 7. Higher in the tongue samples.
 8. Should look like this:
 
-![](https://www.dropbox.com/s/ns1oczsnxt78e1f/sig_pathways_downsampled.png?raw=1)(https://github.com/favicon.ico)
+<img src="https://www.dropbox.com/s/ns1oczsnxt78e1f/sig_pathways_downsampled.png?raw=1" width="500" height="600">
