@@ -358,7 +358,7 @@ To make things easier the output for all 30 samples has been pre-computed and is
 
 If you browse the output using _less_ you can see that they are in the same format but with 30 columns representing the 30 samples:
 
-    cd /home/vagrant/Desktop
+    cd /home/vagrant/Desktop/hmp_metagenomics_downsampled
     less ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
 
 You will notice that the output looks fairly messy because the terminal will automatically line wrap and it becomes hard to see where one line ends and the next begins. I often find the "cut" command useful to browse data like this. "cut" allows you to just look at particular columns from the data. For example:
