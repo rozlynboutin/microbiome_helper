@@ -114,7 +114,7 @@ This output file provides summaries at each taxonomic level (e.g. phylum, class,
 
 If reads can only be assigned to a certain taxonomic level (e.g. say the family level), then metaphlan will put those unassigned reads into a lower level taxonomic rank with the name "unclassified" appended.
 
-For example lets pull out all the reads assigned to the genus "Veillonella" using the ''grep'' command:
+For example lets pull out all the reads assigned to the genus _Veillonella_ using the _grep_ command:
 
     grep g__Veillonella SRS015044.txt
 
@@ -127,7 +127,7 @@ k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae
 k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_parvula|t__Veillonella_parvula_unclassified	9.97732
 ```
 
-You can see that 10.85% of the metagenome is predicted from organisms in the genus Veillonella. Of those ~9.98% are assigned to the species _Veillonella parvula_, while ~0.88% are assigned to s__Veillonella_unclassified which means Metaphlan2 doesn't know what species to actually call them. 
+You can see that 10.85% of the metagenome is predicted from organisms in the genus _Veillonella_. Of those ~9.98% are assigned to the species _Veillonella parvula_, while ~0.88% are assigned to s__Veillonella_unclassified which means Metaphlan2 doesn't know what species to actually call them. 
 
 **Q5)** What is the relative abundance of organisms unclassified at the species level for the genus _Neisseria_ in sample SRS015044? (Remember to use the grep command)
  
