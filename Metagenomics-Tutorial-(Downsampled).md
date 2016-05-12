@@ -42,7 +42,9 @@ This lab component will use samples collected and sequenced through the Human Mi
 
 ### Explore Samples
 
-Open a terminal/console and change to the directory containing the tutorial data (copy and paste the below command with your mouse, you probably wont be able to copy/paste text in the VBox with keyboard commands):
+Open a terminal/console and change to the directory containing the tutorial data:
+
+(copy and paste the below command with your mouse, you probably wont be able to copy/paste text in the VBox with keyboard commands)
 
     cd ~/Desktop/hmp_metagenomics_downsampled
 
