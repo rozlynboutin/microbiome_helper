@@ -1,7 +1,9 @@
-We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can be used to run the Microbiome Helper pipeline, which can be [downloaded here](https://www.dropbox.com/s/ltbeoe29c9au8bm/MicrobiomeHelper_v0.2.0.tar.gz?dl=1) (9.6 GB - compressed folder). See the README contained with the download for information on how to install on Windows, Mac or Linux.
+We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can be used to run the Microbiome Helper pipeline. The latest version (v2.1.0) can be [downloaded here](https://www.dropbox.com/s/vj0ke0ig7zpvieb/MicrobiomeHelper_v2.1.0.ova?dl=1) (11.7 GB - OVA file). This OVA file requires VirtualBox (https://www.virtualbox.org/wiki/Downloads) to install and will take up ~22 GB of disk space when installed.
 
-The current latest version is v0.2.0. Note that this image is **still experimental** and will continually be updated.
+You can [follow the instructions here](https://www.maketecheasier.com/import-export-ova-files-in-virtualbox) for how to install OVA files in VirtualBox.
 
-Note that this image requires installation of VirtualBox (https://www.virtualbox.org/wiki/Downloads) and Vagrant (http://www.vagrantup.com/downloads.html). For Mac users, the current version of VirtualBox should be installed for OSX 10.8 and higher, whereas those using earlier iterations should download VirtualBox Version 4.3. If you are using an older OS X and receive an error message when trying to run the Microbiome Helper shell using the current version of Vagrant, you may need to install an older version (sub-1.8.0).
+If you get a "VT-x/AMD-V hardware acceleration" error when booting for the first time, you might be able to fix it by following the steps here: http://www.itworld.com/article/2981515/virtualization/virtualbox-diagnose-and-fix-vt-xamd-v-hardware-acceleration-errors.html
+
+On older computers it's possible that you wont be able to run a 64-bit virtual machine. If you're hoping to use this virtual box for a tutorial it might be better to run through the tutorial before or after the session on a different computer.
 
 Please email gavin[dot]douglas[at]dal[dot]ca if you have any questions or issues!
