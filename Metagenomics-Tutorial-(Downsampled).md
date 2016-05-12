@@ -1,7 +1,7 @@
   * [Introduction](#introduction)
-  * [Requirements](#requirements)
-  * [Initial Setup](#initial-setup)
-  * [Explore Samples](#explore-samples)
+    * [Requirements](#requirements)
+    * [Initial Setup](#initial-setup)
+    * [Explore Samples](#explore-samples)
   * [Taxonomic Profiling with Metaphlan2](#taxonomic-profiling-with-metaphlan2)
     * [Running Metaphlan2](#running-metaphlan2)
     * [Metaphlan2 Output](#metaphlan2-output)
@@ -15,7 +15,7 @@
     * [Running all samples with Microbiome Helper](#running-all-samples-with-microbiome-helper)
     * [STAMP with HUMAnN Output](#stamp-with-humann-output)
 
-## Introduction
+# Introduction
 
 This tutorial is set-up to walk you through the process of determining the taxonomic and functional composition of several metagenomic samples. It covers the use of [Metaphlan2](http://huttenhower.sph.harvard.edu/metaphlan2) (for taxonomy), [HUMAnN](https://huttenhower.sph.harvard.edu/humann) (for functional) and [STAMP](http://kiwi.cs.dal.ca/Software/STAMP) (for visualization and statistical evaluation).  
 
