@@ -15,7 +15,7 @@ Taxonomic section:
 
 11. You should see this plot:
 
-![](https://www.dropbox.com/s/vyko1vrbsyax5z1/taxonomy_f_streptococcaceae_boxplot.png?raw=1)
+![](https://www.dropbox.com/s/vyko1vrbsyax5z1/taxonomy_f_streptococcaceae_boxplot.png?raw=1=250x250)
 
 
 Functional section:
