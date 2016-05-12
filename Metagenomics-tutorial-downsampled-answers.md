@@ -1,6 +1,6 @@
 These are the answers to the questions from the Metagenomics Tutorial
 
-Taxonomic section:
+**Taxonomic section:**
 
 1. 30
 2. 10
@@ -15,9 +15,9 @@ Taxonomic section:
 
 11. You should see this plot:
 
-<img src="https://www.dropbox.com/s/vyko1vrbsyax5z1/taxonomy_f_streptococcaceae_boxplot.png?raw=1" alt="alt text" width="500" height="500">
+<img src="https://www.dropbox.com/s/vyko1vrbsyax5z1/taxonomy_f_streptococcaceae_boxplot.png?raw=1" alt="boxplot_answer" width="500" height="500">
 
-Functional section:
+**Functional section:**
 
 1. SRS015893
 2. No
