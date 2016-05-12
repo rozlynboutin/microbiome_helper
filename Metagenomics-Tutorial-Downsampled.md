@@ -29,7 +29,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 
 Open a terminal/console and change to the directory containing the tutorial data.
 
-    cd ~/Desktop/hmp_metagenomics
+    cd ~/Desktop/hmp_metagenomics_downsampled
 
 The tutorial data consists of a "map file" containing information about each of the samples called **hmp_map.txt**, along with the sequence data for each sample being contained within a separate fastq file within the directory **fastq**.
 
