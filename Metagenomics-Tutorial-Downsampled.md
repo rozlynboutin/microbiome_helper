@@ -74,14 +74,14 @@ Now we are going to run Metaphlan2 on a single example with the following (long)
     
     metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map --nproc 2 -o SRS015044.txt fastq/SRS015044.fastq
 
-The command will run for 1-2 minutes on this single sample.
+The command will run for 1-2 minutes on this single sample (it'll be faster if you have more CPUs enabled, see the _nproc_ option described below).
 
 The command line parameters are:
 * `--mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan2 marker database is located which contains metadata information about each of the markers
 * `--input_type fastq`: Indicates that our input files are in fastq format. (If we wanted to use fasta files as input then we would change this to 'fasta').
 * `--bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
 * `--no_map` We use this flag to prevent Metaphlan2 from storing the intermediate bowtie output files. 
-* '--nproc 2' Indicates that 2 cores should be used to run this program, but will only work if you have enabled 2 cores already!
+* '--nproc 2' Indicates that 2 cores should be used to run this program, but will only work if you have enabled at least 2 cores already, otherwise only 1 core will be used.
 * `-o SRS015044.txt`: Indicates the name of output file that Metaphlan2 will use to write results to.
 * `fastq/SRS015044.fastq`: Metaphlan2 takes the input file containing our metagenomic reads as the last argument
 
