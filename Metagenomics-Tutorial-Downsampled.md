@@ -296,7 +296,7 @@ Now, we are going to run HUMAnN on the sample you processed along with the two w
 
     rm /home/shared/humann-0.99/input/*txt 
     rm /home/shared/humann-0.99/output/*
-    ln -s $PWD/pre_humann/* /home/shared/humann-0.99/input
+    ln -s $PWD/pre-computed_results/diamond_alignments/*txt /home/shared/humann-0.99/input
 
 Then move into the HUMAnN directory:
  
