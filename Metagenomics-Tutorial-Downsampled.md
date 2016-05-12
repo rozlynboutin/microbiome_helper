@@ -298,6 +298,8 @@ Now, we are going to run HUMAnN on the sample you processed along with the two w
     rm /home/shared/humann-0.99/output/*
     ln -s $PWD/pre-computed_results/diamond_alignments/*txt /home/shared/humann-0.99/input
 
+(It's ok if the 'rm' commands give the error "No such file or directory", I just added that in to make sure no previous files will mess up HUMAnN).
+
 Then move into the HUMAnN directory:
  
     cd /home/shared/humann-0.99
