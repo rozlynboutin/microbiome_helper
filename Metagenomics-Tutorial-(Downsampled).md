@@ -1,8 +1,7 @@
   * [Introduction](#introduction)
   * [Requirements](#requirements)
   * [Initial Setup](#initial-setup)
-* [Main Lab Steps](#main-lab-steps)
-    * [Explore Samples](#explore-samples)
+  * [Explore Samples](#explore-samples)
   * [Taxonomic Profiling with Metaphlan2](#taxonomic-profiling-with-metaphlan2)
     * [Running Metaphlan2](#running-metaphlan2)
     * [Metaphlan2 Output](#metaphlan2-output)
@@ -42,7 +41,6 @@ This lab component will use samples collected and sequenced through the Human Mi
 * Open this tutorial within the Microbiome Helper VirtualBox
 * Download the tutorial data, save it to the Desktop (within Ubuntu), and extract the files. 
 
-# Main Lab Steps
 ### Explore Samples
 
 Open a terminal/console and change to the directory containing the tutorial data.
