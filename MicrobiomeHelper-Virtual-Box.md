@@ -2,7 +2,7 @@ We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can b
 
 You can [follow the instructions here](https://www.maketecheasier.com/import-export-ova-files-in-virtualbox) for how to install OVA files in VirtualBox.
 
-If you get a "VT-x/AMD-V hardware acceleration" error when booting for the first time, you might be able to fix it by following the steps here: http://www.itworld.com/article/2981515/virtualization/virtualbox-diagnose-and-fix-vt-xamd-v-hardware-acceleration-errors.html
+If you get a "VT-x/AMD-V hardware acceleration" error when booting for the first time, you might be able to fix it by [following the steps here](http://www.itworld.com/article/2981515/virtualization/virtualbox-diagnose-and-fix-vt-xamd-v-hardware-acceleration-errors.html).
 
 On older computers it's possible that you wont be able to run a 64-bit virtual machine. If you're hoping to use this virtual box for a tutorial it might be better to run through the tutorial before or after the session on a different computer.
 
