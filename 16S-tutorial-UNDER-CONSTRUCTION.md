@@ -4,10 +4,17 @@ This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S s
 
 Throughout the tutorial there will be questions to help you learn. The [answers are here](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-answers).
 
+Author: Gavin Douglas   
+
+First created: Fall 2015  
+
+Last edited: Spring 2016  
+
 ### Requirements
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * The exact commands we'll be running assume that you're running this tutorial on our [Ubuntu Desktop virtual box](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box). If you are running it elsewhere just be aware you will need to change the file paths. 
 * Download the [tutorial dataset](https://www.dropbox.com/s/r2jqqc7brxg4jhx/16S_chemerin_tutorial.zip?dl=1) (9 MB). I'm assuming the unzipped folder will be in your Desktop.
+* We will be following [our 16S pipeline](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure) (version from May 2016), which uses several wrapper scripts to help automate running many files.
 
 ### Background
 This dataset was originally used in a project to determine whether knocking out the protein [chemerin](https://en.wikipedia.org/wiki/Chemerin) affects gut microbial composition. Originally 116 mouse samples acquired from two different facilities were used for this project (**only 24 samples were used in this tutorial dataset, for simplicity**). Metadata associated with each sample is indicated in the mapping file (map.txt). In this mapping file the genotypes of interest can be seen: wildtype (WT and WT_BZ), chemerin knockout (chemerin_KO), chemerin receptor knockout (CMKLR1_KO) and a heterozygote for the receptor knockout (HET). Also of importance are the two source facilities: "BZ" and "CJS". It is generally a good idea to include as much metadata as possible, since this data can easily be explored later on.
@@ -27,7 +34,7 @@ You should see this:
     vagrant@MicrobiomeHelper:~/Desktop/16S_chemerin_tutorial$ ls
     fastq  map.txt
  
-"fastq" is the directory containing all the sequencing files, which we are going to process. "map.txt" contains metadata about the samples. We can look at it with the _less_ command:
+"fastq" is the directory containing all the sequencing files, which we are going to process. "map.txt" contains metadata about the samples. We can look at it with the _less_ command (hit "q" to exit):
 
     less map.txt
 
@@ -40,13 +47,23 @@ Here is what the first 4 lines should look like:
     106CHE6WT                       106CHE6WT_S336_L001.assembled_filtered.nonchimera.fasta BZ      BZ26    7       WT      wk6
     107CHE6KO                       107CHE6KO_S347_L001.assembled_filtered.nonchimera.fasta BZ      BZ27    7       chemerin_KO     wk6
 
-**Q1)** Based on the _Source_ columnm, 
- 
+**Q1)** Based on the _Source_ column, how many samples are from each of the "BZ" and "CJS" source facilities?
+
+Now list the filenames in the fastq folder and take a look at one of the files  You can get the number of lines in a file with this command (where "FILENAME" should a file):
+
+    wc -l FILENAME 
+
+**Q2)** How many reads are in each file? Note that the raw reads are in [FASTQ format](https://en.wikipedia.org/wiki/FASTQ_format). 
+
+You can get the number of FASTQ files in the directory with this command:
+
+    ls *fastq | wc -l
+
+**Q3)** Why isn't the number of FASTQ files equal to the number of samples?
+
 ### Stitch paired-end reads together
 
-The raw reads are in [FASTQ format](https://en.wikipedia.org/wiki/FASTQ_format) and (in this case) paired-end. 
-
-We first stitch the paired-end reads together using PEAR (~50 min on 4 CPUs):
+To start processing the data, we first need to stitch the paired-end reads together using PEAR:
 
     run_pear.pl -p 4 -o stitched_reads raw_data/*
 
