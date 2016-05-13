@@ -5,15 +5,16 @@ This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S s
 ### Requirements
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * The exact commands we'll be running assume that you're running this tutorial on our [Ubuntu Desktop virtual box](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box). If you are running it elsewhere just be aware you will need to change the file paths. 
-* Download the [tutorial dataset](https://www.dropbox.com/s/8zyc5oh6tlihh69/16S_chemerin_tutorial_downsampled.zip?dl=1) (51 MB). I'm assuming the unzipped folder will be in your Desktop.
+* Download the [tutorial dataset](https://www.dropbox.com/s/r2jqqc7brxg4jhx/16S_chemerin_tutorial.zip?dl=1) (51 MB). I'm assuming the unzipped folder will be in your Desktop.
 
 ### Background
 This dataset was originally used in a project to determine whether knocking out the protein [chemerin](https://en.wikipedia.org/wiki/Chemerin) affects gut microbial composition. 116 mouse samples acquired from two different facilities were used for this project. Metadata associated with each sample is indicated in the mapping file (map.txt). In this mapping file the genotypes of interest can be seen: wildtype (WT and WT_BZ), chemerin knockout (chemerin_KO), chemerin receptor knockout (CMKLR1_KO) and a heterozygote for the receptor knockout (HET). Also of importance are the two source facilities: "BZ" and "CJS". It is generally a good idea to include as much metadata as possible, since this data can easily be explored later on.
 
 ## Pre-processing
 
-After downloading and unzipping the dataset above, take a look at the contents.
+After downloading and unzipping the dataset above, open Terminal and go to the dataset's directory:
 
+    cd ~/Desktop/16S_chemerin_tutorial
 
  
 ### Stitch paired-end reads together
