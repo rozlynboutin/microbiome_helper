@@ -9,7 +9,7 @@ These are the answers to the questions from the Metagenomics Tutorial
 5. s__Neisseria_unclassified	11.8%
 6. SRS015044: p__Actinobacteria & SRS015893: p_Firmicutes
 7. Phylum Candidatus_Saccharibacteria, present only in sample SRS015044
-8. Sample SRS015044 was is from supragingival plaque
+8. Sample SRS015044 was from supragingival plaque
 9. metaphlan_out
 10. Yes, there is separation between the tongue samples and the plaque samples but there is no clear separation between subgingival and supragingival. The separation occurs mainly along PCs 1 and 2: ![](https://www.dropbox.com/s/96bistjnv53r3iv/bodysite_PCA_taxonomy_downsample.png?raw=1)
 
