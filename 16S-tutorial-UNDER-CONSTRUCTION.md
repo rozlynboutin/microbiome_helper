@@ -31,6 +31,8 @@ You should see this:
 
 You can see the first column is the sample IDs, the next 2 are blank (note the file is tab-delimited, meaning each column is separated by a tab, not just whitespace) and the 4th column contains fasta filenames (these filenames are based on what _we will_ produce in this pipeline). The rest of the columns are metadata about the samples.
 
+Here is what the first 4 lines should look like:
+
     #SampleID       BarcodeSequence LinkerPrimerSequence    FileInput       Source  Mouse#  Cage#   genotype        SamplingWeek
     105CHE6WT                       105CHE6WT_S325_L001.assembled_filtered.nonchimera.fasta BZ      BZ25    7       WT      wk6
     106CHE6WT                       106CHE6WT_S336_L001.assembled_filtered.nonchimera.fasta BZ      BZ26    7       WT      wk6
