@@ -104,7 +104,7 @@ In the output folder(s) an HTML file is created for each FASTQ file (or 1 file i
 
 ![](https://www.dropbox.com/s/0xdtcs05q1sfev1/combined_fastqc.png?raw=1)
 
-You can see the full FastQC report for all stitched reads combined [here](https://www.dropbox.com/s/qm0ush9o8u8s399/combined_fastqc.html).
+You can see the full FastQC report for all stitched reads combined [here](https://www.dropbox.com/s/rs3jmeao3s9vaip/combined_fastqc.html).
   
 ### Read filtering based on quality and length
 
@@ -128,9 +128,9 @@ To confirm that the reads were filtered like we wanted we can re-generate the co
     mv stdin_fastqc.zip combined_filtered_fastqc.zip
 
 Here is the corresponding distribution of quality scores after filtering the reads:
-![](https://www.dropbox.com/s/s45mmmjx49pnmia/combined_stitched_filtered_FastQC.jpg?raw=1)
+![](https://www.dropbox.com/s/aa6isdfhtg5lahd/combined_fastqc_filtered.png?raw=1)
 
-As before, if you'd like to see more details (such as how the read length distribution has changed), you can see that [here](https://www.dropbox.com/s/d3wbvrdfqpnkpz1/combined_filtered_fastqc.html).
+As before, if you'd like to see more details (such as how the read length distribution has changed), you can see that [here](https://www.dropbox.com/s/bg6mzz6gawlpa7q/combined_filtered_fastqc.html).
 
   
 ### Convert to FASTA and remove chimeric reads
