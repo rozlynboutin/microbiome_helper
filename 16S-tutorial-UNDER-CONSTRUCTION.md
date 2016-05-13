@@ -176,7 +176,7 @@ Several parameters for this program can be specified into a text file, which wil
 
     echo "pick_otus:threads 1" >> clustering_params.txt
     echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
-    echo "pick_otus:sortmerna_db /home/shared/pick_otu_indexdb_rna/97_otus"
+    echo "pick_otus:sortmerna_db /home/shared/pick_otu_indexdb_rna/97_otus" >> clustering_params.txt
 
 We will be using the sortmerna_sumaclust method of OTU picking and subsampling 10% of failed reads for de novo clustering. Lowering the "-s" parameter's value will greatly affect running speed. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7.8 hours on 4 CPUs.
 
