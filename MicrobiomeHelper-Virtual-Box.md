@@ -1,4 +1,4 @@
-We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can be used to run the Microbiome Helper pipeline. The latest version (v2.1.1) can be [downloaded here](https://www.dropbox.com/s/n0agn92j8xkq6hk/MicrobiomeHelper_v2.1.1.ova?dl=1) (11.7 GB - OVA file). This OVA file requires VirtualBox (https://www.virtualbox.org/wiki/Downloads) to install and will take up ~22 GB of disk space when installed.
+We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can be used to run the Microbiome Helper pipeline. The latest version (v0.2.1.1) can be [downloaded here](https://www.dropbox.com/s/n0agn92j8xkq6hk/MicrobiomeHelper_v2.1.1.ova?dl=1) (11.7 GB - OVA file). This OVA file requires VirtualBox (https://www.virtualbox.org/wiki/Downloads) to install and will take up ~22 GB of disk space when installed.
 
 You can [follow the instructions here](https://www.maketecheasier.com/import-export-ova-files-in-virtualbox) for how to install OVA files in VirtualBox.
 
