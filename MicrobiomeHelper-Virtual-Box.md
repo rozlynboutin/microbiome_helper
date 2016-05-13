@@ -14,6 +14,3 @@ We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can b
 ## Notes
 * During the import step (or later in settings) you can change the default amount of RAM and number of CPU available for use by the VirtualBox. This will make computation time faster.
 * If you get a "VT-x/AMD-V hardware acceleration" error when booting for the first time, you might be able to fix it by [following the steps here](http://www.itworld.com/article/2981515/virtualization/virtualbox-diagnose-and-fix-vt-xamd-v-hardware-acceleration-errors.html).
-
-
-Please email gavin[dot]douglas[at]dal[dot]ca if you have any questions or issues!
