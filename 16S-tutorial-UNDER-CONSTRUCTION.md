@@ -4,6 +4,8 @@ This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S s
 
 Throughout the tutorial there will be questions to help you learn. The [answers are here](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-answers).
 
+Also, be aware that for real datasets the run-times (and memory requirements) for these commands will greatly increase.
+
 Author: Gavin Douglas   
 
 First created: Fall 2015  
@@ -178,13 +180,15 @@ Several parameters for this program can be specified into a text file, which wil
     echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
     echo "pick_otus:sortmerna_db /home/shared/pick_otu_indexdb_rna/97_otus" >> clustering_params.txt
 
-We will be using the sortmerna_sumaclust method of OTU picking and subsampling 10% of failed reads for de novo clustering. Lowering the "-s" parameter's value will greatly affect running speed. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7.8 hours on 4 CPUs.
+We will be using the sortmerna_sumaclust method of OTU picking and subsampling 10% of failed reads for de novo clustering. Lowering the "-s" parameter's value will greatly affect running speed. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7 min with 1 CPU (note you may run into problems if the virtual box isn't using at least 2GB of RAM).
 
     pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1  
 
 We will now remove low confidence OTUs, i.e. those that are called by a low number of reads. It's difficult to choose a hard cut-off for how many reads are needed for an OTU to be confidently called, since of course OTUs are often at low frequency within a community. A reasonable approach is to remove any OTU identified by fewer than 0.1% of the reads (0.1% is the estimated amount of bleed through between runs on the Illumina Miseq):
 
     remove_low_confidence_otus.py -i $PWD/clustering/otu_table_mc1_w_tax_no_pynast_failures.biom -o $PWD/clustering/otu_table_high_conf.biom
+
+Since we are just doing a test run with a low number of sequences the cut-off is at 1 OTU anyway, but this is an important step with real datasets.
 
 We can compare the summaries of these two BIOM files:
 
@@ -193,41 +197,47 @@ We can compare the summaries of these two BIOM files:
     biom summarize-table -i clustering/otu_table_high_conf.biom -o clustering/otu_table_high_conf_summary.txt
 
 The first four lines of clustering/otu_table_mc1_w_tax_no_pynast_failures_summary.txt are:
-* Num samples: 116
-* Num observations: 140817
-* Total count: 4205125
-* Table density (fraction of non-zero values): 0.032
+   
+    Num samples: 24
+    Num observations: 2434
+    Total count: 12040
+    Table density (fraction of non-zero values): 0.097
 
-This means that for the 116 separate samples, 140,817 OTUs were called based on 4,205,125 reads. Only 3.2% of the values in the sample x OTU table are non-zero (meaning that most OTUs are in a small number of samples).
+This means that for the 24 separate samples, 2434 OTUs were called based on 12040 reads. Only 9.7% of the values in the sample x OTU table are non-zero (meaning that most OTUs are in a small number of samples).
 
 In contrast, the first four lines of  clustering/otu_table_high_conf_summary.txt are:
-* Num samples: 116
-* Num observations: 4558
-* Total count: 3840858
-* Table density (fraction of non-zero values): 0.408
 
-The number of OTUs has dropped from 140,817 to 4,558 (kept only 3.2% of the OTUs!). However, the numbers of reads only dropped from 4,204,125 to 3,840,858 (so 91% of the reads were kept!). You can also see that the table density went up by a lot as well, as we would expect.
+    Num samples: 24
+    Num observations: 887
+    Total count: 10493
+    Table density (fraction of non-zero values): 0.194
+
+
+The number of OTUs has dropped from 2434 to 887 (kept only 36% of the OTUs! This is generally even more drastic for bigger datasets). However, the numbers of reads only dropped from 12040 to 10493 (so 87% of the reads were kept). You can also see that the table density went up by as well, as we would expect.
 
 We now need to subsample the number of reads for each sample to the same depth (rarefaction), which is necessary for several downstream analyses. There is actually quite a lot of debate about whether rarefaction is necessary (since it throws out data!), but it is still the standard method used in microbiome studies. We want to rarify the read depth to the sample with the lowest "reasonable" number of reads. Of course, a "reasonable" read depth is quite subjective and depends on how much variation there is between samples. 
 
 You can look at the read depth per sample in clustering/otu_table_high_conf_summary.txt, here are the first five samples (they are sorted from smallest to largest):
 
-* Counts/sample detail:
-* 57CMK8WT: 12452.0
-* 31CMK6WT: 12518.0
-* 47CMK8KO: 14749.0
-* 75CMK8KO: 14760.0
-* 105CHE6WT: 15540.0
+    Counts/sample detail:
+    106CHE6WT: 388.0
+    111CHE6KO: 402.0
+    39CMK6KO: 405.0
+    79CMK8KO: 408.0
+    113CHE6WT: 411.0
 
-We will rarify to 12,452 reads, since the lowest depth is not a major outlier:
+**Note that this is a test dataset and you normally would rarify to a larger read count** (typically in the 1000s).
 
-    single_rarefaction.py -i clustering/otu_table_high_conf.biom -o final_otu_tables/otu_table.biom -d 12452
+We will rarify to 380 reads, since the lowest depth is not a major outlier (for this dataset):
 
-This QIIME command produced another BIOM table with each sample rarified to 12,452 reads. In this case no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in low-frequency OTUs being lost from the analysis.
+    mkdir final_otu_tables
+    single_rarefaction.py -i clustering/otu_table_high_conf.biom -o final_otu_tables/otu_table.biom -d 380
+
+This QIIME command produced another BIOM table with each sample rarified to 380 reads. In this case no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in low-frequency OTUs being lost from the analysis.
 
 ### Diversity analyses
 
-We will now create Unifrac beta diversity (both weighted and unweighted) PCA plots:
+We will now create Unifrac beta diversity (both weighted and unweighted) principal coordinates analysis (PCoA, which slightly different from PCA) plots ( < 1 min on 1 CPU):
 
     beta_diversity_through_plots.py -m map.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table.biom -o plots/bdiv_otu
 
@@ -236,27 +246,27 @@ This QIIME script takes as input the final OTU table as well as file which conta
 * plots/bdiv_otu/weighted_unifrac_emperor_pcoa_plot/index.html
 * plots/bdiv_otu/unweighted_unifrac_emperor_pcoa_plot/index.html
 
-Open the weighted HTML file in your browser and take a look, you should see this PCA:
+Open the weighted HTML file in your browser and take a look, you should see this PCoA:
 
-![](https://www.dropbox.com/s/dotwkcw37c16jcu/16S_tutorial_weighted_no_meta.jpg?raw=1)
+![](https://www.dropbox.com/s/s4xq5tv4txe4x6w/raw_weighted_PCoA.png?raw=1)
 
-The actual metadata we are most interested in for this dataset is the "genotype" column of the mapping file, which contains the different genotypes I described at the beginning of this tutorial. Go to the "color" tab of the Emperor plot (which is what we were just looking at) and change the selection from "BarcodeSequence" (default) to "genotype". You should see this:
+The actual metadata we are most interested in for this dataset is the "genotype" column of the mapping file, which contains the different genotypes I described at the beginning of this tutorial. Go to the "Colors" tab of the Emperor plot (which is what we were just looking at) and change the selection from "BarcodeSequence" (default) to "genotype". You should see this:
 
-![](https://www.dropbox.com/s/2n2kqv2l15nm2r5/16S_tutorial_weighted_genotype.jpg?raw=1)
+![](https://www.dropbox.com/s/kctky32shsoprfe/genotype_weighted_PCoA.png?raw=1)
 
-Hmm... There are two distinct groups of genotypes, but not the ones we want! It would have made more sense if the WT genotypes all grouped together and the two different chemerin KOs were a separate group. Instead it looks like half of the WTs are split across each group. The fact that all of the WT genotypes called "WT_BZ" gives an important clue of what is going on here - could it be possible that beta diversity is determined much more by which facility the mice came from rather than what genotype they have? To investigate this question we can simply change the selection under the "color" tab from "genotype" to "Source":
+Hmm... There are two distinct groups of genotypes, but not the ones we want! It would have made more sense if the WT genotypes all grouped together and the two different chemerin KOs were a separate group. Instead it looks like half of the WTs are split across each group. The fact that all of the WT genotypes called "WT_BZ" gives an important clue of what is going on here - could it be possible that beta diversity is determined much more by which facility the mice came from rather than what genotype they have? To investigate this question we can simply change the selection under the "Colors" tab from "genotype" to "Source":
 
-![](https://www.dropbox.com/s/n3fzy7g8fkvgjem/16S_tutorial_weighted_source.jpg?raw=1)
+![](https://www.dropbox.com/s/sgt2vsjazf0ma0t/source_weighted_PCoA.png?raw=1)
 
-Yes, there is a clear qualitative difference between the microbiota of mice from the two source facilities. This can also be seen based on rarefaction plots (alpha diversity plots, which show the OTU richness per sample; takes ~9 min on 4 CPU):
+Yes, there is a clear qualitative difference between the microbiota of mice from the two source facilities. This can also be seen based on rarefaction plots (alpha diversity plots, which show the OTU richness per sample; takes < 1 min on 1 CPU):
 
-    alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 1000 --max_rare_depth 12000 --num_steps 12
+    alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 40 --max_rare_depth 380 --num_steps 10
 
 Note that setting the num_steps higher will give you better resolution, but will take longer. As for the beta diversity plots, you can open the resulting HTML file to view the plots: plots/alpha_rarefaction_plot/alpha_rarefaction_plots/rarefaction_plots.html
 
 Choose "observed_otus" as the metric and "Source" as the category. You should see this plot:
 
-![](https://www.dropbox.com/s/jcbmov0n0zfxc1c/16S_tutorial_alpha_rarefaction_source.jpg?raw=1)
+![](https://www.dropbox.com/s/n7lhrmapkzy1awi/source_alpha.png?raw=1)
 
 There are clearly more OTUs identified in the guts of mice from the BZ facility than the CJS facility. So what's the next step? Since we know that source facility is such an important factor, we could analyze samples from each facility separately. This will lower our statistical power to detect a signal, but otherwise we cannot easily test for a difference between genotypes. 
 
@@ -282,7 +292,7 @@ These commands mean that the first line (the header) should be ignored and then 
     beta_diversity_through_plots.py -m map_BZ.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table_BZ.biom -o plots/bdiv_otu_BZ 
     beta_diversity_through_plots.py -m map_CJS.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table_CJS.biom -o plots/bdiv_otu_CJS 
 
-We can now take a look at the re-generated beta diversity PCAs for each source facility separately.
+We can now take a look at the re-generated beta diversity PCoAs for each source facility separately.
 
 For the BZ source facility:
 
@@ -292,7 +302,7 @@ And for the CJS source facility:
 
 ![](https://www.dropbox.com/s/f8flg3cwjl1fku1/16S_tutorial_weighted_genotype_CJS.jpg?raw=1)
 
-Just by looking at these PCAs it's clear that if there is any difference it is extremely subtle. To statistically evaluate whether the weighted Unifrac beta diversities differ between genotypes within each source facility, we will two common tests: ANOSIM and ADONIS.
+Just by looking at these PCoAs it's clear that if there is any difference it is extremely subtle. To statistically evaluate whether the weighted Unifrac beta diversities differ between genotypes within each source facility, we will two common tests: ANOSIM and ADONIS.
 
     compare_categories.py -i final_otu_tables/otu_table_BZ.biom --method anosim -i plots/bdiv_otu_BZ/weighted_unifrac_dm.txt -m map_BZ.txt -c genotype -o beta_div_tests
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_BZ.txt 
