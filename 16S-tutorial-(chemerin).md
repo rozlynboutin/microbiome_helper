@@ -304,7 +304,7 @@ And for the CJS source facility:
 
 Just by looking at these PCoAs it's clear that if there is any difference it's subtle. To statistically evaluate whether the weighted Unifrac beta diversities differ between genotypes within each source facility, you can run two common tests: ANOSIM and ADONIS.
 
-Note that if you get any error about the R packages "optparse" or "vegan" missing, you can install them with these commands:
+Note that if you get any error from "compare_categories.py" below about the R packages "optparse" or "vegan" missing, you can install them with these commands:
 
     sudo R
     install.packages("optparse")
