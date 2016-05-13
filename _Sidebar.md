@@ -15,7 +15,7 @@
 **16S/18S resources**
    * [16S SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure)
    * [18S SOP](https://github.com/mlangill/microbiome_helper/wiki/18S-standard-operating-procedure)
-   * [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial)
+   * [16S tutorials](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorials)
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
    * [Remove low quality reads](https://github.com/mlangill/microbiome_helper/wiki/Remove-low-quality-reads)
