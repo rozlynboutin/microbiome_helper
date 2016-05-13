@@ -304,16 +304,9 @@ And for the CJS source facility:
 
 ![](https://www.dropbox.com/s/xxw5jiouczcqx88/CJS_PCoA_genotype.png?raw=1)
 
-Just by looking at these PCoAs it's clear that if there is any difference it's subtle. To statistically evaluate whether the weighted Unifrac beta diversities differ between genotypes within each source facility, you can run two common tests: ANOSIM and ADONIS.
+Just by looking at these PCoAs it's clear that if there is any difference it's subtle. To statistically evaluate whether the weighted Unifrac beta diversities differ between genotypes within each source facility, you can run a common test: ANOSIM.
 
-Note that if you get any error from "compare_categories.py" below about the R packages "optparse" or "vegan" missing, you can install them with these commands:
-
-    sudo R
-    install.packages("optparse")
-    install.packages("vegan")
-    q()
-
-These commands will run the ANOSIM and ADONIS tests:
+These commands will run the ANOSIM test and change the output filename:
 
     compare_categories.py -i final_otu_tables/otu_table_BZ.biom --method anosim -i plots/bdiv_otu_BZ/weighted_unifrac_dm.txt -m map_BZ.txt -c genotype -o beta_div_tests
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_BZ.txt 
@@ -321,10 +314,4 @@ These commands will run the ANOSIM and ADONIS tests:
     compare_categories.py -i final_otu_tables/otu_table_CJS.biom --method anosim -i plots/bdiv_otu_CJS/weighted_unifrac_dm.txt -m map_CJS.txt -c genotype -o beta_div_tests
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_CJS.txt 
 
-    compare_categories.py -i final_otu_tables/otu_table_BZ.biom --method adonis -i plots/bdiv_otu_BZ/weighted_unifrac_dm.txt -m map_BZ.txt -c genotype -o beta_div_tests
-    mv beta_div_tests/adonis_results.txt  beta_div_tests/adonis_results_BZ.txt 
-
-    compare_categories.py -i final_otu_tables/otu_table_CJS.biom --method adonis -i plots/bdiv_otu_CJS/weighted_unifrac_dm.txt -m map_CJS.txt -c genotype -o beta_div_tests
-    mv beta_div_tests/adonis_results.txt  beta_div_tests/adonis_results_CJS.txt 
-
-You can take a look at the output files to see significance values and test statistics. The P-values for all four of these tests is > 0.05 so there is no significant difference in the Unifrac beta diversities of different genotypes within each source facility.
+You can take a look at the output files to see significance values and test statistics. The P-values for both tests is > 0.05 so there is no significant difference in the Unifrac beta diversities of different genotypes within each source facility.
