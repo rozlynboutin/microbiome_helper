@@ -63,9 +63,11 @@ You can get the number of FASTQ files in the directory with this command:
 
 ### Stitch paired-end reads together
 
-To start processing the data, we first need to stitch the paired-end reads together using PEAR:
+To start processing the data, we first need to stitch the paired-end reads together using PEAR (~1 min on 1 CPU):
 
-    run_pear.pl -p 4 -o stitched_reads raw_data/*
+    run_pear.pl -p 1 -o stitched_reads fastq/*fastq
+
+("-p 1" indicates this job should be run on 1 CPU and "-o stitched_reads" indicates that the output folder).
 
 Four FASTQ files will be generated for each set of paired-end reads: 
 (1) assembled reads (used for downstream analyses)
@@ -73,19 +75,9 @@ Four FASTQ files will be generated for each set of paired-end reads:
 (3) unassembled forward reads
 (4) unassembled reverse reads
 
-To get an idea of how many reads have been successfully stitched you can compare the sizes of each of the files: 
+The default log file "pear_summary_log.txt" contains the percent of reads either assembled, discarded or unassembled. 
 
-    cat *.assembled.fastq | wc -l #returned 29539776
-    cat *.discarded.fastq | wc -l #returned 5224
-    cat *.unassembled.forward.fastq | wc -l #returned 405164
-    cat *.unassembled.reverse.fastq | wc -l #returned 405164
-
-Note that the return values are the number of lines in each type of FASTQ (when they are concatenated). The number of reads can be calculated by dividing each value by 4. Also, note that the reads in the "assembled" FASTQs are stitched, while the others are not, so the count for these files should be multiplied by 2 for this comparison, resulting in these read counts:
-
-* Assembled - 14,769,888 (98.6%)
-* Discarded - 1,306 (0.0087%)
-* Unassembled - 202,582 (1.35%)
-  
+**Q4)** What percent of reads were successfully stitched for sample 40CMK6WT_S211_L001?  
   
 ### Quality metrics of stitched reads
 
