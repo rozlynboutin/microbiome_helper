@@ -284,25 +284,34 @@ The BIOM "subset-table" command requires a text file with 1 sample name per line
 
 These commands mean that the first line (the header) should be ignored and then the first column should be printed to a new file. We can now take the two subsets of samples from the BIOM file:
 
-    biom subset-table -j final_otu_tables/otu_table.biom -a sample -s samples_BZ.txt -o final_otu_tables/otu_table_BZ.biom
-    biom subset-table -j final_otu_tables/otu_table.biom -a sample -s samples_CJS.txt -o final_otu_tables/otu_table_CJS.biom
+    biom subset-table -i final_otu_tables/otu_table.biom -a sample -s samples_BZ.txt -o final_otu_tables/otu_table_BZ.biom
+    biom subset-table -i final_otu_tables/otu_table.biom -a sample -s samples_CJS.txt -o final_otu_tables/otu_table_CJS.biom
 
  We can now re-create the beta diversity plots for each subset:
 
     beta_diversity_through_plots.py -m map_BZ.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table_BZ.biom -o plots/bdiv_otu_BZ 
     beta_diversity_through_plots.py -m map_CJS.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table_CJS.biom -o plots/bdiv_otu_CJS 
 
-We can now take a look at the re-generated beta diversity PCoAs for each source facility separately.
+We can now take a look at whether the genotypes separate in the re-generated weighted beta diversity PCoAs for each source facility separately.
 
 For the BZ source facility:
 
-![](https://www.dropbox.com/s/yjgc3i9mo0l1pv1/16S_tutorial_weighted_genotype_BZ.jpg?raw=1)
+![](https://www.dropbox.com/s/kq6pwwziizi863v/BZ_PCoA_genotype.png?raw=1)
 
 And for the CJS source facility:
 
-![](https://www.dropbox.com/s/f8flg3cwjl1fku1/16S_tutorial_weighted_genotype_CJS.jpg?raw=1)
+![](https://www.dropbox.com/s/xxw5jiouczcqx88/CJS_PCoA_genotype.png?raw=1)
 
-Just by looking at these PCoAs it's clear that if there is any difference it is extremely subtle. To statistically evaluate whether the weighted Unifrac beta diversities differ between genotypes within each source facility, we will two common tests: ANOSIM and ADONIS.
+Just by looking at these PCoAs it's clear that if there is any difference it's subtle. To statistically evaluate whether the weighted Unifrac beta diversities differ between genotypes within each source facility, you can run two common tests: ANOSIM and ADONIS.
+
+Note that if you get any error about the R packages "optparse" or "vegan" missing, you can install them with these commands:
+
+    sudo R
+    install.packages("optparse")
+    install.packages("vegan")
+    q()
+
+These commands will run the ANOSIM and ADONIS tests:
 
     compare_categories.py -i final_otu_tables/otu_table_BZ.biom --method anosim -i plots/bdiv_otu_BZ/weighted_unifrac_dm.txt -m map_BZ.txt -c genotype -o beta_div_tests
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_BZ.txt 
