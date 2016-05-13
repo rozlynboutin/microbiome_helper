@@ -170,7 +170,7 @@ This command will correctly format the input FASTA files and output a single FAS
 
     add_qiime_labels.py -i non_chimeras/ -m map.txt -c FileInput -o combined_fasta 
   
-IF you take a look at combined_fasta/combined_seqs.fna you can see that the first column of header line is a sample name taken from the mapping file.
+If you take a look at combined_fasta/combined_seqs.fna you can see that the first column of header line is a sample name taken from the mapping file.
 
 Now that the input file has been correctly formatted we can run the actual OTU picking program!
 
