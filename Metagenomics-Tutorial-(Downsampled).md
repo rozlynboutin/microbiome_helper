@@ -181,7 +181,7 @@ To get information about the individual samples you can look in the hmp_map.txt 
 
  less hmp_map.txt
 
-**Q8)** What body site is the sample taken from that contains the unique phylum from question 6?
+**Q8)** What body site is the sample taken from that contains the unique phylum from question 7?
 
 ### Running Metaphlan2 on a large number of samples using Microbiome Helper
 
