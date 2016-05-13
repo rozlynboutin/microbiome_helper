@@ -268,7 +268,9 @@ Choose "observed_otus" as the metric and "Source" as the category. You should se
 
 ![](https://www.dropbox.com/s/n7lhrmapkzy1awi/source_alpha.png?raw=1)
 
-There are clearly more OTUs identified in the guts of mice from the BZ facility than the CJS facility. So what's the next step? Since we know that source facility is such an important factor, we could analyze samples from each facility separately. This will lower our statistical power to detect a signal, but otherwise we cannot easily test for a difference between genotypes. 
+There is no difference in the number of OTUs identified in the guts of mice from the BZ facility than the CJS facility, based on this dataset. However, since the rarefaction curves have not reached a plateau, it is likely that this comparison is just incorrect to make with so few reads. Indeed, [with the full dataset you do see a difference in the number of OTUs](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-(long-running-time)).
+
+So what's the next step? Since we know that source facility is such an important factor, we could analyze samples from each facility separately. This will lower our statistical power to detect a signal, but otherwise we cannot easily test for a difference between genotypes. 
 
 To compare the genotypes within the two source facilities separately we fortunately don't need to re-run the OTU-picking. Instead, we can just take different subsets of samples from the final OTU table. First though we need to make two new mapping files with the samples we want to subset:
 
