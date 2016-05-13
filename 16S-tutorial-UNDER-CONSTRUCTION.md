@@ -8,7 +8,7 @@ Author: Gavin Douglas
 
 First created: Fall 2015  
 
-Last edited: Spring 2016  
+Last edited: May 2016  
 
 ### Requirements
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
@@ -135,22 +135,25 @@ As before, if you'd like to see more details (such as how the read length distri
   
 ### Convert to FASTA and remove chimeric reads
 
-The next steps in the pipeline require the sequences to be in [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), which we will generate using this command (~5 min on 4 CPUs):
+The next steps in the pipeline require the sequences to be in [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), which we will generate using this command (< 1 min on 1 CPU):
 
-    run_fastq_to_fasta.pl -p 4 -o fasta_files filtered_reads/*fastq
+    run_fastq_to_fasta.pl -p 1 -o fasta_files filtered_reads/*fastq
 
 Note that this command removes any sequences containing "N" sequences, which is << 1% of the reads after the read filtering steps above.
 
-Now that we have FASTA files we can run the chimera filtering (~3.3 hours on 4 CPUs):
+Now that we have FASTA files we can run the chimera filtering (~3 min on 1 CPU):
 
-    chimeraFilter.pl -type 1 -thread 4 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb fasta_files/*
+    chimeraFilter.pl -type 1 -thread 1 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb fasta_files/*fasta
 
-You will need to replace "/home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb" with your local path to the DB. See a more detailed description of this script [here](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads).
+See a more detailed description of this script [here](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads).
 
 This script will remove any reads called as chimeric or called ambiguously and output the remaining reads in the "non_chimeras" folder by default. This step is important for microbiome work since otherwise these reads would be called as novel OTUs (and in fact it is likely that not all chimeric reads will be removed by this step).
 
-By default the logfile "chimeraFilter_log.txt" is generated containing the counts and percentages of reads filtered out for each sample. In this case, ~5-18% of reads are filtered out depending on the sample.
+By default the logfile "chimeraFilter_log.txt" is generated containing the counts and percentages of reads filtered out for each sample. 
 
+**Q6)** What is the mean percent of reads retained after this step, based on the output in the log file ("nonChimeraCallsPercent" column)?
+
+**Q7)** What percent of reads was retained for sample 75CMK8KO after **all** the filtering steps (HINT: you'll need to compare the original number of reads to the number of reads output by chimeraFilter.pl)?
 
 ### Run OTU picking pipeline
 
@@ -171,8 +174,9 @@ Now that the input file has been correctly formatted we can run the actual OTU p
 
 Several parameters for this program can be specified into a text file, which will be read in by "pick_open_reference_otus.py":
 
-    echo "pick_otus:threads 4" >> clustering_params.txt
+    echo "pick_otus:threads 1" >> clustering_params.txt
     echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
+    echo "pick_otus:sortmerna_db /home/shared/pick_otu_indexdb_rna/97_otus"
 
 We will be using the sortmerna_sumaclust method of OTU picking and subsampling 10% of failed reads for de novo clustering. Lowering the "-s" parameter's value will greatly affect running speed. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7.8 hours on 4 CPUs.
 
