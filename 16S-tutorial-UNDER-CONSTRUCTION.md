@@ -1,4 +1,4 @@
-# Introduction
+### Introduction
 
 This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S sequencing data using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure).
 
