@@ -102,23 +102,26 @@ For clarity you should rename the files when using this approach:
 
 In the output folder(s) an HTML file is created for each FASTQ file (or 1 file in the case of the combined approach above). When you open these HTML files in your browser you can look over a number of quality metrics (a number of the metrics do not give useful results due to the nature of 16S sequencing, read more [here](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)). The most informative metric for our purposes is the "Per base sequence quality", which shows the Phred quality score distribution along the reads. Generally these distributions are skewed lower near the 3' read ends. Also, since all reads have the same forward primer sequence there is no variation at the first few positions, as in the below image for all of the stitched FASTQs combined:
 
-![](https://www.dropbox.com/s/v4eaiifsj7jxoyw/combined_stitched_FastQC.jpg?raw=1)
+![](https://www.dropbox.com/s/0xdtcs05q1sfev1/combined_fastqc.png?raw=1)
 
 You can see the full FastQC report for all stitched reads combined [here](https://www.dropbox.com/s/qm0ush9o8u8s399/combined_fastqc.html).
   
-  
 ### Read filtering based on quality and length
 
-Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria (~22 min on 4 CPUs):
+Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria (~2 min on 1 CPU):
  
-    readFilter.pl -q 30 -p 90 -l 400 -thread 4 stitched_reads/*.assembled*fastq
+    readFilter.pl -q 30 -p 90 -l 400 -thread 1 stitched_reads/*.assembled*fastq
 
 By default this script will output filtered FASTQs in a folder called "filtered_reads" and the percent of reads thrown out after each filtering step is recorded in "readFilter_log.txt".
 
-If you look in this logfile you will note that ~40% of reads were filtered out for each sample. To confirm that the reads were filtered like we wanted we can re-generate the combined FastQC result as before (this would not normally be necessary):
+If you look in this logfile you will note that ~40% of reads were filtered out for each sample. You can also see the counts and percent of reads dropped at each step. 
+
+**Q5)** How many of sample 36CMK6WT's reads were filtered out for not containing a match to the forward primer (which is the default setting in this case).
+
+To confirm that the reads were filtered like we wanted we can re-generate the combined FastQC result as before (this would not normally be necessary):
 
     mkdir fastqc_out_combined_filtered
-    cat filtered_reads/*.fastq | fastqc -t 4 stdin -o fastqc_out_combined_filtered
+    cat filtered_reads/*.fastq | fastqc -t 1 stdin -o fastqc_out_combined_filtered
 
     cd fastqc_out_combined_filtered
     mv stdin_fastqc.html combined_filtered_fastqc.html
