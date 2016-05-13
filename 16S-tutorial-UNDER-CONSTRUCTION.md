@@ -79,7 +79,7 @@ Four FASTQ files will be generated for each set of paired-end reads:
 
 The default log file "pear_summary_log.txt" contains the percent of reads either assembled, discarded or unassembled. 
 
-**Q4)** What percent of reads were successfully stitched for sample 40CMK6WT_S211_L001?  
+**Q4)** What percent of reads were successfully stitched for sample 40CMK6WT?  
   
 ### Quality metrics of stitched reads
 
