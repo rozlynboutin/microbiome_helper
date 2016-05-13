@@ -1,4 +1,4 @@
-This is the answer sheet for the [16S chemerin tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-(chemerin).
+This is the answer sheet for the [16S chemerin tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-(chemerin)).
 
 **Q1)** 12  
 **Q2)** 1000 (note this is extremely low and would likely be insufficient for an actual project)  
