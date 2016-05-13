@@ -23,16 +23,16 @@ This dataset was originally used in a project to determine whether knocking out 
 
 After downloading and unzipping the dataset above, open Terminal and go to the dataset's directory:
 
-    cd ~/Desktop/16S_chemerin_tutorial
+    cd ~/Desktop/16S_chemerin_tutorial  
 
 You can see what is in this directory with the _ls_ command:
 
-    ls
+    ls  
     
 You should see this:
 
-    vagrant@MicrobiomeHelper:~/Desktop/16S_chemerin_tutorial$ ls
-    fastq  map.txt
+    vagrant@MicrobiomeHelper:~/Desktop/16S_chemerin_tutorial$ ls  
+    fastq  map.txt  
  
 "fastq" is the directory containing all the sequencing files, which we are going to process. "map.txt" contains metadata about the samples. We can look at it with the _less_ command (hit "q" to exit):
 
@@ -81,21 +81,24 @@ The default log file "pear_summary_log.txt" contains the percent of reads either
   
 ### Quality metrics of stitched reads
 
-Quality metrics of the 7,384,944 stitched reads can now be determined using FastQC.
+Quality metrics of the stitched reads can now be determined using FastQC. In a desktop environment you run FastQC through its graphical user interface (GUI), which is on the sidebar in our virtual box or you can open by typing "fastqc" at the command-line. I prefer using the command-line, which I describe below, but you can get the same plots with the GUI.
 
-This can be done for each sample separately (~3 min on 4 CPUs):
+FastQC can be run for each sample separately (~3 min on 1 CPU):
 
     mkdir fastqc_out
-    fastqc -t 4 stitched_reads/*.assembled.fastq -o fastqc_out
+    fastqc -t 1 stitched_reads/*.assembled.fastq -o fastqc_out
 
-Or one quality report can be output for all of the stitched reads:
+Or one quality report can be output for all of the stitched reads (< 1 min on 1 CPU):
 
     mkdir fastqc_out_combined
-    cat stitched_reads/*.assembled.fastq | fastqc -t 4 stdin -o fastqc_out_combined
+    cat stitched_reads/*.assembled.fastq | fastqc -t 1 stdin -o fastqc_out_combined
 
     cd fastqc_out_combined
-    mv stdin_fastqc.html combined_fastqc.html
-    mv stdin_fastqc.zip combined_fastqc.zip
+
+For clarity you should rename the files when using this approach: 
+
+    mv stdin_fastqc.html combined_fastqc.html  
+    mv stdin_fastqc.zip combined_fastqc.zip  
 
 In the output folder(s) an HTML file is created for each FASTQ file (or 1 file in the case of the combined approach above). When you open these HTML files in your browser you can look over a number of quality metrics (a number of the metrics do not give useful results due to the nature of 16S sequencing, read more [here](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)). The most informative metric for our purposes is the "Per base sequence quality", which shows the Phred quality score distribution along the reads. Generally these distributions are skewed lower near the 3' read ends. Also, since all reads have the same forward primer sequence there is no variation at the first few positions, as in the below image for all of the stitched FASTQs combined:
 
