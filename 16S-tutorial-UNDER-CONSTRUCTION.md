@@ -1,10 +1,8 @@
 ### Introduction
 
-This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S sequencing data using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure).
+This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S sequencing data using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). It's based on a [previous tutorial we posted](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial), except the dataset was down-sampled to many fewer reads. This changes some of the results, but makes the tutorial run much faster.
 
-This tutorial is based on a [previous tutorial we posted](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial), except there are many fewer reads. This changes some of the results, but makes the tutorial run much faster.
-
-You can download the example data (2.65GB) [here](https://www.dropbox.com/s/t0q0p88czo9hk6g/16S_tutorial.tar.gz?dl=1).
+You can download the tutorial dataset here: (2.65GB) [here](https://www.dropbox.com/s/t0q0p88czo9hk6g/16S_tutorial.tar.gz?dl=1).
 
 This dataset was originally used in a project to determine whether knocking out the protein [chemerin](https://en.wikipedia.org/wiki/Chemerin) affects gut microbial composition. 116 mouse samples acquired from two different facilities were used for this project. Metadata associated with each sample is indicated in the mapping file (map.txt). In this mapping file the genotypes of interest can be seen: wildtype (WT and WT_BZ), chemerin knockout (chemerin_KO), chemerin receptor knockout (CMKLR1_KO) and a heterozygote for the receptor knockout (HET). Also of importance are the two source facilities: "BZ" and "CJS". It is generally a good idea to include as much metadata as possible, since this data can easily be explored later on.
 
