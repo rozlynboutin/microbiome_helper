@@ -1,6 +1,6 @@
 ### Introduction
 
-This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S sequencing data using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). It's based on a [previous tutorial we posted](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial), except the dataset was down-sampled to many fewer reads. This changes some of the results, but makes the tutorial run much faster.
+This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S sequencing data using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). It's based on a [previous tutorial we posted](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial), except this version of the dataset was down-sampled to many fewer reads. This changes some of the results, but makes the tutorial run much faster.
 
 You can download the tutorial dataset here: (2.65GB) [here](https://www.dropbox.com/s/t0q0p88czo9hk6g/16S_tutorial.tar.gz?dl=1).
 
