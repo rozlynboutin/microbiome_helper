@@ -115,6 +115,10 @@ Now we evenly subsampled (rarefy) the OTU table so that each sample has the same
 
     single_rarefaction.py -i otu_table.biom -d 803 -o rare_otu_table.biom
 
+The BIOM format is a file type called HDF5. This is not a human-readable format. You can convert these files to tab-separated spreadsheets that can be opened with Excel or LibreOffice Calc. This can be very useful for importing your OTU table using languages other than Python, such as R:
+
+    biom convert -i otu_table.biom -o otu_table.tsv --to-tsv --header-key taxonomy
+
 ## Downstream Analyses
 
 ### Heatmap
