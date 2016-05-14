@@ -117,6 +117,12 @@ Now we evenly subsampled (rarefy) the OTU table so that each sample has the same
 
 ## Downstream Analyses
 
+### Heatmap
+
+OTU table heatmaps can be a great way to quickly glance structure in your OTU table.
+
+    make_otu_heatmap.py -i rare_otu_table.biom -o heatmap.pdf
+
 ### Principal Co-ordinates Plots
 
 QIIME will easily handle creation of principal co-ordinates (PCoA):
