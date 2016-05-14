@@ -1,13 +1,13 @@
 ## Data Set
 
-In this tutorial, we are using 189 faecal samples from  [_Host lifestyle affects human microbiota on daily timescales_](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4405912/) (Lawrence, et al., 2014). These samples were taken from one subject over the course of These samples were taken from one subject over the course of a single year. For the purposes of this live tutorial, only a subset of the sequences from each sample is used.
+In this tutorial, we are using 189 faecal samples from  [_Host lifestyle affects human microbiota on daily timescales_](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4405912/) (Lawrence, et al., 2014). These samples were taken from one subject over the course of These samples were taken from one subject over the course of a single year. For the purposes of this live tutorial, only a subset (1,500) of the sequences from each sample is used.
 
 ## Retrieve the Data
 
     wget <insert final_link here>
     unzip stool_data.zip
 
-The zip file contains two files: `stool_sequences.fasta`, and `map.txt`. Because quality filtering steps are specific to each sequencing platform, we will not address that in this tutorial. The `stool_sequences.fasta` file will contain the sequences from each sample. The `map.txt` is a tab-separated table file that contains the metadata information for each sample.
+The zip file contains two files: `stool_sequences.fasta`, and `stool_metadata.csv`. Because quality filtering steps are specific to each sequencing platform, we will not address that in this tutorial. The `stool_sequences.fasta` file will contain the sequences from each sample. The `stool_metadata.csv` is a tab-separated table file that contains the metadata information for each sample.
 
 Let's take a look at the sequences:
 
@@ -89,6 +89,8 @@ We will use sortmerna to assign taxonomic classifications to each representative
     sudo apt-get install mothur
     assign_taxonomy.py -i cluster/rep_set_relabel.fasta -o assigned_taxonomy -m mothur
 
+The *print_qiime_config.py* command will return information about QIIME's set-up. This includes the default taxonomy reference sets. Since we did not specify them in our assign_taxonomy.py commands, the defaults were used. What are the default files?
+
 ## Phylogenetic Tree Construction
 
 First, the sequences must be aligned. This can be accomplished using PyNast via QIIME:
@@ -119,7 +121,7 @@ Now we evenly subsampled (rarefy) the OTU table so that each sample has the same
 
 QIIME will easily handle creation of principal co-ordinates (PCoA):
 
-    beta_diversity_through_plots.py -i rare_otu_table.biom -m Stool_Metadata.csv -t rep_set.tre -o beta_plots
+    beta_diversity_through_plots.py -i rare_otu_table.biom -m stool_metadata.csv -t rep_set.tre -o beta_plots
 
 Investigate the "DAY" and "PHASE" metadata categories. Compare the weighted and unweighted UniFrac results.
 
@@ -127,4 +129,13 @@ Investigate the "DAY" and "PHASE" metadata categories. Compare the weighted and 
 
 Alpha rarefaction plots will compare the alpha diversity measures (number of OTUs, phylogenetic diversity, Shannon, etc.) as a function of the number of sequences. They can indicate whether a sufficient sequence depth has been achieved.
 
-    alpha_rarefaction.py -i otu_table.biom -m Stool_Metadata.csv -t rep_set.tre -o alpha_plots
+    alpha_rarefaction.py -i otu_table.biom -m stool_metadata.csv -t rep_set.tre -o alpha_plots
+
+### Comparing Groups of Samples
+
+We can compare groups of samples by computing differences in their beta diversity metrics and using statistical methods to assess the significance of these differences. Here we use ANOSIM, a non-parametric method that compares groups of samples by using the rank-order of beta diversity measures.
+
+    compare_categories.py -i plots/unweighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_unweighted_unifrac
+    compare_categories.py -i plots/weighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_weighted_unifrac
+
+Both results return as significant with *p*<0.001. Which has the largest effect size? Does this match your intuition from the PCoA plots?
