@@ -78,3 +78,53 @@ Run this script on our vsearch .uc file:
 
     python mesas-uc2clust cluster/map.uc cluster/seq_otus.txt
 
+## Taxonomic Classification
+
+We will use sortmerna to assign taxonomic classifications to each representative sequence:
+
+    assign_taxonomy.py -i cluster/rep_set_relabel.fasta -o assigned_taxonomy -m sortmerna
+
+**Note:** If you are running this with <6GB of RAM, *mothur* may be a faster option. It must be installed before using:
+
+    sudo apt-get install mothur
+    assign_taxonomy.py -i cluster/rep_set_relabel.fasta -o assigned_taxonomy -m mothur
+
+## Phylogenetic Tree Construction
+
+First, the sequences must be aligned. This can be accomplished using PyNast via QIIME:
+
+    align_seqs.py -i cluster/rep_set_relabel.fasta -o aligned -m pynast
+
+Next, we build the tree using FastTree:
+
+    make_phylogeny.py -i aligned/rep_set_relabel_aligned.fasta -o rep_set.tre -t fasttree
+
+## OTU Table Creation
+
+QIIME will take the OTU map and taxonomic classifications and create an OTU table:
+
+    make_otu_table.py -i cluster/seq_otus.txt -t assigned_taxonomy/rep_set_relabel_tax_assignments.txt -o otu_table.biom
+
+We can use the BIOM toolkit to retrieve OTU table statistics:
+
+    biom summarize-table -i otu_table.biom -o summary.txt
+
+Now we evenly subsampled (rarefy) the OTU table so that each sample has the same number of sequences:
+
+    single_rarefaction.py -i otu_table.biom -d 803 -o rare_otu_table.biom
+
+## Downstream Analyses
+
+### Principal Co-ordinates Plots
+
+QIIME will easily handle creation of principal co-ordinates (PCoA):
+
+    beta_diversity_through_plots.py -i rare_otu_table.biom -m Stool_Metadata.csv -t rep_set.tre -o beta_plots
+
+Investigate the "DAY" and "PHASE" metadata categories. Compare the weighted and unweighted UniFrac results.
+
+### Alpha Rarefaction Plots
+
+Alpha rarefaction plots will compare the alpha diversity measures (number of OTUs, phylogenetic diversity, Shannon, etc.) as a function of the number of sequences. They can indicate whether a sufficient sequence depth has been achieved.
+
+    alpha_rarefaction.py -i otu_table.biom -m Stool_Metadata.csv -t rep_set.tre -o alpha_plots
