@@ -4,7 +4,7 @@ In this tutorial, we are using 189 faecal samples from  [_Host lifestyle affects
 
 ## Retrieve the Data
 
-    wget <insert final_link here>
+    wget http://kiwi.cs.dal.ca/~beikolab/stool_data.zip
     unzip stool_data.zip
 
 The zip file contains two files: `stool_sequences.fasta`, and `stool_metadata.csv`. Because quality filtering steps are specific to each sequencing platform, we will not address that in this tutorial. The `stool_sequences.fasta` file will contain the sequences from each sample. The `stool_metadata.csv` is a tab-separated table file that contains the metadata information for each sample.
