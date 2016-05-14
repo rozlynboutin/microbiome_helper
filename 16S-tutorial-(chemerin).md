@@ -19,7 +19,7 @@ Last edited: May 2016
 * We will be following [our 16S pipeline](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure) (version from May 2016), which uses several wrapper scripts to help automate running many files.
 
 ### Background
-This dataset was originally used in a project to determine whether knocking out the protein [chemerin](https://en.wikipedia.org/wiki/Chemerin) affects gut microbial composition. Originally 116 mouse samples acquired from two different facilities were used for this project (**only 24 samples were used in this tutorial dataset, for simplicity**). Metadata associated with each sample is indicated in the mapping file (map.txt). In this mapping file the genotypes of interest can be seen: wildtype (WT and WT_BZ), chemerin knockout (chemerin_KO), chemerin receptor knockout (CMKLR1_KO) and a heterozygote for the receptor knockout (HET). Also of importance are the two source facilities: "BZ" and "CJS". It is generally a good idea to include as much metadata as possible, since this data can easily be explored later on.
+This dataset was originally used in a project to determine whether knocking out the protein [chemerin](https://en.wikipedia.org/wiki/Chemerin) affects gut microbial composition. Originally 116 mouse samples acquired from two different facilities were used for this project (**only 24 samples were used in this tutorial dataset, for simplicity**). Metadata associated with each sample is indicated in the mapping file (map.txt). In this mapping file the genotypes of interest can be seen: wildtype (WT), chemerin knockout (chemerin_KO), chemerin receptor knockout (CMKLR1_KO) and a heterozygote for the receptor knockout (HET). Also of importance are the two source facilities: "BZ" and "CJS". It is generally a good idea to include as much metadata as possible, since this data can easily be explored later on.
 
 ## Pre-processing
 
@@ -254,7 +254,9 @@ The actual metadata we are most interested in for this dataset is the "genotype"
 
 ![](https://www.dropbox.com/s/kctky32shsoprfe/genotype_weighted_PCoA.png?raw=1)
 
-Hmm... There are two distinct groups of genotypes, but not the ones we want! It would have made more sense if the WT genotypes all grouped together and the two different chemerin KOs were a separate group. Instead it looks like half of the WTs are split across each group. The fact that all of the WT genotypes called "WT_BZ" gives an important clue of what is going on here - could it be possible that beta diversity is determined much more by which facility the mice came from rather than what genotype they have? To investigate this question we can simply change the selection under the "Colors" tab from "genotype" to "Source":
+The WT genotype is spread out across both knockout genotypes, which is not what we would have predicted.  
+   
+You'll see what's really driving the differences in beta diversity when you change the selection under the "Colors" tab from "genotype" to "Source":
 
 ![](https://www.dropbox.com/s/sgt2vsjazf0ma0t/source_weighted_PCoA.png?raw=1)
 
