@@ -30,6 +30,7 @@ The FASTA file has labels in the format ">SampleName_SequenceNumber".
   <summary>Reveal all code for this section for easier copy & paste</summary>
 <pre><code>
 mkdir cluster
+sudo apt-get install vsearch
 vsearch -derep_fulllength stool_sequences.fasta -output cluster/unique.fasta -sizeout -minseqlength 50
 vsearch -uchime_denovo cluster/unique.fasta --nonchimeras cluster/nochimeras.fasta
 vsearch -sortbysize cluster/nochimeras.fasta -output cluster/sorted.fasta -minsize 2
