@@ -55,18 +55,78 @@ The sequences are reduced to only unique sequences ("dereplicated") to improve c
 
     vsearch -derep_fulllength stool_sequences.fasta -output cluster/unique.fasta -sizeout -minseqlength 50
 
+<details> 
+  <summary>Reveal command output</summary>
+<pre><code>
+    vsearch v1.1.3_linux_x86_64, 2.5GB RAM, 4 cores
+    https://github.com/torognes/vsearch
+    Reading file stool_sequences.fasta 100%  
+    28205462 nt in 283495 seqs, min 77, max 101, avg 99
+    WARNING: 1 sequences shorter than 50 nucleotides discarded.
+    Indexing sequences 100%  
+    Dereplicating 100%  
+    Sorting 100%
+    37029 unique sequences, avg cluster 7.7, median 1, max 40958
+    Writing output file 100%  
+</code></pre></details>
+
 Chimeras are detected in a *de novo* fashion, and excluded:
 
     vsearch -uchime_denovo cluster/unique.fasta --nonchimeras cluster/nochimeras.fasta
+
+<details> 
+  <summary>Reveal command output</summary>
+<pre><code>
+    vsearch v1.1.3_linux_x86_64, 2.5GB RAM, 4 cores
+    https://github.com/torognes/vsearch
+    Reading file cluster/unique.fasta 100%  
+    3549373 nt in 37029 seqs, min 77, max 101, avg 96
+    Indexing sequences 100%  
+    Sorting by abundance 100%
+    Counting unique k-mers 100%  
+    Detecting chimeras 100%  
+    Found 4067 (11.0%) chimeras, 32863 (88.7%) non-chimeras,
+    and 99 (0.3%) suspicious candidates in 37029 sequences.
+</code></pre></details>
 
 Sequences are sorted by size, and singletons are removed (they are mapped back on later):
 
     vsearch -sortbysize cluster/nochimeras.fasta -output cluster/sorted.fasta -minsize 2
 
+<details> 
+  <summary>Reveal command output</summary>
+<pre><code>
+    vsearch v1.1.3_linux_x86_64, 2.5GB RAM, 4 cores
+    https://github.com/torognes/vsearch
+    Reading file cluster/nochimeras.fasta 100%  
+    3141609 nt in 32863 seqs, min 77, max 101, avg 96
+    Indexing sequences 100%  
+    Getting sizes 100%  
+    Sorting 100%
+    Median abundance: 3
+    Writing output 100%  
+</code></pre></details>
+
 Operational taxonomic units are clustered at 97% sequence identity, and the consensus sequences for the OTUs are output to a FASTA file:
 
     vsearch -cluster_smallmem cluster/sorted.fasta --id 0.97 --consout cluster/rep_set.fasta --usersort
 
+<details> 
+  <summary>Reveal command output</summary>
+<pre><code>
+    vsearch v1.1.3_linux_x86_64, 2.5GB RAM, 4 cores
+    https://github.com/torognes/vsearch
+    Reading file cluster/sorted.fasta 100%  
+    703761 nt in 7214 seqs, min 77, max 101, avg 98
+    Indexing sequences 100%  
+    Masking 100%
+    Counting unique k-mers 100%  
+    Clustering 100%  
+    Writing clusters 100%  
+    Clusters: 602 Size min 1, max 450, avg 12.0
+    Singletons: 221, 3.1% of seqs, 36.7% of clusters
+    Multiple alignments 100%  
+</code></pre></details>
 The OTU names contain a wealth of information that is not required for downstream processing. To reduce complications, we can simplify the names with *awk*:
 
     awk 'BEGIN{OFS="";ORS="";count=0}{if ($0~/>/){if (NR>1) {print "\n"} print ">" count "\n"; count+=1;} else {print $0;}}' cluster/rep_set.fasta > cluster/rep_set_relabel.fasta
@@ -74,6 +134,21 @@ The OTU names contain a wealth of information that is not required for downstrea
 The original sequence file is mapped back onto the OTU consensus sequences:
 
     vsearch -usearch_global stool_sequences.fasta -db cluster/rep_set_relabel.fasta -strand both -id 0.97 -uc cluster/map.uc -threads 2
+
+<details> 
+  <summary>Reveal command output</summary>
+<pre><code>
+    vsearch v1.1.3_linux_x86_64, 2.5GB RAM, 4 cores
+    https://github.com/torognes/vsearch
+    Reading file cluster/rep_set_relabel.fasta 100%  
+    59453 nt in 602 seqs, min 77, max 102, avg 99
+    Indexing sequences 100%  
+    Masking 100%
+    Counting unique k-mers 100%  
+    Creating index of unique k-mers 100%  
+    Searching 100%  
+    Matching query sequences: 270602 of 283496 (95.45%)
+</code></pre></details>
 
 Download a helpful Python script that converts vsearch .uc files into QIIME-compatible format:
 
