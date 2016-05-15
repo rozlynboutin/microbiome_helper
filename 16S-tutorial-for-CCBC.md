@@ -191,6 +191,30 @@ We can use the BIOM toolkit to retrieve OTU table statistics:
 
     biom summarize-table -i otu_table.biom -o summary.txt
 
+<details> 
+  <summary>Reveal table summary output</summary>
+<pre><code>
+    Num samples: 189
+    Num observations: 602
+    Total count: 270602
+    Table density (fraction of non-zero values): 0.187
+    Counts/sample summary:
+    Min: 803.0
+    Max: 1488.0
+    Median: 1445.000
+    Mean: 1431.757
+    Std. dev.: 74.096
+    Sample Metadata Categories: None provided
+    Observation Metadata Categories: taxonomy
+    Counts/sample detail:
+    Stool441.1259692: 803.0
+    Stool382.1260123: 815.0
+    Stool386.1260377: 1076.0
+    Stool444.1260382: 1299.0
+    Stool535.1259920: 1320.0
+    ...
+</code></pre></details>
+
 Now we evenly subsampled (rarefy) the OTU table so that each sample has the same number of sequences:
 
     single_rarefaction.py -i otu_table.biom -d 803 -o rare_otu_table.biom
@@ -225,7 +249,7 @@ Alpha rarefaction plots will compare the alpha diversity measures (number of OTU
 
 We can compare groups of samples by computing differences in their beta diversity metrics and using statistical methods to assess the significance of these differences. Here we use ANOSIM, a non-parametric method that compares groups of samples by using the rank-order of beta diversity measures.
 
-    compare_categories.py -i plots/unweighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_unweighted_unifrac
-    compare_categories.py -i plots/weighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_weighted_unifrac
+    compare_categories.py -i beta_plots/unweighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_unweighted_unifrac
+    compare_categories.py -i beta_plots/weighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_weighted_unifrac
 
 Both results return as significant with *p*<0.001. Which has the largest effect size? Does this match your intuition from the PCoA plots?
