@@ -102,7 +102,7 @@ For clarity you should rename the files when using this approach:
     mv stdin_fastqc.html combined_fastqc.html  
     mv stdin_fastqc.zip combined_fastqc.zip  
 
-In the output folder(s) an HTML file is created for each FASTQ file (or 1 file in the case of the combined approach above). When you open these HTML files in your browser you can look over a number of quality metrics (a number of the metrics do not give useful results due to the nature of 16S sequencing, read more [here](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)). The most informative metric for our purposes is the "Per base sequence quality", which shows the Phred quality score distribution along the reads. Generally these distributions are skewed lower near the 3' read ends. Also, since all reads have the same forward primer sequence there is no variation at the first few positions, as in the below image for all of the stitched FASTQs combined:
+In the output folder(s) an HTML file is created for each FASTQ file (or 1 file in the case of the combined approach above). When you open these HTML files in your browser you can look over a number of quality metrics (a number of the metrics do not give useful results due to the nature of 16S sequencing, read more [here](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)). The most informative metric for our purposes is the "Per base sequence quality", which shows the Phred quality score -- a measure based on the probabilities of base-calling errors by the sequencer -- distribution along the reads. Generally these distributions are skewed lower near the 3' read ends. Also, since all reads have the same forward primer sequence there is no variation at the first few positions, as in the below image for all of the stitched FASTQs combined:
 
 ![](https://www.dropbox.com/s/0xdtcs05q1sfev1/combined_fastqc.png?raw=1)
 
@@ -141,7 +141,7 @@ The next steps in the pipeline require the sequences to be in [FASTA format](htt
 
     run_fastq_to_fasta.pl -p 1 -o fasta_files filtered_reads/*fastq
 
-Note that this command removes any sequences containing "N" sequences, which is << 1% of the reads after the read filtering steps above.
+Note that this command removes any sequences containing "N" (a completely ambiguous base read), which is << 1% of the reads after the read filtering steps above.
 
 Now that we have FASTA files we can run the chimera filtering (~3 min on 1 CPU):
 
@@ -159,8 +159,7 @@ By default the logfile "chimeraFilter_log.txt" is generated containing the count
 
 ### Run OTU picking pipeline
 
-Now that we have adequately prepared the reads, we can now run OTU picking using QIIME. 
-QIIME requires FASTA files to be input in a specific format (specifically, sample names need to be at the beginning of each header line). We have provided the mapping file ("map.txt"), which links filenames to sample names and metadata.
+Now that we have adequately prepared the reads, we can now run OTU picking using QIIME. An Operational Taxonomic Unit (OTU) defines a taxonomic group based on sequence similarity among sampled organisms. QIIME software clusters sequence reads from microbial communities in order to classify its constituent micro-organisms into OTUs. QIIME requires FASTA files to be input in a specific format (specifically, sample names need to be at the beginning of each header line). We have provided the mapping file ("map.txt"), which links filenames to sample names and metadata.
 
 If you open up map.txt (e.g. with vim) you will notice that 2 columns are present without any data: "BarcodeSequence" and "LinkerPrimerSequence". We don't need to use these columns, so we have left them blank. 
 
@@ -180,15 +179,15 @@ Several parameters for this program can be specified into a text file, which wil
     echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
     echo "pick_otus:sortmerna_db /home/shared/pick_otu_indexdb_rna/97_otus" >> clustering_params.txt
 
-We will be using the sortmerna_sumaclust method of OTU picking and subsampling 10% of failed reads for de novo clustering. Lowering the "-s" parameter's value will greatly affect running speed. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7 min with 1 CPU (note you may run into problems if the virtual box isn't using at least 2GB of RAM).
+We will be using the sortmerna_sumaclust method of OTU picking. With this method, reads are first clustered against a reference database; then, 10% of those reads that failed to be classified are subsampled for de novo clustering, which clusters reads against each other. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7 min with 1 CPU (note you may run into problems if the virtual box isn't using at least 2GB of RAM).Lowering the "-s" parameter's value will greatly affect running speed.
 
     pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1  
 
-We will now remove low confidence OTUs, i.e. those that are called by a low number of reads. It's difficult to choose a hard cut-off for how many reads are needed for an OTU to be confidently called, since of course OTUs are often at low frequency within a community. A reasonable approach is to remove any OTU identified by fewer than 0.1% of the reads (0.1% is the estimated amount of bleed through between runs on the Illumina Miseq):
+We will now remove low confidence OTUs, i.e. those that are called by a low number of reads. It's difficult to choose a hard cut-off for how many reads are needed for an OTU to be confidently called, since of course OTUs are often at low frequency within a community. A reasonable approach is to remove any OTU identified by fewer than 0.1% of the reads, given that 0.1% is the estimated amount of sample bleed-through between runs on the Illumina Miseq:
 
     remove_low_confidence_otus.py -i $PWD/clustering/otu_table_mc1_w_tax_no_pynast_failures.biom -o $PWD/clustering/otu_table_high_conf.biom
 
-Since we are just doing a test run with a low number of sequences the cut-off is at 1 OTU anyway, but this is an important step with real datasets.
+Since we are just doing a test run with few sequences, the threshold is 1 OTU regardless. However, this is an important step with real datasets.
 
 We can compare the summaries of these two BIOM files:
 
@@ -203,7 +202,7 @@ The first four lines of clustering/otu_table_mc1_w_tax_no_pynast_failures_summar
     Total count: 12040
     Table density (fraction of non-zero values): 0.097
 
-This means that for the 24 separate samples, 2434 OTUs were called based on 12040 reads. Only 9.7% of the values in the sample x OTU table are non-zero (meaning that most OTUs are in a small number of samples).
+This means that for the 24 separate samples, 2434 OTUs were called based on 12040 reads. Only 9.7% of the values in the sample x OTU table are non-zero, meaning that most OTUs are in a small number of samples.
 
 In contrast, the first four lines of  clustering/otu_table_high_conf_summary.txt are:
 
@@ -213,9 +212,9 @@ In contrast, the first four lines of  clustering/otu_table_high_conf_summary.txt
     Table density (fraction of non-zero values): 0.194
 
 
-The number of OTUs has dropped from 2434 to 887 (kept only 36% of the OTUs! This is generally even more drastic for bigger datasets). However, the numbers of reads only dropped from 12040 to 10493 (so 87% of the reads were kept). You can also see that the table density went up by as well, as we would expect.
+After removing low-confidence OTUs, only 36% were retained: the number of OTUs dropped from 2434 to 887. This effect is generally even more drastic for bigger datasets. However, the numbers of reads only dropped from 12040 to 10493 (so 87% of the reads were retained). You can also see that the table density increased, as we would expect.
 
-We now need to subsample the number of reads for each sample to the same depth (rarefaction), which is necessary for several downstream analyses. There is actually quite a lot of debate about whether rarefaction is necessary (since it throws out data!), but it is still the standard method used in microbiome studies. We want to rarify the read depth to the sample with the lowest "reasonable" number of reads. Of course, a "reasonable" read depth is quite subjective and depends on how much variation there is between samples. 
+We now need to subsample the number of reads for each sample to the same depth, which is necessary for several downstream analyses. This is called rarefaction, a technique that provides an indication of species richness for a given number of samples. There is actually quite a lot of debate about whether rarefaction is necessary (since it throws out data!), but it is still the standard method used in microbiome studies. We want to rarify the read depth to the sample with the lowest "reasonable" number of reads. Of course, a "reasonable" read depth is quite subjective and depends on how much variation there is between samples. 
 
 You can look at the read depth per sample in clustering/otu_table_high_conf_summary.txt, here are the first five samples (they are sorted from smallest to largest):
 
@@ -228,20 +227,20 @@ You can look at the read depth per sample in clustering/otu_table_high_conf_summ
 
 **Note that this is a test dataset and you normally would rarify to a larger read count** (typically in the 1000s).
 
-We will rarify to 380 reads, since the lowest depth is not a major outlier (for this dataset):
+We will rarify to 380 reads, since the lowest depth is not a major outlier in this dataset:
 
     mkdir final_otu_tables
     single_rarefaction.py -i clustering/otu_table_high_conf.biom -o final_otu_tables/otu_table.biom -d 380
 
-This QIIME command produced another BIOM table with each sample rarified to 380 reads. In this case no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in low-frequency OTUs being lost from the analysis.
+This QIIME command produced another BIOM table with each sample rarified to 380 reads. In this case, no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in a loss of low-frequency OTUs from the analysis.
 
 ### Diversity analyses
 
-We will now create Unifrac beta diversity (both weighted and unweighted) principal coordinates analysis (PCoA, which slightly different from PCA) plots ( < 1 min on 1 CPU):
+Diversity in microbial communities can be expressed in a number of ways. UniFrac beta diversity is a particular measure of diversity that analyzes dissimilarity between samples, sites, or communities. We will now create UniFrac beta diversity (both weighted and unweighted) principal coordinates analysis (PCoA) plots. PCoA plots are related to principal components analysis (PCA) plots, but are based on dissimilarity rather than covariance.(< 1 min on 1 CPU):
 
     beta_diversity_through_plots.py -m map.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table.biom -o plots/bdiv_otu
 
-This QIIME script takes as input the final OTU table as well as file which contains the phylogenetic relatedness between all clustered OTUs. One HTML file will be generated for the weighted and unweighted beta diversity distances:
+This QIIME script takes as input the final OTU table, as well as file which contains the phylogenetic relatedness between all clustered OTUs. One HTML file will be generated for the weighted and unweighted beta diversity distances:
 
 * plots/bdiv_otu/weighted_unifrac_emperor_pcoa_plot/index.html
 * plots/bdiv_otu/unweighted_unifrac_emperor_pcoa_plot/index.html
@@ -260,7 +259,7 @@ You'll see what's really driving the differences in beta diversity when you chan
 
 ![](https://www.dropbox.com/s/sgt2vsjazf0ma0t/source_weighted_PCoA.png?raw=1)
 
-There is a clear qualitative difference between the microbiota of mice from the two source facilities. This can also be seen based on rarefaction plots (alpha diversity plots, which show the OTU richness per sample; takes < 1 min on 1 CPU):
+There is a clear qualitative difference between the microbiota of mice from the two source facilities. This can also be seen based on rarefaction plots. Rarefaction plots show alpha diversity, a measure of the OTU richness per sample (takes < 1 min on 1 CPU):
 
     alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 40 --max_rare_depth 380 --num_steps 10
 
@@ -306,9 +305,7 @@ And for the CJS source facility:
 
 ![](https://www.dropbox.com/s/xxw5jiouczcqx88/CJS_PCoA_genotype.png?raw=1)
 
-Just by looking at these PCoAs it's clear that if there is any difference it's subtle. To statistically evaluate whether the weighted Unifrac beta diversities differ between genotypes within each source facility, you can run a common test: ANOSIM.
-
-These commands will run the ANOSIM test and change the output filename:
+Just by looking at these PCoAs it's clear that if there is any difference it's subtle. To statistically evaluate whether the weighted UniFrac beta diversities differ among genotypes within each source facility, you can run an analysis of similarity (ANOSIM) test. These commands will run the ANOSIM test and change the output filename:
 
     compare_categories.py -i final_otu_tables/otu_table_BZ.biom --method anosim -i plots/bdiv_otu_BZ/weighted_unifrac_dm.txt -m map_BZ.txt -c genotype -o beta_div_tests
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_BZ.txt 
@@ -316,4 +313,4 @@ These commands will run the ANOSIM test and change the output filename:
     compare_categories.py -i final_otu_tables/otu_table_CJS.biom --method anosim -i plots/bdiv_otu_CJS/weighted_unifrac_dm.txt -m map_CJS.txt -c genotype -o beta_div_tests
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_CJS.txt 
 
-You can take a look at the output files to see significance values and test statistics. The P-values for both tests is > 0.05 so there is no significant difference in the Unifrac beta diversities of different genotypes within each source facility.
+You can take a look at the output files to see significance values and test statistics. The P-values for both tests is > 0.05 so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
