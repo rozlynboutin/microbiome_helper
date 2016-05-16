@@ -280,4 +280,25 @@ We can compare groups of samples by computing differences in their beta diversit
     compare_categories.py -i beta_plots/unweighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_unweighted_unifrac
     compare_categories.py -i beta_plots/weighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_weighted_unifrac
 
+<details> 
+  <summary>Reveal ANOSIM output</summary>
+<pre><code>
+=== anosim_weighted_unifrac/anosim_results.txt ===
+method name     ANOSIM
+test statistic name     R
+sample size     189
+number of groups        3
+test statistic  0.24827535059673073
+p-value 0.001
+number of permutations  999
+=== anosim_unweighted_unifrac/anosim_results.txt ===
+method name     ANOSIM
+test statistic name     R
+sample size     189
+number of groups        3
+test statistic  0.70407488355700698
+p-value 0.001
+number of permutations  999
+</pre></code></details>
+
 Both results return as significant with *p*<0.001. Which has the largest effect size? Does this match your intuition from the PCoA plots?
