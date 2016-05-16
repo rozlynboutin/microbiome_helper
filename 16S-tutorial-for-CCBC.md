@@ -1,6 +1,6 @@
 ## Data Set
 
-In this tutorial, we are using 189 faecal samples from  [_Host lifestyle affects human microbiota on daily timescales_](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4405912/) (Lawrence, et al., 2014). These samples were taken from one subject over the course of These samples were taken from one subject over the course of a single year. For the purposes of this live tutorial, only a subset (1,500) of the sequences from each sample is used.
+In this tutorial, we are using 189 faecal samples from  [_Host lifestyle affects human microbiota on daily timescales_](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4405912/) (Lawrence *et al.*, 2014). These samples were taken from one subject over the course of These samples were taken from one subject over the course of a single year. For the purposes of this live tutorial, only a subset (1,500) of the sequences from each sample is used.
 
 ## Retrieve the Data
 
@@ -78,6 +78,8 @@ Chimeras are detected in a *de novo* fashion, and excluded:
 
 __`cluster/nochimeras.fasta`__: FASTA file of the unique sequences with chimeric sequences removed.
 
+How many of the sequences were determined to be chimeric?
+
 <details> 
   <summary>Reveal command output</summary>
 <pre><code>
@@ -119,6 +121,8 @@ Operational taxonomic units are clustered at 97% sequence identity, and the cons
 
 __`cluster/rep_set.fasta`__: Consensus sequences for each 97% OTU
 
+How many OTUs were created?
+
 <details> 
   <summary>Reveal command output</summary>
 <pre><code>
@@ -145,6 +149,8 @@ The original sequence file is mapped back onto the OTU consensus sequences:
     vsearch -usearch_global stool_sequences.fasta -db cluster/rep_set_relabel.fasta -strand both -id 0.97 -uc cluster/map.uc -threads 2
 
 __`cluster/map.uc`__: VSEARCH-formatted mapping file (sequence search hit table)
+
+What proportion of the sequences mapped onto the OTU consensus reads?
 
 <details> 
   <summary>Reveal command output</summary>
@@ -207,6 +213,8 @@ __`otu_table.biom`__: BIOM-formatted OTU table. This is a binary file and is not
 We can use the BIOM toolkit to retrieve OTU table statistics:
 
     biom summarize-table -i otu_table.biom -o summary.txt
+
+What is the lowest sample sequence depth?
 
 <details> 
   <summary>Reveal table summary output</summary>
@@ -274,7 +282,7 @@ __`beta_plots/weighted_unifrac_dm.txt`__: Tab-separated file containing the samp
 
 __`beta_plots/unweighted_unifrac_dm.txt`__: Tab-separated file containing the samples as rows and columns, and their unweighted UniFrac beta diversity distance measures.
 
-Investigate the "DAY" and "PHASE" metadata categories. Compare the weighted and unweighted UniFrac results.
+Investigate the "DAY" and "PHASE" metadata categories. Compare the weighted and unweighted UniFrac results. Which one of these measures separates the samples by PHASE better?
 
 <details> 
   <summary>Reveal sample weighted UniFrac plot output</summary>
@@ -297,6 +305,8 @@ Alpha rarefaction plots will compare the alpha diversity measures (number of OTU
     alpha_rarefaction.py -i otu_table.biom -m stool_metadata.csv -t rep_set.tre -o alpha_plots
 
 __`alpha_plots/alpha_rarefaction_plots/rarefaction_plots.html`__: Webpage for interactive viewing of alpha rarefaction plots.
+
+Is there a difference between the alpha diversity metrics across any of the phases?
 
 <details> 
   <summary>Reveal sample alpha rarefaction plot output</summary>
