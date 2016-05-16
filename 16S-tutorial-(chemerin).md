@@ -73,12 +73,12 @@ To start processing the data, we first need to stitch the paired-end reads toget
 
 ("-p 1" indicates this job should be run on 1 CPU and "-o stitched_reads" indicates that the output folder).
 
-Four FASTQ files will be generated for each set of paired-end reads: 
-(1) assembled reads (used for downstream analyses)
-(2) discarded reads (often abnormal reads, e.g. large run of Ns).
-(3) unassembled forward reads
-(4) unassembled reverse reads
-
+Four FASTQ files will be generated for each set of paired-end reads:   
+(1) assembled reads (used for downstream analyses)  
+(2) discarded reads (often abnormal reads, e.g. large run of Ns).   
+(3) unassembled forward reads   
+(4) unassembled reverse reads   
+  
 The default log file "pear_summary_log.txt" contains the percent of reads either assembled, discarded or unassembled. 
 
 **Q4)** What percent of reads were successfully stitched for sample 40CMK6WT?  
