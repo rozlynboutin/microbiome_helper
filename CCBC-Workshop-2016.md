@@ -6,6 +6,13 @@ This workshop provides a high-level overview of the major steps in analyzing mic
 
 * [Morgan Langille] (http://morganlangille.com)
 * [Rob Beiko] (http://kiwi.cs.dal.ca/beikolabWordPress/)
-* Mike Hall (https://twitter.com/mikehall_dal)
+* [Mike Hall] (https://twitter.com/mikehall_dal)
 
 ## Outline
+
+* ~1 hour 16S lecture by Rob Beiko
+* ~1 hour 16S tutorial by Mike Hall
+* Lunch Break
+* ~1 hour metagenomics lecture by Morgan Langille
+* ~1 hour metagenomics tutorial by Morgan Langille
+
