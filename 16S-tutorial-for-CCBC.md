@@ -2,7 +2,7 @@
 
 This tutorial is designed to walk you through a typical 16S rRNA gene sequence analysis. It makes particular use of the [QIIME](http://qiime.org) toolkit. Throughout the tutorial text the command output is hidden in a collapsible tab. You can make use of this if your system is having issues running the VirtualBox so that you can still follow along. Output files of interest are described and highlighted (e.g., __`example.txt`__) after each command.
 
-__Author__: Michael Hall
+__Author__: Michael Hall (mike.hall@dal.ca)
 
 __Based on the MicrobiomeHelper tutorial by__: Gavin Douglas
 
@@ -10,9 +10,9 @@ __Last Edited__: Spring 2016 for CCBC, Toronto
 
 #Requirements
 
-*Basic UNIX skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
-*Microbiome Helper VirtualBox (install it and ensure it is working, and be sure to give it ~2.5GB of RAM!)
-*Tutorial Data
+* Basic UNIX skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
+* Microbiome Helper VirtualBox (install it and ensure it is working, and be sure to give it ~2.5GB of RAM!)
+* Tutorial Data
 
 # Data Set
 
