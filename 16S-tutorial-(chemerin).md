@@ -317,4 +317,4 @@ Just by looking at these PCoAs it's clear that if there is any difference it's s
     compare_categories.py -i final_otu_tables/otu_table_CJS.biom --method anosim -i plots/bdiv_otu_CJS/weighted_unifrac_dm.txt -m map_CJS.txt -c genotype -o beta_div_tests
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_CJS.txt 
 
-You can take a look at the output files to see significance values and test statistics. The P-values for both tests is > 0.05 so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
+You can take a look at the output files to see significance values and test statistics. The P-values for both tests are > 0.05, so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
