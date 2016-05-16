@@ -135,6 +135,7 @@ __`cluster/rep_set.fasta`__: Consensus sequences for each 97% OTU
     Singletons: 221, 3.1% of seqs, 36.7% of clusters
     Multiple alignments 100%  
 </code></pre></details>
+
 The OTU names contain a wealth of information that is not required for downstream processing. To reduce complications, we can simplify the names with *awk*:
 
     awk 'BEGIN{OFS="";ORS="";count=0}{if ($0~/>/){if (NR>1) {print "\n"} print ">" count "\n"; count+=1;} else {print $0;}}' cluster/rep_set.fasta > cluster/rep_set_relabel.fasta
@@ -313,6 +314,7 @@ We can compare groups of samples by computing differences in their beta diversit
     compare_categories.py -i beta_plots/weighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_weighted_unifrac
 
 __`anosim_weighted_unifrac/anosim_results.txt`__: Weighted UniFrac ANOSIM results comparing PHASE metadata groups.
+
 __`anosim_unweighted_unifrac/anosim_results.txt`__: Unweighted UniFrac ANOSIM results comparing PHASE metadata groups.
 
 <details> 
