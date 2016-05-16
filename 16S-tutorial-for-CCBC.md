@@ -231,6 +231,12 @@ OTU table heatmaps can be a great way to quickly glance structure in your OTU ta
 
     make_otu_heatmap.py -i rare_otu_table.biom -o heatmap.pdf
 
+<details> 
+  <summary>Reveal sample plot output</summary>
+<pre><code>
+![](http://imgur.com/NAvHU9g.png)
+</code></pre></details>
+
 ### Principal Co-ordinates Plots
 
 QIIME will easily handle creation of principal co-ordinates (PCoA):
@@ -239,11 +245,33 @@ QIIME will easily handle creation of principal co-ordinates (PCoA):
 
 Investigate the "DAY" and "PHASE" metadata categories. Compare the weighted and unweighted UniFrac results.
 
+<details> 
+  <summary>Reveal sample weighted UniFrac plot output</summary>
+<pre><code>
+![](http://imgur.com/BFvKnbc.png)
+Coloured by PHASE.
+</code></pre></details>
+
+<details> 
+  <summary>Reveal sample unweighted UniFrac plot output</summary>
+<pre><code>
+![](http://imgur.com/HNa2kC2.png)
+Coloured by PHASE.
+</code></pre></details>
+
 ### Alpha Rarefaction Plots
 
 Alpha rarefaction plots will compare the alpha diversity measures (number of OTUs, phylogenetic diversity, Shannon, etc.) as a function of the number of sequences. They can indicate whether a sufficient sequence depth has been achieved.
 
     alpha_rarefaction.py -i otu_table.biom -m stool_metadata.csv -t rep_set.tre -o alpha_plots
+
+<details> 
+  <summary>Reveal sample alpha rarefaction plot output</summary>
+<pre><code>
+![](http://imgur.com/GL4Lo6b.png)
+![](http://imgur.com/qPFwVeB.png)
+Coloured by PHASE.
+</code></pre></details>
 
 ### Comparing Groups of Samples
 
