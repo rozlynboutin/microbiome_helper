@@ -14,6 +14,6 @@ This workshop provides a high-level overview of the major steps in analyzing mic
 * ~1 hour [16S tutorial](16S-tutorial-for-CCBC) by Mike Hall
 * Lunch Break 
 * 1:30-3:30
-* ~1 hour metagenomics lecture by Morgan Langille
+* ~1 hour [metagenomics lecture] (http://www.slideshare.net/mlangill/glbioccbc-metagenomics-workshop) by Morgan Langille
 * ~1 hour [metagenomics tutorial](Metagenomics-Tutorial-(Downsampled)) by Morgan Langille
 
