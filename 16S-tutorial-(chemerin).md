@@ -181,7 +181,9 @@ Several parameters for this program can be specified into a text file, which wil
     echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
     echo "pick_otus:sortmerna_db /home/shared/pick_otu_indexdb_rna/97_otus" >> clustering_params.txt
 
-We will be using the sortmerna_sumaclust method of OTU picking. With this method, reads are first clustered against a reference database; then, 10% of those reads that failed to be classified are subsampled for de novo clustering, which clusters reads against each other. Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7 min with 1 CPU (note you may run into problems if the virtual box isn't using at least 2GB of RAM).Lowering the "-s" parameter's value will greatly affect running speed.
+We will be using the sortmerna_sumaclust method of [open-reference](http://qiime.org/scripts/pick_open_reference_otus.html) OTU picking. In open-reference OTU picking, reads are first clustered against a reference database; then, a certain percent (10% in the below command) of those reads that failed to be classified are sub-sampled to create a new reference database and the remaining unclassified reads are clustered against this new database. This de novo clustering step is repeated again by default using the below command (can be turned off to save time with the "–suppress_step4" option).   
+   
+Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7 min with 1 CPU (note you may run into problems if the virtual box isn't using at least 2GB of RAM). Lowering the "-s" parameter's value will greatly affect running speed.
 
     pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1  
 
