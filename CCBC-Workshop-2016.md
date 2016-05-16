@@ -10,7 +10,7 @@ This workshop provides a high-level overview of the major steps in analyzing mic
 
 ## Outline
 * 10:30-12:30
-* ~1 hour 16S lecture by Rob Beiko
+* ~1 hour [16S lecture] (http://www.slideshare.net/beiko/ccbc-tutorial-beiko) by Rob Beiko
 * ~1 hour [16S tutorial](16S-tutorial-for-CCBC) by Mike Hall
 * Lunch Break 
 * 1:30-3:30
