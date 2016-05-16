@@ -1,5 +1,6 @@
-##  GLBIO / CCBC Microbiome Analysis Workshop May 2016, Toronto
+##  GLBIO / CCBC Microbiome Analysis Workshop 
 
+## Introduction
 This workshop provides a high-level overview of the major steps in analyzing microbiome data including 16S profiling and shotgun metagenomics. It combines both lectures and tutorials with example datasets that provides suggestions for best practices in the field.
 
 ## Instructors
