@@ -14,7 +14,7 @@ __Last Edited__: Spring 2016 for CCBC, Toronto
 *Microbiome Helper VirtualBox (install it and ensure it is working, and be sure to give it ~2.5GB of RAM!)
 *Tutorial Data
 
-## Data Set
+### Data Set
 
 In this tutorial, we are using 189 faecal samples from  [_Host lifestyle affects human microbiota on daily timescales_](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4405912/) (David *et al.*, 2014). These samples were taken from one subject over the course of These samples were taken from one subject over the course of a single year. For the purposes of this live tutorial, only a subset (1,500) of the sequences from each sample is used.
 
