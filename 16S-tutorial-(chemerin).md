@@ -159,7 +159,7 @@ By default the logfile "chimeraFilter_log.txt" is generated containing the count
 
 **Q7)** What percent of reads was retained for sample 75CMK8KO after **all** the filtering steps (HINT: you'll need to compare the original number of reads to the number of reads output by chimeraFilter.pl)?
 
-### Run OTU picking pipeline
+## Run open-reference OTU picking pipeline
 
 Now that we have adequately prepared the reads, we can now run OTU picking using QIIME. An Operational Taxonomic Unit (OTU) defines a taxonomic group based on sequence similarity among sampled organisms. QIIME software clusters sequence reads from microbial communities in order to classify its constituent micro-organisms into OTUs. QIIME requires FASTA files to be input in a specific format (specifically, sample names need to be at the beginning of each header line). We have provided the mapping file ("map.txt"), which links filenames to sample names and metadata.
 
@@ -186,6 +186,8 @@ We will be using the sortmerna_sumaclust method of [open-reference](http://qiime
 Also, we are actually retaining singletons (i.e. OTUs identified by 1 read), which we will then remove in the next step. Note that "$PWD" is just a variable that contains your current directory. This command takes ~7 min with 1 CPU (note you may run into problems if the virtual box isn't using at least 2GB of RAM). Lowering the "-s" parameter's value will greatly affect running speed.
 
     pick_open_reference_otus.py -i $PWD/combined_fasta/combined_seqs.fna -o $PWD/clustering/ -p $PWD/clustering_params.txt -m sortmerna_sumaclust -s 0.1 -v --min_otu_size 1  
+
+### Remove low confidence OTUs
 
 We will now remove low confidence OTUs, i.e. those that are called by a low number of reads. It's difficult to choose a hard cut-off for how many reads are needed for an OTU to be confidently called, since of course OTUs are often at low frequency within a community. A reasonable approach is to remove any OTU identified by fewer than 0.1% of the reads, given that 0.1% is the estimated amount of sample bleed-through between runs on the Illumina Miseq:
 
@@ -215,8 +217,9 @@ In contrast, the first four lines of  clustering/otu_table_high_conf_summary.txt
     Total count: 10493
     Table density (fraction of non-zero values): 0.194
 
-
 After removing low-confidence OTUs, only 36% were retained: the number of OTUs dropped from 2434 to 887. This effect is generally even more drastic for bigger datasets. However, the numbers of reads only dropped from 12040 to 10493 (so 87% of the reads were retained). You can also see that the table density increased, as we would expect.
+
+### Rarify reads
 
 We now need to subsample the number of reads for each sample to the same depth, which is necessary for several downstream analyses. This is called rarefaction, a technique that provides an indication of species richness for a given number of samples. There is actually quite a lot of debate about whether rarefaction is necessary (since it throws out data!), but it is still the standard method used in microbiome studies. We want to rarify the read depth to the sample with the lowest "reasonable" number of reads. Of course, a "reasonable" read depth is quite subjective and depends on how much variation there is between samples. 
 
@@ -238,9 +241,11 @@ We will rarify to 380 reads, since the lowest depth is not a major outlier in th
 
 This QIIME command produced another BIOM table with each sample rarified to 380 reads. In this case, no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in a loss of low-frequency OTUs from the analysis.
 
-### Diversity analyses
+## Diversity analyses
 
-Diversity in microbial samples can be expressed in a number of ways. Most commonly people refer to "alpha" (the diversity within a group) and "beta" (the diversity between groups) diversity. There are many different ways to compute both of these diversities.   
+Diversity in microbial samples can be expressed in a number of ways. Most commonly people refer to "alpha" (the diversity within a group) and "beta" (the diversity between groups) diversity. There are many different ways to compute both of these diversities.     
+
+### UniFrac beta diversity analyses  
 
 [UniFrac](https://en.wikipedia.org/wiki/UniFrac) is a particular beta-diversity measure that analyzes dissimilarity between samples, sites, or communities. We will now create UniFrac beta diversity (both weighted and unweighted) principal coordinates analysis (PCoA) plots. PCoA plots are related to principal components analysis (PCA) plots, but are based on any dissimilarity matrix rather than just a covariance/correlation matrix (< 1 min on 1 CPU):
 
@@ -265,7 +270,9 @@ You'll see what's really driving the differences in beta diversity when you chan
 
 ![](https://www.dropbox.com/s/sgt2vsjazf0ma0t/source_weighted_PCoA.png?raw=1)
 
-There is a clear qualitative difference between the microbiota of mice from the two source facilities. This can also be seen based on rarefaction plots. Rarefaction plots show alpha diversity, a measure of the OTU richness per sample (takes < 1 min on 1 CPU):
+### Alpha diversity analyses
+
+There is a clear qualitative difference between the microbiota of mice from the two source facilities based on the above plots. It's also possible that there might also be differences between the rarefaction curves of samples from different source facilities. Rarefaction plots show alpha diversity, which in this case is taken as a measure of the OTU richness per sample (takes < 1 min on 1 CPU):
 
     alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 40 --max_rare_depth 380 --num_steps 10
 
@@ -276,6 +283,8 @@ Choose "observed_otus" as the metric and "Source" as the category. You should se
 ![](https://www.dropbox.com/s/n7lhrmapkzy1awi/source_alpha.png?raw=1)
 
 There is no difference in the number of OTUs identified in the guts of mice from the BZ facility than the CJS facility, based on this dataset. However, since the rarefaction curves have not reached a plateau, it is likely that this comparison is just incorrect to make with so few reads. Indeed, [with the full dataset you do see a difference in the number of OTUs](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-(long-running-time)).
+
+### Testing for statistical differences   
 
 So what's the next step? Since we know that source facility is such an important factor, we could analyze samples from each facility separately. This will lower our statistical power to detect a signal, but otherwise we cannot easily test for a difference between genotypes. 
 
