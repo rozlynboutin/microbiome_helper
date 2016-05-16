@@ -240,7 +240,9 @@ This QIIME command produced another BIOM table with each sample rarified to 380 
 
 ### Diversity analyses
 
-Diversity in microbial communities can be expressed in a number of ways. UniFrac beta diversity is a particular measure of diversity that analyzes dissimilarity between samples, sites, or communities. We will now create UniFrac beta diversity (both weighted and unweighted) principal coordinates analysis (PCoA) plots. PCoA plots are related to principal components analysis (PCA) plots, but are based on any dissimilarity matrix rather than just a covariance/correlation matrix (< 1 min on 1 CPU):
+Diversity in microbial samples can be expressed in a number of ways. Most commonly people refer to "alpha" (the diversity within a group) and "beta" (the diversity between groups) diversity. There are many different ways to compute both of these diversities.   
+
+[UniFrac](https://en.wikipedia.org/wiki/UniFrac) is a particular beta-diversity measure that analyzes dissimilarity between samples, sites, or communities. We will now create UniFrac beta diversity (both weighted and unweighted) principal coordinates analysis (PCoA) plots. PCoA plots are related to principal components analysis (PCA) plots, but are based on any dissimilarity matrix rather than just a covariance/correlation matrix (< 1 min on 1 CPU):
 
     beta_diversity_through_plots.py -m map.txt -t clustering/rep_set.tre -i final_otu_tables/otu_table.biom -o plots/bdiv_otu
 
