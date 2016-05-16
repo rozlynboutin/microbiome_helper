@@ -1,7 +1,7 @@
 ##  GLBIO / CCBC Microbiome Analysis Workshop 
 
 ## Introduction
-This workshop provides a high-level overview of the major steps in analyzing microbiome data including 16S profiling and shotgun metagenomics. It combines both lectures and tutorials with example datasets that provides suggestions for best practices in the field.
+This workshop provides a high-level overview of the major steps in analyzing microbiome data including 16S profiling and shotgun metagenomics. It combines both lectures and tutorials with example datasets that provides suggestions for best practices in the field. This workshop was presented at the [GLBIO/CCBC Conference](https://www.iscb.org/glbioccbc2016) in Toronto on May 16th.
 
 ## Instructors
 * [Morgan Langille] (http://morganlangille.com)
@@ -16,4 +16,3 @@ This workshop provides a high-level overview of the major steps in analyzing mic
 * 1:30-3:30
 * ~1 hour [metagenomics lecture] (http://www.slideshare.net/mlangill/glbioccbc-metagenomics-workshop) by Morgan Langille
 * ~1 hour [metagenomics tutorial](Metagenomics-Tutorial-(Downsampled)) by Morgan Langille
-
