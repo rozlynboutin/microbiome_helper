@@ -245,7 +245,7 @@ This QIIME command produced another BIOM table with each sample rarified to 380 
 
 Diversity in microbial samples can be expressed in a number of ways. Most commonly people refer to "alpha" (the diversity within a group) and "beta" (the diversity between groups) diversity. There are many different ways to compute both of these diversities.     
 
-### UniFrac beta diversity analyses  
+### UniFrac beta diversity analysis  
 
 [UniFrac](https://en.wikipedia.org/wiki/UniFrac) is a particular beta-diversity measure that analyzes dissimilarity between samples, sites, or communities. We will now create UniFrac beta diversity (both weighted and unweighted) principal coordinates analysis (PCoA) plots. PCoA plots are related to principal components analysis (PCA) plots, but are based on any dissimilarity matrix rather than just a covariance/correlation matrix (< 1 min on 1 CPU):
 
@@ -270,7 +270,7 @@ You'll see what's really driving the differences in beta diversity when you chan
 
 ![](https://www.dropbox.com/s/sgt2vsjazf0ma0t/source_weighted_PCoA.png?raw=1)
 
-### Alpha diversity analyses
+### Alpha diversity analysis
 
 There is a clear qualitative difference between the microbiota of mice from the two source facilities based on the above plots. It's also possible that there might also be differences between the rarefaction curves of samples from different source facilities. Rarefaction plots show alpha diversity, which in this case is taken as a measure of the OTU richness per sample (takes < 1 min on 1 CPU):
 
