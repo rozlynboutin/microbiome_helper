@@ -6,11 +6,13 @@ Throughout the tutorial there will be questions to help you learn. The [answers 
 
 Also, be aware that for real datasets the run-times (and memory requirements) for these commands will greatly increase.
 
-Author: Gavin Douglas   
+__Author:__ Gavin Douglas   
 
-First created: Fall 2015  
+__Contributions by:__ Molly Hayes
 
-Last edited: May 2016  
+__First created:__ Fall 2015  
+
+__Last edited:__ May 2016  
 
 ### Requirements
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
