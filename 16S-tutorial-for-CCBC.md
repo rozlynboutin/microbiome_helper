@@ -7,7 +7,7 @@ In this tutorial, we are using 189 faecal samples from  [_Host lifestyle affects
     wget https://www.dropbox.com/s/kpte51nm17wav9o/stool_data.zip
     unzip stool_data.zip
 
-The zip file contains two files: `stool_sequences.fasta`, and `stool_metadata.csv`. Because quality filtering steps are specific to each sequencing platform, we will not address that in this tutorial. The `stool_sequences.fasta` file will contain the sequences from each sample. The `stool_metadata.csv` is a tab-separated table file that contains the metadata information for each sample.
+The zip file contains two files: __`stool_sequences.fasta`__, and __`stool_metadata.csv`__. Because quality filtering steps are specific to each sequencing platform, we will not address that in this tutorial. The `stool_sequences.fasta` file will contain the sequences from each sample. The `stool_metadata.csv` is a tab-separated table file that contains the metadata information for each sample.
 
 Let's take a look at the sequences:
 
@@ -55,6 +55,8 @@ The sequences are reduced to only unique sequences ("dereplicated") to improve c
 
     vsearch -derep_fulllength stool_sequences.fasta -output cluster/unique.fasta -sizeout -minseqlength 50
 
+__`cluster/unique.fasta`__: A FASTA file containing only the unique sequences.
+
 <details> 
   <summary>Reveal command output</summary>
 <pre><code>
@@ -73,6 +75,8 @@ The sequences are reduced to only unique sequences ("dereplicated") to improve c
 Chimeras are detected in a *de novo* fashion, and excluded:
 
     vsearch -uchime_denovo cluster/unique.fasta --nonchimeras cluster/nochimeras.fasta
+
+__`cluster/nochimeras.fasta`__: FASTA file of the unique sequences with chimeric sequences removed.
 
 <details> 
   <summary>Reveal command output</summary>
@@ -93,6 +97,8 @@ Sequences are sorted by size, and singletons are removed (they are mapped back o
 
     vsearch -sortbysize cluster/nochimeras.fasta -output cluster/sorted.fasta -minsize 2
 
+__`cluster/sorted.fasta`__: FASTA file with the sequences sorted by abundance (highest first), and singletons removed (-minsize 2).
+
 <details> 
   <summary>Reveal command output</summary>
 <pre><code>
@@ -110,6 +116,8 @@ Sequences are sorted by size, and singletons are removed (they are mapped back o
 Operational taxonomic units are clustered at 97% sequence identity, and the consensus sequences for the OTUs are output to a FASTA file:
 
     vsearch -cluster_smallmem cluster/sorted.fasta --id 0.97 --consout cluster/rep_set.fasta --usersort
+
+__`cluster/rep_set.fasta`__: Consensus sequences for each 97% OTU
 
 <details> 
   <summary>Reveal command output</summary>
@@ -135,6 +143,8 @@ The original sequence file is mapped back onto the OTU consensus sequences:
 
     vsearch -usearch_global stool_sequences.fasta -db cluster/rep_set_relabel.fasta -strand both -id 0.97 -uc cluster/map.uc -threads 2
 
+__`cluster/map.uc`__: VSEARCH-formatted mapping file (sequence search hit table)
+
 <details> 
   <summary>Reveal command output</summary>
 <pre><code>
@@ -158,18 +168,18 @@ Run this script on our vsearch .uc file:
 
     python mesas-uc2clust cluster/map.uc cluster/seq_otus.txt
 
+__`cluster/seq_otus.txt`__: Mapping file that relates sequences to the OTU that they belong to.
+
 ## Taxonomic Classification
 
-We will use sortmerna to assign taxonomic classifications to each representative sequence:
-
-    assign_taxonomy.py -i cluster/rep_set_relabel.fasta -o assigned_taxonomy -m sortmerna
-
-**Note:** If you are running this with <6GB of RAM, *mothur* may be a faster option. It must be installed before using:
+Mothur is a 16S analysis software toolkit, much like QIIME. However, it has its own taxonomic classification utility that can be accessed through QIIME's `assign_taxonomy.py` command. Mothur's implementation is a naive Bayesian approach, similar to the popular Ribosomal Database Project (RDP) classifier. It must be installed before using:
 
     sudo apt-get install mothur
     assign_taxonomy.py -i cluster/rep_set_relabel.fasta -o assigned_taxonomy -m mothur
 
-The *print_qiime_config.py* command will return information about QIIME's set-up. This includes the default taxonomy reference sets. Since we did not specify them in our assign_taxonomy.py commands, the defaults were used. What are the default files?
+__`assigned_taxonomy/rep_set_relabel_tax_assignments.txt`__: Taxonomic assignments for each OTU, along with posterior probability (confidence) value.
+
+The `print_qiime_config.py` command will return information about QIIME's set-up. This includes the default taxonomy reference sets. Since we did not specify them in our `assign_taxonomy.py` commands, the defaults were used. What are the default files?
 
 ## Phylogenetic Tree Construction
 
@@ -177,15 +187,21 @@ First, the sequences must be aligned. This can be accomplished using PyNast via 
 
     align_seqs.py -i cluster/rep_set_relabel.fasta -o aligned -m pynast
 
+__`rep_set_relabel_aligned.fasta`__: FASTA file containing the aligned OTU consensus sequences.
+
 Next, we build the tree using FastTree:
 
     make_phylogeny.py -i aligned/rep_set_relabel_aligned.fasta -o rep_set.tre -t fasttree
+
+__`rep_set.tre`__: Phylogenetic tree in Newick format.
 
 ## OTU Table Creation
 
 QIIME will take the OTU map and taxonomic classifications and create an OTU table:
 
     make_otu_table.py -i cluster/seq_otus.txt -t assigned_taxonomy/rep_set_relabel_tax_assignments.txt -o otu_table.biom
+
+__`otu_table.biom`__: BIOM-formatted OTU table. This is a binary file and is not human readable.
 
 We can use the BIOM toolkit to retrieve OTU table statistics:
 
@@ -219,9 +235,13 @@ Now we evenly subsampled (rarefy) the OTU table so that each sample has the same
 
     single_rarefaction.py -i otu_table.biom -d 803 -o rare_otu_table.biom
 
+__`rare_otu_table.biom`__: Rarefied (evenly subsampled) OTU table in BIOM format.
+
 The BIOM format is a file type called HDF5. This is not a human-readable format. You can convert these files to tab-separated spreadsheets that can be opened with Excel or LibreOffice Calc. This can be very useful for importing your OTU table using languages other than Python, such as R:
 
     biom convert -i otu_table.biom -o otu_table.tsv --to-tsv --header-key taxonomy
+
+__`otu_table.tsv`__: Tab-separated OTU table that is human-readable and can be opened with a spreadsheet viewer (given it isn't too large to fit in memory!)
 
 ## Downstream Analyses
 
@@ -230,6 +250,8 @@ The BIOM format is a file type called HDF5. This is not a human-readable format.
 OTU table heatmaps can be a great way to quickly glance structure in your OTU table.
 
     make_otu_heatmap.py -i rare_otu_table.biom -o heatmap.pdf
+
+__`heatmap.pdf`__: PDF of the heatmap figure, with OTUs as rows and samples as columns.
 
 <details> 
   <summary>Reveal sample plot output</summary>
@@ -242,6 +264,14 @@ OTU table heatmaps can be a great way to quickly glance structure in your OTU ta
 QIIME will easily handle creation of principal co-ordinates (PCoA):
 
     beta_diversity_through_plots.py -i rare_otu_table.biom -m stool_metadata.csv -t rep_set.tre -o beta_plots
+
+__`beta_plots/weighted_unifrac_emperor_pcoa_plot/index.html`__: Webpage that can be opened to view interactive weighted UniFrac PCoA plots.
+
+__`beta_plots/unweighted_unifrac_emperor_pcoa_plot/index.html`__: Webpage that can be opened to view interactive unweighted UniFrac PCoA plots.
+
+__`beta_plots/weighted_unifrac_dm.txt`__: Tab-separated file containing the samples as rows and columns, and their weighted UniFrac beta diversity distance measures.
+
+__`beta_plots/unweighted_unifrac_dm.txt`__: Tab-separated file containing the samples as rows and columns, and their unweighted UniFrac beta diversity distance measures.
 
 Investigate the "DAY" and "PHASE" metadata categories. Compare the weighted and unweighted UniFrac results.
 
@@ -265,6 +295,8 @@ Alpha rarefaction plots will compare the alpha diversity measures (number of OTU
 
     alpha_rarefaction.py -i otu_table.biom -m stool_metadata.csv -t rep_set.tre -o alpha_plots
 
+__`alpha_plots/alpha_rarefaction_plots/rarefaction_plots.html`__: Webpage for interactive viewing of alpha rarefaction plots.
+
 <details> 
   <summary>Reveal sample alpha rarefaction plot output</summary>
 <pre><code>
@@ -279,6 +311,9 @@ We can compare groups of samples by computing differences in their beta diversit
 
     compare_categories.py -i beta_plots/unweighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_unweighted_unifrac
     compare_categories.py -i beta_plots/weighted_unifrac_dm.txt --method anosim -m stool_metadata.csv -c PHASE -o anosim_weighted_unifrac
+
+__`anosim_weighted_unifrac/anosim_results.txt`__: Weighted UniFrac ANOSIM results comparing PHASE metadata groups.
+__`anosim_unweighted_unifrac/anosim_results.txt`__: Unweighted UniFrac ANOSIM results comparing PHASE metadata groups.
 
 <details> 
   <summary>Reveal ANOSIM output</summary>
