@@ -1,4 +1,4 @@
-Below is the quick and dirty description of our recommended 18S pipeline. See the sidebar menu for more [detail](https://github.com/mlangill/microbiome_helper/wiki/Changes-to-16S-workflow-for-18S-data).
+Below is the quick and dirty description of our recommended 18S pipeline.
 
 *Note that this workflow starts with raw paired-end MiSeq data in demultiplexed fastq format assumed to be located within a folder called `raw_data`*
 
