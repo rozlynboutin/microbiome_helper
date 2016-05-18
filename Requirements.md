@@ -25,19 +25,19 @@ The following programs should be installed with commands accessible from the use
 
 
 **Databases (dropbox download links)**
-* 16S chimera checking: [Bacteria_RDP_trainset15_092015.udb](https://www.dropbox.com/s/8qr42doaez48oc3/Bacteria_RDP_trainset15_092015.udb?dl=0) (70 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include only bacteria. 
-* 18S chimera checking: [Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.udb] (https://www.dropbox.com/s/uxgsf5biqy9l7yd/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.udb?dl=0) (475 MB). This DB was taken from SILVA and was parsed to include only eukaryotes and all Us were converted to Ts.
+* 16S chimera checking: [Bacteria_RDP_trainset15_092015.udb](https://www.dropbox.com/s/8qr42doaez48oc3/Bacteria_RDP_trainset15_092015.udb?dl=1) (70 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include only bacteria. 
+* 18S chimera checking: [Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.udb] (https://www.dropbox.com/s/uxgsf5biqy9l7yd/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.udb?dl=1) (475 MB). This DB was taken from SILVA and was parsed to include only eukaryotes and all Us were converted to Ts.
 
 Note that all .udb files on this page were created with the usearch61 -makeudb_usearch command.
 
-* Eukaryotic OTU-picking files, as discussed [here](https://github.com/mlangill/microbiome_helper/wiki/Changes-to-16S-workflow-for-18S-data)
-   * [Silva_119_rep_set99_18S_taxonomy_7_levels.txt] (https://www.dropbox.com/s/lj44kqjx3u1u2ei/Silva_119_rep_set99_18S_taxonomy_7_levels.txt?dl=0) (5MB)
-   * [Silva_119_rep_set99_18S.fna](https://www.dropbox.com/s/muq4up1lp5al5pz/Silva_119_rep_set99_18S.fna?dl=0) (60 MB)
-   * [Silva_119_rep_set90_aligned_18S.fna](https://www.dropbox.com/s/cw77k375ayaqh0n/Silva_119_rep_set90_aligned_18S.fna?dl=0) (112 MB)
+* Eukaryotic OTU-picking files:
+   * [gb203_pr2_all_10_28_99p_tax.txt] (https://www.dropbox.com/s/0ztzkaeqxqq6k7m/gb203_pr2_all_10_28_99p_tax.txt?dl=1) (9MB)
+   * [gb203_pr2_all_10_28_99p_clean.fasta](https://www.dropbox.com/s/m1i6cdyj2hwgs2e/gb203_pr2_all_10_28_99p_clean.fasta?dl=1) (98 MB)
+   * [Silva_119_rep_set90_aligned_18S.fna](https://www.dropbox.com/s/cw77k375ayaqh0n/Silva_119_rep_set90_aligned_18S.fna?dl=1) (112 MB)
 
 * To use "run_human_filter.pl" you will need to download the appropriate [Bowtie2 index](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml). 
 
-* To use "run_pre_humann.pl" you will need to use a [database of KEGG orthologs](https://www.dropbox.com/s/hzduqabilbrqr36/kegg.reduced.dmnd?dl=0).
+* To use "run_pre_humann.pl" you will need to use a [database of KEGG orthologs](https://www.dropbox.com/s/hzduqabilbrqr36/kegg.reduced.dmnd?dl=1).
 
 **Perl modules** 
 
