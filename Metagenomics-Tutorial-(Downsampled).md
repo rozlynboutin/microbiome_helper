@@ -257,13 +257,15 @@ You can exit STAMP once you're done with this section.
 
 ## Determining Functional Composition with HUMAnN
 
-We will now functionally annotate the metagenomes using HUMAnN. If you are running this tutorial on our Virtual Box with low RAM and a low number of CPUs then you should close everything else except for Terminal. Also, if you don't have at least 2GB of memory available for the virtual box (you can change this before running the virtual box, but of course this is limited by the specs of your actual computer) the following commands could be quite slow (especially the "scons" command). If you notice your commands seem to be frozen you can quit them with "CTRL-C" and skip that step, you will be able to analyze the data with STAMP in either case.  
+We will now functionally annotate the metagenomes using HUMAnN. HUMAnN analyzes metagenomic data in the context of biochemical pathways, elucidating the distribution of roles among microbial community members. 
+
+If you are running this tutorial on our Virtual Box with low RAM and a low number of CPUs then you should close everything else except for Terminal. Also, if you don't have at least 2GB of memory available for the virtual box (you can change this before running the virtual box, but of course this is limited by the specs of your actual computer) the following commands could be quite slow (especially the "scons" command). If you notice your commands seem to be frozen you can quit them with "CTRL-C" and skip that step, you will be able to analyze the data with STAMP in either case.  
 
 ### Running DIAMOND search against KEGG
 
 If you are short on time you can skip to [interpreting the functional results](#running-all-samples-with-microbiome-helper). 
 
-Before running HUMAnN, it is first necessary run a similarity search against the KEGG database. This database is located at “/home/shared/kegg/diamond_db” on the Virtual Box. This is a reduced KEGG database that the authors of HUMAnN created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called [DIAMOND](http://ab.inf.uni-tuebingen.de/software/diamond/).
+Before running HUMAnN, it is first necessary run a similarity search against the KEGG database. This database is a collection of pathways for metabolic and other functional molecular and cellular processes, and is located at “/home/shared/kegg/diamond_db” on the Virtual Box. This is a reduced KEGG database that the authors of HUMAnN created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called [DIAMOND](http://ab.inf.uni-tuebingen.de/software/diamond/).
 
 First we will make a directory to store our sequence search outputs:
 
