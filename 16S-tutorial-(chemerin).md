@@ -1,3 +1,21 @@
+* [Introduction](#introduction)
+    * [Requirements](#requirements)
+    * [Background](#background)
+  * [Pre-processing](#pre-processing)
+    * [Stitching paired-end reads](#stitching-paired-end-reads)
+    * [Quality metrics of stitched reads](#quality-metrics-of-stitched-reads)
+    * [Filtering reads by quality and length](#filtering-reads-by-quality-and-length)
+    * [Conversion to FASTA and removal of chimeric reads](#conversion-to-fasta-and-removal-of-chimeric-reads)
+  * [Run open-reference OTU picking pipeline](#run-open-reference-otu-picking-pipeline)
+    * [Remove low confidence OTUs](#remove-low-confidence-otus)
+    * [Rarify reads](#rarify-reads)
+  * [Diversity analyses](#diversity-analyses)
+    * [UniFrac beta diversity analysis](#unifrac-beta-diversity-analysis)
+    * [Alpha diversity analysis](#alpha-diversity-analysis)
+    * [Testing for statistical differences](#testing-for-statistical-differences)
+  * [Summary](#summary)
+
+
 ## Introduction
 
 This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S sequencing data using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). It's based on a [previous tutorial we posted](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial), except this version of the dataset was down-sampled to many fewer reads. This changes some of the results, but makes the tutorial run much faster.
