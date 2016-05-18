@@ -21,6 +21,8 @@ __Last edited:__ May 2016
 * We will be following [our 16S pipeline](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure), which uses several wrapper scripts to help automate running many files.
 
 ### Background
+16S analysis is a method of microbiome analysis (compare to [shotgun metagenomics](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-%28Downsampled%29)) that targets the 16S ribosomal RNA gene, as this gene is present in all prokaryotes. It features regions that are conserved among these organisms, as well as variable regions that allow distinction among organisms. These characteristics make this gene useful for analyzing microbial communities at reduced cost compared to metagenomic techniques. A similar workflow can be applied to eukaryotic micro-organisms using the 18S rRNA gene.
+
 This dataset was originally used in a project to determine whether knocking out the protein [chemerin](https://en.wikipedia.org/wiki/Chemerin) affects gut microbial composition. Originally 116 mouse samples acquired from two different facilities were used for this project (**only 24 samples were used in this tutorial dataset, for simplicity**). Metadata associated with each sample is indicated in the mapping file (map.txt). In this mapping file the genotypes of interest can be seen: wildtype (WT), chemerin knockout (chemerin_KO), chemerin receptor knockout (CMKLR1_KO) and a heterozygote for the receptor knockout (HET). Also of importance are the two source facilities: "BZ" and "CJS". It is generally a good idea to include as much metadata as possible, since this data can easily be explored later on.
 
 ## Pre-processing
@@ -65,7 +67,7 @@ You can get the number of FASTQ files in the directory with this command:
 
 **Q3)** Why isn't the number of FASTQ files equal to the number of samples?
 
-### Stitch paired-end reads together
+### Stitching paired-end reads 
 
 To start processing the data, we first need to stitch the paired-end reads together using PEAR (~1 min on 1 CPU):
 
@@ -110,7 +112,7 @@ In the output folder(s) an HTML file is created for each FASTQ file (or 1 file i
 
 You can see the full FastQC report for all stitched reads combined [here](https://www.dropbox.com/s/rs3jmeao3s9vaip/combined_fastqc.html).
   
-### Read filtering based on quality and length
+### Filtering reads by quality and length
 
 Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria (~2 min on 1 CPU):
  
@@ -137,21 +139,21 @@ Here is the corresponding distribution of quality scores after filtering the rea
 As before, if you'd like to see more details (such as how the read length distribution has changed), you can see that [here](https://www.dropbox.com/s/bg6mzz6gawlpa7q/combined_filtered_fastqc.html).
 
   
-### Convert to FASTA and remove chimeric reads
+### Conversion to FASTA and removal of chimeric reads
 
 The next steps in the pipeline require the sequences to be in [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), which we will generate using this command (< 1 min on 1 CPU):
 
     run_fastq_to_fasta.pl -p 1 -o fasta_files filtered_reads/*fastq
 
-Note that this command removes any sequences containing "N" (a completely ambiguous base read), which is << 1% of the reads after the read filtering steps above.
+Note that this command removes any sequences containing "N" (a fully ambiguous base read), which is << 1% of the reads after the read filtering steps above.
 
-Now that we have FASTA files we can run the chimera filtering (~3 min on 1 CPU):
+Due to the alternating conserved and variable regions in the 16S gene, during PCR amplification, a strand that is partially extended in one cycle can act as a primer in a later cycle and anneal to a template in the wrong position. This is called a chimeric DNA molecule, and we want to remove these so as not to treat them as true DNA samples. This step is important for microbiome work, as otherwise these reads would be called as novel OTUs. In fact, it is likely that not all chimeric reads will be removed by this step. Using our sequences in FASTA files we can run the chimera filtering (~3 min on 1 CPU):
 
     chimeraFilter.pl -type 1 -thread 1 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb fasta_files/*fasta
 
 See a more detailed description of this script [here](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads).
 
-This script will remove any reads called as chimeric or called ambiguously and output the remaining reads in the "non_chimeras" folder by default. This step is important for microbiome work since otherwise these reads would be called as novel OTUs (and in fact it is likely that not all chimeric reads will be removed by this step).
+This script will remove any reads called either ambiguously or as chimeric, and output the remaining reads in the "non_chimeras" folder by default.
 
 By default the logfile "chimeraFilter_log.txt" is generated containing the counts and percentages of reads filtered out for each sample. 
 
@@ -329,3 +331,7 @@ Just by looking at these PCoA plots it's clear that if there is any difference i
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_CJS.txt 
 
 You can take a look at the output files to see significance values and test statistics. The P-values for both tests are > 0.05, so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
+
+### Summary
+
+This tutorial outlined the treatment of down-sampled 16S data from four genotypes of mice from two source facilities. We have addressed sequence data pre-processing (stitching paired-end reads, measuring their quality, filtering those which failed to meet standards of quality and length, and removing chimeric reads), and OTU picking (using QIIME to assign taxonomies, removing OTUs called by very few reads, and rarifying to a reasonable read depth). Finally, we performed diversity analysis, illustrating UniFrac beta diversity using PCoA plots and alpha diversity using rarefaction plots, which suggested that source facility was the main source of variance. We investigated this further by analyzing beta diversity among genotypes for each source facility separately, and used an ANOSIM test to show that in fact, there were no significant differences.
