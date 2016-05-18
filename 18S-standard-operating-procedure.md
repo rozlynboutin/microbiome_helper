@@ -36,9 +36,9 @@ Below is the quick and dirty description of our recommended 18S pipeline. See th
         echo "pick_otus:threads 4" >> clustering_params.txt
         echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
         echo "pick_otus:similarity 0.99" >> clustering_params.txt
-        echo "align_seqs:template_fp /home/shared/rRNA_db/Silva_119_rep_set90_aligned_18S.fna" >> clustering_params.txt 
-        echo "assign_taxonomy:id_to_taxonomy_fp /home/shared/rRNA_db/Silva_119_rep_set99_18S_taxonomy_7_levels.txt" >> clustering_params.txt
-        echo "assign_taxonomy:reference_seqs_fp /home/shared/rRNA_db/Silva_119_rep_set99_18S.fna" >> clustering_params.txt
+        echo "align_seqs:template_fp /home/shared/rRNA_db/90_Silva_111_rep_set_euk_aligned.filter.fasta" >> clustering_params.txt 
+        echo "assign_taxonomy:id_to_taxonomy_fp /home/shared/rRNA_db/90_Silva_111_rep_set_euk_aligned.filter.fasta" >> clustering_params.txt
+        echo "assign_taxonomy:reference_seqs_fp /home/shared/rRNA_db/99_Silva_111_rep_set_euk.fasta" >> clustering_params.txt
         
 9. Run the entire qiime open reference picking pipeline with the new sortmerna (for reference picking) and sumaclust (for de novo OTU picking). This does reference picking first, then subsamples failure sequences, de-novo OTU picks failures, ref picks against de novo OTUs, and de-novo picks again any left over failures. Note: You may want to change the subsampling percentage to a higher amount from the default -s 0.001 to -s 0.01 (e.g 1% of the failures) or -s 0.1 (e.g. 10% of the failures) (~24 hours).
 
@@ -71,16 +71,10 @@ Below is the quick and dirty description of our recommended 18S pipeline. See th
 
         biom convert -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_w_tax.txt --to-tsv --header-key taxonomy
 
-17. Convert BIOM OTU table to STAMP. Note that the current 18S reference database we are using has some naming conflicts, which we are temporarily getting around with the below commands:
+17. Convert BIOM OTU table to STAMP:
 
-        TmpFixBIOM.pl final_otu_tables/otu_table_w_tax.txt  > final_otu_tables/otu_table_w_tax_cleaned.txt
-
-        biom convert -i  final_otu_tables/otu_table_w_tax_cleaned.txt -o final_otu_tables/otu_table_cleaned.biom --to-hdf5 --process-obs-metadata taxonomy --table-type="OTU table"
-
-        biom_to_stamp.py -m taxonomy final_otu_tables/otu_table_cleaned.biom >final_otu_tables/otu_table_w_tax_cleaned.spf
-
-        sed -i 's/D_4__Chlorarachniophyta\tD_5__NOR26/D_4__Chlorarachniophyta\tD_5__NOR26_Chlorarachniophyta/g’  final_otu_tables/otu_table_w_tax_cleaned.spf
+        biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
 
 18. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
 
-        biom add-metadata -i final_otu_tables/otu_table_cleaned.biom -o final_otu_tables/otu_table_cleaned_with_metadata.biom -m map.txt
+        biom add-metadata -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_with_metadata.biom -m map.txt
