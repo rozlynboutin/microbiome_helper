@@ -332,6 +332,6 @@ Just by looking at these PCoA plots it's clear that if there is any difference i
 
 You can take a look at the output files to see significance values and test statistics. The P-values for both tests are > 0.05, so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
 
-### Summary
+## Summary
 
 This tutorial outlined the treatment of down-sampled 16S data from four genotypes of mice from two source facilities. We have addressed sequence data pre-processing (stitching paired-end reads, measuring their quality, filtering those which failed to meet standards of quality and length, and removing chimeric reads), and OTU picking (using QIIME to assign taxonomies, removing OTUs called by very few reads, and rarifying to a reasonable read depth). Finally, we performed diversity analysis, illustrating UniFrac beta diversity using PCoA plots and alpha diversity using rarefaction plots, which suggested that source facility was the main source of variance. We investigated this further by analyzing beta diversity among genotypes for each source facility separately, and used an ANOSIM test to show that in fact, there were no significant differences.
