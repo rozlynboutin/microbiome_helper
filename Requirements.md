@@ -1,7 +1,7 @@
 The following programs should be installed with commands accessible from the user's PATH, before trying to run any of the scripts included in this repository.
 
 **Both pipelines**
-* FastQC (v0.11.2) (optional): http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
+* FastQC (optional): http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
 * PEAR: http://sco.h-its.org/exelixis/web/software/pear/doc.html
  
 **Metagenomics**
@@ -13,9 +13,9 @@ The following programs should be installed with commands accessible from the use
 
 **16S**
 * FASTX toolkit (v0.0.14): http://hannonlab.cshl.edu/fastx_toolkit/download.html
-* BBMap (v35.59): http://sourceforge.net/projects/bbmap 
+* BBMap: http://sourceforge.net/projects/bbmap 
 * USEARCH (v6.1.544): http://www.drive5.com/usearch/
-* QIIME (v1.9): http://qiime.org
+* QIIME: http://qiime.org
 * SortMeRNA: http://bioinfo.lifl.fr/RNA/sortmerna/
 * SUMACLUST: http://metabarcoding.org/sumatra
 * PICRUSt: http://picrust.github.io/picrust/
