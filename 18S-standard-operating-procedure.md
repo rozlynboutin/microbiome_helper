@@ -19,9 +19,9 @@ Below is the quick and dirty description of our recommended 18S pipeline.
 
         run_fastq_to_fasta.pl -p -o fasta_files filtered_reads/*fastq
 
-5. Remove chimeric sequences with UCHIME (summary written to "chimeraFilter_log.txt" by default).
+5. Remove chimeric sequences with VSEARCH (summary written to "chimeraFilter_log.txt" by default).
 
-        chimera_filter.pl -thread 4 -type 1 -db /home/shared/rRNA_db/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.udb fasta_files/*	
+        chimera_filter.pl -thread 4 -type 1 -db /home/shared/rRNA_db/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fasta fasta_files/*	
 
 6. Create a QIIME "map.txt" file with the first column containing the sample names and another column called "FileInput" containing the filenames. This is a tab-delimited file and there must be columns named "BarcodeSequence" and "LinkerPrimerSequence" that are empy. This file can then contain other columns to group samples which will be used when figures are created later.
 
