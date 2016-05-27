@@ -35,7 +35,7 @@ Options:
 * --thread <# of CPUs> <br>
    Using this option without a value will use all CPUs on machine, while giving it a value will limit to that many CPUs. Without option only one CPU is used.
 
-* --keep
+* --keep  
    Flag to indicate that temporary log files should not be removed (useful for troubleshooting). Also, will prevent the "nonchimera" and "unclear" specific fastas from being removed when type == 0.
    
 * -log <file> <br>
