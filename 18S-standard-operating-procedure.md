@@ -11,7 +11,7 @@ Below is the quick and dirty description of our recommended 18S pipeline.
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
-3. Filter stitched reads by quality score, length and ensure forward and reverse primers match each read (summary written to "readFilter_log.txt" by default).
+3. Filter stitched reads by quality score, length and ensure forward and reverse primers match each read (summary written to "read_filter_log.txt" by default).
 
         read_filter.pl -f CYGCGGTAATTCCAGCTC -r CRAAGAYGATYAGATACCRT -thread 4 -q 30 -p 90 -l 200 stitched_reads/*.assembled.*
 									
@@ -19,7 +19,7 @@ Below is the quick and dirty description of our recommended 18S pipeline.
 
         run_fastq_to_fasta.pl -p -o fasta_files filtered_reads/*fastq
 
-5. Remove chimeric sequences with VSEARCH (summary written to "chimeraFilter_log.txt" by default).
+5. Remove chimeric sequences with VSEARCH (summary written to "chimera_filter_log.txt" by default).
 
         chimera_filter.pl -thread 4 -type 1 -db /home/shared/rRNA_db/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fasta fasta_files/*	
 
