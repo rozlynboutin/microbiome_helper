@@ -11,7 +11,7 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
-3. Filter stitched reads by quality score, length and ensure forward and reverse primers match each read (summary written to "readFilter_log.txt" by default).
+3. Filter stitched reads by quality score, length and ensure forward and reverse primers match each read (summary written to "read_filter_log.txt" by default).
 
         read_filter.pl -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
 									
@@ -19,7 +19,7 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
 
         run_fastq_to_fasta.pl -p -o fasta_files filtered_reads/*fastq
 
-5. Remove chimeric sequences with VSEARCH (summary written to "chimeraFilter_log.txt" by default).
+5. Remove chimeric sequences with VSEARCH (summary written to "chimera_filter_log.txt" by default).
 
         chimera_filter.pl -type 1 -db /usr/local/db/single_strand/Bacteria_RDP_trainset15_092015.fa fasta_files/*	
 
