@@ -13,15 +13,15 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
 
 3. Filter stitched reads by quality score, length and ensure forward and reverse primers match each read (summary written to "readFilter_log.txt" by default).
 
-        readFilter.pl -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
+        read_filter.pl -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
 									
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
 
         run_fastq_to_fasta.pl -p -o fasta_files filtered_reads/*fastq
 
-5. Remove chimeric sequences with UCHIME (summary written to "chimeraFilter_log.txt" by default).
+5. Remove chimeric sequences with vsearch (summary written to "chimeraFilter_log.txt" by default).
 
-        chimeraFilter.pl -type 1 -db /usr/local/db/single_strand/Bacteria_RDP_trainset15_092015.udb fasta_files/*	
+        chimera_filter.pl -type 1 -db /usr/local/db/single_strand/Bacteria_RDP_trainset15_092015.udb fasta_files/*	
 
 6. Create a QIIME "map.txt" file with the first column containing the sample names and another column called "FileInput" containing the filenames. This is a tab-delimited file and there must be columns named "BarcodeSequence" and "LinkerPrimerSequence" that are empy. This file can then contain other columns to group samples which will be used when figures are created later.
 
