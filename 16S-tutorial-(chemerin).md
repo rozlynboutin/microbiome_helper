@@ -37,6 +37,7 @@ __Last edited:__ May 2016
 * The exact commands we'll be running assume that you're running this tutorial on our [Ubuntu Desktop virtual box](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box). If you are running it elsewhere just be aware you will need to change the file paths. 
 * Download the [tutorial dataset](https://www.dropbox.com/s/r2jqqc7brxg4jhx/16S_chemerin_tutorial.zip?dl=1) (9 MB). I'm assuming the unzipped folder will be in your Desktop.
 * We will be following [our 16S pipeline](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure), which uses several wrapper scripts to help automate running many files.
+* Note that we now remove chimeric sequences with "chimera_filter.pl", which wraps VSEARCH rather than USEARCH v6.1. In this tutorial we used "chimera_filter_usearch61.pl", which requires you to get a license to download and use the binary called "usearch61" (this must be in your path). If you just want to use VSEARCH instead note that the answers will be slightly different.
 
 ### Background
 16S analysis is a method of microbiome analysis (compared to [shotgun metagenomics](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-%28Downsampled%29)) that targets the 16S ribosomal RNA gene, as this gene is present in all prokaryotes. It features regions that are conserved among these organisms, as well as variable regions that allow distinction among organisms. These characteristics make this gene useful for analyzing microbial communities at reduced cost compared to metagenomic techniques. A similar workflow can be applied to eukaryotic micro-organisms using the 18S rRNA gene.
@@ -134,9 +135,9 @@ You can see the full FastQC report for all stitched reads combined [here](https:
 
 Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria (~2 min on 1 CPU):
  
-    readFilter.pl -q 30 -p 90 -l 400 -thread 1 stitched_reads/*.assembled*fastq
+    read_filter.pl -q 30 -p 90 -l 400 -thread 1 stitched_reads/*.assembled*fastq
 
-By default this script will output filtered FASTQs in a folder called "filtered_reads" and the percent of reads thrown out after each filtering step is recorded in "readFilter_log.txt".
+By default this script will output filtered FASTQs in a folder called "filtered_reads" and the percent of reads thrown out after each filtering step is recorded in "read_filter_log.txt".
 
 If you look in this logfile you will note that ~40% of reads were filtered out for each sample. You can also see the counts and percent of reads dropped at each step. 
 
@@ -167,7 +168,7 @@ Note that this command removes any sequences containing "N" (a fully ambiguous b
 
 Due to the alternating conserved and variable regions in the 16S gene, during PCR amplification, a strand that is partially extended in one cycle can act as a primer in a later cycle and anneal to a template in the wrong position. This is called a chimeric DNA molecule, and we want to remove these so as not to treat them as true DNA samples. This step is important for microbiome work, as otherwise these reads would be called as novel OTUs. In fact, it is likely that not all chimeric reads will be removed by this step. Using our sequences in FASTA files we can run the chimera filtering (~3 min on 1 CPU):
 
-    chimeraFilter.pl -type 1 -thread 1 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb fasta_files/*fasta
+    chimera_filter_usearch61.pl -type 1 -thread 1 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.udb fasta_files/*fasta
 
 See a more detailed description of this script [here](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads).
 
@@ -177,7 +178,7 @@ By default the logfile "chimeraFilter_log.txt" is generated containing the count
 
 **Q6)** What is the mean percent of reads retained after this step, based on the output in the log file ("nonChimeraCallsPercent" column)?
 
-**Q7)** What percent of reads was retained for sample 75CMK8KO after **all** the filtering steps (HINT: you'll need to compare the original number of reads to the number of reads output by chimeraFilter.pl)?
+**Q7)** What percent of reads was retained for sample 75CMK8KO after **all** the filtering steps (HINT: you'll need to compare the original number of reads to the number of reads output by chimera_filter_usearch61.pl)?
 
 ## Run open-reference OTU picking pipeline
 
