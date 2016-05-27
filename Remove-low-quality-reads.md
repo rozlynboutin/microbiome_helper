@@ -1,4 +1,4 @@
-We use the readFilter.pl script to wrap two useful tools:
+We use the read_filter.pl script to wrap two useful tools:
 
 * [FASTX-Toolkit](http://hannonlab.cshl.edu/fastx_toolkit/)
 * [BBMap](https://sourceforge.net/projects/bbmap/)
@@ -7,7 +7,7 @@ FASTX-Toolkit is used to filter out reads with a given proportion of sites under
 
 Here is an example of how this script is run:
 
-    readFilter.pl -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
+    read_filter.pl -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
 
 This command would filter out reads that have a quality score less than 30 in at least 90% of sites. Any reads less than 400 bp or that do not match the default primer sequences are also removed.  
 
