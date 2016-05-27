@@ -42,4 +42,4 @@ Options:
    The location to write the log file.
 
 * -db, --database <file> <br>
-   Database of 16S sequences to use as a reference (UDB or FASTA file).
+   Database of 16S sequences to use as a reference (FASTA file).
