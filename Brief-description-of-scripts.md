@@ -30,8 +30,10 @@ I find STAMP to be a very useful tool for creating figures and doing statistical
 
 * **run_fastq_to_fasta.pl**: Wraps the fastq_to_fasta command from the FASTX Toolkit to allow the use of multiple threads.
 
-* **chimeraFilter.pl**: Wraps UCHIME (implemented in USEARCH) to filter out chimeric reads from a directory of reads in fasta format.  
+* **chimera_filter.pl**: Wraps VSEARCH (which implements the UCHIME reference-based algorithm) to filter out chimeric reads from a directory of reads in FASTA format.  
 
-* **readFilter.pl**: Wraps several read filtering commands together (using FASTX Toolkit and BBMap) to run on a directory of fastq files. 
+* **chimera_filter_usearch61.pl**: Wraps USEARCH v6.1 (which implements the UCHIME reference-based algorithm) to filter out chimeric reads from a directory of reads in FASTA format.  
+
+* **read_filter.pl**: Wraps several read filtering commands together (using FASTX Toolkit and BBMap) to run on a directory of fastq files. 
 
 * **remove_low_confidence_otus.py**: Filters a BIOM table to remove low confidence OTUs that result from MiSeq run-to-run bleed-through (based on 0.1% as reported by Illumina).   
