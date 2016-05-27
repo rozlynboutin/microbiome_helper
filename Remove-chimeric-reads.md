@@ -39,7 +39,7 @@ Options:
    Flag to indicate that temporary log files should not be removed (useful for troubleshooting). Also, will prevent the "nonchimera" and "unclear" specific fastas from being removed when type == 0.
    
 * -log <file> <br>
-   The location to write the log file.
+   The location to write the log file. Default is "chimera_filter.log".
 
 * -db, --database <file> <br>
    Database of 16S sequences to use as a reference (FASTA file).
