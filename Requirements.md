@@ -14,7 +14,7 @@ The following programs should be installed with commands accessible from the use
 **16S**
 * FASTX toolkit (v0.0.14): http://hannonlab.cshl.edu/fastx_toolkit/download.html
 * BBMap: http://sourceforge.net/projects/bbmap 
-* USEARCH (v6.1.544): http://www.drive5.com/usearch/
+* VSEARCH: https://github.com/torognes/vsearch
 * QIIME: http://qiime.org
 * SortMeRNA: http://bioinfo.lifl.fr/RNA/sortmerna/
 * SUMACLUST: http://metabarcoding.org/sumatra
@@ -25,10 +25,8 @@ The following programs should be installed with commands accessible from the use
 
 
 **Databases (dropbox download links)**
-* 16S chimera checking: [Bacteria_RDP_trainset15_092015.udb](https://www.dropbox.com/s/8qr42doaez48oc3/Bacteria_RDP_trainset15_092015.udb?dl=1) (70 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include only bacteria. 
-* 18S chimera checking: [Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.udb] (https://www.dropbox.com/s/uxgsf5biqy9l7yd/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.udb?dl=1) (475 MB). This DB was taken from SILVA and was parsed to include only eukaryotes and all Us were converted to Ts.
-
-Note that all .udb files on this page were created with the usearch61 -makeudb_usearch command.
+* 16S chimera checking: [Bacteria_RDP_trainset15_092015.fa](https://www.dropbox.com/s/r290fbzgi216kja/Bacteria_RDP_trainset15_092015.fa?dl=1) (17 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include only bacteria. 
+* 18S chimera checking: [Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fa] (https://www.dropbox.com/s/p4wnjyvatdobq5h/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fasta?dl=1) (117 MB). This DB was taken from SILVA and was parsed to include only eukaryotes and all Us were converted to Ts.
 
 * Eukaryotic OTU-picking files:
    * [gb203_pr2_all_10_28_99p_tax.txt] (https://www.dropbox.com/s/0ztzkaeqxqq6k7m/gb203_pr2_all_10_28_99p_tax.txt?dl=1) (9MB)
