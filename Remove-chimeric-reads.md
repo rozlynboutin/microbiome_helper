@@ -23,10 +23,10 @@ Options:
 * --type <[0|1]> <br>
    Non-chimeric output type, either only sequences that are clearly non-chimeric (1) or all sequences that are not called as chimeric ( 0 - includes borderline sequences, "?" in uchime output).
 
-* --mindiv <float> <br>
+* --mindiv < float > <br>
    Min % divergence between query and target sequence (default 1.5, note that this differs from the uchime default of 0.8).
 
-* --minh <float> <br>
+* --minh < float > <br>
    Min score to be called as chimeric (default 0.2, note that this differs from the uchime default of 0.28).
 
 * -o, --out_dir <file> <br>
