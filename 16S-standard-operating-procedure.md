@@ -1,4 +1,4 @@
-Below is the quick and dirty description of our recommended 16S pipeline. See the sidebar menu for more detailed descriptions as well as the [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial).
+Below is the quick and dirty description of our recommended 16S pipeline. See the sidebar menu for more detailed descriptions.
 
 *Note that this workflow starts with raw paired-end MiSeq data in demultiplexed fastq format assumed to be located within a folder called `raw_data`*
 
