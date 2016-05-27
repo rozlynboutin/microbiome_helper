@@ -15,7 +15,7 @@ Note that by default the primer sequences checked for are ACGCGHNRAACCTTACC and 
 
 This script assumes FASTX-Toolkit is in the user's PATH. You will likely need to point the program to where the jar files for BBMap are installed with the "--bbmap" option (it assumes the jar files are in /usr/local/prg/bbmap by default). 
 
-By default the numbers (and %) of reads filtered out at each step are reported in "readFilter_log.txt".
+By default the numbers (and %) of reads filtered out at each step are reported in "read_filter_log.txt".
 
 Options: 
 
@@ -32,7 +32,7 @@ Options:
    Using this option without a value will use all CPUs on machine, while giving it a value will limit to that many CPUs. Without option only one CPU is used.
 
 * -log <file> <br>
-   The location to write the log file.
+   The location to write the log file. Default is "read_filter.log".
 
 * -q, --min_quality <#> <br>
    Minimum base quality.
