@@ -71,7 +71,7 @@ Below is the quick and dirty description of our recommended 18S pipeline.
 
         biom convert -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_w_tax.txt --to-tsv --header-key taxonomy
 
-17. Convert BIOM OTU table to STAMP (note that the current 18S taxonomy file has polyphyletic groups, which cause problems for STAMP. We are working on fixing this, but in the meantime you can fix these problems by hand if there are a small number):
+17. Convert BIOM OTU table to STAMP:
 
         biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
 
