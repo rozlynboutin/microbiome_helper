@@ -29,7 +29,7 @@ The following programs should be installed with commands accessible from the use
 * 18S chimera checking: [Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fa] (https://www.dropbox.com/s/p4wnjyvatdobq5h/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fasta?dl=1) (117 MB). This DB was taken from SILVA and was parsed to include only eukaryotes and all Us were converted to Ts.
 
 * Eukaryotic OTU-picking files:
-   * [gb203_pr2_all_10_28_99p_tax.txt] (https://www.dropbox.com/s/0ztzkaeqxqq6k7m/gb203_pr2_all_10_28_99p_tax.txt?dl=1) (9MB)
+   * [gb203_pr2_all_10_28_99p_tax_Xs-fixed_poly-fixed.txt] (https://www.dropbox.com/s/bvot58v47rfc6a2/gb203_pr2_all_10_28_99p_tax_Xs-fixed_poly-fixed.txt?dl=1) (9MB)
    * [gb203_pr2_all_10_28_99p_clean.fasta](https://www.dropbox.com/s/m1i6cdyj2hwgs2e/gb203_pr2_all_10_28_99p_clean.fasta?dl=1) (98 MB)
    * [Silva_119_rep_set90_aligned_18S.fna](https://www.dropbox.com/s/cw77k375ayaqh0n/Silva_119_rep_set90_aligned_18S.fna?dl=1) (112 MB)
 
