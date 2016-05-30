@@ -37,7 +37,7 @@ Below is the quick and dirty description of our recommended 18S pipeline.
         echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
         echo "pick_otus:similarity 0.99" >> clustering_params.txt
         echo "align_seqs:template_fp /home/shared/rRNA_db/90_Silva_111_rep_set_euk_aligned.filter.fasta" >> clustering_params.txt 
-        echo "assign_taxonomy:id_to_taxonomy_fp /home/shared/rRNA_db/gb203_pr2_all_10_28_99p_tax.txt" >> clustering_params.txt
+        echo "assign_taxonomy:id_to_taxonomy_fp /home/shared/rRNA_db/gb203_pr2_all_10_28_99p_tax_Xs-fixed_poly-fixed.txt" >> clustering_params.txt
         echo "assign_taxonomy:reference_seqs_fp /home/shared/rRNA_db/gb203_pr2_all_10_28_99p_clean.fasta" >> clustering_params.txt
         
 9. Run the entire qiime open reference picking pipeline with the new sortmerna (for reference picking) and sumaclust (for de novo OTU picking). This does reference picking first, then subsamples failure sequences, de-novo OTU picks failures, ref picks against de novo OTUs, and de-novo picks again any left over failures. Note: You may want to change the subsampling percentage to a higher amount from the default -s 0.001 to -s 0.01 (e.g 1% of the failures) or -s 0.1 (e.g. 10% of the failures) (~24 hours).
