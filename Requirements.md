@@ -31,7 +31,7 @@ The following programs should be installed with commands accessible from the use
 * Eukaryotic OTU-picking files:
    * [gb203_pr2_all_10_28_99p_tax_Xs-fixed_poly-fixed.txt] (https://www.dropbox.com/s/bvot58v47rfc6a2/gb203_pr2_all_10_28_99p_tax_Xs-fixed_poly-fixed.txt?dl=1) (9 MB)
    * [gb203_pr2_all_10_28_99p_clean.fasta](https://www.dropbox.com/s/m1i6cdyj2hwgs2e/gb203_pr2_all_10_28_99p_clean.fasta?dl=1) (98 MB)
-   * [Silva_119_rep_set90_aligned_18S.fna](https://www.dropbox.com/s/cw77k375ayaqh0n/Silva_119_rep_set90_aligned_18S.fna?dl=1) (112 MB)
+   * [90_Silva_111_rep_set_euk_aligned.filter.fasta](https://www.dropbox.com/s/z104yn84rgsltip/90_Silva_111_rep_set_euk_aligned.filter.fasta?dl=1) (95 MB)
 
 * To use "run_human_filter.pl" you will need to download the appropriate [Bowtie2 index](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml). 
 
