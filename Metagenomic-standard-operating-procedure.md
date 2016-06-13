@@ -11,9 +11,11 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
 
 Note: it is important to check the % of reads assembled. It may be better to concatenate the forward and reverse reads together if the assembly % is too low.
 
-3. Run Bowtie2 to screen out human sequences (Note: you can use run_deconseq.pl instead but it is much slower).
+3. Run Bowtie2 to screen out contaminant sequences, here we are screening out reads that map to the human or PhiX genomes (Note: you can use run_deconseq.pl instead but it is much slower).
     
-        run_human_filter.pl -p 4 -o screened_reads/ stitched_reads/*.assembled*
+        echo "--local" >> ./bowtie2_config.txt
+
+        run_contaminant_filter.pl -p 4 -o screened_reads/ stitched_reads/*.assembled* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt
 
 4. Run MetaPhlAn2 for taxonomic composition.
 
