@@ -1,6 +1,6 @@
 Below is the quick and dirty description of our recommended metagenomics pipeline. See the sidebar menu for more detailed descriptions.
 
-1. (Optional) If you have multiple lanes of sequencing for the same sample (e.g. as output by the NextSeq) then you can concatenate the lanes of sequences together (note this will concatenate the R1 and R2 fastqs separately and assumes the first field of the file when delimited by "_" is the sample name): 
+1. (Optional) Concatenate multiple lanes of sequencing together (e.g. for NextSeq data)
 
         concat_lanes.pl raw_data/*fastq -o concat_data -p 4
 
