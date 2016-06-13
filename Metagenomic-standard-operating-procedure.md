@@ -14,7 +14,6 @@ Note: it is important to check the % of reads assembled. It may be better to con
 3. Run Bowtie2 to screen out contaminant sequences, here we are screening out reads that map to the human or PhiX genomes (Note: you can use run_deconseq.pl instead but it is much slower).
     
         echo "--local" >> ./bowtie2_config.txt
-
         run_contaminant_filter.pl -p 4 -o screened_reads/ stitched_reads/*.assembled* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt
 
 4. Run MetaPhlAn2 for taxonomic composition.
