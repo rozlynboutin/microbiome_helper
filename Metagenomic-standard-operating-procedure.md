@@ -1,6 +1,6 @@
 Below is the quick and dirty description of our recommended metagenomics pipeline. See the sidebar menu for more detailed descriptions.
 
-1. (Optional) Concatenate multiple lanes of sequencing together (e.g. for NextSeq data). If you do this step remember to swap out "concat_data" for "raw_data" below.
+1. (Optional) Concatenate multiple lanes of sequencing together (e.g. for NextSeq data). If you do this step remember to swap out "raw_data" for "concat_data" below.
 
         concat_lanes.pl raw_data/*fastq -o concat_data -p 4
 
