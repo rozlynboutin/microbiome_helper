@@ -5,11 +5,9 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
         mkdir fastqc_out
         fastqc -t 4 raw_data/* -o fastqc_out/
 
-2. Stich paired end reads together (summary of stitching results are written to "pear_summary_log.txt").
+2. Stich paired end reads together (summary of stitching results are written to "pear_summary_log.txt"). Note: it is important to check the % of reads assembled. It may be better to concatenate the forward and reverse reads together if the assembly % is too low.
 
         run_pear.pl -p 4 -o stitched_reads raw_data/*
-
-Note: it is important to check the % of reads assembled. It may be better to concatenate the forward and reverse reads together if the assembly % is too low.
 
 3. Run Bowtie2 to screen out contaminant sequences, here we are screening out reads that map to the human or PhiX genomes (Note: you can use run_deconseq.pl instead but it is much slower).
     
