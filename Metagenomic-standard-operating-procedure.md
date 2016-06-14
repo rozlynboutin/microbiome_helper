@@ -18,7 +18,7 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
         echo "--local" >> ./bowtie2_config.txt ### add the bowtie2 options you want to use to a config file
         run_contaminant_filter.pl -p 4 -o screened_reads/ stitched_reads/*.assembled* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt
   
-5. Run Trimmomatic to trim off bases under specified quality values and to discard reads under a certain length after trimming (FastQC is helpful for choosing these parameters):  
+5. Run Trimmomatic to trim off bases under specified quality values and to discard reads under a certain length after trimming (running FastQC on the screened reads is helpful for choosing these parameters):  
 
         run_trimmomatic.pl -l 5 -t 5 -r 15 -w 4 -m 70 -j /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar --thread 4 -o trimmomatic_filtered screened_reads/*fastq  
   
