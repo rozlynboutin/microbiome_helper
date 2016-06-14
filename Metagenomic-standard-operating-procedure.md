@@ -17,26 +17,30 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
     
         echo "--local" >> ./bowtie2_config.txt ### add the bowtie2 options you want to use to a config file
         run_contaminant_filter.pl -p 4 -o screened_reads/ stitched_reads/*.assembled* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt
+  
+5. Run Trimmomatic to trim off bases under specified quality values and to discard reads under a certain length after trimming (FastQC is helpful for choosing these parameters):  
 
-5. Run MetaPhlAn2 for taxonomic composition.
+        run_trimmomatic.pl -l 5 -t 5 -r 15 -w 4 -m 70 -j /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar --thread 4 -o trimmomatic_filtered screened_reads/*fastq  
+  
+6. Run MetaPhlAn2 for taxonomic composition.
 
-        run_metaphlan2.pl -p 4 -o metaphlan_taxonomy.txt screened_reads/*
-
-6. Convert from MetaPhlAn to STAMP profile file.
+        run_metaphlan2.pl -p 4 -o metaphlan_taxonomy.txt trimmomatic_filtered/*fastq
+  
+7. Convert from MetaPhlAn to STAMP profile file.
 
         metaphlan_to_stamp.pl metaphlan_taxonomy.txt > metaphlan_taxonomy.spf
 
-7. Run pre-HUMAnN (DIAMOND search).
+8. Run pre-HUMAnN (DIAMOND search).
 
-        run_pre_humann.pl -p 4 -o pre_humann/ screened_reads/*
+        run_pre_humann.pl -p 4 -o pre_humann/ trimmomatic_filtered/*fastq
 
-8. Run HUMAnN (link files to HUMAnN "input" directory and then run HUMAnN with scons command). Note that you can run this in parallel with `-j` option (e.g. scons -j 4), but I have found this often causes HUMAnN to unexpectedly error.
+9. Run HUMAnN (link files to HUMAnN "input" directory and then run HUMAnN with scons command). Note that you can run this in parallel with `-j` option (e.g. scons -j 4), but I have found this often causes HUMAnN to unexpectedly error.
 
         ln -s $PWD/pre_humann/* ~/programs/humann-0.99/input/
         cd ~/programs/humann-0.99/
         scons
 
-9. Convert HUMAnN output to STAMP format
+10. Convert HUMAnN output to STAMP format
 
         humann_to_stamp.pl 04b-hit-keg-mpm-cop-nul-nve-nve.txt > hummann_modules.spf
         humann_to_stamp.pl 04b-hit-keg-mpt-cop-nul-nve-nve.txt > hummann_pathways.spf
