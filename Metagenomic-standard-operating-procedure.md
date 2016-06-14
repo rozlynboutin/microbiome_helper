@@ -2,7 +2,7 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
 
 1. (Optional) Concatenate multiple lanes of sequencing together (e.g. for NextSeq data). If you do this step remember to change "raw_data" to "concat_data" below.
 
-        concat_lanes.pl raw_data/*fastq -o concat_data -p 4
+        concat_lanes.pl raw_data/* -o concat_data -p 4
 
 2. (Optional) Run FastQC to allow manual inspection of the quality of sequences.
 
