@@ -26,4 +26,5 @@
    * [Additional QIIME analysis](https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis)
 
 **Teaching Materials**
+   * [CBW 2016 PICRUSt Tutorial](CBW-2016-PICRUSt-tutorial)
    * [GLBIO/CCBC Metagenomics Workshop 2016] (CCBC-Workshop-2016)
