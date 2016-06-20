@@ -13,11 +13,11 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
 
 3. Filter stitched reads by quality score, length and ensure forward and reverse primers match each read (summary written to "read_filter_log.txt" by default).
 
-        read_filter.pl -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
+        read_filter.pl -q 30 -p 90 -l 400 --thread 4 stitched_reads/*.assembled.*
 									
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
 
-        run_fastq_to_fasta.pl -p -o fasta_files filtered_reads/*fastq
+        run_fastq_to_fasta.pl -p 4 -o fasta_files filtered_reads/*fastq
 
 5. Remove chimeric sequences with VSEARCH (summary written to "chimera_filter_log.txt" by default).
 
