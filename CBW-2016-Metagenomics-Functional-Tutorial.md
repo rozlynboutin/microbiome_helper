@@ -32,20 +32,20 @@ This lab component will use samples collected and sequenced through the Human Mi
 
 ## Initial Setup
 
-* Prepare working directory
+Prepare working directory:
 
     rm -rf ~/workspace/module_function
     mkdir -p ~/workspace/module_function
     cd ~/workspace/module_function
     ln -s ~/CourseData/metagenomics/hmp_metagenomics ./
 
-'''Notes''':
+*Notes*:
 
 * The `ln -s` command adds a symbolic link to the (read-only) `~/CourseData/metagenomics/hmp_metagenomics` directory.
 
 ### Running DIAMOND search against KEGG database
 
-Before running HUMAnN, it is first necessary run a similarity search against the KEGG database. This database is a collection of pathways for metabolic and other functional molecular and cellular processes, and is located at “/home/shared/kegg/diamond_db” on the Virtual Box. This is a reduced KEGG database that the authors of HUMAnN created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called [DIAMOND](http://ab.inf.uni-tuebingen.de/software/diamond/).
+Before running HUMAnN, it is first necessary run a similarity search against the KEGG database. This database is a collection of pathways for metabolic and other functional molecular and cellular processes, and is located at “~/CourseData/metagenomics/ref/kegg”. This is a reduced KEGG database that the authors of HUMAnN created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called [DIAMOND](http://ab.inf.uni-tuebingen.de/software/diamond/).
 
 First we will make a directory to store our sequence search outputs:
 
@@ -53,7 +53,7 @@ First we will make a directory to store our sequence search outputs:
 
 Now we will run DIAMOND on our metagenomic sequences for the sample SRS015044:
  
-    diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced.lowMem -q ./fastq/SRS015044.fastq -a pre_humann/SRS015044
+    diamond blastx -p 2 -d ~/CourseData/metagenomics/ref/kegg/kegg.reduced -q ./fastq/SRS015044.fastq -a pre_humann/SRS015044
 
 The options used in this command are:
 
