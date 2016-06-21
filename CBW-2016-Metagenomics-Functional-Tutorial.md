@@ -33,20 +33,28 @@ This lab component will use samples collected and sequenced through the Human Mi
 ## Requirements
 
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
-* [Microbiome Helper VirtualBox] (MicrobiomeHelper-Virtual-Box) (install it and ensure it is working)
-* [Tutorial Data](https://www.dropbox.com/s/clzi94vl9yn21a7/hmp_metagenomics_downsampled.zip?dl=1)
+
+* These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and placed in the directory: ~/CourseData/metagenomics/hmp_metagenomics/
 
 ## Initial Setup
-* Open this tutorial within the Microbiome Helper VirtualBox
-* Download the tutorial data, save it to the Desktop (within Ubuntu), and unzip the folder.
+
+* Prepare working directory
+    rm -rf ~/workspace/module_taxonomy
+    mkdir -p ~/workspace/module_taxonomy
+    cd ~/workspace/module_taxonomy
+    ln -s ~/CourseData/metagenomics/hmp_metagenomics ./
+
+'''Notes''':
+
+* The `ln -s` command adds a symbolic link to the (read-only) `~/CourseData/metagenomics/hmp_metagenomics` directory.
 
 ### Explore Samples
 
-Open a terminal/console and change to the directory containing the tutorial data:
+Change to the directory containing the tutorial data:
 
 (paste the below command with your mouse, you probably wont be able to copy/paste text in the VBox with keyboard commands)
 
-    cd ~/Desktop/hmp_metagenomics_downsampled
+    cd ~/workspace/module_taxonomy/hmp_metagenomic
 
 The tutorial data consists of a "map file" containing information about each of the samples called **hmp_map.txt**, along with the sequence data for each sample being contained within a separate fastq file within the directory **fastq**.
 
@@ -85,24 +93,26 @@ Now we are going to run Metaphlan2 on the sample "SRS015044".
 
 First change back to your working directory:
 
-    cd ~/Desktop/hmp_metagenomics_downsampled
+    cd ~/workspace/module_taxonomy
 
 Now we are going to run Metaphlan2 on a single example with the following (long) command:
     
-    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map --nproc 2 -o SRS015044.txt fastq/SRS015044.fastq
+    metaphlan2.py --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015044.txt hmp_metagenomics/fastq/SRS015044.fastq
 
 The command will run for 1-2 minutes on this single sample (it'll be faster if you have more CPUs enabled, see the _nproc_ option described below).
 
 The command line parameters are:
-* `--mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan2 marker database is located which contains metadata information about each of the markers
+* `--mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan2 marker database is located which contains metadata information about each of the markers
 * `--input_type fastq`: Indicates that our input files are in fastq format. (If we wanted to use fasta files as input then we would change this to 'fasta').
-* `--bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
+* `--bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
 * `--no_map` We use this flag to prevent Metaphlan2 from storing the intermediate bowtie output files. 
 * '--nproc 2' Indicates that 2 cores should be used to run this program, but will only work if you have enabled at least 2 cores already, otherwise only 1 core will be used.
 * `-o SRS015044.txt`: Indicates the name of output file that Metaphlan2 will use to write results to.
 * `fastq/SRS015044.fastq`: Metaphlan2 takes the input file containing our metagenomic reads as the last argument
 
-Now run Metaphlan2 for sample SRS015893 as well (swap out the sample names for the above command).
+Now run Metaphlan2 for sample SRS015893 as well (swap out the sample names for the above command). Also this time lets use all 8 cores of our server by adding the option '-–nproc 8'.
+
+     metaphlan2.py --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015893.txt --nproc 8 hmp_metagenomics/fastq/SRS015893.fastq
 
 ### Metaphlan2 Output
 You can inspect the output of these two samples by using the _less_ command (or your favourite editor): 
@@ -152,11 +162,11 @@ You can see that 10.85% of the metagenome is predicted from organisms in the gen
 
 ### Merging Metaphlan2 Results 
 
-Run Metaphlan2 on sample SRS097871 as well, just like for the other 2 samples.
+Run Metaphlan2 on sample **SRS097871** as well, just like for the other 2 samples we have already done. **(You need to figure out the command and run it yourself before moving to the next step)**
 
 Now, lets combine all of the Metaphlan2 output files into a single merged output file:
 
-    /usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt SRS015893.txt SRS097871.txt > metaphlan_merged.txt
+    /usr/local//metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt SRS015893.txt SRS097871.txt > metaphlan_merged.txt
 
 Note that this script 'merge_metaphlan_tables.py' takes one or more Metaphlan2 output files as input and combines them into a single output file. The output file is indicated using the stdout redirect symbol '>' and is written in this case to **metaphlan_merged.txt**
 
@@ -185,22 +195,23 @@ To get information about the individual samples you can look in the hmp_map.txt 
 
 ### Running Metaphlan2 on a large number of samples using Microbiome Helper
 
-Running Metaphlan2 on more than a few samples can be tedious. I wrote a script to make this easier as part of the package “Microbiome Helper” (https://github.com/mlangill/microbiome_helper). **Note you do not have to do this today** as we have already pre-computed the combined Metaphlan2 output, but this is how you would do it.
+Running Metaphlan2 on more than a few samples can be tedious. There is a script within Microbiome Helper to help automate and simplify this.
 
 To run Metaphlan2 on all of the samples using 'run_metaphlan2.pl' (this would take ~30 min):
 
-    run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt ./fastq/*
+    run_metaphlan2.pl -p 8 -o metaphlan_merged_all.txt ./hmp_metagenomics/fastq/*
 
 This command uses the following options:
-* '-p 2' runs metaphlan in parallel using 2 processors.
+* '-p 8' runs metaphlan in parallel using 8 processors.
 * '-o' is the name for the merged output file.
-* ' ./fastq/*' indicates that all of the files within this directory will be used as input. 
+* ' ./hmp_metagenomics/fastq/*' indicates that all of the files within this directory will be used as input. 
 
 On your screen you would see the commands that the microbiome helper script is running automatically for you:
 ```
- cat ./fastq/SRS014477.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS014477
- cat ./fastq/SRS011343.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS011343
- cat ./fastq/SRS019129.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS019129
+cat ./hmp_metagenomics/fastq/SRS015537.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS015537
+cat ./hmp_metagenomics/fastq/SRS014477.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS014477
+cat ./hmp_metagenomics/fastq/SRS015064.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS015064
+(etc.)
 ```
 **Q9)** Based on the above example commands being written to the screen, what directory would the Metaphlan2 individual output files be stored in?
 
@@ -211,9 +222,9 @@ STAMP takes two main files as input the profile data which is a table that conta
 The metadata file is the **hmp_map.txt** file. This file is present already in the "hmp_metagenomics_downsampled" directory.
 You will also need the profile data file which is in a different format than what Metaphlan2 outputs. Therefore we first need to convert it using a script from the microbiome_helper package. You can convert the pre-computed Metaphlan2 output for all samples like this:
 
-    metaphlan_to_stamp.pl pre-computed_results/metaphlan2_output/metaphlan_merged_all.txt > metaphlan_merged_all.spf
+    metaphlan_to_stamp.pl metaphlan_merged_all.txt > metaphlan_merged_all.spf
 
-As you can see this file takes the Metaphlan2 output file (from all the merged samples), which we already made for you, as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
+As you can see this file takes the Metaphlan2 output file (from all the merged samples), as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
 
 Now load the profile file (metaphlan_merged_all.spf and the metadata file (hmp_map.txt) files by going to "File->load data" within STAMP:
 
