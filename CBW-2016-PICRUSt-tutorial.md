@@ -173,4 +173,6 @@ Change Profile Level to "Level 3" which actually represents the KEGG Pathways. T
 
 Apply a multiple test correction and then view the individual KEGG Pathways using a "Box Plot" (instead of PCA plot). What is the most significant KEGG Pathway?
 
+![](https://www.dropbox.com/s/1n4illp1wmls1z4/picrust_tutorial.png?raw=1)
+
 If you like you can explore other visualizations with STAMP or attempt to load KOs instead within STAMP.
