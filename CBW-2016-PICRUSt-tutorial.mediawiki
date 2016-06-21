@@ -35,12 +35,12 @@ Note that this is just a normal OTU table which then could be used with all of t
 
 If you want to look at the before and after correction you can use the biom tools to convert it to plain text:
 
-    biom convert -i otus_corrected.biom -o otus_corrected.tsv --to-tsv --header-key taxonomy
-    biom convert -i otus.biom -o otus.tsv --to-tsv --header-key taxonomy
+    biom convert -i otus_corrected.biom -o otus_corrected.txt --to-tsv --header-key taxonomy
+    biom convert -i otus.biom -o otus.txt --to-tsv --header-key taxonomy
 
 Now you can look at them using `less`:
     
-    less otus.tsv
+    less otus.txt
 
 ```
 # Constructed from biom file
@@ -51,19 +51,44 @@ Now you can look at them using `less`:
 (etc.)
 ```
 
-    less otus_corrected.tsv
+    less otus_corrected.txt
 
 ```
 #OTU ID	9Y-June1	10Y-June1	8Y-May23	10Y-May23	6Y-June1	9Y-May23	Y7-Aug14	Y7-Aug15	6Y-May23	M11-Aug14	M11-Aug15	M11-Jul13	11M-May23	M13-Jul13	13M-May23	2E-Aug14	2E-Aug15	2E-May24	4E-June1	1E-Aug16	1E-May23	taxonomy
 181348	0.333333333333	0.0	0.0	0.0	0.0	0.333333333333	0.0	0.0	0.333333333333	0.0	0.0	0.0	0.0	0.0	0.0	2.0	5.0	1.0	1.33333333333	2.33333333333	0.0	k__Bacteria;  p__Firmicutes;  c__Clostridia;  o__Clostridiales;  f__Lachnospiraceae;  g__Coprococcus;  s__
 318732	0.0	0.0	0.333333333333	0.0	0.0	0.0	0.0	0.0	0.666666666667	1.66666666667	3.0	2.33333333333	0.333333333333	1.66666666667	1.0	0.0	0.666666666667	0.0	0.0	0.0	0.0	k__Bacteria;  p__Firmicutes;  c__Clostridia;  o__Clostridiales;  f__;  g__;  s__
 244484	0.0	0.0	0.0	1.0	0.0	0.5	0.0	0.5	2.0	0.0	1.0	0.0	1.0	0.5	0.0	0.0	0.5	0.0	1.0	0.0	0.5	k__Bacteria;  p__Firmicutes;  c__Clostridia;  o__Clostridiales;  f__Ruminococcaceae;  g__;  s__
-
+(etc.)
 ```
 
-Make KEGG Ortholog (KOs) predictions using the corrected OTU table as input:
+Ok, no lets actually make our functional predictions of KEGG Ortholog (KOs) predictions using the corrected OTU table as input:
 
- predict_metagenomes.py -i otus_corrected.biom -o ko_predictions.biom
+    predict_metagenomes.py -i otus_corrected.biom -o ko_predictions.biom
+
+We can check out these KO predictions again by converting the BIOM file first:
+
+    biom convert -i ko_predictions.biom -o ko_predictions.txt --to-tsv --header-key KEGG_Description    
+
+```
+# Constructed from biom file
+#OTU ID	9Y-June1	10Y-June1	8Y-May23	10Y-May23	6Y-June1	9Y-May23	Y7-Aug14	Y7-Aug15	6Y-May23	M1
+1-Aug14	M11-Aug15	M11-Jul13	11M-May23	M13-Jul13	13M-May23	2E-Aug14	2E-Aug15	2E-May24	4E-June1	1E
+-Aug16	1E-May23	KEGG_Description
+K01365	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
+0	0.0	0.0	cathepsin L [EC:3.4.22.15]
+K01364	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
+0	0.0	0.0	streptopain [EC:3.4.22.10]
+K01361	18.0	20.0	9.0	4.0	11.0	4.0	9.0	6.0	6.0	7.0	10.0	11.0	9.0	11.0	8.0	32.0	8.0	15.0	17
+.0	8.0	9.0	lactocepin [EC:3.4.21.96]
+K01360	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
+0	0.0	0.0	proprotein convertase subtilisin/kexin type 2 [EC:3.4.21.94]
+K01362	3587.0	3559.0	3868.0	3428.0	3872.0	3462.0	3432.0	1913.0	2436.0	3219.0	3248.0	3081.0	3372.0	2602.0	3494.0	3566.0	3527.0	2616.0	31
+33.0	3457.0	2212.0	None
+K02249	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
+0	0.0	0.0	competence protein ComGG
+K05841	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
+0	0.0	0.0	sterol 3beta-glucosyltransferase [EC:2.4.1.173]
+```
 
 Default predictions from PICRUSt are KOs (KEGG Orthologs) but PICRUSt can also predict COGs and Rfams.
 
@@ -75,9 +100,6 @@ PICRUSt can directly connect the OTUs that are contributing to each KO by using 
 
  metagenome_contributions.py -i otus_corrected.biom -l K01727,K01194,K01216,K11049,K00389,K00449 -o metagenome_contributions.tab
 
-We can view these KEGG Pathways within STAMP. First we need to change the BIOM version we are using:
- 
- export PYTHONPATH=~/local/lib/python2.7/site-packages
 
 You can use STAMP with the corrected OTU table by first converting it using the Microbiome Helper script:
 
