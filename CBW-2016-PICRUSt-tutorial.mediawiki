@@ -51,6 +51,16 @@ Now you can look at them using `less`:
 (etc.)
 ```
 
+    less otus_corrected.tsv
+
+```
+#OTU ID	9Y-June1	10Y-June1	8Y-May23	10Y-May23	6Y-June1	9Y-May23	Y7-Aug14	Y7-Aug15	6Y-May23	M11-Aug14	M11-Aug15	M11-Jul13	11M-May23	M13-Jul13	13M-May23	2E-Aug14	2E-Aug15	2E-May24	4E-June1	1E-Aug16	1E-May23	taxonomy
+181348	0.333333333333	0.0	0.0	0.0	0.0	0.333333333333	0.0	0.0	0.333333333333	0.0	0.0	0.0	0.0	0.0	0.0	2.0	5.0	1.0	1.33333333333	2.33333333333	0.0	k__Bacteria;  p__Firmicutes;  c__Clostridia;  o__Clostridiales;  f__Lachnospiraceae;  g__Coprococcus;  s__
+318732	0.0	0.0	0.333333333333	0.0	0.0	0.0	0.0	0.0	0.666666666667	1.66666666667	3.0	2.33333333333	0.333333333333	1.66666666667	1.0	0.0	0.666666666667	0.0	0.0	0.0	0.0	k__Bacteria;  p__Firmicutes;  c__Clostridia;  o__Clostridiales;  f__;  g__;  s__
+244484	0.0	0.0	0.0	1.0	0.0	0.5	0.0	0.5	2.0	0.0	1.0	0.0	1.0	0.5	0.0	0.0	0.5	0.0	1.0	0.0	0.5	k__Bacteria;  p__Firmicutes;  c__Clostridia;  o__Clostridiales;  f__Ruminococcaceae;  g__;  s__
+
+```
+
 Make KEGG Ortholog (KOs) predictions using the corrected OTU table as input:
 
  predict_metagenomes.py -i otus_corrected.biom -o ko_predictions.biom
