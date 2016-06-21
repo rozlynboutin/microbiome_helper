@@ -3,7 +3,7 @@
 
 This lab will walk you through the basic steps of using PICRUSt to make functional predictions (e.g. predicted metagenome) from your 16S data.
 
-It uses an OTU table that has already been generated for use with PICRUSt. See detailed instructions on how to do this using closed reference picking [http://picrust.github.io/picrust/tutorials/otu_picking.html here] or using open-reference picking [http://github.com/mlangill/microbiome_helper#picrust-workflow-for-16s-data here]
+It uses an OTU table that has already been generated for use with PICRUSt. See detailed instructions on how to do this using [closed reference picking](http://picrust.github.io/picrust/tutorials/otu_picking.html) or using [open-reference picking] (http://github.com/mlangill/microbiome_helper#picrust-workflow-for-16s-data)
 
 The data we will be using in this lab comes from the stool of three groups of mice that are of different ages (e.g. young, middle, and old).
 
@@ -143,11 +143,11 @@ The output should look like this:
  K01727  9Y-June1        2617854 1.0     0.333333333333  0.333333333333  0.0503778337531 0.000158540162187
 
 ```
-Each line in this file relates how much a single OTU (third column) contributes to a single KO (first column) within a single sample (second column). The fifth column contains the actual relative abundance contributed by this OTU, and the other columns contain other information about the abundance of the OTU the percentage contribution of this OTU. 
+Each line in this file relates how much a single OTU (third column) contributes to a single KO (first column) within a single sample (second column). The fifth column contains the actual relative abundance contributed by this OTU, and the other columns contain other information about the abundance of the OTU and the percentage contribution of this OTU. 
 
 You could use your favourite plotting program (e.g. excel, sigmaplot, etc) to plot the information from columns 1-3 and column 5. As an example of what the output might look, I have created the following image:
 
-[[File:K00449 genus.png|600px]]
+![](https://www.dropbox.com/s/qrx2sgdqxe93sjc/K00449_genus.png?raw=1)
 
 This plot shows that the large increase in K00449 within sample 25 is contributed by the genus ''Citrobacter''.
 
