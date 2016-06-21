@@ -93,24 +93,26 @@ Now we are going to run Metaphlan2 on the sample "SRS015044".
 
 First change back to your working directory:
 
-    cd ~/Desktop/hmp_metagenomics_downsampled
+    cd ~/workspace/module_taxonomy
 
 Now we are going to run Metaphlan2 on a single example with the following (long) command:
     
-    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map --nproc 2 -o SRS015044.txt fastq/SRS015044.fastq
+    metaphlan2.py --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015044.txt hmp_metagenomics/fastq/SRS015044.fastq
 
 The command will run for 1-2 minutes on this single sample (it'll be faster if you have more CPUs enabled, see the _nproc_ option described below).
 
 The command line parameters are:
-* `--mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan2 marker database is located which contains metadata information about each of the markers
+* `--mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan2 marker database is located which contains metadata information about each of the markers
 * `--input_type fastq`: Indicates that our input files are in fastq format. (If we wanted to use fasta files as input then we would change this to 'fasta').
-* `--bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
+* `--bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
 * `--no_map` We use this flag to prevent Metaphlan2 from storing the intermediate bowtie output files. 
 * '--nproc 2' Indicates that 2 cores should be used to run this program, but will only work if you have enabled at least 2 cores already, otherwise only 1 core will be used.
 * `-o SRS015044.txt`: Indicates the name of output file that Metaphlan2 will use to write results to.
 * `fastq/SRS015044.fastq`: Metaphlan2 takes the input file containing our metagenomic reads as the last argument
 
-Now run Metaphlan2 for sample SRS015893 as well (swap out the sample names for the above command).
+Now run Metaphlan2 for sample SRS015893 as well (swap out the sample names for the above command). Also this time lets use all 8 cores of our server by adding the option '-–nproc 8'.
+
+     metaphlan2.py --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map -o SRS015893.txt --nproc 8 hmp_metagenomics/fastq/SRS015893.fastq
 
 ### Metaphlan2 Output
 You can inspect the output of these two samples by using the _less_ command (or your favourite editor): 
