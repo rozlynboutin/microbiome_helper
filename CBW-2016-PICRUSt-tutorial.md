@@ -29,7 +29,7 @@ Now decompress the data using "unzip" command:
 
 The first step is to correct the OTU table based on the predicted 16S copy number for each organism in the OTU table:
 
- normalize_by_copy_number.py -i otus.biom -o otus_corrected.biom 
+    normalize_by_copy_number.py -i otus.biom -o otus_corrected.biom 
 
 Note that this is just a normal OTU table which then could be used with all of the other tools you already learned today.
 
