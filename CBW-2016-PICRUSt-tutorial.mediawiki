@@ -8,8 +8,6 @@ It uses an OTU table that has already been generated for use with PICRUSt. See d
 The data we will be using in this lab comes from the stool of three groups of mice that are of different ages (e.g. young, middle, and old).
 
 == Preliminaries ==
-=== Amazon node ===
-Read [http://bioinformatics.ca/workshop_wiki/index.php/Analysis_of_Metagenomic_Data_2015_Workshop_Wiki#Logging_into_the_Amazon_cloud these directions] for information on how to log in to your assigned Amazon node.
 
 === Work directory ===
 Create a new directory that will store all of the files created in this lab.
