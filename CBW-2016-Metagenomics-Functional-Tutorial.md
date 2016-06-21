@@ -95,40 +95,23 @@ Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database an
 
 Now, we are going to run HUMANN. To use human you are going to copy the entire program to your working directory. The human program is in “ ~/CourseData/refs/humann-0.99/”:
 
- cp -r ~/CourseData/metagenomics/ref/humann-0.99/ ./
+    cp -r ~/CourseData/metagenomics/ref/humann-0.99/ ./
 
 Then move into the humann directory:
- 
- cd humann-0.99
+
+    cd humann-0.99
 
 Now copy your blast output from your 3 samples into the “human-0.99/input” directory:
 
- cp ../pre_humann/SRS015044.txt ../pre_humann/SRS015893.txt ../pre_humann/SRS097871.txt ./input/
+    cp ../pre_humann/SRS015044.txt ../pre_humann/SRS015893.txt ../pre_humann/SRS097871.txt ./input/
 
 To being running human on just these 3 samples you use the “scons” command (using 4 cores):
 
- scons -j 4
+    scons -j 4
 
 A bunch of messages will pass on your screen and it should finish in ~2 minutes. All of the output is contained in the “humann-0.99/output” directory. To see a list of them type:
  
- ls output
-
-
-Now we are going to run HUMAnN on three pre-processed files. To use HUMAnN you are going to make a symbolic link between the BLAST tabular format files and the HUMAnN "input" directory (HUMAnN reads in input files from this directory):
-
-    rm /home/shared/humann-0.99/input/*txt 
-    rm /home/shared/humann-0.99/output/*
-    ln -s $PWD/pre-computed_results/diamond_alignments/*txt /home/shared/humann-0.99/input
-
-(It's ok if the 'rm' commands give the error "No such file or directory", I just added that in to make sure no previous files will mess up HUMAnN).
-
-Then move into the HUMAnN directory:
- 
-    cd /home/shared/humann-0.99
-
-To being running HUMAnN on all the samples you pre-processed with DIAMOND, you use the “scons” command (using 2 cores). Note this will take ~20 minutes.
-
-    scons -j 2
+     ls output
 
 A bunch of messages will pass on your screen as this command runs. All of the output is contained in the “/home/shared/humann-0.99/output” directory. To see a list of them, once the job is done, type:
  
@@ -186,22 +169,21 @@ Now, use less to look at the KO predictions and the KEGG Module predictions:
 
 ### Running all samples with Microbiome Helper
 
-So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper package called run_pre_humann.pl. All 30 samples _could be_ processed with a single command like:
+So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper package called run_pre_humann.pl. All 30 samples _could be_ processed with a single command like:  
 
-    run_pre_humann.pl -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -o pre_humann ./fastq/*
+run_pre_humann.pl -p 8 -d ~/CourseData/metagenomics/ref/kegg/kegg.reduced -o pre_humann ./hmp_metagenomics/fastq/*
 
-However, this would take several hours to complete (this is much faster when more CPUs are used). The HUMAnN step would take at least 10 minutes to complete.  
+However, this would take awhile (30-60 min.)
 
-To make things easier the output for all 30 samples has been pre-computed and is located in  “./pre-computed_results/humann_output”. 
+To make things easier the output for all 30 samples has been pre-computed and is located in  “./hmp_metagenomics/pre-computed_results/humann_output”. 
 
 If you browse the output using _less_ you can see that they are in the same format but with 30 columns representing the 30 samples:
 
-    cd /home/vagrant/Desktop/hmp_metagenomics_downsampled
-    less ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
+    less ./hmp_metagenomics/pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
 
 You will notice that the output looks fairly messy because the terminal will automatically line wrap and it becomes hard to see where one line ends and the next begins. I often find the "cut" command useful to browse data like this. "cut" allows you to just look at particular columns from the data. For example:
 
-    cut -f 1-5 ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt | less
+    cut -f 1-5 ./hmp_metagenomics/pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt | less
 
 * '-f 1-5' indicates that we want to look at the first 5 columns. We could just have easily used '-f 1,3,10' (to view columns 1, 3 and 10) or '-f 1-3,20-' (to view columns 1 to 3 and columns 20 onwards).
 * '| less' "pipes" the output from the "cut" command and lets us view the output one screen at a time using our 'less' tool.  
@@ -210,9 +192,9 @@ Now, we are going to use STAMP to visualize the humann output just like we did w
 
 First, we need to convert the HUMAnN output files file into STAMP format:
 
-    humann_to_stamp.pl ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt > pathways.spf
-    humann_to_stamp.pl ./pre-computed_results/humann_output/04b-hit-keg-mpm-cop-nul-nve-nve.txt > modules.spf
-    humann_to_stamp.pl ./pre-computed_results/humann_output/01b-hit-keg-cat.txt > kos.spf
+    humann_to_stamp.pl ./hmp_metagenomics/pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt > pathways.spf
+    humann_to_stamp.pl ./hmp_metagenomics/pre-computed_results/humann_output/04b-hit-keg-mpm-cop-nul-nve-nve.txt > modules.spf
+    humann_to_stamp.pl ./hmp_metagenomics/pre-computed_results/humann_output/01b-hit-keg-cat.txt > kos.spf
 
 You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in the current directory. You can check to make sure they are there with 'ls'
 
@@ -220,11 +202,10 @@ You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in 
 
 Your output should look like this:
 
-    vagrant@MicrobiomeHelper:~/Desktop/hmp_metagenomics_downsampled$ ls
-    fastq        kos.spf                   metaphlan_merged.txt  pathways.spf          pre_humann     SRS015893.txt
-    hmp_map.txt  metaphlan_merged_all.spf  modules.spf           pre-computed_results  SRS015044.txt  SRS097871.txt
-
-
+```
+ubuntu@ip-10-63-166-212:~/workspace/module_function$ ls
+hmp_metagenomics  humann-0.99  kos.spf  modules.spf  pathways.spf  pre_humann
+```
 
 ### STAMP with HUMAnN Output
 
