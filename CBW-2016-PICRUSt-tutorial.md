@@ -18,12 +18,12 @@ Create a new directory that will store all of the files created in this lab.
 
 Now we need to download the data using 'wget':
  
-  wget https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1 -O picrust_data.zip
+    wget https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1 -O picrust_data.zip
 
 Now decompress the data using "unzip" command:
 
- unzip picrust_data.zip
- rm picrust_data.zip
+    unzip picrust_data.zip
+    rm picrust_data.zip
 
 == Main Lab Steps ==
 
