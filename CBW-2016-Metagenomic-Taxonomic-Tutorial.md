@@ -222,9 +222,9 @@ STAMP takes two main files as input the profile data which is a table that conta
 The metadata file is the **hmp_map.txt** file. This file is present already in the "hmp_metagenomics_downsampled" directory.
 You will also need the profile data file which is in a different format than what Metaphlan2 outputs. Therefore we first need to convert it using a script from the microbiome_helper package. You can convert the pre-computed Metaphlan2 output for all samples like this:
 
-    metaphlan_to_stamp.pl pre-computed_results/metaphlan2_output/metaphlan_merged_all.txt > metaphlan_merged_all.spf
+    metaphlan_to_stamp.pl metaphlan_merged_all.txt > metaphlan_merged_all.spf
 
-As you can see this file takes the Metaphlan2 output file (from all the merged samples), which we already made for you, as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
+As you can see this file takes the Metaphlan2 output file (from all the merged samples), as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
 
 Now load the profile file (metaphlan_merged_all.spf and the metadata file (hmp_map.txt) files by going to "File->load data" within STAMP:
 
