@@ -1,5 +1,5 @@
 
-==Introduction==
+##Introduction
 
 This lab will walk you through the basic steps of using PICRUSt to make functional predictions (e.g. predicted metagenome) from your 16S data.
 
@@ -7,9 +7,9 @@ It uses an OTU table that has already been generated for use with PICRUSt. See d
 
 The data we will be using in this lab comes from the stool of three groups of mice that are of different ages (e.g. young, middle, and old).
 
-== Preliminaries ==
+##Preliminaries
 
-=== Work directory ===
+###Work directory
 Create a new directory that will store all of the files created in this lab.
 
     rm -rf ~/workspace/module_picrust
@@ -25,7 +25,7 @@ Now decompress the data using "unzip" command:
     unzip picrust_data.zip
     rm picrust_data.zip
 
-== Main Lab Steps ==
+## Running PICRUSt
 
 The first step is to correct the OTU table based on the predicted 16S copy number for each organism in the OTU table:
 
@@ -90,7 +90,7 @@ K05841	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0
 0	0.0	0.0	sterol 3beta-glucosyltransferase [EC:2.4.1.173]
 ```
 
-Default predictions from PICRUSt are KOs (KEGG Orthologs) but PICRUSt can also predict COGs and Rfams.
+Note: Default predictions from PICRUSt are KOs (KEGG Orthologs) but PICRUSt can also predict COGs and Rfams.
 
 PICRUSt can also collapse KOs to KEGG Pathways. Note that one KO can map to many KEGG Pathways so a simple mapping wouldn't work here. Instead, we use the PICRUSt script "categorize_by_function.py":
 
@@ -123,18 +123,16 @@ Alanine, aspartate and glutamate metabolism	94807.0	90632.0	103163.0	103640.0	96
 
 PICRUSt can directly connect the OTUs that are contributing to each KO by using the ''metagenome_contributions.py'' script:
 
- metagenome_contributions.py -i otus_corrected.biom -l K01727,K01194,K01216,K11049,K00389,K00449 -o metagenome_contributions.txt
+    metagenome_contributions.py -i otus_corrected.biom -l K01727,K01194,K01216,K11049,K00389,K00449 -o metagenome_contributions.txt
 
 
+This is just a regular text file so can browse without conversion:
 
-
-
-Now lets look at getting more detail for the individual KOs that we focused on with the metagenome_contributions.py command from a few steps ago. You can browse the file using 'less':
-
- less metagenome_contributions.tab
+    less metagenome_contributions.txt
 
 The output should look like this:
 
+```
  Gene    Sample  OTU     GeneCountPerGenome      OTUAbundanceInSample    CountContributedByOTU   ContributionPercentOfSample     ContributionPercentOfAllSamples
  K01727  9Y-June1        190026  1.0     1.66666666667   1.66666666667   0.251889168766  0.000792700810933
  K01727  9Y-June1        4331760 3.0     1.0     3.0     0.453400503778  0.00142686145968
@@ -144,6 +142,7 @@ The output should look like this:
  K01727  9Y-June1        1051299 1.0     0.75    0.75    0.113350125945  0.00035671536492
  K01727  9Y-June1        2617854 1.0     0.333333333333  0.333333333333  0.0503778337531 0.000158540162187
 
+```
 Each line in this file relates how much a single OTU (third column) contributes to a single KO (first column) within a single sample (second column). The fifth column contains the actual relative abundance contributed by this OTU, and the other columns contain other information about the abundance of the OTU the percentage contribution of this OTU. 
 
 You could use your favourite plotting program (e.g. excel, sigmaplot, etc) to plot the information from columns 1-3 and column 5. As an example of what the output might look, I have created the following image:
