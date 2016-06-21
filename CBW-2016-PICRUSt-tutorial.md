@@ -151,13 +151,21 @@ You could use your favourite plotting program (e.g. excel, sigmaplot, etc) to pl
 
 This plot shows that the large increase in K00449 within sample 25 is contributed by the genus ''Citrobacter''.
 
-You can use STAMP with the corrected OTU table by first converting it using the Microbiome Helper script:
+### PICRUSt in STAMP (optional)
 
- biom_to_stamp.py -m taxonomy otus_corrected.biom > otus_corrected.spf
+Microbiome Helper provides several scripts for converting BIOM files into STAMP including those from PICRUSt.
 
-Then we use a script from Microbiome Helper to convert the BIOM file into a STAMP profile file:
+First, we can use STAMP with the corrected OTU table by first converting it using the Microbiome Helper script:
 
- biom_to_stamp.py -m KEGG_Pathways pathway_predictions.biom > pathway_predictions.spf
+     biom_to_stamp.py -m taxonomy otus_corrected.biom > otus_corrected.spf
+
+Alternatively, we can convert the BIOM file containing the PICRUSt KO predictions into a STAMP profile file:
+
+    biom_to_stamp.py -m KEGG_Description ko_predictions.biom > ko_predictions.spf
+
+Can do the same with the Pathway predictions:
+
+    biom_to_stamp.py -m KEGG_Pathways pathway_predictions.biom > pathway_predictions.spf
 
 Now download the pathway_predictions.spf file and the map.tsv file to your local computer and load these files within STAMP (File->Load).
 
@@ -165,4 +173,4 @@ Change Profile Level to "Level 3" which actually represents the KEGG Pathways. T
 
 Apply a multiple test correction and then view the individual KEGG Pathways using a "Box Plot" (instead of PCA plot). What is the most significant KEGG Pathway?
 
-If you like you can explore other visualizations with STAMP or attempt to load KEGG Modules or KOs instead within STAMP.
+If you like you can explore other visualizations with STAMP or attempt to load KOs instead within STAMP.
