@@ -162,11 +162,11 @@ You can see that 10.85% of the metagenome is predicted from organisms in the gen
 
 ### Merging Metaphlan2 Results 
 
-Run Metaphlan2 on sample SRS097871 as well, just like for the other 2 samples.
+Run Metaphlan2 on sample **SRS097871** as well, just like for the other 2 samples we have already done. **(You need to figure out the command and run it yourself before moving to the next step)**
 
 Now, lets combine all of the Metaphlan2 output files into a single merged output file:
 
-    /usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt SRS015893.txt SRS097871.txt > metaphlan_merged.txt
+    /usr/local//metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt SRS015893.txt SRS097871.txt > metaphlan_merged.txt
 
 Note that this script 'merge_metaphlan_tables.py' takes one or more Metaphlan2 output files as input and combines them into a single output file. The output file is indicated using the stdout redirect symbol '>' and is written in this case to **metaphlan_merged.txt**
 
@@ -195,22 +195,23 @@ To get information about the individual samples you can look in the hmp_map.txt 
 
 ### Running Metaphlan2 on a large number of samples using Microbiome Helper
 
-Running Metaphlan2 on more than a few samples can be tedious. I wrote a script to make this easier as part of the package “Microbiome Helper” (https://github.com/mlangill/microbiome_helper). **Note you do not have to do this today** as we have already pre-computed the combined Metaphlan2 output, but this is how you would do it.
+Running Metaphlan2 on more than a few samples can be tedious. There is a script within Microbiome Helper to help automate and simplify this.
 
 To run Metaphlan2 on all of the samples using 'run_metaphlan2.pl' (this would take ~30 min):
 
-    run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt ./fastq/*
+    run_metaphlan2.pl -p 8 -o metaphlan_merged_all.txt ./hmp_metagenomics/fastq/*
 
 This command uses the following options:
-* '-p 2' runs metaphlan in parallel using 2 processors.
+* '-p 8' runs metaphlan in parallel using 8 processors.
 * '-o' is the name for the merged output file.
-* ' ./fastq/*' indicates that all of the files within this directory will be used as input. 
+* ' ./hmp_metagenomics/fastq/*' indicates that all of the files within this directory will be used as input. 
 
 On your screen you would see the commands that the microbiome helper script is running automatically for you:
 ```
- cat ./fastq/SRS014477.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS014477
- cat ./fastq/SRS011343.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS011343
- cat ./fastq/SRS019129.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS019129
+cat ./hmp_metagenomics/fastq/SRS015537.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS015537
+cat ./hmp_metagenomics/fastq/SRS014477.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS014477
+cat ./hmp_metagenomics/fastq/SRS015064.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS015064
+(etc.)
 ```
 **Q9)** Based on the above example commands being written to the screen, what directory would the Metaphlan2 individual output files be stored in?
 
