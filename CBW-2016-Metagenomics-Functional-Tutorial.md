@@ -33,6 +33,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 ## Initial Setup
 
 * Prepare working directory
+
     rm -rf ~/workspace/module_function
     mkdir -p ~/workspace/module_function
     cd ~/workspace/module_function
