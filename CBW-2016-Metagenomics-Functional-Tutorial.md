@@ -92,7 +92,28 @@ Each column tells us different information about the match:
 Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database and convert the output to BLAST tabular format as above. **(You need to figure out the commands to run and execute them before moving to the next step)**
 
 ### Running HUMAnN
+
+Now, we are going to run HUMANN. To use human you are going to copy the entire program to your working directory. The human program is in “ ~/CourseData/refs/humann-0.99/”:
+
+ cp -r ~/CourseData/metagenomics/ref/humann-0.99/ ./
+
+Then move into the humann directory:
  
+ cd humann-0.99
+
+Now copy your blast output from your 3 samples into the “human-0.99/input” directory:
+
+ cp ../pre_humann/SRS015044.txt ../pre_humann/SRS015893.txt ../pre_humann/SRS097871.txt ./input/
+
+To being running human on just these 3 samples you use the “scons” command (using 4 cores):
+
+ scons -j 4
+
+A bunch of messages will pass on your screen and it should finish in ~2 minutes. All of the output is contained in the “humann-0.99/output” directory. To see a list of them type:
+ 
+ ls output
+
+
 Now we are going to run HUMAnN on three pre-processed files. To use HUMAnN you are going to make a symbolic link between the BLAST tabular format files and the HUMAnN "input" directory (HUMAnN reads in input files from this directory):
 
     rm /home/shared/humann-0.99/input/*txt 
