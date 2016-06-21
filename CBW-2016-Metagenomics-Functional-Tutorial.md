@@ -53,18 +53,18 @@ First we will make a directory to store our sequence search outputs:
 
 Now we will run DIAMOND on our metagenomic sequences for the sample SRS015044:
  
-    diamond blastx -p 2 -d ~/CourseData/metagenomics/ref/kegg/kegg.reduced -q ./fastq/SRS015044.fastq -a pre_humann/SRS015044
+    diamond blastx -p 8 -d ~/CourseData/metagenomics/ref/kegg/kegg.reduced -q ./hmp_metagenomics/fastq/SRS015044.fastq -a pre_humann/SRS015044
 
 The options used in this command are:
 
 * 'blastx': Tells DIAMOND to run in “blastx” mode meaning that we will search a nucleotide query against a protein database in all 6 frame translations (3 forward and 3 reverse).
-* '-p 2': Indicates that DAMOND should use 2 threads to do the search.
+* '-p 8': Indicates that DIAMOND should use 8 threads to do the search.
 *  '-d kegg/kegg.reduced.lowMem' points at the KEGG database which has already been formatted for use with DIAMOND. Note that using this version of the database makes the job slower, but allows DIAMOND to be run on machines with lower memory.
-* '-q ./fastq/SRS015044.fastq' is the input metagenomic sample
+* '-q ./hmp_metagenomics/fastq/SRS015044.fastq' is the input metagenomic sample
 * '-a pre_humann/SRS015044' is the name of the output file (Note: DIAMOND appends a '.daa' automatically to the end of the output file name)
 * Note: That the default e-value cutoff used by DIAMOND is 0.001.
 
-The previous command is comparing 60k sequences vs. the KEGG database (~1.3 million sequences) and takes about 10 minutes with 2 CPU. If we had used the NCBI BLASTX it would have taken a couple of days!
+The previous command is comparing 60k sequences vs. the KEGG database (~1.3 million sequences) and takes about 5 minutes with 8 CPU. If we had used the NCBI BLASTX it would have taken a couple of days!
 
 The  output from DIAMOND is a special binary format that we can then turn into either SAM or BLAST tabular output with the latter being the default.
 
@@ -89,7 +89,7 @@ Each column tells us different information about the match:
 11.	e-value  
 12.	bit score  
 
-Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database and convert the output to BLAST tabular format as above.
+Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database and convert the output to BLAST tabular format as above. **(You need to figure out the commands to run and execute them before moving to the next step)**
 
 ### Running HUMAnN
  
