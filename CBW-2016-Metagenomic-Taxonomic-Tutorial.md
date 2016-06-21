@@ -33,20 +33,28 @@ This lab component will use samples collected and sequenced through the Human Mi
 ## Requirements
 
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
-* [Microbiome Helper VirtualBox] (MicrobiomeHelper-Virtual-Box) (install it and ensure it is working)
-* [Tutorial Data](https://www.dropbox.com/s/clzi94vl9yn21a7/hmp_metagenomics_downsampled.zip?dl=1)
+
+* These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and placed in the directory: ~/CourseData/metagenomics/hmp_metagenomics/
 
 ## Initial Setup
-* Open this tutorial within the Microbiome Helper VirtualBox
-* Download the tutorial data, save it to the Desktop (within Ubuntu), and unzip the folder.
+
+* Prepare working directory
+    rm -rf ~/workspace/module_taxonomy
+    mkdir -p ~/workspace/module_taxonomy
+    cd ~/workspace/module_taxonomy
+    ln -s ~/CourseData/metagenomics/hmp_metagenomics ./
+
+'''Notes''':
+
+* The `ln -s` command adds a symbolic link to the (read-only) `~/CourseData/metagenomics/hmp_metagenomics` directory.
 
 ### Explore Samples
 
-Open a terminal/console and change to the directory containing the tutorial data:
+Change to the directory containing the tutorial data:
 
 (paste the below command with your mouse, you probably wont be able to copy/paste text in the VBox with keyboard commands)
 
-    cd ~/Desktop/hmp_metagenomics_downsampled
+    cd ~/workspace/module_taxonomy/hmp_metagenomic
 
 The tutorial data consists of a "map file" containing information about each of the samples called **hmp_map.txt**, along with the sequence data for each sample being contained within a separate fastq file within the directory **fastq**.
 
