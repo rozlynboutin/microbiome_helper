@@ -171,7 +171,7 @@ So what about all of our samples? To do the DIAMOND searches for all 30 you coul
 
     run_pre_humann.pl -p 8 -d ~/CourseData/metagenomics/ref/kegg/kegg.reduced -o pre_humann ./hmp_metagenomics/fastq/*
 
-However, this would take awhile (30-60 min.)
+However, this would take awhile (20 min.). 
 
 To make things easier the output for all 30 samples has been pre-computed and is located in  “./hmp_metagenomics/pre-computed_results/humann_output”. 
 
