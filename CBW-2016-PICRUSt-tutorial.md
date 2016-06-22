@@ -7,9 +7,16 @@ It uses an OTU table that has already been generated for use with PICRUSt. See d
 
 The data we will be using in this lab comes from the stool of three groups of mice that are of different ages (e.g. young, middle, and old).
 
-##Preliminaries
+**Author**: Morgan Langille
 
-###Work directory
+**Created**: Summer 2016 for CBW Metagenomics, Vancouver
+
+
+## Requirements
+* Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
+* [https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1](Tutorial Data)
+
+### Initial Setup
 Create a new directory that will store all of the files created in this lab.
 
     rm -rf ~/workspace/module_picrust
