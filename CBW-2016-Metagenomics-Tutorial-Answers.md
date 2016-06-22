@@ -19,7 +19,7 @@ These are the answers to the questions from the Metagenomics Tutorial
 
 **Functional section:**
 
-1. SRS015893
+1. SRS015044
 2. No
 3. 50 (KOs different across body sites)
 4. 2 (KEGG Pathways different across body sites)
