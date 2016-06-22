@@ -11,7 +11,6 @@ The data we will be using in this lab comes from the stool of three groups of mi
 
 **Created**: Summer 2016 for CBW Metagenomics, Vancouver
 
-
 ## Requirements
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * [Tutorial Data](https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1)
@@ -33,6 +32,7 @@ Now decompress the data using "unzip" command:
     rm picrust_data.zip
 
 ## Running PICRUSt
+In your working directory you should have an OTU table called "otus.biom" and a mapping file "map.tsv". 
 
 The first step is to correct the OTU table based on the predicted 16S copy number for each organism in the OTU table:
 
