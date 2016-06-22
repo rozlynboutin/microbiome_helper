@@ -169,7 +169,7 @@ Now, use less to look at the KO predictions and the KEGG Module predictions:
 
 So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper package called run_pre_humann.pl. All 30 samples _could be_ processed with a single command like:  
 
-run_pre_humann.pl -p 8 -d ~/CourseData/metagenomics/ref/kegg/kegg.reduced -o pre_humann ./hmp_metagenomics/fastq/*
+    run_pre_humann.pl -p 8 -d ~/CourseData/metagenomics/ref/kegg/kegg.reduced -o pre_humann ./hmp_metagenomics/fastq/*
 
 However, this would take awhile (30-60 min.)
 
