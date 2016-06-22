@@ -14,7 +14,7 @@ The data we will be using in this lab comes from the stool of three groups of mi
 
 ## Requirements
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
-* [https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1](Tutorial Data)
+* [Tutorial Data](https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1)
 
 ### Initial Setup
 Create a new directory that will store all of the files created in this lab.
