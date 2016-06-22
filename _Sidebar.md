@@ -5,7 +5,7 @@
 
 **Metagenomic resources**
    * [Metagenomic SOP](Metagenomic-standard-operating-procedure)
-   * [Metagenomics Tutorial](Metagenomics-Tutorial-(Downsampled))
+   * [Metagenomics tutorial](Metagenomics-Tutorial-(Downsampled))
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
    * [Screen out human sequences](https://github.com/mlangill/microbiome_helper/wiki/Screen-out-human-sequences)
