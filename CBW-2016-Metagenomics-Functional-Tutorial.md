@@ -97,10 +97,11 @@ Now, we are going to run HUMANN. To use human you are going to copy the entire p
 
     cp -r ~/CourseData/metagenomics/ref/humann-0.99/ ./
 
-Then move into the humann directory and ensure the scripts in /src are executable:
+Then move into the humann directory, ensure the scripts in /src are executable, and lastly remove the "mock" sample in the input directory:
 
     cd humann-0.99
     chmod u+x src/*
+    rm input/mock_even_lc.txt.gz
 
 Now copy your blast output from your 3 samples into the “human-0.99/input” directory:
 
@@ -111,10 +112,6 @@ To being running human on just these 3 samples you use the “scons” command (
     scons -j 4
 
 A bunch of messages will pass on your screen and it should finish in ~2 minutes. All of the output is contained in the “humann-0.99/output” directory. To see a list of them type:
- 
-     ls output
-
-A bunch of messages will pass on your screen as this command runs. All of the output is contained in the “/home/shared/humann-0.99/output” directory. To see a list of them, once the job is done, type:
  
     ls output
 
