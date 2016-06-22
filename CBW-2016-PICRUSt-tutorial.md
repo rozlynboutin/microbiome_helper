@@ -68,7 +68,9 @@ Now you can look at them using `less`:
 (etc.)
 ```
 
-Ok, no lets actually make our functional predictions of KEGG Ortholog (KOs) predictions using the corrected OTU table as input:
+As you can see the otus_corrected.txt file has "normalized" the OTU table according to the PICRUSt 16S copy number predictions. By looking at the differences between the two OTU files can you tell what the predicted 16S copy number is for OTU 181348? What about OTU 244484?
+
+Ok, now lets actually make our functional predictions of KEGG Ortholog (KOs) predictions using the corrected OTU table as input:
 
     predict_metagenomes.py -i otus_corrected.biom -o ko_predictions.biom
 
