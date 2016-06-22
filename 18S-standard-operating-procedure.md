@@ -35,7 +35,7 @@ Below is the quick and dirty description of our recommended 18S pipeline.
 
         echo "pick_otus:threads 4" >> clustering_params.txt
         echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
-        echo "pick_otus:similarity 0.99" >> clustering_params.txt
+        echo "pick_otus:similarity 0.98" >> clustering_params.txt
         echo "align_seqs:template_fp /home/shared/rRNA_db/90_Silva_111_rep_set_euk_aligned.filter.fasta" >> clustering_params.txt 
         echo "assign_taxonomy:id_to_taxonomy_fp /home/shared/rRNA_db/gb203_pr2_all_10_28_99p_tax_Xs-fixed_poly-fixed.txt" >> clustering_params.txt
         echo "assign_taxonomy:reference_seqs_fp /home/shared/rRNA_db/gb203_pr2_all_10_28_99p_clean.fasta" >> clustering_params.txt
