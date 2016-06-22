@@ -97,9 +97,10 @@ Now, we are going to run HUMANN. To use human you are going to copy the entire p
 
     cp -r ~/CourseData/metagenomics/ref/humann-0.99/ ./
 
-Then move into the humann directory:
+Then move into the humann directory and ensure the scripts in /src are executable:
 
     cd humann-0.99
+    chmod u+x src/*
 
 Now copy your blast output from your 3 samples into the “human-0.99/input” directory:
 
