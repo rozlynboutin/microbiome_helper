@@ -130,10 +130,9 @@ Alanine, aspartate and glutamate metabolism	94807.0	90632.0	103163.0	103640.0	96
 5979.0	93152.0	100320.0	98573.0	101380.0	90366.0	98759.0	100108.0	113079.0	103468.0	98339.0	104441.0	115040.0	Metabolism; Amino Acid Metabolism; Alanine, aspartate and glutamate metabolism
 ```
 
-PICRUSt can directly connect the OTUs that are contributing to each KO by using the ''metagenome_contributions.py'' script:
+PICRUSt can directly connect the OTUs that are contributing to each KO by using the ''metagenome_contributions.py'' script. Here we specify 6 different KO ids. Usually the choice of KO ids would be driven by KOs that you are interested in, or KOs that are statistically signficant across your sample groupings. 
 
     metagenome_contributions.py -i otus_corrected.biom -l K01727,K01194,K01216,K11049,K00389,K00449 -o metagenome_contributions.txt
-
 
 This is just a regular text file so can browse without conversion:
 
@@ -160,7 +159,9 @@ You could use your favourite plotting program (e.g. excel, sigmaplot, etc) to pl
 
 This plot shows that the large increase in K00449 within sample 25 is contributed by the genus ''Citrobacter''.
 
-### PICRUSt in STAMP (optional)
+### PICRUSt in STAMP
+
+(Depending on time, this part of the tutorial can be done after a more gentler introduction to STAMP in the [Metagenomic Taxonomic Tutorial])
 
 Microbiome Helper provides several scripts for converting BIOM files into STAMP including those from PICRUSt.
 
