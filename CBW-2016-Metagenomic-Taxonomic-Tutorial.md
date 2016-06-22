@@ -33,16 +33,14 @@ This lab component will use samples collected and sequenced through the Human Mi
 
 ## Initial Setup
 
-* Prepare working directory
+Prepare working directory
 
     rm -rf ~/workspace/module_taxonomy
     mkdir -p ~/workspace/module_taxonomy
     cd ~/workspace/module_taxonomy
     ln -s ~/CourseData/metagenomics/hmp_metagenomics ./
 
-'''Notes''':
-
-* The `ln -s` command adds a symbolic link to the (read-only) `~/CourseData/metagenomics/hmp_metagenomics` directory.
+Note: The `ln -s` command adds a symbolic link to the (read-only) `~/CourseData/metagenomics/hmp_metagenomics` directory.
 
 ### Explore Samples
 
