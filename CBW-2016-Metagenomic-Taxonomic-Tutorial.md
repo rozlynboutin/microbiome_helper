@@ -34,6 +34,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 ## Initial Setup
 
 * Prepare working directory
+
     rm -rf ~/workspace/module_taxonomy
     mkdir -p ~/workspace/module_taxonomy
     cd ~/workspace/module_taxonomy
@@ -49,7 +50,7 @@ Change to the directory containing the tutorial data:
 
 (paste the below command with your mouse, you probably wont be able to copy/paste text in the VBox with keyboard commands)
 
-    cd ~/workspace/module_taxonomy/hmp_metagenomic
+    cd ~/workspace/module_taxonomy/hmp_metagenomics
 
 The tutorial data consists of a "map file" containing information about each of the samples called **hmp_map.txt**, along with the sequence data for each sample being contained within a separate fastq file within the directory **fastq**.
 
