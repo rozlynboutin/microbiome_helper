@@ -107,7 +107,7 @@ PICRUSt can also collapse KOs to KEGG Pathways. Note that one KO can map to many
 
 Again lets look at the output:
 
-    biom convert -i pathway_predictions.biom -o pathway_predictions.txt --to-tsv --header-key KEGG_Pathway
+    biom convert -i pathway_predictions.biom -o pathway_predictions.txt --to-tsv --header-key KEGG_Pathways
 
 ```
 # Constructed from biom file
