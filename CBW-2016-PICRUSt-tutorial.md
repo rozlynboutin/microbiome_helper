@@ -103,7 +103,7 @@ Note: Default predictions from PICRUSt are KOs (KEGG Orthologs) but PICRUSt can 
 
 PICRUSt can also collapse KOs to KEGG Pathways. Note that one KO can map to many KEGG Pathways so a simple mapping wouldn't work here. Instead, we use the PICRUSt script "categorize_by_function.py":
 
- categorize_by_function.py -i ko_predictions.biom -c KEGG_Pathways -l 3 -o pathway_predictions.biom
+    categorize_by_function.py -i ko_predictions.biom -c KEGG_Pathways -l 3 -o pathway_predictions.biom
 
 Again lets look at the output:
 
