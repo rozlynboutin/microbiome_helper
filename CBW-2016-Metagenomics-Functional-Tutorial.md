@@ -163,7 +163,7 @@ Now, use less to look at the KO predictions and the KEGG Module predictions:
     less output/01b-hit-keg-cat.txt
     less output/04b-hit-keg-mpm-cop-nul-nve-nve.txt
 
-**Q1)** Which of the three samples has the lowest relative abundance of the KEGG Module: “M00319: Manganese/zinc/iron transport system”?
+**Q1)** Which of the three samples has the highest relative abundance of the KEGG Module: “M00319: Manganese/zinc/iron transport system”?
 
 ### Running all samples with Microbiome Helper
 
