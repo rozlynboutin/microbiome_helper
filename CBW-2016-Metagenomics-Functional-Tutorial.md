@@ -130,30 +130,30 @@ These files contain relative abundances for each of these different functional c
 
 The output should look like this:
 
-    ID      NAME    SRS015044-hit-keg-mpt-cop-nul-nve-nve   SRS015893-hit-keg-mpt-cop-nul-nve-nve   SRS097871-hit-keg-mpt-cop-nul-nve-nve
-    RANDSID RANDSID 763901136       764305738        
-    START   START   Q1_2009 Q2_2009  
-    GENDER  GENDER  female  male     
-    VISNO   VISNO   1       1        
-    STSite  STSite  Supragingival_plaque    Tongue_dorsum    
-    Parent_Specimen Parent_Specimen 700023699       700024548        
-    Run ID  Run ID  620DH   61NTL    
-    Lane    Lane    7       7        
-    SRS     SRS     700023699       700024548        
-    Mean Quality    Mean Quality            32.57    
-    Number of Quality Bases Number of Quality Bases         4175865122       
-    Percent of Human Reads  Percent of Human Reads          0.0348   
-    Unique Non-Human Bases  Unique Non-Human Bases          4359898255       
-    InverseSimpson  InverseSimpson  63.0934 59.9058 52.2271
-    Shannon Shannon 4.29404 4.249   4.15629
-    Pielou  Pielou  0.876722        0.867524        0.848597
-    Richness        Richness        1       1       1
-    ko00564 ko00564: Glycerophospholipid metabolism 0.00859336      0.0065723       0.00667417
-    ko00680 ko00680: Methane metabolism     0.00513046      0.00520955      0.00517978
-    ko00562 ko00562: Inositol phosphate metabolism  0.0029209       0.00343245      0.00543941
-    ko00563 ko00563: Glycosylphosphatidylinositol(GPI)-anchor biosynthesis  0.000187998     0       0
-    ko00561 ko00561: Glycerolipid metabolism        0.00500182      0.00491387      0.00500633
-
+```
+ID      NAME    SRS015044-hit-keg-mpt-cop-nul-nve-nve   SRS015893-hit-keg-mpt-cop-nul-nve-nve   SRS097871-hit-keg-mpt-cop-nul-nve-nve   mock_even_lc-hit-keg-mpt-cop-nul-nve-nve
+RANDSID RANDSID 763901136       764305738                
+START   START   Q1_2009 Q2_2009          
+GENDER  GENDER  female  male             
+VISNO   VISNO   1       1                
+STSite  STSite  Supragingival_plaque    Tongue_dorsum            
+Parent_Specimen Parent_Specimen 700023699       700024548                
+Run ID  Run ID  620DH   61NTL            
+Lane    Lane    7       7                
+SRS     SRS     700023699       700024548                
+Mean Quality    Mean Quality            32.57            
+Number of Quality Bases Number of Quality Bases         4175865122               
+Percent of Human Reads  Percent of Human Reads          0.0348           
+Unique Non-Human Bases  Unique Non-Human Bases          4359898255               
+InverseSimpson  InverseSimpson  59.8877 58.4796 44.4316 73.7574
+Shannon Shannon 4.24908 4.22752 4.01834 4.41906
+Pielou  Pielou  0.866226        0.861831        0.819188        0.90088
+Richness        Richness        1       1       1       1
+ko00564 ko00564: Glycerophospholipid metabolism 0.00878166      0.00639795      0.00925108      0.0094699
+ko00680 ko00680: Methane metabolism     0.00521639      0.00556563      0       0.00440135
+ko00562 ko00562: Inositol phosphate metabolism  0.00343186      0.00293449      0.00646182      0.0027541
+ko00561 ko00561: Glycerolipid metabolism        0.00525597      0.0045911       0       0.00712117
+```
 
 * The first line indicates that the first column is a short id for the KEGG Pathway, the second column is a longer description of the KEGG Pathway, and the remaining columns represent the sample identifiers. 
 * The next 13 lines contain metadata for each sample.
