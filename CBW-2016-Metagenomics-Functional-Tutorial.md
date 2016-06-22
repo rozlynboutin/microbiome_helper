@@ -64,7 +64,7 @@ The options used in this command are:
 * '-a pre_humann/SRS015044' is the name of the output file (Note: DIAMOND appends a '.daa' automatically to the end of the output file name)
 * Note: That the default e-value cutoff used by DIAMOND is 0.001.
 
-The previous command is comparing 60k sequences vs. the KEGG database (~1.3 million sequences) and takes about 5 minutes with 8 CPU. If we had used the NCBI BLASTX it would have taken a couple of days!
+The previous command is comparing 60k sequences vs. the KEGG database (~1.3 million sequences) and takes about <2 minutes with 8 CPUs. If we had used the NCBI BLASTX it would have taken a couple of days!
 
 The  output from DIAMOND is a special binary format that we can then turn into either SAM or BLAST tabular output with the latter being the default.
 
