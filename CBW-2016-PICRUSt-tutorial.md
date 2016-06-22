@@ -161,7 +161,7 @@ This plot shows that the large increase in K00449 within sample 25 is contribute
 
 ### PICRUSt in STAMP
 
-_**(Depending on time, this part of the tutorial can be done after a more gentler introduction to STAMP in the [CBW 2016 Metagenomic Taxonomic Tutorial](CBW-2016-Metagenomic-Taxonomic-Tutorial)).**_
+_(Depending on time, this part of the tutorial can be done after a more gentler introduction to STAMP in the [CBW 2016 Metagenomic Taxonomic Tutorial](CBW-2016-Metagenomic-Taxonomic-Tutorial))._
 
 Microbiome Helper provides several scripts for converting BIOM files into STAMP including those from PICRUSt.
 
