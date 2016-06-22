@@ -32,7 +32,7 @@ Now decompress the data using "unzip" command:
     rm picrust_data.zip
 
 ## Running PICRUSt
-In your working directory you should have an OTU table called "otus.biom" and a mapping file "map.tsv". 
+In your working directory you should have an OTU table called "otus.biom" and a mapping file "map.tsv". The OTU table has been produced within QIIME using the greengenes reference database. The mapping file is just a tab-delimited text file that has sample ids in the first column and a couple of additional columns with metadata for each sample.
 
 The first step is to correct the OTU table based on the predicted 16S copy number for each organism in the OTU table:
 
