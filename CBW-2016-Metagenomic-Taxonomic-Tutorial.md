@@ -31,6 +31,8 @@ This lab component will use samples collected and sequenced through the Human Mi
 
 * These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and placed in the directory: ~/CourseData/metagenomics/hmp_metagenomics/
 
+* STAMP installed. Either [download and install directly](http://kiwi.cs.dal.ca/Software/STAMP) **OR** download the [Microbiome Helper VirtualBox](MicrobiomeHelper-Virtual-Box)
+
 ## Initial Setup
 
 Prepare working directory
