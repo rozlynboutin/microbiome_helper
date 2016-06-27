@@ -36,8 +36,8 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
 
 9. Run HUMAnN (link files to HUMAnN "input" directory and then run HUMAnN with scons command). Note that you can run this in parallel with `-j` option (e.g. scons -j 4), but I have found this often causes HUMAnN to unexpectedly error.
 
-        ln -s $PWD/pre_humann/* ~/programs/humann-0.99/input/
-        cd ~/programs/humann-0.99/
+        ln -s $PWD/pre_humann/* /home/shared/humann-0.99/input/
+        cd /home/shared/humann-0.99/
         scons
 
 10. Convert HUMAnN output to STAMP format
