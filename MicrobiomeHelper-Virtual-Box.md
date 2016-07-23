@@ -8,7 +8,7 @@ We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can b
 
 ## Installation
 1. Download and install VirtualBox for the operating system you are using. https://www.virtualbox.org/wiki/Downloads
-1. Download the latest version of [Microbiome Helper Vbox (v0.2.5)](https://www.dropbox.com/s/glmg1aozuys1ze0/MicrobiomeHelper_v0.2.5.ova?dl=1) (12.5 GB - OVA file). If that doesn't work, click here for an [alternate link](http://kronos.pharmacology.dal.ca/public_files/MicrobiomeHelper_v0.2.5.ova).
+1. Download the latest version of [Microbiome Helper Vbox (v0.2.6)](https://www.dropbox.com/s/zxgex4zyeprtiej/MicrobiomeHelper_v0.2.6.ova?dl=1) (13.31 GB - OVA file). If that doesn't work, click here for an [alternate link](http://kronos.pharmacology.dal.ca/public_files/MicrobiomeHelper_v0.2.6.ova).
 1. "Import" the Microbiome Helper Vbox into VirtualBox by opening the OVA file or within VirtualBox `File->Import Appliance`. More detailed and graphical instructions for importing the image are [available here]. (https://www.maketecheasier.com/import-export-ova-files-in-virtualbox) 
 
 ## Notes
