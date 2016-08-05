@@ -12,7 +12,8 @@ The data we will be using in this lab comes from the stool of three groups of mi
 **Created**: Summer 2016 for CBW Metagenomics, Vancouver
 
 ## Requirements
-* Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
+* Basic unix skills 
+    * (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * [Tutorial Data](https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1)
 
 ### Initial Setup
