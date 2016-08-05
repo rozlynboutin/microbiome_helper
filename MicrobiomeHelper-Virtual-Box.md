@@ -4,6 +4,9 @@ We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can b
 * QIIME
 * STAMP
 * PICRUSt
+* MetaPhlan 2
+* Humann (1 and 2)
+* Kraken
 * Microbiome Helper scripts
 
 ## Requirements
