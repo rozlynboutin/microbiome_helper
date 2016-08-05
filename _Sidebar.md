@@ -26,7 +26,10 @@
    * [Additional QIIME analysis](https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis)
 
 **Tutorials**
-   * PICRUSt Tutorial
+   * [16S tutorial](16S-tutorial-(chemerin))
+   * [Metagenomics Tutorial](Metagenomics-Tutorial-(Downsampled))
+   * [PICRUSt Tutorial](PICRUSt-tutorial)
+
 **Workshop Materials**
    * [CBW 2016 PICRUSt Tutorial](CBW-2016-PICRUSt-tutorial)
    * [CBW 2016 Metagenomic Taxonomic Tutorial](CBW-2016-Metagenomic-Taxonomic-Tutorial)
