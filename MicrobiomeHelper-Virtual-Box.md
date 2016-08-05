@@ -1,13 +1,7 @@
 We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can be used to run all Microbiome Helper workflows and tutorials. This Virtual Box image can be run on any operating system (Windows, Mac, Linux) and saves the time consuming task of installing and configuring multiple bioinformatic packages. 
 
 ## Includes
-* QIIME
-* STAMP
-* PICRUSt
-* MetaPhlan 2
-* Humann (1 and 2)
-* Kraken
-* Microbiome Helper scripts
+The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https://github.com/mlangill/microbiome_helper/wiki/Requirements). Please cite all of the specific tools that you use for your analysis. 
 
 ## Requirements
 * Any desktop or laptop purchased within the last 3-5 years should work.
