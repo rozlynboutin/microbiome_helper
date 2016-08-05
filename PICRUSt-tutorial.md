@@ -216,7 +216,11 @@ Now load the pathway_predictions.spf file and the map.tsv file within STAMP (Fil
 
 Change Profile Level to "Level 3" which actually represents the KEGG Pathways. Then change the "Group Field" (top right) to "Age_Group".
 
-Apply a multiple test correction (Benjamini-Hochberg FDR) and then view the individual KEGG Pathways using a "Box Plot" (instead of PCA plot). What is the most significant KEGG Pathway?
+Apply a multiple test correction (Benjamini-Hochberg FDR) and then view the individual KEGG Pathways using a "Box Plot" (instead of PCA plot) by changing the dropdown box in the lower left. This will open a new window the names of different pathways along with the Eta-squared, p-value, and corrected p-value. By clicking on each pathway a box plot will be drawn. You can order the pathways (for example by the corrected p-value), and you can also limit the list to only those that are statistically significant by checking the "Show only active features" box.
+
+What is the most significant KEGG Pathway? 
+
+You should have a plot like the following. 
 
 ![](https://www.dropbox.com/s/1n4illp1wmls1z4/picrust_tutorial.png?raw=1)
 
