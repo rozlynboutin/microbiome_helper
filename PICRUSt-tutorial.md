@@ -9,7 +9,9 @@ The data we will be using in this lab comes from the stool of three groups of mi
 
 **Author**: Morgan Langille
 
-**Created**: Summer 2016 for CBW Metagenomics, Vancouver
+**First Created**: June 2016 for CBW Metagenomics, Vancouver
+
+**Last Edited**: August 2016 for STAMPS, MBL
 
 ## Requirements
 * Basic unix skills 
@@ -17,11 +19,13 @@ The data we will be using in this lab comes from the stool of three groups of mi
 * [Tutorial Data](https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1)
 
 ### Initial Setup
+Open a terminal window by clicking on the little black box icon 
+
 Create a new directory that will store all of the files created in this lab.
 
-    rm -rf ~/workspace/module_picrust
-    mkdir -p ~/workspace/module_picrust
-    cd ~/workspace/module_picrust
+    rm -rf ~/Desktop/picrust_tutorial
+    mkdir -p ~/Desktop/picrust_tutorial
+    cd ~/Desktop/picrust_tutorial
 
 Now we need to download the data using 'wget':
  
