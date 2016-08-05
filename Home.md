@@ -10,8 +10,3 @@ These scripts were produced by the [Integrated Microbiome Resource](http://cgeb-
 
 You can use the sidebar menu to navigate the wiki.
 
-### Before getting started:
-
-* These workflows usually start with raw paired-end Illumina data in demultiplexed fastq format.
-
-* Most of the commands allow parallel threads to be used with the -p option. Adjust according to your computer hardware abilities.
