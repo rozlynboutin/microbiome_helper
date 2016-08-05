@@ -7,6 +7,8 @@ It uses an OTU table that has already been generated for use with PICRUSt. PICRU
 
 The data we will be using in this lab comes from the stool of three groups of mice that are of different ages (e.g. young, middle, and old).
 
+You should attempt to answer tutorial questions on your own and then check the [answer sheet](PICRUSt-Tutorial-Answers) to make sure you are on track. 
+
 **Author**: Morgan Langille
 
 **First Created**: June 2016 for CBW Metagenomics, Vancouver
