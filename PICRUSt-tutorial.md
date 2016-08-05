@@ -25,8 +25,6 @@ If you are looking to use your own OTU table you might want to check out the [PI
 
 ## Initial Setup
 
-Open this tutorial within the Microbiome Helper VirtualBox (allows copy and pasting easier)
-
 Open a terminal window by clicking on the little black box icon
  
 Create a new directory that will store all of the files created in this lab.
