@@ -16,11 +16,15 @@ The data we will be using in this lab comes from the stool of three groups of mi
 ## Requirements
 * Basic unix skills 
     * (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
+* [Microbiome Helper VirtualBox] (MicrobiomeHelper-Virtual-Box) (install it and ensure it is working)
 * [Tutorial Data](https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1)
 
 ### Initial Setup
-Open a terminal window by clicking on the little black box icon 
 
+Open this tutorial within the Microbiome Helper VirtualBox (allows copy and pasting easier)
+
+Open a terminal window by clicking on the little black box icon
+ 
 Create a new directory that will store all of the files created in this lab.
 
     rm -rf ~/Desktop/picrust_tutorial
