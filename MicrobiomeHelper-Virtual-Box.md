@@ -11,7 +11,7 @@ The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https:
 
 ## Installation
 1. Download and install VirtualBox for the operating system you are using. https://www.virtualbox.org/wiki/Downloads
-2. Download the latest version of [Microbiome Helper Vbox (v0.2.7)](https://www.dropbox.com/s/zxgex4zyeprtiej/MicrobiomeHelper_v0.2.7.ova?dl=1) (13.47 GB - OVA file). If that doesn't work, click here for an [alternate link](http://kronos.pharmacology.dal.ca/public_files/MicrobiomeHelper_v0.2.7.ova).
+2. Download the latest version of [Microbiome Helper Vbox (v0.2.7)](https://www.dropbox.com/s/z4cegznza4064pj/MicrobiomeHelper_v0.2.7.ova?dl=1) (13.47 GB - OVA file). If that doesn't work, click here for an [alternate link](http://kronos.pharmacology.dal.ca/public_files/MicrobiomeHelper_v0.2.7.ova).
 3. "Import" the Microbiome Helper Vbox into VirtualBox by opening the OVA file or within VirtualBox `File->Import Appliance`. More detailed and graphical instructions for importing the image are [available here] (https://www.maketecheasier.com/import-export-ova-files-in-virtualbox).
 
 ## Optional Configuration
