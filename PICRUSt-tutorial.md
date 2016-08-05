@@ -40,6 +40,10 @@ Now decompress the data using "unzip" command:
     unzip picrust_data.zip
     rm picrust_data.zip
 
+Note: If you are using your own OTU table it needs to be in BIOM JSON format (not BIOM HDF5 format). You can do that by:
+
+    biom convert -i otus.biom -o otus_json.biom --to-json --table-type "OTU table"
+
 ## Running PICRUSt
 In your working directory you should have an OTU table called "otus.biom" and a mapping file "map.tsv". The OTU table has been produced within QIIME using the greengenes reference database. The mapping file is just a tab-delimited text file that has sample ids in the first column and a couple of additional columns with metadata for each sample.
 
