@@ -15,7 +15,9 @@ The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https:
 1. "Import" the Microbiome Helper Vbox into VirtualBox by opening the OVA file or within VirtualBox `File->Import Appliance`. More detailed and graphical instructions for importing the image are [available here] (https://www.maketecheasier.com/import-export-ova-files-in-virtualbox).
 
 ## Notes
-* During the import step (or later in settings) you can change the default amount of RAM and number of CPU available for use by the VirtualBox. This will make computation time faster.
+* During the import step (or later in settings) you can change the default amount of RAM and number of CPU available for use by the VirtualBox.
+    * If your computer has 8GB of RAM or more, we would recommend configuring the virtual image with RAM: 4000MB). 
+    * If your computer has 2 or more cores you can configure the virtual image CPU: 2 (or more).
 * If you get a "VT-x/AMD-V hardware acceleration" error when booting for the first time, you might be able to fix it by [following the steps here](http://www.itworld.com/article/2981515/virtualization/virtualbox-diagnose-and-fix-vt-xamd-v-hardware-acceleration-errors.html).
 * The default username and password are both "mh_user".
 * If you'd like to use USEARCH v6.1 for chimera removal (with chimera_filter_usearch61.pl), rather than VSEARCH, you will need to get a license to use this program and put the binary called "usearch61" in your PATH. 
