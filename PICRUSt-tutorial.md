@@ -40,12 +40,20 @@ Now decompress the data using "unzip" command:
     unzip picrust_data.zip
     rm picrust_data.zip
 
-Note: If you are using your own OTU table it needs to be in BIOM JSON format (not BIOM HDF5 format). You can do that by:
-
-    biom convert -i otus.biom -o otus_json.biom --to-json --table-type "OTU table"
-
 ## Running PICRUSt
-In your working directory you should have an OTU table called "otus.biom" and a mapping file "map.tsv". The OTU table has been produced within QIIME using the greengenes reference database. The mapping file is just a tab-delimited text file that has sample ids in the first column and a couple of additional columns with metadata for each sample.
+In your working directory you should have an OTU table called "otus.biom" and a mapping file "map.tsv". The OTU table has been produced within QIIME using the GreenGenes reference database. The mapping file is just a tab-delimited text file that has sample ids in the first column and a couple of additional columns with metadata for each sample. Take a look at these files:
+
+    less map.tsv
+    biom head -i otus.biom
+    biom summarize-table -i otus.biom
+
+Q1) How many samples are there in the dataset?
+Q2) What kind of metadata do we have about each of the samples?
+
+(Temporary fix) Install BIOM 1.3.1 and temporarily change your PYTHONPATH
+
+        pip install --target ~/lib biom-format==1.3.1
+        export PYTHONPATH=~/lib/
 
 The first step is to correct the OTU table based on the predicted 16S copy number for each organism in the OTU table:
 
