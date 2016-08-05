@@ -29,6 +29,7 @@
    * [16S tutorial](16S-tutorial-(chemerin))
    * [Metagenomics Tutorial](Metagenomics-Tutorial-(Downsampled))
    * [PICRUSt Tutorial](PICRUSt-tutorial)
+   * [Other tutorials](other-tutorials)
 
 **Workshop Materials**
    * [CBW 2016 PICRUSt Tutorial](CBW-2016-PICRUSt-tutorial)
