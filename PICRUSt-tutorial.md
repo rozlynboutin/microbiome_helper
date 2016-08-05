@@ -54,16 +54,15 @@ In your working directory you should have an OTU table called "otus.biom" and a 
 * Q1) How many samples are there in the dataset?
 * Q2) What kind of metadata do we have about each of the samples?
 
-PICRUSt uses an older version of BIOM. Install BIOM 1.3.1 and temporarily change your PYTHONPATH
+PICRUSt uses an older version of BIOM. So we will switch the PYTHONPATH temporarily while running PICRUSt commands. 
 
-        pip install --target ~/lib biom-format==1.3.1
-        export PYTHONPATH=~/lib/
+    export PYTHONPATH=~/lib/
 
 The first step is to correct the OTU table based on the predicted 16S copy number for each organism in the OTU table:
 
     normalize_by_copy_number.py -i otus.biom -o otus_corrected.biom 
 
-Note that this is just a normal OTU table which then could be used with all of the other tools you already learned today.
+Note that this is just a normal OTU table which then could be used for other analyses.
 
 If you want to look at the before and after correction you can use the biom tools to convert it to plain text:
 
