@@ -9,6 +9,8 @@ The data we will be using in this lab comes from the stool of three groups of mi
 
 You should attempt to answer tutorial questions on your own and then check the [answer sheet](PICRUSt-Tutorial-Answers) to make sure you are on track. 
 
+If you are looking to use your own OTU table you might want to check out the [PICRUSt Workflow](PICRUSt-workflow).
+
 **Author**: Morgan Langille
 
 **First Created**: June 2016 for CBW Metagenomics, Vancouver
@@ -52,7 +54,7 @@ In your working directory you should have an OTU table called "otus.biom" and a 
 * Q1) How many samples are there in the dataset?
 * Q2) What kind of metadata do we have about each of the samples?
 
-(Temporary fix) Install BIOM 1.3.1 and temporarily change your PYTHONPATH
+PICRUSt uses an older version of BIOM. Install BIOM 1.3.1 and temporarily change your PYTHONPATH
 
         pip install --target ~/lib biom-format==1.3.1
         export PYTHONPATH=~/lib/
