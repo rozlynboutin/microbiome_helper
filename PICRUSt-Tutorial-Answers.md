@@ -4,3 +4,4 @@ These are the answers for the [PICRUSt Tutorial](PICRUSt-tutorial)
 * Q3) 3
 * Q4) 2
 * Q5) Biosynthesis and biodegradation of secondary metabolites
+* Q6) K06970: ribosomal RNA large subunit methyltransferase F
