@@ -21,7 +21,7 @@ You should attempt to answer tutorial questions on your own and then check the [
 * [Microbiome Helper VirtualBox] (MicrobiomeHelper-Virtual-Box) (install it and ensure it is working)
 * [Tutorial Data](https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1)
 
-### Initial Setup
+## Initial Setup
 
 Open this tutorial within the Microbiome Helper VirtualBox (allows copy and pasting easier)
 
