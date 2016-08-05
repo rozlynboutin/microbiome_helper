@@ -16,8 +16,8 @@ The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https:
 
 ## Optional Configuration
 * During the import step (or later in settings) you can change the default amount of RAM and number of CPU available for use by the VirtualBox.
-    * If your computer has 8GB of RAM or more, we would recommend configuring the virtual image with RAM: 4000MB). 
-    * If your computer has 2 or more cores you can configure the virtual image CPU: 2 (or more).
+    * If your computer has 8GB of RAM or more, we would recommend configuring the virtual image with RAM: 4000MB. 
+    * If your computer has 2 or more cores you can configure the virtual image with  CPU == 2 (or more).
 
 ## Moving files to the virtualbox image
 * To move files in and out of the virtualbox image you can create a "shared folder":
