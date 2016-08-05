@@ -26,7 +26,7 @@ The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https:
     * Choose a "Folder Path" and "Folder Name"
     * Check the "Auto-Mount" and "Make Permament" boxes
     * Click OK (twice) and restart the virtual image if it was already running. 
-* The shared folder will be at /media/sf_<folder name>
+* The shared folder will be at `/media/sf_<folder name>`
 
 ## Other Notes
 * The default username and password are both "mh_user".
