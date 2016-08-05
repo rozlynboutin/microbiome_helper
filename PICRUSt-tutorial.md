@@ -224,4 +224,6 @@ You should have a plot like the following.
 
 ![](https://www.dropbox.com/s/1n4illp1wmls1z4/picrust_tutorial.png?raw=1)
 
-If you like you can explore other visualizations with STAMP or attempt to load KOs instead within STAMP.
+If you like you can explore other visualizations with STAMP or attempt to load KOs instead within STAMP. For example, you should be able to answer the following question.
+
+Q6) What is the most significant KO between Healthy and Sick using a multiple test corrected Welch's t-test?
