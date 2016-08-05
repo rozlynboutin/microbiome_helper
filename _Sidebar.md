@@ -25,7 +25,9 @@
    * [PICRUSt workflow](https://github.com/mlangill/microbiome_helper/wiki/PICRUSt-workflow)
    * [Additional QIIME analysis](https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis)
 
-**Teaching Materials**
+**Tutorials**
+   * PICRUSt Tutorial
+**Workshop Materials**
    * [CBW 2016 PICRUSt Tutorial](CBW-2016-PICRUSt-tutorial)
    * [CBW 2016 Metagenomic Taxonomic Tutorial](CBW-2016-Metagenomic-Taxonomic-Tutorial)
    * [CBW 2016 Metagenomics Functional Tutorial](CBW-2016-Metagenomics-Functional-Tutorial)
