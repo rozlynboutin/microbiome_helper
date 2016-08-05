@@ -1,4 +1,10 @@
-We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can be used to run the Microbiome Helper pipeline. This Virtual Box image can be run on any operating system (Windows, Mac, Linux) and saves the time consuming task of installing and configuring multiple bioinformatic packages. 
+We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can be used to run all Microbiome Helper workflows and tutorials. This Virtual Box image can be run on any operating system (Windows, Mac, Linux) and saves the time consuming task of installing and configuring multiple bioinformatic packages. 
+
+## Includes
+* QIIME
+* STAMP
+* PICRUSt
+* Microbiome Helper scripts
 
 ## Requirements
 * Any desktop or laptop purchased within the last 3-5 years should work.
