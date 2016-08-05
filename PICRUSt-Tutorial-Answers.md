@@ -3,3 +3,4 @@ These are the answers for the [PICRUSt Tutorial](PICRUSt-tutorial)
 * Q2) "Disease State" (healthy or sick) and "Age Group" (Young, Middle, Old)
 * Q3) 3
 * Q4) 2
+* Q5) Biosynthesis and biodegradation of secondary metabolites
