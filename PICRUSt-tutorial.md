@@ -49,8 +49,8 @@ In your working directory you should have an OTU table called "otus.biom" and a 
     biom head -i otus.biom
     biom summarize-table -i otus.biom
 
-Q1) How many samples are there in the dataset?
-Q2) What kind of metadata do we have about each of the samples?
+* Q1) How many samples are there in the dataset?
+* Q2) What kind of metadata do we have about each of the samples?
 
 (Temporary fix) Install BIOM 1.3.1 and temporarily change your PYTHONPATH
 
