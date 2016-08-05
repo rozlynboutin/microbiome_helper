@@ -3,7 +3,7 @@
 
 This lab will walk you through the basic steps of using PICRUSt to make functional predictions (e.g. predicted metagenome) from your 16S data.
 
-It uses an OTU table that has already been generated for use with PICRUSt. See detailed instructions on how to do this using [closed reference picking](http://picrust.github.io/picrust/tutorials/otu_picking.html) or using [open-reference picking] (http://github.com/mlangill/microbiome_helper#picrust-workflow-for-16s-data)
+It uses an OTU table that has already been generated for use with PICRUSt. PICRUSt currently can only use an OTU table with GreenGene OTU identifiers which is the output from closed-reference picking or by filtering out de-novo OTUs after open-reference picking. [Instructions for generating your OTU table for PICRUSt](http://picrust.github.io/picrust/tutorials/otu_picking.html). 
 
 The data we will be using in this lab comes from the stool of three groups of mice that are of different ages (e.g. young, middle, and old).
 
