@@ -187,6 +187,12 @@ This plot shows that the large increase in K00449 within sample 25 is contribute
 
 ### PICRUSt visualization and statistics in STAMP
 
+STAMP takes two main files as input:
+
+1. the profile data which is a table that contains the abundance of features (i.e. taxonomic or functions)
+2. a group metadata file which provides more information about each of the samples in the profile data file. 
+
+The metadata file in our dataset is the **map.tsv** file, while the profile file can be generated using Microbiome Helper scripts. 
 
 Microbiome Helper provides several scripts for converting BIOM files into STAMP including those from PICRUSt.
 
@@ -198,11 +204,13 @@ Alternatively, we can convert the BIOM file containing the PICRUSt KO prediction
 
     biom_to_stamp.py -m KEGG_Description ko_predictions.biom > ko_predictions.spf
 
-Can do the same with the Pathway predictions:
+Lastly, we can do the same with the Pathway predictions:
 
     biom_to_stamp.py -m KEGG_Pathways pathway_predictions.biom > pathway_predictions.spf
 
-Now download the pathway_predictions.spf file and the map.tsv file to your local computer and load these files within STAMP (File->Load).
+Lets load the pathway data in STAMP first. Start STAMP from within the Microbiome Helper Virtualbox image by clicking on the rainbow coloured flower on the left of the desktop. 
+
+Now load the pathway_predictions.spf file and the map.tsv file within STAMP (File->Load).
 
 Change Profile Level to "Level 3" which actually represents the KEGG Pathways. Then change the "Group Field" (top right) to "Age_Group".
 
