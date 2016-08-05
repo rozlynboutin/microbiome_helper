@@ -210,11 +210,13 @@ Lastly, we can do the same with the Pathway predictions:
 
 Lets load the pathway data in STAMP first. Start STAMP from within the Microbiome Helper Virtualbox image by clicking on the rainbow coloured flower on the left of the desktop. 
 
-Now load the pathway_predictions.spf file and the map.tsv file within STAMP (File->Load).
+Now load the pathway_predictions.spf file and the map.tsv file within STAMP (File->Load data).
+
+![](https://www.dropbox.com/s/o20hvb0m2fsgcyq/STAMP_File_Menu.png?raw=1)
 
 Change Profile Level to "Level 3" which actually represents the KEGG Pathways. Then change the "Group Field" (top right) to "Age_Group".
 
-Apply a multiple test correction and then view the individual KEGG Pathways using a "Box Plot" (instead of PCA plot). What is the most significant KEGG Pathway?
+Apply a multiple test correction (Benjamini-Hochberg FDR) and then view the individual KEGG Pathways using a "Box Plot" (instead of PCA plot). What is the most significant KEGG Pathway?
 
 ![](https://www.dropbox.com/s/1n4illp1wmls1z4/picrust_tutorial.png?raw=1)
 
