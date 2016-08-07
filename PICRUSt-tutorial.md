@@ -194,9 +194,13 @@ The metadata file in our dataset is the **map.tsv** file, while the profile file
 
 Microbiome Helper provides several scripts for converting BIOM files into STAMP including those from PICRUSt.
 
-First, we can use STAMP with the corrected OTU table by first converting it using the Microbiome Helper script:
+We first need to reset our PYTHONPATH back to the default BIOM version.
 
-     biom_to_stamp.py -m taxonomy otus_corrected.biom > otus_corrected.spf
+    export PYTHONPATH=
+
+First, we can use STAMP with the corrected OTU table by first converting it using the Microbiome Helper script:
+     
+    biom_to_stamp.py -m taxonomy otus_corrected.biom > otus_corrected.spf
 
 Alternatively, we can convert the BIOM file containing the PICRUSt KO predictions into a STAMP profile file:
 
