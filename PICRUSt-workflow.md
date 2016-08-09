@@ -22,7 +22,7 @@
 
 5. PICRUSt: Collapse KOs into KEGG Pathways.
 
-        categorize_by_function.py -i ko.biom -l 3 -c KEGG_Pathways -o ko_L3.biom
+        categorize_by_function.py -i final_otu_tables/ko.biom -l 3 -c KEGG_Pathways -o ko_L3.biom
 
 (Temporary Fix) Revert back to newer BIOM version by exiting and logging back into the shell or:
 
