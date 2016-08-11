@@ -1,4 +1,4 @@
-1. First reduce OTU table to just the reference OTUs.
+(1) First reduce OTU table to just the reference OTUs.
 
         filter_otus_from_otu_table.py -i final_otu_tables/otu_table.biom -o final_otu_tables/closed_otus.biom --negate_ids_to_exclude -e /usr/local/lib/python2.7/dist-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta
 
