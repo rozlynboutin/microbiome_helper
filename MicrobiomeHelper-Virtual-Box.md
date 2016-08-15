@@ -21,7 +21,7 @@ The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https:
 
 ## Moving files to the virtualbox image
 * To move files in and out of the virtualbox image you can create a "shared folder":
-    * Settings->Shared Folders
+    * Settings->Shared Folders (Note this is in the VirtualBox GUI on your local PC) 
     * Click on the little "+" sign on the folder on the right.
     * Choose a "Folder Path" and "Folder Name"
     * Check the "Auto-Mount" and "Make Permament" boxes
