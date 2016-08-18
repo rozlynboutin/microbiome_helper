@@ -30,3 +30,7 @@
    * [Metagenomics Tutorial](Metagenomics-Tutorial-(Downsampled))
    * [PICRUSt Tutorial](PICRUSt-tutorial)
    * [Other tutorials](other-tutorials)
+
+**Datasets**
+   * [IMR paper data](IMR-paper-data)
+
