@@ -32,5 +32,5 @@
    * [Other tutorials](other-tutorials)
 
 **Datasets**
-   * [IMR paper data](IMR-paper-data)
+   * [IMR paper data submitted to Microbiome](IMR-paper-data-(Microbiome-submission))
 
