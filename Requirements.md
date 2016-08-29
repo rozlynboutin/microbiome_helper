@@ -35,7 +35,7 @@ The following programs should be installed with commands accessible from the use
 
 * To use "run_human_filter.pl" you will need to download the appropriate [Bowtie2 index](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml). 
 
-* To use "run_pre_humann.pl" you will need to use a [database of KEGG orthologs](https://www.dropbox.com/s/hzduqabilbrqr36/kegg.reduced.dmnd?dl=1).
+* To use "run_pre_humann.pl" you will need to use a [database of KEGG orthologs](https://www.dropbox.com/s/hzduqabilbrqr36/kegg.reduced.dmnd?dl=1). You may also want to [download the raw FASTA](https://www.dropbox.com/s/8mw2kqg1xjv7lwf/kegg.reduced.fasta.tar.bz2?dl=1). 
 
 **Perl modules** 
 
