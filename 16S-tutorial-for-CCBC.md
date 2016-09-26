@@ -63,10 +63,6 @@ First, make a new directory to put our results and intermediate files into:
 
     mkdir cluster
 
-Install vsearch:
-
-    sudo apt-get install vsearch
-
 The sequences are reduced to only unique sequences ("dereplicated") to improve computation time:
 
     vsearch --derep_fulllength stool_sequences.fasta --output cluster/unique.fasta --sizeout --minseqlength 50
