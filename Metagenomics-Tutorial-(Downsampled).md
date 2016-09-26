@@ -393,9 +393,9 @@ However, this would take several hours to complete (this is much faster when mor
 
 To make things easier the output for all 30 samples has been pre-computed and is located in  “./pre-computed_results/humann_output”. 
 
-If you browse the output using _less_ you can see that they are in the same format but with 30 columns representing the 30 samples:
+If you browse the output using _less_ you can see that they are in the same format but with 30 columns representing the 30 samples (below "~" specifies your home directory):
 
-    cd /home/vagrant/Desktop/hmp_metagenomics_downsampled
+    cd ~/Desktop/hmp_metagenomics_downsampled
     less ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
 
 You will notice that the output looks fairly messy because the terminal will automatically line wrap and it becomes hard to see where one line ends and the next begins. I often find the "cut" command useful to browse data like this. "cut" allows you to just look at particular columns from the data. For example:
@@ -419,7 +419,7 @@ You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in 
 
 Your output should look like this:
 
-    vagrant@MicrobiomeHelper:~/Desktop/hmp_metagenomics_downsampled$ ls
+    mh_user@MicrobiomeHelper:~/Desktop/hmp_metagenomics_downsampled$ ls
     fastq        kos.spf                   metaphlan_merged.txt  pathways.spf          pre_humann     SRS015893.txt
     hmp_map.txt  metaphlan_merged_all.spf  modules.spf           pre-computed_results  SRS015044.txt  SRS097871.txt
 
