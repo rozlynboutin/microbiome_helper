@@ -1,4 +1,4 @@
-We have constructed a Linux (Ubuntu v15.10 Desktop) Virtual Box image that can be used to run all Microbiome Helper workflows and tutorials. This Virtual Box image can be run on any operating system (Windows, Mac, Linux) and saves the time consuming task of installing and configuring multiple bioinformatic packages. 
+We have constructed a Linux (Ubuntu v16.04 LTS Desktop) Virtual Box image that can be used to run all Microbiome Helper workflows and tutorials. This Virtual Box image can be run on any operating system (Windows, Mac, Linux) and saves the time consuming task of installing and configuring multiple bioinformatic packages. 
 
 ## Includes
 The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https://github.com/mlangill/microbiome_helper/wiki/Requirements). Please cite all of the specific tools that you use for your analysis. 
@@ -11,7 +11,7 @@ The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https:
 
 ## Installation
 1. Download and install VirtualBox for the operating system you are using. https://www.virtualbox.org/wiki/Downloads
-2. Download the latest version of [Microbiome Helper Vbox (v0.2.8)](https://www.dropbox.com/s/ghnvgs4vx1vgdrq/MicrobiomeHelper_v0.2.8.ova?dl=1) (13.46 GB - OVA file). If that doesn't work, click here for an [alternate link](http://kronos.pharmacology.dal.ca/public_files/MicrobiomeHelper_v0.2.8.ova).
+2. Download the latest version of [Microbiome Helper Vbox (v0.2.9)](https://www.dropbox.com/s/4a5tynp1s6dxn4h/MicrobiomeHelper_v0.2.9.ova?dl=1) (11.7 GB - OVA file). If that doesn't work, click here for an [alternate link](http://kronos.pharmacology.dal.ca/public_files/Microbiome_Helper_Vbox/MicrobiomeHelper_v0.2.9.ova).
 3. "Import" the Microbiome Helper Vbox into VirtualBox by opening the OVA file or within VirtualBox `File->Import Appliance`. More detailed and graphical instructions for importing the image are [available here] (https://www.maketecheasier.com/import-export-ova-files-in-virtualbox).
 
 ## Optional Configuration
