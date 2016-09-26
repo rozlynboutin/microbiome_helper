@@ -177,9 +177,9 @@ Now each sample is listed as a different column within this output file. You can
 
 **Q7)** What phylum is present in one of the samples but is absent in the others? What sample is this phylum in? 
 
-To get information about the individual samples you can look in the hmp_map.txt file using 'less':
+Reminder: to get information about the individual samples you can look in the hmp_map.txt file using 'less':
 
- less hmp_map.txt
+    less hmp_map.txt
 
 **Q8)** What body site is the sample taken from that contains the unique phylum from question 7?
 
