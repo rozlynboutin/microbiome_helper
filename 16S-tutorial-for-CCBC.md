@@ -47,12 +47,12 @@ The FASTA file has labels in the format ">SampleName_SequenceNumber".
 <pre><code>
 mkdir cluster
 sudo apt-get install vsearch
-vsearch -derep_fulllength stool_sequences.fasta -output cluster/unique.fasta -sizeout -minseqlength 50
-vsearch -uchime_denovo cluster/unique.fasta --nonchimeras cluster/nochimeras.fasta
-vsearch -sortbysize cluster/nochimeras.fasta -output cluster/sorted.fasta -minsize 2
-vsearch -cluster_smallmem cluster/sorted.fasta --id 0.97 --consout cluster/rep_set.fasta --usersort
+vsearch --derep_fulllength stool_sequences.fasta --output cluster/unique.fasta --sizeout --minseqlength 50
+vsearch --uchime_denovo cluster/unique.fasta --nonchimeras cluster/nochimeras.fasta
+vsearch --sortbysize cluster/nochimeras.fasta --output cluster/sorted.fasta --minsize 2
+vsearch --cluster_smallmem cluster/sorted.fasta --id 0.97 --consout cluster/rep_set.fasta --usersort
 awk 'BEGIN{OFS="";ORS="";count=0}{if ($0~/>/){if (NR>1) {print "\n"} print ">" count "\n"; count+=1;} else {print $0;}}' cluster/rep_set.fasta > cluster/rep_set_relabel.fasta
-vsearch -usearch_global stool_sequences.fasta -db cluster/rep_set_relabel.fasta -strand both -id 0.97 -uc cluster/map.uc -threads 2
+vsearch --usearch_global stool_sequences.fasta --db cluster/rep_set_relabel.fasta --strand both --id 0.97 --uc cluster/map.uc --threads 2
 wget https://github.com/neufeld/MESaS/raw/master/scripts/mesas-uc2clust
 python mesas-uc2clust cluster/map.uc cluster/seq_otus.txt
 </code></pre></details>
@@ -69,7 +69,7 @@ Install vsearch:
 
 The sequences are reduced to only unique sequences ("dereplicated") to improve computation time:
 
-    vsearch -derep_fulllength stool_sequences.fasta -output cluster/unique.fasta -sizeout -minseqlength 50
+    vsearch --derep_fulllength stool_sequences.fasta --output cluster/unique.fasta --sizeout --minseqlength 50
 
 __`cluster/unique.fasta`__: A FASTA file containing only the unique sequences.
 
@@ -90,7 +90,7 @@ __`cluster/unique.fasta`__: A FASTA file containing only the unique sequences.
 
 Chimeras are detected in a *de novo* fashion, and excluded:
 
-    vsearch -uchime_denovo cluster/unique.fasta --nonchimeras cluster/nochimeras.fasta
+    vsearch --uchime_denovo cluster/unique.fasta --nonchimeras cluster/nochimeras.fasta
 
 __`cluster/nochimeras.fasta`__: FASTA file of the unique sequences with chimeric sequences removed.
 
@@ -113,7 +113,7 @@ How many of the sequences were determined to be chimeric?
 
 Sequences are sorted by size, and singletons are removed (they are mapped back on later):
 
-    vsearch -sortbysize cluster/nochimeras.fasta -output cluster/sorted.fasta -minsize 2
+    vsearch --sortbysize cluster/nochimeras.fasta --output cluster/sorted.fasta --minsize 2
 
 __`cluster/sorted.fasta`__: FASTA file with the sequences sorted by abundance (highest first), and singletons removed (-minsize 2).
 
@@ -133,7 +133,7 @@ __`cluster/sorted.fasta`__: FASTA file with the sequences sorted by abundance (h
 
 Operational taxonomic units are clustered at 97% sequence identity, and the consensus sequences for the OTUs are output to a FASTA file:
 
-    vsearch -cluster_smallmem cluster/sorted.fasta --id 0.97 --consout cluster/rep_set.fasta --usersort
+    vsearch --cluster_smallmem cluster/sorted.fasta --id 0.97 --consout cluster/rep_set.fasta --usersort
 
 __`cluster/rep_set.fasta`__: Consensus sequences for each 97% OTU
 
@@ -162,7 +162,7 @@ The OTU names contain a wealth of information that is not required for downstrea
 
 The original sequence file is mapped back onto the OTU consensus sequences:
 
-    vsearch -usearch_global stool_sequences.fasta -db cluster/rep_set_relabel.fasta -strand both -id 0.97 -uc cluster/map.uc -threads 2
+    vsearch --usearch_global stool_sequences.fasta --db cluster/rep_set_relabel.fasta --strand both --id 0.97 --uc cluster/map.uc --threads 2
 
 __`cluster/map.uc`__: VSEARCH-formatted mapping file (sequence search hit table)
 
