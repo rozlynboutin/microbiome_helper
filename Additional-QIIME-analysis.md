@@ -27,6 +27,6 @@
 		#Can also do 5-fold cross validation
 		supervised_learning.py -i otu_table.biom -m map.txt -c mouse_type -o ml -v -e cv5
 
-* Normalize OTU table using DESeq2 instead of rarefying (this method of normalization is still not mainstream. Check out the help of this script (normalize_table.py -h) to read more about these methods. 
+* Normalize OTU table using DESeq2 instead of rarefying, which is an alternative method. Check out the help of this script (normalize_table.py -h) to read more about these methods. 
 
         normalize_table.py -i clustering/otu_table_high_conf.biom -a DESeq2 -z -o final_otu_tables/otu_table_deseq2_norm_no_negatives.biom
