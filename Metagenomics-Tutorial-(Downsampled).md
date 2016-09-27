@@ -34,7 +34,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * [Microbiome Helper VirtualBox] (MicrobiomeHelper-Virtual-Box) (install it and ensure it is working)
-* [Tutorial Data](https://www.dropbox.com/s/5vg1racfuzsagrl/hmp_metagenomics_downsampled.zip?dl=1)
+* [Tutorial Data](https://www.dropbox.com/s/ofulbuie6kuc1w2/hmp_metagenomics_downsampled.zip?dl=1)
 
 ## Initial Setup
 * Open this tutorial within the Microbiome Helper VirtualBox
