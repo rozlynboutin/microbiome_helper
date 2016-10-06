@@ -18,10 +18,10 @@
 
 This tutorial outlines how to process 16S rRNA sequencing data with the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). The data is from four genotypes of mice from two different source facilities. 
 
-The tutorial is split into 3 main parts:
-    * pre-processing (stitching paired-end reads, measuring their quality, filtering those which failed to meet standards of quality and length, and removing chimeric reads)
-    * OTU picking (using QIIME to assign taxonomies, removing OTUs called by very few reads, and rarifying to a reasonable read depth)
-    * Some downstream diversity analyses. 
+The tutorial is split into 3 main parts:  
+* pre-processing (stitching paired-end reads, measuring their quality, filtering those which failed to meet standards of quality and length, and removing chimeric reads)
+* OTU picking (using QIIME to assign taxonomies, removing OTUs called by very few reads, and rarifying to a reasonable read depth)
+* Some downstream diversity analyses. 
 
 This tutorial is based on a previous tutorial we posted, except this version of the dataset was down-sampled to many fewer reads (you can download the original raw reads [here](https://www.dropbox.com/s/4fqgi6t3so69224/Sinal_Langille_raw_data.tar.gz?dl=1)).
 
