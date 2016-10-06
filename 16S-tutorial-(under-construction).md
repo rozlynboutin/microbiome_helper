@@ -55,14 +55,14 @@ You can see what is in this directory with the _ls_ command:
     
 You should see this:
 
-    vagrant@MicrobiomeHelper:~/Desktop/16S_chemerin_tutorial$ ls  
-    fastq  map.txt  
+    mh_user@MicrobiomeHelper:~/Desktop/16S_chemerin_tutorial$ ls
+    fastq  map.txt
  
 "fastq" is the directory containing all the sequencing files, which we are going to process. "map.txt" contains metadata about the samples. We can look at it with the _less_ command (hit "q" to exit):
 
     less map.txt
 
-You can see the first column is the sample IDs, the next 2 are blank (note the file is tab-delimited, meaning each column is separated by a tab, not just whitespace) and the 4th column contains fasta filenames (these filenames are based on what _we will_ produce in this pipeline). The rest of the columns are metadata about the samples.
+You can see the first column is the sample IDs, the next 2 are blank (note the file is tab-delimited, meaning each column is separated by a tab, not just whitespace) and the 4th column contains FASTA filenames (these filenames are based on what _we will_ produce in this pipeline). The rest of the columns are metadata about the samples.
 
 Here is what the first 4 lines should look like:
 
