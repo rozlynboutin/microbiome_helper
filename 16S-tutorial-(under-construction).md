@@ -16,7 +16,7 @@
 
 ## Introduction
 
-This tutorial outlines the processing of down-sampled 16S rRNA data while using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). The data is from four genotypes of mice from two different source facilities. 
+This tutorial outlines how to process 16S rRNA sequencing data with the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). The data is from four genotypes of mice from two different source facilities. 
 
 The tutorial is split into 3 main parts:
     * pre-processing (stitching paired-end reads, measuring their quality, filtering those which failed to meet standards of quality and length, and removing chimeric reads)
