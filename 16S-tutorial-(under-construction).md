@@ -35,7 +35,7 @@ __Contributions by:__ Molly Hayes
 
 __First created:__ Fall 2015  
 
-__Last edited:__ May 2016  
+__Last edited:__ Oct 2016  
 
 ### Requirements
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
