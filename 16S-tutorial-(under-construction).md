@@ -73,7 +73,7 @@ Here is what the first 4 lines should look like:
 
 **Q1)** Based on the _Source_ column, how many samples are from each of the "BZ" and "CJS" source facilities?
 
-Now list the filenames in the fastq folder and take a look at one of the files  You can get the number of lines in a file with this command (where "FILENAME" should a file):
+Now list the filenames in the fastq folder. You can get the number of lines in a file with this command (where "FILENAME" should a file):
 
     wc -l FILENAME 
 
