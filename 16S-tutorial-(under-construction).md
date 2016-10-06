@@ -13,12 +13,17 @@
     * [UniFrac beta diversity analysis](#unifrac-beta-diversity-analysis)
     * [Alpha diversity analysis](#alpha-diversity-analysis)
     * [Testing for statistical differences](#testing-for-statistical-differences)
-  * [Summary](#summary)
-
 
 ## Introduction
 
-This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S sequencing data using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). It's based on a previous tutorial we posted, except this version of the dataset was down-sampled to many fewer reads (you can download the original raw reads [here](https://www.dropbox.com/s/4fqgi6t3so69224/Sinal_Langille_raw_data.tar.gz?dl=1)). This changes some of the results, but makes the tutorial run much faster.
+This tutorial outlines the processing of down-sampled 16S rRNA data while using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). The data is from four genotypes of mice from two different source facilities. 
+
+The tutorial is split into 3 main parts:
+    * pre-processing (stitching paired-end reads, measuring their quality, filtering those which failed to meet standards of quality and length, and removing chimeric reads)
+    * OTU picking (using QIIME to assign taxonomies, removing OTUs called by very few reads, and rarifying to a reasonable read depth)
+    * Some downstream diversity analyses. 
+
+This tutorial is based on a previous tutorial we posted, except this version of the dataset was down-sampled to many fewer reads (you can download the original raw reads [here](https://www.dropbox.com/s/4fqgi6t3so69224/Sinal_Langille_raw_data.tar.gz?dl=1)).
 
 Throughout the tutorial there will be questions to help you learn. The [answers are here](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-answers).
 
@@ -349,7 +354,3 @@ Just by looking at these PCoA plots it's clear that if there is any difference i
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_CJS.txt 
 
 You can take a look at the output files to see significance values and test statistics. The P-values for both tests are > 0.05, so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
-
-## Summary
-
-This tutorial outlined the treatment of down-sampled 16S data from four genotypes of mice from two source facilities, using the Microbiome Helper VirtualBox. We have addressed sequence data pre-processing (stitching paired-end reads, measuring their quality, filtering those which failed to meet standards of quality and length, and removing chimeric reads), and OTU picking (using QIIME to assign taxonomies, removing OTUs called by very few reads, and rarifying to a reasonable read depth). Finally, we performed diversity analysis, illustrating UniFrac beta diversity using PCoA plots and alpha diversity using rarefaction plots, which suggested that source facility was the main source of variance. We investigated this further by analyzing beta diversity among genotypes for each source facility separately, and used an ANOSIM test to show that in fact, there were no significant differences.
