@@ -141,7 +141,7 @@ Based on the FastQC report above, a quality score cut-off of 30 over 90% of base
  
     read_filter.pl -q 30 -p 90 -l 400 -thread 1 stitched_reads/*.assembled*fastq
 
-By default this script will output filtered FASTQs in a folder called "filtered_reads" and the percent of reads thrown out after each filtering step is recorded in "read_filter_log.txt".
+By default this script will output filtered FASTQs in a folder called "filtered_reads" and the percent of reads thrown out after each filtering step is recorded in "read_filter_log.txt". This script is just a convenient way to run two popular tools for read filtering: [FASTX-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) and [BBMAP](https://sourceforge.net/projects/bbmap/).
 
 If you look in this logfile you will note that ~40% of reads were filtered out for each sample. You can also see the counts and percent of reads dropped at each step. 
 
@@ -170,9 +170,11 @@ The next steps in the pipeline require the sequences to be in [FASTA format](htt
 
 Note that this command removes any sequences containing "N" (a fully ambiguous base read), which is << 1% of the reads after the read filtering steps above.
 
-Due to the alternating conserved and variable regions in the 16S gene, during PCR amplification, a strand that is partially extended in one cycle can act as a primer in a later cycle and anneal to a template in the wrong position. This is called a chimeric DNA molecule, and we want to remove these so as not to treat them as true DNA samples. This step is important for microbiome work, as otherwise these reads would be called as novel OTUs. In fact, it is likely that not all chimeric reads will be removed by this step. Using our sequences in FASTA files we can run the chimera filtering (~3 min on 1 CPU):
+During PCA amplification 16S rRNA sequences from different organisms can sometimes combine to form hybrid molecules called chimeric sequences. It's important to remove these so they aren't incorrectly called as novel OTUs. Unfortunately, not all chimeric reads will be removed during this step, which is something to keep in mind during the next steps. 
 
-    chimera_filter_usearch61.pl -type 1 -thread 1 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.fa fasta_files/*fasta
+You can run chimera checking with [VSEARCH](https://github.com/torognes/vsearch) with this command (~3 min on 1 CPU):
+
+    chimera_filter.pl -type 1 -thread 1 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.fa fasta_files/*fasta
 
 See a more detailed description of this script [here](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads).
 
