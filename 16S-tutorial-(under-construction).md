@@ -235,20 +235,21 @@ We can compare the summaries of these two BIOM files:
 The first four lines of clustering/otu_table_mc1_w_tax_no_pynast_failures_summary.txt are:
    
     Num samples: 24
-    Num observations: 2434
-    Total count: 12040
+    Num observations: 2420
+    Total count: 12014
     Table density (fraction of non-zero values): 0.097
 
-This means that for the 24 separate samples, 2434 OTUs were called based on 12040 reads. Only 9.7% of the values in the sample x OTU table are non-zero, meaning that most OTUs are in a small number of samples.
+This means that for the 24 separate samples, 2420 OTUs were called based on 12014 reads. Only 9.7% of the values in the sample x OTU table are non-zero, meaning that most OTUs are in a small number of samples.
 
 In contrast, the first four lines of  clustering/otu_table_high_conf_summary.txt are:
 
     Num samples: 24
-    Num observations: 887
-    Total count: 10493
-    Table density (fraction of non-zero values): 0.194
+    Num observations: 884
+    Total count: 10478
+    Table density (fraction of non-zero values): 0.193
 
-After removing low-confidence OTUs, only 36% were retained: the number of OTUs dropped from 2434 to 887. This effect is generally even more drastic for bigger datasets. However, the numbers of reads only dropped from 12040 to 10493 (so 87% of the reads were retained). You can also see that the table density increased, as we would expect.
+
+After removing low-confidence OTUs, only 36.5% were retained: the number of OTUs dropped from 2420 to 884. This effect is generally even more drastic for bigger datasets. However, the numbers of reads only dropped from 12014 to 10478 (so 87% of the reads were retained). You can also see that the table density increased, as we would expect.
 
 ### Rarify reads
 
@@ -257,18 +258,18 @@ We now need to subsample the number of reads for each sample to the same depth, 
 You can look at the read depth per sample in clustering/otu_table_high_conf_summary.txt, here are the first five samples (they are sorted from smallest to largest):
 
     Counts/sample detail:
-    106CHE6WT: 388.0
-    111CHE6KO: 402.0
-    39CMK6KO: 405.0
-    79CMK8KO: 408.0
-    113CHE6WT: 411.0
+    106CHE6WT: 375.0
+    111CHE6KO: 398.0
+    39CMK6KO: 410.0
+    113CHE6WT: 412.0
+    108CHE6KO: 413.0
 
 **Note that this is a test dataset and you normally would rarify to a larger read count** (typically in the 1000s).
 
-We will rarify to 380 reads, since the lowest depth is not a major outlier in this dataset:
+We will rarify to 375 reads, since the lowest depth is not a major outlier in this dataset:
 
     mkdir final_otu_tables
-    single_rarefaction.py -i clustering/otu_table_high_conf.biom -o final_otu_tables/otu_table.biom -d 380
+    single_rarefaction.py -i clustering/otu_table_high_conf.biom -o final_otu_tables/otu_table.biom -d 375
 
 This QIIME command produced another BIOM table with each sample rarified to 380 reads. In this case, no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in a loss of low-frequency OTUs from the analysis.
 
