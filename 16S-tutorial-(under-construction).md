@@ -168,6 +168,8 @@ As before, if you'd like to see more details (such as how the read length distri
 
 The next steps in the pipeline require the sequences to be in [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), which we will generate using this command (< 1 min on 1 CPU):
 
+    cd ~/Desktop/16S_chemerin_tutorial  
+  
     run_fastq_to_fasta.pl -p 1 -o fasta_files filtered_reads/*fastq
 
 Note that this command removes any sequences containing "N" (a fully ambiguous base read), which is << 1% of the reads after the read filtering steps above.
