@@ -138,6 +138,8 @@ You can see the full FastQC report for all stitched reads combined [here](https:
 ### Filtering reads by quality and length
 
 Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria (~2 min on 1 CPU):
+
+    cd ~/Desktop/16S_chemerin_tutorial
  
     read_filter.pl -q 30 -p 90 -l 400 -thread 1 stitched_reads/*.assembled*fastq
 
