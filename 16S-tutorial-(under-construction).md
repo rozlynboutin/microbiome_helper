@@ -271,7 +271,7 @@ We will rarify to 375 reads, since the lowest depth is not a major outlier in th
     mkdir final_otu_tables
     single_rarefaction.py -i clustering/otu_table_high_conf.biom -o final_otu_tables/otu_table.biom -d 375
 
-This QIIME command produced another BIOM table with each sample rarified to 380 reads. In this case, no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in a loss of low-frequency OTUs from the analysis.
+This QIIME command produced another BIOM table with each sample rarified to 375 reads. In this case, no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in a loss of low-frequency OTUs from the analysis.
 
 ## Diversity analyses
 
