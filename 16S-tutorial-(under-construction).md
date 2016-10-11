@@ -290,17 +290,17 @@ This QIIME script takes as input the final OTU table, as well as file which cont
 
 Open the weighted HTML file in your browser and take a look, you should see this PCoA:
 
-![](https://www.dropbox.com/s/s4xq5tv4txe4x6w/raw_weighted_PCoA.png?raw=1)
+![](https://www.dropbox.com/s/ryamzk9mp7kbbkz/raw_beta.png?raw=1)
 
 The actual metadata we are most interested in for this dataset is the "genotype" column of the mapping file, which contains the different genotypes I described at the beginning of this tutorial. Go to the "Colors" tab of the Emperor plot (which is what we were just looking at) and change the selection from "BarcodeSequence" (default) to "genotype". You should see this:
 
-![](https://www.dropbox.com/s/kctky32shsoprfe/genotype_weighted_PCoA.png?raw=1)
+![](https://www.dropbox.com/s/uq4vqse74p1fe4k/raw_geno.png?raw=1)
 
 The WT genotype is spread out across both knockout genotypes, which is not what we would have predicted.  
    
 You'll see what's really driving the differences in beta diversity when you change the selection under the "Colors" tab from "genotype" to "Source":
 
-![](https://www.dropbox.com/s/sgt2vsjazf0ma0t/source_weighted_PCoA.png?raw=1)
+![](https://www.dropbox.com/s/1dr42gaezzjf0ay/raw_sources.png?raw=1)
 
 ### Alpha diversity analysis
 
@@ -312,7 +312,7 @@ Note that setting the num_steps higher will give you better resolution, but will
 
 Choose "observed_otus" as the metric and "Source" as the category. You should see this plot:
 
-![](https://www.dropbox.com/s/n7lhrmapkzy1awi/source_alpha.png?raw=1)
+![](https://www.dropbox.com/s/70twdntt1m3nnlk/alpha.png?raw=1)
 
 There is no difference in the number of OTUs identified in the guts of mice from the BZ facility than the CJS facility, based on this dataset. However, since the rarefaction curves have not reached a plateau, it is likely that this comparison is just incorrect to make with so few reads. Indeed, [with the full dataset you do see a difference in the number of OTUs](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-(long-running-time)).
 
@@ -346,11 +346,11 @@ We can now take a look at whether the genotypes separate in the re-generated wei
 
 For the BZ source facility:
 
-![](https://www.dropbox.com/s/kq6pwwziizi863v/BZ_PCoA_genotype.png?raw=1)
+![](https://www.dropbox.com/s/0xptjwuzikf7jfz/BZ_beta.png?raw=1)
 
 And for the CJS source facility:
 
-![](https://www.dropbox.com/s/xxw5jiouczcqx88/CJS_PCoA_genotype.png?raw=1)
+![](https://www.dropbox.com/s/by7d555syvv55qa/CJS_beta.png?raw=1)
 
 Just by looking at these PCoA plots it's clear that if there is any difference it's subtle. To statistically evaluate whether the weighted UniFrac beta diversities differ among genotypes within each source facility, you can run an analysis of similarity (ANOSIM) test. These commands will run the ANOSIM test and change the output filename:
 
