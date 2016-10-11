@@ -306,7 +306,7 @@ You'll see what's really driving the differences in beta diversity when you chan
 
 There is a clear qualitative difference between the microbiota of mice from the two source facilities based on the above plots. It's also possible that there might also be differences between the rarefaction curves of samples from different source facilities. Rarefaction plots show alpha diversity, which in this case is taken as a measure of the OTU richness per sample (takes < 1 min on 1 CPU):
 
-    alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 40 --max_rare_depth 380 --num_steps 10
+    alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 40 --max_rare_depth 375 --num_steps 10
 
 Note that setting the num_steps higher will give you better resolution, but will take longer. As for the beta diversity plots, you can open the resulting HTML file to view the plots: plots/alpha_rarefaction_plot/alpha_rarefaction_plots/rarefaction_plots.html
 
