@@ -398,5 +398,4 @@ Change the plot type to "Bar plot".
 
 You can see how many genera are significant by clicking "Show only active features".
 
-
 **Q11)** How many genera have significantly different relative abundances between source facilities? 
