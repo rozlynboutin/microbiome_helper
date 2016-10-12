@@ -1,24 +1,30 @@
 * [Introduction](#introduction)
     * [Requirements](#requirements)
     * [Background](#background)
-  * [Pre-processing](#pre-processing)
+* [Pre-processing](#pre-processing)
     * [Stitching paired-end reads](#stitching-paired-end-reads)
     * [Quality metrics of stitched reads](#quality-metrics-of-stitched-reads)
     * [Filtering reads by quality and length](#filtering-reads-by-quality-and-length)
     * [Conversion to FASTA and removal of chimeric reads](#conversion-to-fasta-and-removal-of-chimeric-reads)
-  * [Run open-reference OTU picking pipeline](#run-open-reference-otu-picking-pipeline)
+* [Run open-reference OTU picking pipeline](#run-open-reference-otu-picking-pipeline)
     * [Remove low confidence OTUs](#remove-low-confidence-otus)
     * [Rarify reads](#rarify-reads)
-  * [Diversity analyses](#diversity-analyses)
+* [Diversity analyses](#diversity-analyses)
     * [UniFrac beta diversity analysis](#unifrac-beta-diversity-analysis)
     * [Alpha diversity analysis](#alpha-diversity-analysis)
     * [Testing for statistical differences](#testing-for-statistical-differences)
-  * [Summary](#summary)
-
+* [Using STAMP to test for particular differences](#using-stamp-to-test-for-particular-differences)
 
 ## Introduction
 
-This tutorial will demonstrate how to analyze and interpret Illumina MiSeq 16S sequencing data using the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure). It's based on a previous tutorial we posted, except this version of the dataset was down-sampled to many fewer reads (you can download the original raw reads [here](https://www.dropbox.com/s/4fqgi6t3so69224/Sinal_Langille_raw_data.tar.gz?dl=1)). This changes some of the results, but makes the tutorial run much faster.
+This tutorial outlines how to process 16S rRNA sequencing data with the [Microbiome Helper 16S Workflow](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure).
+
+The tutorial is split into 3 main parts:  
+* pre-processing (stitching paired-end reads, measuring their quality, filtering those which failed to meet standards of quality and length, and removing chimeric reads)
+* OTU picking (using QIIME to assign taxonomies, removing OTUs called by very few reads, and rarifying to a reasonable read depth)
+* Some downstream diversity analyses. 
+
+This tutorial is based on a previous tutorial we posted, except this version of the dataset was down-sampled to many fewer reads (you can download the original raw reads [here](https://www.dropbox.com/s/4fqgi6t3so69224/Sinal_Langille_raw_data.tar.gz?dl=1)).
 
 Throughout the tutorial there will be questions to help you learn. The [answers are here](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-answers).
 
@@ -30,14 +36,13 @@ __Contributions by:__ Molly Hayes
 
 __First created:__ Fall 2015  
 
-__Last edited:__ May 2016  
+__Last edited:__ Oct 2016  
 
 ### Requirements
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * The exact commands we'll be running assume that you're running this tutorial on our [Ubuntu Desktop virtual box](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box). If you are running it elsewhere just be aware you will need to change the file paths. 
 * Download the [tutorial dataset](https://www.dropbox.com/s/r2jqqc7brxg4jhx/16S_chemerin_tutorial.zip?dl=1) (9 MB). I'm assuming the unzipped folder will be in your Desktop.
 * We will be following [our 16S pipeline](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure), which uses several wrapper scripts to help automate running many files.
-* Note that we now remove chimeric sequences with "chimera_filter.pl", which wraps VSEARCH rather than USEARCH v6.1. In this tutorial we used "chimera_filter_usearch61.pl", which requires you to get a license to download and use the binary called "usearch61" (this must be in your path). If you just want to use VSEARCH instead note that the answers will be slightly different.
 
 ### Background
 16S analysis is a method of microbiome analysis (compared to [shotgun metagenomics](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-%28Downsampled%29)) that targets the 16S ribosomal RNA gene, as this gene is present in all prokaryotes. It features regions that are conserved among these organisms, as well as variable regions that allow distinction among organisms. These characteristics make this gene useful for analyzing microbial communities at reduced cost compared to metagenomic techniques. A similar workflow can be applied to eukaryotic micro-organisms using the 18S rRNA gene.
@@ -56,14 +61,14 @@ You can see what is in this directory with the _ls_ command:
     
 You should see this:
 
-    vagrant@MicrobiomeHelper:~/Desktop/16S_chemerin_tutorial$ ls  
-    fastq  map.txt  
+    mh_user@MicrobiomeHelper:~/Desktop/16S_chemerin_tutorial$ ls
+    fastq  map.txt
  
 "fastq" is the directory containing all the sequencing files, which we are going to process. "map.txt" contains metadata about the samples. We can look at it with the _less_ command (hit "q" to exit):
 
     less map.txt
 
-You can see the first column is the sample IDs, the next 2 are blank (note the file is tab-delimited, meaning each column is separated by a tab, not just whitespace) and the 4th column contains fasta filenames (these filenames are based on what _we will_ produce in this pipeline). The rest of the columns are metadata about the samples.
+You can see the first column is the sample IDs, the next 2 are blank (note the file is tab-delimited, meaning each column is separated by a tab, not just whitespace) and the 4th column contains FASTA filenames (these filenames are based on what _we will_ produce in this pipeline). The rest of the columns are metadata about the samples.
 
 Here is what the first 4 lines should look like:
 
@@ -74,7 +79,7 @@ Here is what the first 4 lines should look like:
 
 **Q1)** Based on the _Source_ column, how many samples are from each of the "BZ" and "CJS" source facilities?
 
-Now list the filenames in the fastq folder and take a look at one of the files  You can get the number of lines in a file with this command (where "FILENAME" should a file):
+Now list the filenames in the fastq folder. You can get the number of lines in a file with this command (where "FILENAME" should a file):
 
     wc -l FILENAME 
 
@@ -134,10 +139,12 @@ You can see the full FastQC report for all stitched reads combined [here](https:
 ### Filtering reads by quality and length
 
 Based on the FastQC report above, a quality score cut-off of 30 over 90% of bases and a maximum length of 400 bp are reasonable filtering criteria (~2 min on 1 CPU):
+
+    cd ~/Desktop/16S_chemerin_tutorial
  
     read_filter.pl -q 30 -p 90 -l 400 -thread 1 stitched_reads/*.assembled*fastq
 
-By default this script will output filtered FASTQs in a folder called "filtered_reads" and the percent of reads thrown out after each filtering step is recorded in "read_filter_log.txt".
+By default this script will output filtered FASTQs in a folder called "filtered_reads" and the percent of reads thrown out after each filtering step is recorded in "read_filter_log.txt". This script is just a convenient way to run two popular tools for read filtering: [FASTX-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) and [BBMAP](https://sourceforge.net/projects/bbmap/).
 
 If you look in this logfile you will note that ~40% of reads were filtered out for each sample. You can also see the counts and percent of reads dropped at each step. 
 
@@ -162,13 +169,17 @@ As before, if you'd like to see more details (such as how the read length distri
 
 The next steps in the pipeline require the sequences to be in [FASTA format](https://en.wikipedia.org/wiki/FASTA_format), which we will generate using this command (< 1 min on 1 CPU):
 
+    cd ~/Desktop/16S_chemerin_tutorial  
+  
     run_fastq_to_fasta.pl -p 1 -o fasta_files filtered_reads/*fastq
 
 Note that this command removes any sequences containing "N" (a fully ambiguous base read), which is << 1% of the reads after the read filtering steps above.
 
-Due to the alternating conserved and variable regions in the 16S gene, during PCR amplification, a strand that is partially extended in one cycle can act as a primer in a later cycle and anneal to a template in the wrong position. This is called a chimeric DNA molecule, and we want to remove these so as not to treat them as true DNA samples. This step is important for microbiome work, as otherwise these reads would be called as novel OTUs. In fact, it is likely that not all chimeric reads will be removed by this step. Using our sequences in FASTA files we can run the chimera filtering (~3 min on 1 CPU):
+During PCA amplification 16S rRNA sequences from different organisms can sometimes combine to form hybrid molecules called chimeric sequences. It's important to remove these so they aren't incorrectly called as novel OTUs. Unfortunately, not all chimeric reads will be removed during this step, which is something to keep in mind during the next steps. 
 
-    chimera_filter_usearch61.pl -type 1 -thread 1 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.fa fasta_files/*fasta
+You can run chimera checking with [VSEARCH](https://github.com/torognes/vsearch) with this command (~3 min on 1 CPU):
+
+    chimera_filter.pl -type 1 -thread 1 -db /home/shared/rRNA_db/Bacteria_RDP_trainset15_092015.fa fasta_files/*fasta
 
 See a more detailed description of this script [here](https://github.com/mlangill/microbiome_helper/wiki/Remove-chimeric-reads).
 
@@ -225,20 +236,20 @@ We can compare the summaries of these two BIOM files:
 The first four lines of clustering/otu_table_mc1_w_tax_no_pynast_failures_summary.txt are:
    
     Num samples: 24
-    Num observations: 2434
-    Total count: 12040
+    Num observations: 2420
+    Total count: 12014
     Table density (fraction of non-zero values): 0.097
 
-This means that for the 24 separate samples, 2434 OTUs were called based on 12040 reads. Only 9.7% of the values in the sample x OTU table are non-zero, meaning that most OTUs are in a small number of samples.
+This means that for the 24 separate samples, 2420 OTUs were called based on 12014 reads. Only 9.7% of the values in the sample x OTU table are non-zero, meaning that most OTUs are in a small number of samples.
 
 In contrast, the first four lines of  clustering/otu_table_high_conf_summary.txt are:
 
     Num samples: 24
-    Num observations: 887
-    Total count: 10493
-    Table density (fraction of non-zero values): 0.194
+    Num observations: 884
+    Total count: 10478
+    Table density (fraction of non-zero values): 0.193
 
-After removing low-confidence OTUs, only 36% were retained: the number of OTUs dropped from 2434 to 887. This effect is generally even more drastic for bigger datasets. However, the numbers of reads only dropped from 12040 to 10493 (so 87% of the reads were retained). You can also see that the table density increased, as we would expect.
+After removing low-confidence OTUs, only 36.5% were retained: the number of OTUs dropped from 2420 to 884. This effect is generally even more drastic for bigger datasets. However, the numbers of reads only dropped from 12014 to 10478 (so 87% of the reads were retained). You can also see that the table density increased, as we would expect.
 
 ### Rarify reads
 
@@ -247,20 +258,22 @@ We now need to subsample the number of reads for each sample to the same depth, 
 You can look at the read depth per sample in clustering/otu_table_high_conf_summary.txt, here are the first five samples (they are sorted from smallest to largest):
 
     Counts/sample detail:
-    106CHE6WT: 388.0
-    111CHE6KO: 402.0
-    39CMK6KO: 405.0
-    79CMK8KO: 408.0
-    113CHE6WT: 411.0
+    106CHE6WT: 375.0
+    111CHE6KO: 398.0
+    39CMK6KO: 410.0
+    113CHE6WT: 412.0
+    108CHE6KO: 413.0
+
+**Q8)** What is the read depth for sample "75CMK8KO"?
 
 **Note that this is a test dataset and you normally would rarify to a larger read count** (typically in the 1000s).
 
-We will rarify to 380 reads, since the lowest depth is not a major outlier in this dataset:
+We will rarify to 375 reads, since the lowest depth is not a major outlier in this dataset:
 
     mkdir final_otu_tables
-    single_rarefaction.py -i clustering/otu_table_high_conf.biom -o final_otu_tables/otu_table.biom -d 380
+    single_rarefaction.py -i clustering/otu_table_high_conf.biom -o final_otu_tables/otu_table.biom -d 375
 
-This QIIME command produced another BIOM table with each sample rarified to 380 reads. In this case, no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in a loss of low-frequency OTUs from the analysis.
+This QIIME command produced another BIOM table with each sample rarified to 375 reads. In this case, no OTUs were lost due to this sub-sampling (which you can confirm by producing a summary table), but this step often will result in a loss of low-frequency OTUs from the analysis.
 
 ## Diversity analyses
 
@@ -279,29 +292,29 @@ This QIIME script takes as input the final OTU table, as well as file which cont
 
 Open the weighted HTML file in your browser and take a look, you should see this PCoA:
 
-![](https://www.dropbox.com/s/s4xq5tv4txe4x6w/raw_weighted_PCoA.png?raw=1)
+![](https://www.dropbox.com/s/ryamzk9mp7kbbkz/raw_beta.png?raw=1)
 
 The actual metadata we are most interested in for this dataset is the "genotype" column of the mapping file, which contains the different genotypes I described at the beginning of this tutorial. Go to the "Colors" tab of the Emperor plot (which is what we were just looking at) and change the selection from "BarcodeSequence" (default) to "genotype". You should see this:
 
-![](https://www.dropbox.com/s/kctky32shsoprfe/genotype_weighted_PCoA.png?raw=1)
+![](https://www.dropbox.com/s/uq4vqse74p1fe4k/raw_geno.png?raw=1)
 
 The WT genotype is spread out across both knockout genotypes, which is not what we would have predicted.  
    
 You'll see what's really driving the differences in beta diversity when you change the selection under the "Colors" tab from "genotype" to "Source":
 
-![](https://www.dropbox.com/s/sgt2vsjazf0ma0t/source_weighted_PCoA.png?raw=1)
+![](https://www.dropbox.com/s/1dr42gaezzjf0ay/raw_sources.png?raw=1)
 
 ### Alpha diversity analysis
 
 There is a clear qualitative difference between the microbiota of mice from the two source facilities based on the above plots. It's also possible that there might also be differences between the rarefaction curves of samples from different source facilities. Rarefaction plots show alpha diversity, which in this case is taken as a measure of the OTU richness per sample (takes < 1 min on 1 CPU):
 
-    alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 40 --max_rare_depth 380 --num_steps 10
+    alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth 40 --max_rare_depth 375 --num_steps 10
 
 Note that setting the num_steps higher will give you better resolution, but will take longer. As for the beta diversity plots, you can open the resulting HTML file to view the plots: plots/alpha_rarefaction_plot/alpha_rarefaction_plots/rarefaction_plots.html
 
 Choose "observed_otus" as the metric and "Source" as the category. You should see this plot:
 
-![](https://www.dropbox.com/s/n7lhrmapkzy1awi/source_alpha.png?raw=1)
+![](https://www.dropbox.com/s/70twdntt1m3nnlk/alpha.png?raw=1)
 
 There is no difference in the number of OTUs identified in the guts of mice from the BZ facility than the CJS facility, based on this dataset. However, since the rarefaction curves have not reached a plateau, it is likely that this comparison is just incorrect to make with so few reads. Indeed, [with the full dataset you do see a difference in the number of OTUs](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-(long-running-time)).
 
@@ -335,11 +348,11 @@ We can now take a look at whether the genotypes separate in the re-generated wei
 
 For the BZ source facility:
 
-![](https://www.dropbox.com/s/kq6pwwziizi863v/BZ_PCoA_genotype.png?raw=1)
+![](https://www.dropbox.com/s/0xptjwuzikf7jfz/BZ_beta.png?raw=1)
 
 And for the CJS source facility:
 
-![](https://www.dropbox.com/s/xxw5jiouczcqx88/CJS_PCoA_genotype.png?raw=1)
+![](https://www.dropbox.com/s/by7d555syvv55qa/CJS_beta.png?raw=1)
 
 Just by looking at these PCoA plots it's clear that if there is any difference it's subtle. To statistically evaluate whether the weighted UniFrac beta diversities differ among genotypes within each source facility, you can run an analysis of similarity (ANOSIM) test. These commands will run the ANOSIM test and change the output filename:
 
@@ -351,6 +364,38 @@ Just by looking at these PCoA plots it's clear that if there is any difference i
 
 You can take a look at the output files to see significance values and test statistics. The P-values for both tests are > 0.05, so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
 
-## Summary
+**Q9)** What is the exact R statistic and p-value for the CJS samples' ANOSIM test? 
 
-This tutorial outlined the treatment of down-sampled 16S data from four genotypes of mice from two source facilities, using the Microbiome Helper VirtualBox. We have addressed sequence data pre-processing (stitching paired-end reads, measuring their quality, filtering those which failed to meet standards of quality and length, and removing chimeric reads), and OTU picking (using QIIME to assign taxonomies, removing OTUs called by very few reads, and rarifying to a reasonable read depth). Finally, we performed diversity analysis, illustrating UniFrac beta diversity using PCoA plots and alpha diversity using rarefaction plots, which suggested that source facility was the main source of variance. We investigated this further by analyzing beta diversity among genotypes for each source facility separately, and used an ANOSIM test to show that in fact, there were no significant differences.
+## Using STAMP to test for particular differences
+  
+Often we're interested in figuring out which particular taxa (or other feature such as functions) differs in relative abundance between groups. There are many ways this can be done, but one common method is to use the easy-to-use program [STAMP](http://kiwi.cs.dal.ca/Software/STAMP). We'll run STAMP on the full OTU table to figure out which genera differ between the two source facilities as an example.
+
+Before running STAMP we need to convert our OTU table into a format that STAMP can read:
+  
+    biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
+
+If you take a look at "final_otu_tables/otu_table.spf" with _less_ you'll see that it's just a simple tab-delimited table.
+
+Now we're ready to open up STAMP, which you can either do by typing _STAMP_ on the command-line or by clicking the side-bar icon indicated below.  
+
+<img src="https://www.dropbox.com/s/y6kneqwfwf8zvtx/STAMP_icon.png?raw=1" width="233.5" height="293.5">
+
+To load data into STAMP click "File" and then "Load data..." as indicated below.
+
+<img src="https://www.dropbox.com/s/ug2p7812pmgxdv3/STAMP_load_data.png?raw=1" width="267.5" height="191">
+
+Load "otu_table.spf" as the Profile file and "map.txt" as the Group metadata file. 
+
+As a reminder, the full paths of these files should be: /home/mh_user/Desktop/16S_chemerin_tutorial/final_otu_tables/otu_table.spf and /home/mh_user/Desktop/16S_chemerin_tutorial/map.txt
+
+Change the Group field to "Source" and the profile level to "Level_6" (which corresponds to the genus level). Change the heading from "Multiple groups" to "Two groups". The statistical test to "Welch's t-test" and the multiple test correction to "Benjamini-Hochberg FDR" (as shown below).  
+
+<img src="https://www.dropbox.com/s/5fv7hcr5rx5eb2k/STAMP_settings.png?raw=1" width="242.5" height="328.5">
+
+Change the plot type to "Bar plot".
+
+**Q10)** Look at the barplot for Prevotella and save it to a file.
+
+You can see how many genera are significant by clicking "Show only active features".
+
+**Q11)** How many genera have significantly different relative abundances between source facilities? 
