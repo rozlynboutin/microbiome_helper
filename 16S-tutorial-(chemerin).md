@@ -189,7 +189,7 @@ By default the logfile "chimeraFilter_log.txt" is generated containing the count
 
 **Q6)** What is the mean percent of reads retained after this step, based on the output in the log file ("nonChimeraCallsPercent" column)?
 
-**Q7)** What percent of reads was retained for sample 75CMK8KO after **all** the filtering steps (HINT: you'll need to compare the original number of reads to the number of reads output by chimera_filter_usearch61.pl)?
+**Q7)** What percent of reads was retained for sample 75CMK8KO after **all** the filtering steps (HINT: you'll need to compare the original number of reads to the number of reads output by chimera_filter.pl)?
 
 ## Run open-reference OTU picking pipeline
 
