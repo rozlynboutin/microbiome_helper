@@ -13,6 +13,7 @@
     * [UniFrac beta diversity analysis](#unifrac-beta-diversity-analysis)
     * [Alpha diversity analysis](#alpha-diversity-analysis)
     * [Testing for statistical differences](#testing-for-statistical-differences)
+* [Using STAMP to test for particular differences](#using-stamp-to-test-for-particular-differences)
 
 ## Introduction
 
