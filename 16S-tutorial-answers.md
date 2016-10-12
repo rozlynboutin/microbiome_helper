@@ -11,7 +11,7 @@ This is the answer sheet for the [16S chemerin tutorial](https://github.com/mlan
 **Q9)** R=0.135 and _P_=0.13  
 **Q10)** You should have a plot like this:  
 
-<img src="https://www.dropbox.com/s/po5e0erwhtcvcmu/g__Prevotella_barplot.png?raw=1" width="539" height="659.4">
+<img src="https://www.dropbox.com/s/po5e0erwhtcvcmu/g__Prevotella_barplot.png?raw=1" height="539" width="659.4">
   
   
 **Q11)** 5  
