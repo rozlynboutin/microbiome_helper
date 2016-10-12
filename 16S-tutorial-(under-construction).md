@@ -390,7 +390,7 @@ Change the Group field to "Source" and the profile level to "Level_6" (which cor
 
 ![](https://www.dropbox.com/s/5fv7hcr5rx5eb2k/STAMP_settings.png?raw=1)  
 
- <img src="https://www.dropbox.com/s/5fv7hcr5rx5eb2k/STAMP_settings.png?raw=1" width="33cm" height="100">
+ <img src="https://www.dropbox.com/s/5fv7hcr5rx5eb2k/STAMP_settings.png?raw=1" width="330" height="1000">
 
 
 
