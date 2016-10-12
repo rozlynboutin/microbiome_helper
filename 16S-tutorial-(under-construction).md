@@ -364,6 +364,7 @@ Just by looking at these PCoA plots it's clear that if there is any difference i
 
 You can take a look at the output files to see significance values and test statistics. The P-values for both tests are > 0.05, so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
 
+**Q9)** What is the exact R statistic and p-value for the CJS samples' ANOSIM test? 
 
 ## Using STAMP to test for particular differences
   
