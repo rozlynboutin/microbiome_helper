@@ -370,7 +370,7 @@ Often we're interested in figuring out which particular taxa (or other feature s
 
 Before running STAMP we need to convert our OTU table into a format that STAMP can read:
   
-  biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
+    biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
 
 If you take a look at "final_otu_tables/otu_table.spf" with _less_ you'll see that it's just a simple tab-delimited table.
 
