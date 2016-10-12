@@ -366,7 +366,7 @@ You can take a look at the output files to see significance values and test stat
 
 ## Using STAMP to test for particular differences
   
-Often we're interested in figuring out which particular taxa (or other feature such as functions) differs in relative abundance between groups. There are many ways this can be done, but one common method is to use the easy-to-use program [STAMP](http://kiwi.cs.dal.ca/Software/STAMP).
+Often we're interested in figuring out which particular taxa (or other feature such as functions) differs in relative abundance between groups. There are many ways this can be done, but one common method is to use the easy-to-use program [STAMP](http://kiwi.cs.dal.ca/Software/STAMP). We'll run STAMP on the full OTU table to figure out which genera differ between the two source facilities as an example.
 
 Before running STAMP we need to convert our OTU table into a format that STAMP can read:
   
@@ -385,3 +385,16 @@ To load data into STAMP click "File" and then "Load data..." as indicated below.
 Load "otu_table.spf" as the Profile file and "map.txt" as the Group metadata file. 
 
 As a reminder, the full paths of these files should be: /home/mh_user/Desktop/16S_chemerin_tutorial/final_otu_tables/otu_table.spf and /home/mh_user/Desktop/16S_chemerin_tutorial/map.txt
+
+Change the Group field to "Source" and the profile level to "Level_6" (which corresponds to the genus level). Change the heading from "Multiple groups" to "Two groups". The statistical test to "Welch's t-test" and the multiple test correction to "Benjamini-Hochberg FDR" (as shown below).  
+
+![](https://www.dropbox.com/s/5fv7hcr5rx5eb2k/STAMP_settings.png?raw=1)  
+
+
+
+
+
+Change the plot type to "Bar plot".
+
+
+
