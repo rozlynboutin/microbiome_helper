@@ -376,11 +376,11 @@ If you take a look at "final_otu_tables/otu_table.spf" with _less_ you'll see th
 
 Now we're ready to open up STAMP, which you can either do by typing _STAMP_ on the command-line or by clicking the side-bar icon indicated below.  
 
-![](https://www.dropbox.com/s/y6kneqwfwf8zvtx/STAMP_icon.png?raw=1)  
+<img src="https://www.dropbox.com/s/y6kneqwfwf8zvtx/STAMP_icon.png?raw=1" width="233.5" height="293.5">
 
 To load data into STAMP click "File" and then "Load data..." as indicated below.
 
-![](https://www.dropbox.com/s/ug2p7812pmgxdv3/STAMP_load_data.png?raw=1)  
+<img src="https://www.dropbox.com/s/ug2p7812pmgxdv3/STAMP_load_data.png?raw=1" width="267.5" height="191">
 
 Load "otu_table.spf" as the Profile file and "map.txt" as the Group metadata file. 
 
@@ -388,9 +388,7 @@ As a reminder, the full paths of these files should be: /home/mh_user/Desktop/16
 
 Change the Group field to "Source" and the profile level to "Level_6" (which corresponds to the genus level). Change the heading from "Multiple groups" to "Two groups". The statistical test to "Welch's t-test" and the multiple test correction to "Benjamini-Hochberg FDR" (as shown below).  
 
-![](https://www.dropbox.com/s/5fv7hcr5rx5eb2k/STAMP_settings.png?raw=1)  
-
- <img src="https://www.dropbox.com/s/5fv7hcr5rx5eb2k/STAMP_settings.png?raw=1" width="242.5" height="328.5">
+<img src="https://www.dropbox.com/s/5fv7hcr5rx5eb2k/STAMP_settings.png?raw=1" width="242.5" height="328.5">
 
 
 
