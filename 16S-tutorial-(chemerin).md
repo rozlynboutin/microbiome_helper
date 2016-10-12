@@ -395,5 +395,3 @@ Change the plot type to "Bar plot".
 **Q9)** Look at the barplot for Prevotella and save it to a file.
 
 You can see how many genera are significant by clicking "Show only active features".
-
-**Q10)** How many genera have significantly different relative abundances between source facilities? 
