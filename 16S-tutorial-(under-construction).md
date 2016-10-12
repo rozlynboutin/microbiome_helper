@@ -392,9 +392,11 @@ Change the Group field to "Source" and the profile level to "Level_6" (which cor
 
 <img src="https://www.dropbox.com/s/5fv7hcr5rx5eb2k/STAMP_settings.png?raw=1" width="242.5" height="328.5">
 
-
-
 Change the plot type to "Bar plot".
 
+**Q10)** Look at the barplot for Prevotella and save it to a file.
+
+You can see how many genera are significant by clicking "Show only active features".
 
 
+**Q11)** How many genera have significantly different relative abundances between source facilities? 
