@@ -361,3 +361,18 @@ Just by looking at these PCoA plots it's clear that if there is any difference i
     mv beta_div_tests/anosim_results.txt  beta_div_tests/anosim_results_CJS.txt 
 
 You can take a look at the output files to see significance values and test statistics. The P-values for both tests are > 0.05, so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
+
+
+## Testing for differences in relative abundance in particular taxa  
+  
+Often we're interested in figuring out which particular taxa (or other feature such as functions) differs in relative abundance between groups. There are many ways this can be done, but one common method is to use the easy-to-use program [STAMP](http://kiwi.cs.dal.ca/Software/STAMP).
+
+Before running STAMP we need to convert our OTU table into a format that STAMP can read:
+  
+  biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
+
+If you take a look at "final_otu_tables/otu_table.spf" with _less_ you'll see that it's just a simple tab-delimited table.
+
+Now we're ready to open up STAMP, which you can either do by typing _STAMP_ on the command-line or by clicking the side-bar icon indicated below.  
+
+![](https://www.dropbox.com/s/y6kneqwfwf8zvtx/STAMP_icon.png?raw=1)  
