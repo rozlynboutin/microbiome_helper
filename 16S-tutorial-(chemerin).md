@@ -364,8 +364,6 @@ Just by looking at these PCoA plots it's clear that if there is any difference i
 
 You can take a look at the output files to see significance values and test statistics. The P-values for both tests are > 0.05, so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
 
-**Q9)** What is the exact R statistic and p-value for the CJS samples' ANOSIM test? 
-
 ## Using STAMP to test for particular differences
   
 Often we're interested in figuring out which particular taxa (or other feature such as functions) differs in relative abundance between groups. There are many ways this can be done, but one common method is to use the easy-to-use program [STAMP](http://kiwi.cs.dal.ca/Software/STAMP). We'll run STAMP on the full OTU table to figure out which genera differ between the two source facilities as an example.
@@ -394,8 +392,8 @@ Change the Group field to "Source" and the profile level to "Level_6" (which cor
 
 Change the plot type to "Bar plot".
 
-**Q10)** Look at the barplot for Prevotella and save it to a file.
+**Q9)** Look at the barplot for Prevotella and save it to a file.
 
 You can see how many genera are significant by clicking "Show only active features".
 
-**Q11)** How many genera have significantly different relative abundances between source facilities? 
+**Q10)** How many genera have significantly different relative abundances between source facilities? 
