@@ -12,5 +12,3 @@ This is the answer sheet for the [16S chemerin tutorial](https://github.com/mlan
 
 <img src="https://www.dropbox.com/s/po5e0erwhtcvcmu/g__Prevotella_barplot.png?raw=1" height="539" width="659.4">
   
-  
-**Q10)** 5  
