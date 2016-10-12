@@ -8,10 +8,9 @@ This is the answer sheet for the [16S chemerin tutorial](https://github.com/mlan
 **Q6)** 88.96%  
 **Q7)** 54.35%  
 **Q8)** 494  
-**Q9)** R=0.135 and _P_=0.13  
-**Q10)** You should have a plot like this:  
+**Q9)** You should have a plot similar to this:  
 
 <img src="https://www.dropbox.com/s/po5e0erwhtcvcmu/g__Prevotella_barplot.png?raw=1" height="539" width="659.4">
   
   
-**Q11)** 5  
+**Q10)** 5  
