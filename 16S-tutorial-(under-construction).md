@@ -377,3 +377,11 @@ If you take a look at "final_otu_tables/otu_table.spf" with _less_ you'll see th
 Now we're ready to open up STAMP, which you can either do by typing _STAMP_ on the command-line or by clicking the side-bar icon indicated below.  
 
 ![](https://www.dropbox.com/s/y6kneqwfwf8zvtx/STAMP_icon.png?raw=1)  
+
+To load data into STAMP click "File" and then "Load data..." as indicated below.
+
+![](https://www.dropbox.com/s/ug2p7812pmgxdv3/STAMP_load_data.png?raw=1)  
+
+Load "otu_table.spf" as the Profile file and "map.txt" as the Group metadata file. 
+
+As a reminder, the full paths of these files should be: /home/mh_user/Desktop/16S_chemerin_tutorial/final_otu_tables/otu_table.spf and /home/mh_user/Desktop/16S_chemerin_tutorial/map.txt
