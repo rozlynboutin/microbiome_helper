@@ -290,11 +290,11 @@ This QIIME script takes as input the final OTU table, as well as file which cont
 * plots/bdiv_otu/weighted_unifrac_emperor_pcoa_plot/index.html
 * plots/bdiv_otu/unweighted_unifrac_emperor_pcoa_plot/index.html
 
-Open the weighted HTML file in your browser and take a look, you should see this PCoA:
+Open the weighted HTML file in your browser and take a look, you should see a PCoA very similar to this:
 
 ![](https://www.dropbox.com/s/ryamzk9mp7kbbkz/raw_beta.png?raw=1)
 
-The actual metadata we are most interested in for this dataset is the "genotype" column of the mapping file, which contains the different genotypes I described at the beginning of this tutorial. Go to the "Colors" tab of the Emperor plot (which is what we were just looking at) and change the selection from "BarcodeSequence" (default) to "genotype". You should see this:
+The actual metadata we are most interested in for this dataset is the "genotype" column of the mapping file, which contains the different genotypes I described at the beginning of this tutorial. Go to the "Colors" tab of the Emperor plot (which is what we were just looking at) and change the selection from "BarcodeSequence" (default) to "genotype". You should see a similar plot to this:
 
 ![](https://www.dropbox.com/s/uq4vqse74p1fe4k/raw_geno.png?raw=1)
 
