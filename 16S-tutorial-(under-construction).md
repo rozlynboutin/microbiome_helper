@@ -363,7 +363,7 @@ Just by looking at these PCoA plots it's clear that if there is any difference i
 You can take a look at the output files to see significance values and test statistics. The P-values for both tests are > 0.05, so there is no significant difference in the UniFrac beta diversities of different genotypes within each source facility.
 
 
-## Testing for differences in relative abundance in particular taxa  
+## Using STAMP to test for particular differences
   
 Often we're interested in figuring out which particular taxa (or other feature such as functions) differs in relative abundance between groups. There are many ways this can be done, but one common method is to use the easy-to-use program [STAMP](http://kiwi.cs.dal.ca/Software/STAMP).
 
