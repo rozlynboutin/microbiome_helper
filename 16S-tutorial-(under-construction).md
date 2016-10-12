@@ -249,7 +249,6 @@ In contrast, the first four lines of  clustering/otu_table_high_conf_summary.txt
     Total count: 10478
     Table density (fraction of non-zero values): 0.193
 
-
 After removing low-confidence OTUs, only 36.5% were retained: the number of OTUs dropped from 2420 to 884. This effect is generally even more drastic for bigger datasets. However, the numbers of reads only dropped from 12014 to 10478 (so 87% of the reads were retained). You can also see that the table density increased, as we would expect.
 
 ### Rarify reads
@@ -264,6 +263,8 @@ You can look at the read depth per sample in clustering/otu_table_high_conf_summ
     39CMK6KO: 410.0
     113CHE6WT: 412.0
     108CHE6KO: 413.0
+
+**Q8)** What is the read depth for sample "75CMK8KO"?
 
 **Note that this is a test dataset and you normally would rarify to a larger read count** (typically in the 1000s).
 
