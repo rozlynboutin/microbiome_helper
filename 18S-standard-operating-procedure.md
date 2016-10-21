@@ -11,9 +11,9 @@ Below is the quick and dirty description of our recommended 18S pipeline.
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
-3. Filter stitched reads by quality score, length and ensure forward and reverse primers match each read (summary written to "read_filter_log.txt" by default).
+3. Filter stitched reads by quality score, length and ensure forward and reverse primers match each read (summary written to "read_filter_log.txt" by default). If you don't set "-c both" below then the primer matching step will be skipped. 
 
-        read_filter.pl -f CYGCGGTAATTCCAGCTC -r CRAAGAYGATYAGATACCRT -thread 4 -q 30 -p 90 -l 200 stitched_reads/*.assembled.*
+        read_filter.pl -c both -f CYGCGGTAATTCCAGCTC -r CRAAGAYGATYAGATACCRT -thread 4 -q 30 -p 90 -l 200 stitched_reads/*.assembled.*
 									
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
 
