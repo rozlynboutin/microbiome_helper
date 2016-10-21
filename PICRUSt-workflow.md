@@ -25,7 +25,7 @@
 
 
 **Note:**
-If you are using PICRUSt 1.0.0 then you will need to make sure you are using BIOM 1.3.1 (and not the newer BIOM 2.1.*). 
+If you are using PICRUSt 1.0.0 then you will need to make sure you are using BIOM 1.3.1 (and not the newer BIOM 2.1.\*). 
 **This is not an issue with the newer PICRUSt versions.**  
 
 To get around this you can:
