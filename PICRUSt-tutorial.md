@@ -52,10 +52,6 @@ In your working directory you should have an OTU table called "otus.biom" and a 
 * Q1) How many samples are there in the dataset?
 * Q2) What kind of metadata do we have about each of the samples?
 
-PICRUSt uses an older version of BIOM. So we will switch the PYTHONPATH temporarily while running PICRUSt commands. 
-
-    export PYTHONPATH=~/lib/
-
 The first step is to correct the OTU table based on the predicted 16S copy number for each organism in the OTU table:
 
     normalize_by_copy_number.py -i otus.biom -o otus_corrected.biom 
@@ -193,10 +189,6 @@ STAMP takes two main files as input:
 The metadata file in our dataset is the **map.tsv** file, while the profile file can be generated using Microbiome Helper scripts. 
 
 Microbiome Helper provides several scripts for converting BIOM files into STAMP including those from PICRUSt.
-
-We first need to reset our PYTHONPATH back to the default BIOM version.
-
-    export PYTHONPATH=
 
 First, we can use STAMP with the corrected OTU table by first converting it using the Microbiome Helper script:
      
