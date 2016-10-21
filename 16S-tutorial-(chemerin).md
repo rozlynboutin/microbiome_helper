@@ -142,7 +142,9 @@ Based on the FastQC report above, a quality score cut-off of 30 over 90% of base
 
     cd ~/Desktop/16S_chemerin_tutorial
  
-    read_filter.pl -q 30 -p 90 -l 400 -thread 1 stitched_reads/*.assembled*fastq
+    read_filter.pl -q 30 -p 90 -l 400 -thread 1 -c both stitched_reads/*.assembled*fastq
+
+The "-c both" option above checks for the default forward and reverse degenerate primer sequences to match exactly in each sequences (You can use whatever primer sequences you want. However, the primer sequences in this case are set by default in the script, which you can look at with "read_filter.pl -h"). If you don't set the "-c" option to either "both" or "forward" then there wont be any primer matching.
 
 By default this script will output filtered FASTQs in a folder called "filtered_reads" and the percent of reads thrown out after each filtering step is recorded in "read_filter_log.txt". This script is just a convenient way to run two popular tools for read filtering: [FASTX-toolkit](http://hannonlab.cshl.edu/fastx_toolkit/) and [BBMAP](https://sourceforge.net/projects/bbmap/).
 
