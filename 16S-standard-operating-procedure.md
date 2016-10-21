@@ -11,9 +11,9 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
-3. Filter stitched reads by quality score, length and ensure forward and reverse primers match each read (summary written to "read_filter_log.txt" by default).
+3. Filter stitched reads by quality score, length. Optionally can ensure forward and reverse primers match each read by changing "--primer_check" option. Summary written to "read_filter_log.txt" by default.
 
-        read_filter.pl -q 30 -p 90 -l 400 --thread 4 stitched_reads/*.assembled.*
+        read_filter.pl -q 30 -p 90 -l 400 --primer_check "none" --thread 4 stitched_reads/*.assembled.*
 									
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
 
