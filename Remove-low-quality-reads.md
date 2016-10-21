@@ -56,4 +56,4 @@ Options:
    Either "none", "both" or "forward", indicating whether not to do primer checking, to check both forward (5') and reverse (3') primer sequences or only the forward primer respectively (default: none). 
 
 * --keep <br>
-   Marker to keep all temporary output and log files, which is useful for troubleshooting problems.
+   Flag that indicates all temporary output and log files should be kept, which is useful for troubleshooting problems.
