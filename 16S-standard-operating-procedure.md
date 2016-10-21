@@ -1,6 +1,6 @@
-Below is the quick and dirty description of our recommended 16S pipeline. See the sidebar menu for more detailed descriptions.
+Below is the quick and dirty description of our recommended 16S pipeline. See the sidebar menu for more detailed descriptions. 
 
-*Note that this workflow starts with raw paired-end MiSeq data in demultiplexed fastq format assumed to be located within a folder called `raw_data`*
+*This workflow starts with raw paired-end MiSeq data in demultiplexed fastq format assumed to be located within a folder called `raw_data`*
 
 1. (Optional) Run FastQC to allow manual inspection of the quality of sequences
 
