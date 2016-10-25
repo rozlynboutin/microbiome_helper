@@ -24,7 +24,7 @@ The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https:
     * Settings->Shared Folders (Note this is in the VirtualBox GUI on your local PC) 
     * Click on the little "+" sign on the folder on the right.
     * Choose a "Folder Path" and "Folder Name"
-    * Check the "Auto-Mount" and "Make Permament" boxes
+    * Check the "Auto-Mount" and "Make Permanent" boxes
     * Click OK (twice) and restart the virtual image if it was already running. 
 * The shared folder will be at `/media/sf_<folder name>`
 
