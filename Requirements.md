@@ -1,4 +1,4 @@
-You'll need to download or clone our main GitHub repository (https://github.com/mlangill/microbiome_helper) with you want to use our scripts.
+You'll need to download or clone our main GitHub repository (https://github.com/mlangill/microbiome_helper) if you want to use our scripts.
 
 In addition, the following programs should be installed with commands accessible from the user's PATH, before trying to run any of the scripts included in this repository.
 
