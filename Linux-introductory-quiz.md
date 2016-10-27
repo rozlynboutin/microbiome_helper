@@ -1,7 +1,7 @@
-__Author:__ Gavin Douglas
-__First created:__ May 2015
-__Last updated:__ 27 Oct 2016 
-
+__Author:__ Gavin Douglas  
+__First created:__ May 2015  
+__Last updated:__ 27 Oct 2016   
+  
 This quiz is designed to make sure that you understand Linux basics. It's a good idea to start out with a general online tutorial (such as: http://korflab.ucdavis.edu/bootcamp.html).
 
 Save all of your commands in a separate file so I can evaluate them after. You should do all these steps from the command-line and not using excel or a text editor. Each step can be done with only 1 line of bash code, sometimes with several commands combined with pipes ("|").
