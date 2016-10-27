@@ -1,5 +1,5 @@
 __Author:__ Gavin Douglas  
-__First created:__ May 2015  
+__First created:__ 1 June 2016  
 __Last updated:__ 27 Oct 2016 
 
 This quiz is designed to make sure that you understand Linux basics. It's a good idea to start out with a general online tutorial (such as: http://korflab.ucdavis.edu/bootcamp.html) before doing this quiz.
