@@ -37,7 +37,7 @@ And then revert back to newer BIOM version by exiting and logging back into the 
 
   
   
-Also, you will need to convert to JSON BIOM format before running PICRUSt:
+Also, if you are using v1.0.0, you will need to convert to JSON BIOM format before running PICRUSt:
 
     biom convert -i final_otu_tables/closed_otus.biom -o final_otu_tables/closed_otus_json.biom --to-json --table-type "OTU table"
 
