@@ -10,7 +10,7 @@ Although I will briefly review some Linux commands, this is not intended to be a
 
 ## Working with folders and files
 
-Go to your home directory and make a new folder called "tmp". Go into this folder.
+1. Go to your home directory and make a new folder called "tmp". Go into this folder.
 
 <details> 
   <summary>Click here for answer</summary>
