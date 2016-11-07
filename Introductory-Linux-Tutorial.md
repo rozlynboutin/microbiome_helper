@@ -4,11 +4,16 @@ __Author:__ Gavin Douglas
 __First created:__ 1 June 2016  
 __Last updated:__ 27 Oct 2016 
 
-This quiz is designed to make sure that you understand Linux basics. It's a good idea to start out with a general online tutorial (such as: http://korflab.ucdavis.edu/bootcamp.html) before doing this quiz.
+This quiz is designed to make sure that you understand command-line Linux basics. If you're having trouble you should try to google the problem (or look at the "man" page for a particular command) before clicking for the answer. 
 
-Save all of your commands in a separate file so I can evaluate them after. You should do all these steps from the command-line and not using excel or a text editor. Each step can be done with only 1 line of bash code, sometimes with several commands combined with pipes ("|").
- 
-1. Go to your home directory and make a new folder called "tmp". Go into this folder, which you can remove once you're finished with this tutorial.
+Although I will briefly review some Linux commands, this is not intended to be an exhaustive overview. If you're totally new to Linux I would recommend starting with a general tutorial, such as this one: http://korflab.ucdavis.edu/bootcamp.html. 
+
+## Working with folders and files
+
+Go to your home directory and make a new folder called "tmp". Go into this folder.
+
+
+
 
 2. Make a new file called "test" and put "a	b	c" on the first line (Note this is tab, NOT space delimited). 
 
