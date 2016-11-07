@@ -20,14 +20,12 @@ Although I will briefly review some Linux commands, this is not intended to be a
         cd tmp
     </code></pre></details>
 
-2. Make a new file called "test" and put "a	b	c" on the first line (Note this is tab, NOT space delimited). 
+2. Make a new file called "test" and put "a	b	c" on the first line (Note this is tab, NOT space delimited). Looking at the "echo" command's manual page with "man echo" might be helpful.
 
     <details> 
       <summary>Click here for answer</summary>
     <pre><code>
-        cd # with no target this command should bring you to your home directory 
-        mkdir tmp
-        cd tmp
+        echo -e "a\tb\tc" > test
     </code></pre></details>
 
 3. With one command, append "d	e	f" (tab delimited) to the file (do this without opening "test" up in any text editor). (Hint: this question is related to knowing the difference between these input and output operators, which you should know: ">", "<" , ">>" , "2>" and "2>>")
