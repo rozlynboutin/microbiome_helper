@@ -12,13 +12,13 @@ Although I will briefly review some Linux commands, this is not intended to be a
 
 1. Go to your home directory and make a new folder called "tmp". Go into this folder.
 
-<details> 
-  <summary>Click here for answer</summary>
-<pre><code>
-    cd # with no target this command should bring you to your home directory 
-    mkdir tmp
-    cd tmp
-</code></pre></details>
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        cd # with no target this command should bring you to your home directory 
+        mkdir tmp
+        cd tmp
+    </code></pre></details>
 
 2. Make a new file called "test" and put "a	b	c" on the first line (Note this is tab, NOT space delimited). 
 
