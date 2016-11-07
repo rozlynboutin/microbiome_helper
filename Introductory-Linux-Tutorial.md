@@ -54,10 +54,13 @@ Although I will briefly review some Linux commands, this is not intended to be a
         echo -e "d\te\tf" >> test
     </code></pre></details>
 
-
-
-
 4. Make a copy of "test" called "test_copy".
+
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        cp test test_copy
+    </code></pre></details>
 
 5. Rename "test_copy" to "test2". Delete "test". 
 
