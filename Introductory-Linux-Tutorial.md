@@ -30,7 +30,7 @@ Although I will briefly review some Linux commands, this is not intended to be a
 
 3. With one command, append "d	e	f" (tab delimited) to the file (do this without opening "test" up in any text editor). 
 
-    This question is related to knowing the difference between these input and output operators, which are commonly mis-understood: ">", ">>" , "2>" and "2>>".
+    This question is related to knowing the difference between these input and output operators, which are commonly mis-understood by beginners: ">", ">>" , "2>" and "2>>".
 
     ">" is used to direct output to a file, as used above:
         command > out.txt
