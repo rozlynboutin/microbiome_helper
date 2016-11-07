@@ -46,7 +46,7 @@ Although I will briefly review some Linux commands, this is not intended to be a
 
     The output written with ">" is called standard output (or "stdout"), while "2>" writes to standard error ("stderr"). Both stdout and stderr are printed to the screen by default when you run a command.
 
-    There are other ways to re-direct, but these are the most common ones you'll likely need.
+    There are other ways to re-direct output, but these are the most common ones you'll likely need.
 
     <details> 
       <summary>Click here for answer</summary>
