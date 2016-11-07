@@ -28,7 +28,22 @@ Although I will briefly review some Linux commands, this is not intended to be a
         echo -e "a\tb\tc" > test
     </code></pre></details>
 
-3. With one command, append "d	e	f" (tab delimited) to the file (do this without opening "test" up in any text editor). (Hint: this question is related to knowing the difference between these input and output operators, which you should know: ">", "<" , ">>" , "2>" and "2>>")
+3. With one command, append "d	e	f" (tab delimited) to the file (do this without opening "test" up in any text editor). 
+
+This question is related to knowing the difference between these input and output operators, which are commonly mis-understood: ">", "<" , ">>" , "2>" and "2>>".
+
+    ">" is used to direct 
+command > out.txt
+
+someCommand > someFile.txt  
+Or if you want to append data:
+
+someCommand >> someFile.txt
+If you want stderr too use this:
+
+
+
+
 
 4. Make a copy of "test" called "test_copy".
 
