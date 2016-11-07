@@ -30,17 +30,29 @@ Although I will briefly review some Linux commands, this is not intended to be a
 
 3. With one command, append "d	e	f" (tab delimited) to the file (do this without opening "test" up in any text editor). 
 
-This question is related to knowing the difference between these input and output operators, which are commonly mis-understood: ">", "<" , ">>" , "2>" and "2>>".
+    This question is related to knowing the difference between these input and output operators, which are commonly mis-understood: ">", ">>" , "2>" and "2>>".
 
-    ">" is used to direct 
-command > out.txt
+    ">" is used to direct output to a file, as used above:
+        command > out.txt
 
-someCommand > someFile.txt  
-Or if you want to append data:
+    ">>" is used to _append_ output to a file (i.e. it wont be overwritten):
+        command >> out.txt    
+ 
+    "2>" is used to direct error output to a file:
+        command 2> log.txt
 
-someCommand >> someFile.txt
-If you want stderr too use this:
+    "2>>" is used to append error output to a file:
+        command 2>> log.txt
 
+    The output written with ">" is called standard output (or "stdout"), while "2>" writes to standard error ("stderr"). Both stdout and stderr are printed to the screen by default when you run a command.
+
+    There are other ways to re-direct, but these are the most common ones you'll likely need.
+
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        echo -e "d\te\tf" >> test
+    </code></pre></details>
 
 
 
