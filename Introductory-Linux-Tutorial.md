@@ -4,7 +4,7 @@ __Author:__ Gavin Douglas
 __First created:__ 1 June 2016  
 __Last updated:__ 27 Oct 2016 
 
-This quiz is designed to make sure that you understand command-line Linux basics. If you're having trouble you should try to google the problem (or look at the "man" page for a particular command) before clicking for the answer. 
+This quiz is designed to make sure that you understand command-line Linux basics. If you're having trouble you should try to google the problem (or look at the "man" page for a particular command) before clicking for the answer. Note that the answer shown in most cases is just one possible method.  
 
 Although I will briefly review some Linux commands, this is not intended to be an exhaustive overview. If you're totally new to Linux I would recommend starting with a general tutorial, such as this one: http://korflab.ucdavis.edu/bootcamp.html. 
 
@@ -21,6 +21,14 @@ Although I will briefly review some Linux commands, this is not intended to be a
     </code></pre></details>
 
 2. Make a new file called "test" and put "a	b	c" on the first line (Note this is tab, NOT space delimited). 
+
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        cd # with no target this command should bring you to your home directory 
+        mkdir tmp
+        cd tmp
+    </code></pre></details>
 
 3. With one command, append "d	e	f" (tab delimited) to the file (do this without opening "test" up in any text editor). (Hint: this question is related to knowing the difference between these input and output operators, which you should know: ">", "<" , ">>" , "2>" and "2>>")
 
