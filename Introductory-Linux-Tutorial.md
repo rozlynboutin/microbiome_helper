@@ -32,16 +32,16 @@ Although I will briefly review some Linux commands, this is not intended to be a
 
     This question is related to knowing the difference between these input and output operators, which are commonly mis-understood by beginners: ">", ">>" , "2>" and "2>>".
 
-    ">" is used to direct output to a file, as used above:
+    ">" is used to direct output to a file, as used above:  
         command > out.txt
 
-    ">>" is used to _append_ output to a file (i.e. it wont be overwritten):
+    ">>" is used to _append_ output to a file (i.e. it wont be overwritten):  
         command >> out.txt    
  
-    "2>" is used to direct error output to a file:
+    "2>" is used to direct error output to a file:  
         command 2> log.txt
 
-    "2>>" is used to append error output to a file:
+    "2>>" is used to append error output to a file:  
         command 2>> log.txt
 
     The output written with ">" is called standard output (or "stdout"), while "2>" writes to standard error ("stderr"). Both stdout and stderr are printed to the screen by default when you run a command.
