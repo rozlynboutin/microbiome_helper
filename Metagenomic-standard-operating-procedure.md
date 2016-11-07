@@ -45,6 +45,7 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
 
 10. Convert HUMAnN output to STAMP format
 
+        cd output/
         humann_to_stamp.pl 04b-hit-keg-mpm-cop-nul-nve-nve.txt > hummann_modules.spf
         humann_to_stamp.pl 04b-hit-keg-mpt-cop-nul-nve-nve.txt > hummann_pathways.spf
         humann_to_stamp.pl 01b-hit-keg-cat.txt > hummann_kos.spf
