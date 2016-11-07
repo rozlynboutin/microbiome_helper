@@ -13,7 +13,7 @@ Although I will briefly review some Linux commands, this is not intended to be a
 Go to your home directory and make a new folder called "tmp". Go into this folder.
 
 <details> 
-  <summary>Click here for commands</summary>
+  <summary>Click here for answer</summary>
 <pre><code>
     cd # with no target this command should bring you to your home directory 
     mkdir tmp
