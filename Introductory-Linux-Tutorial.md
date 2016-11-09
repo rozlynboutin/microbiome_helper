@@ -21,15 +21,7 @@ Although I will briefly review some Linux commands, this is not intended to be a
     </code></pre></details>
 
 2. Make a new file called "test" and put "a	b	c" on the first line (Note this is tab, NOT space delimited). Looking at the "echo" command's manual page with "man echo" might be helpful.
-
-    <details> 
-      <summary>Click here for answer</summary>
-    <pre><code>
-        echo -e "a\tb\tc" > test
-    </code></pre></details>
-
-3. With one command, append "d	e	f" (tab delimited) to the file (do this without opening "test" up in any text editor). 
-
+  
     This question is related to knowing the difference between these input and output operators, which are commonly mis-understood by beginners: ">", ">>" , "2>" and "2>>".
 
     ">" is used to direct output to a file, as used above:  
@@ -48,6 +40,13 @@ Although I will briefly review some Linux commands, this is not intended to be a
 
     There are other ways to re-direct output, but these are the most common ones you'll likely need.
 
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        echo -e "a\tb\tc" > test
+    </code></pre></details>
+
+3. With one command, append "d	e	f" (tab delimited) to the file (do this without opening "test" up in any text editor). 
     <details> 
       <summary>Click here for answer</summary>
     <pre><code>
