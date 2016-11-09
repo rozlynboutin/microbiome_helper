@@ -64,6 +64,13 @@ Although I will briefly review some Linux commands, this is not intended to be a
 
 5. Rename "test_copy" to "test2". Delete "test". 
 
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        mv test_copy test2
+        rm test
+    </code></pre></details>
+
 6. Use wget to download the file found at this link: https://www.dropbox.com/s/jnqbx4nzkjkx6we/test_OTU_table.txt?dl=1
 (you will probably have to rename it to remove "?dl=1" from the end of the downloaded file)
 
