@@ -87,7 +87,7 @@ Although I will briefly review some Linux commands, this is not intended to be a
         0
     </code></pre></details>
 
-If you look at the file using the "less" command (hit "q" to quit less), you should see a bunch of ^M characters (it may not look this way depending on your system). This is a special character that means "carriage-return", which is required at the end of lines in some formats. Although this might look like a 
+    If you look at the file using the "less" command (hit "q" to quit less), you should see a bunch of ^M characters (it may not look this way depending on your system). This is a special character that means "carriage-return", which is required at the end of lines in some formats. Although this might look like a 
 
 10. Now replace all ^M characters using this command in vim: %s/^M/^M/g
 The tricky part is you can't just copy and paste that since ^M is actually a single character. You need to hold down CTRL and then hit the v key and then the m key. 
