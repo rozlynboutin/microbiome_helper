@@ -70,15 +70,24 @@ Although I will briefly review some Linux commands, this is not intended to be a
         rm test
     </code></pre></details>
 
-6. Use wget to download the file found at this link: https://www.dropbox.com/s/jnqbx4nzkjkx6we/test_OTU_table.txt?dl=1
-(you will probably have to rename it to remove "?dl=1" from the end of the downloaded file)
+6. Use wget to download the file found at this link: https://www.dropbox.com/s/gta5voeugfmkv14/test_table.txt?dl=1. Use the -O option to specify a new output name to be "test_table.txt" (otherwise it will end in "?dl=1").
+
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        wget https://www.dropbox.com/s/gta5voeugfmkv14/test_table.txt?dl=1 -O test_table.txt
+    </code></pre></details>
 
 7. Figure out how many lines are in this file (you might get a weird result...)
 
-8. Look at the file using the "less" command (hit "q" to quit less), do you see a bunch of weird ^M characters? If so, what is the likely reason the file is messed up? 
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        $ wc -l test_table.txt
+        0
+    </code></pre></details>
 
-### Note the string replacement below should be done with the text editor "vim"
-9. If you do see the ^M characters then you can get around this problem using vim, which is great for string replacement (see: http://vim.wikia.com/wiki/Search_and_replace). As a test example, replace all "IWK" strings with "SCIENCEISGREAT" ( :%s/IWK/SCIENCEISGREAT/g ). What happens when "g" is omitted from that command?
+If you look at the file using the "less" command (hit "q" to quit less), you should see a bunch of ^M characters (it may not look this way depending on your system). This is a special character that means "carriage-return", which is required at the end of lines in some formats. Although this might look like a 
 
 10. Now replace all ^M characters using this command in vim: %s/^M/^M/g
 The tricky part is you can't just copy and paste that since ^M is actually a single character. You need to hold down CTRL and then hit the v key and then the m key. 
