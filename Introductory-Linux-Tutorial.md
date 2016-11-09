@@ -8,7 +8,14 @@ This quiz is designed to make sure that you understand command-line Linux basics
 
 Although I will briefly review some Linux commands, this is not intended to be an exhaustive overview. If you're totally new to Linux I would recommend starting with a general tutorial, such as this one: http://korflab.ucdavis.edu/bootcamp.html. 
 
-These commands are not covered below, but you should also become familiar with them or something similar for every-day work in Linux: "ls -lh" , "top -u $USER" , "screen" (with -d and -r options), "df --si" and "du -sh". 
+These commands are not covered below, but you should also become familiar with them or something similar for every-day work in Linux:  
+* "df --si" - shows disk usage in human-readable format
+* "du -sh (file or folder)" - shows size in human-readable format
+* "history" - prints a large number of your last commands (usually ~1000) to screen. You can pipe this with grep (see below) to quickly see particular past commands you're interested in.  
+* "screen" (with -d and -r options) - allows you to return to shells you previously had open (helps jobs from being interrupted!).
+* "top" - shows all processes along with CPU and memory usage (you can customize this to just show your jobs, sort by memory and to show full commands).  
+
+This is just a small number of commands that I find useful, but there are many others!
 
 ## Working with folders and files
 
@@ -139,12 +146,18 @@ These commands are not covered below, but you should also become familiar with t
     </code></pre></details>
 
 13. Using the _awk_ command, print out all rows of test_table_col_cut.txt where the first column has a value greater than 
-10. Write this output to a new file called "test_table_col_cut_first10.txt". You should not print the header line, which you can avoid by using an option in awk or by piping the output of the "tail" command (the opposite of "head") to awk, similar to Q13.
+10. You should not print the header line, which you can avoid by using an option in awk or by piping the output of the "tail" command (the opposite of "head") to awk, similar to Q13.
 
     <details> 
       <summary>Click here for answer</summary>
     <pre><code>
-        
+        tail -n +2 test_table_col_cut.txt  | awk '{ if ( $1 > 10 ) { print $0 } }'  > test_table_col_cut_first10.txt
     </code></pre></details>
 
-14. Create 10 folders called "parent_i" (where the i is an integer ranging from 1 to 10). In each of these folders also create a folder called "child_i" (where the last i is the same integer from the parent folder's name). This can be done with 1 line of bash code, but multiple commands (you can separate commands with ";" instead of return in bash).  
+14. Create 10 folders called "parent_i" (where the i is an integer ranging from 1 to 10). In each of these folders also create a folder called "child_i" (where the last i is the same integer from the parent folder's name). This can be done with a bash loop. You will likely need to check out a bash tutorial to answer this question.
+
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        for i in {1..10}; do parent="parent_"$i; child="child_"$i; mkdir -p $parent/$child; done
+    </code></pre></details>
