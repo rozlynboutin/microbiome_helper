@@ -2,11 +2,13 @@
 
 __Author:__ Gavin Douglas  
 __First created:__ 1 June 2016  
-__Last updated:__ 27 Oct 2016 
+__Last updated:__ 9 Nov 2016 
 
 This quiz is designed to make sure that you understand command-line Linux basics. If you're having trouble you should try to google the problem (or look at the "man" page for a particular command) before clicking for the answer. Note that the answer shown in most cases is just one possible method.  
 
 Although I will briefly review some Linux commands, this is not intended to be an exhaustive overview. If you're totally new to Linux I would recommend starting with a general tutorial, such as this one: http://korflab.ucdavis.edu/bootcamp.html. 
+
+These commands are not covered below, but you should also become familiar with them or something similar for every-day work in Linux: "ls -lh" , "top -u $USER" , "screen" (with -d and -r options), "df --si" and "du -sh". 
 
 ## Working with folders and files
 
@@ -87,23 +89,62 @@ Although I will briefly review some Linux commands, this is not intended to be a
         0
     </code></pre></details>
 
-    If you look at the file using the "less" command (hit "q" to quit less), you should see a bunch of ^M characters (it may not look this way depending on your system). This is a special character that means "carriage-return", which is required at the end of lines in some formats. Although this might look like a 
+    If you look at the file using the "less" command (hit "q" to quit less), you should see a bunch of ^M characters (it may not look this way depending on your system). This is a special character that means "carriage-return", which is required at the end of lines in some formats. It's good to be aware that files might contain special characters that cause problems on different systems, since this is a common problem when uploading files from your local PC to a Linux server.
 
-10. Now replace all ^M characters using this command in vim: %s/^M/^M/g
-The tricky part is you can't just copy and paste that since ^M is actually a single character. You need to hold down CTRL and then hit the v key and then the m key. 
+8. There are a couple of ways to fix this file, but one is by using _sed_, which is a program that is used to transform text as it is read in from an input "stream" (usually a file, but it could be the output of a different function). You can read about sed with this command: _man sed_. Use sed to replace all "^M" characters with "\n" (newline) characters. The trick is that to type the ^M character correctly on the command-line you'll need to hold CTRL and then hit the v and m keys (you wont even be able to copy and paste the below answer).
 
-The ^M characters should be replaced with proper newlines (i.e. line breaks) after this step.
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        sed -i 's/^M/\n/g' test_table.txt 
+    </code></pre></details>
 
-11. Figure out the number of lines in the file again.
 
-12. Cut out the 2nd, 4th and 6th columns into a new file called "test_OTU_table_col_cut.txt".
+9. Figure out the number of lines in the file after replace carriage-returns with newlines.
 
-13. Using the "grep" command (you will need to look at the options with "man grep" and be aware that the special character for tab is usually "/t") figure out the # of lines in test_OTU_table_col_cut.txt that match "	1	".
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        $ wc -l test_table.txt
+        984
+    </code></pre></details>
 
-14. Using "head", "less" and a pipe ("|") look at ONLY the first 5 lines of "test_OTU_table_col_cut.txt" with less.
+10. Cut out the 2nd, 4th and 6th columns into a new file called "test_table_col_cut.txt".
 
-15. Using the "awk" command, print out all rows of test_OTU_table_col_cut.txt where the first column has a value greater than 10. Write this output to a new file called "test_OTU_table_col_cut_first10.txt". Note that the header should not be printed since, which you can avoid by using an option in awk or by piping the output of the "tail" command to awk, similar to question 14.
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        cut -f 2,4,6 test_table.txt  > test_table_col_cut.txt
+    </code></pre></details>
 
-16. By using the "sed" command (this is another way of doing string replacements that you might see), do the opposite of question 9, i.e. replace "SCIENCEISGREAT" with "IWK".
+11. Using the "grep" command (you will need to look at the options with "man grep" and be aware that the regular expression for tab is usually "/t") figure out the # of lines in test_table_col_cut.txt that match "\t1\t".
 
-17. Create 10 folders called "parent_i" (where the i is an integer ranging from 1 to 10). In each of these folders also create a folder called "child_i" (where the last i is the same integer from the parent folder's name). This can be done with 1 line of bash code, but multiple commands (you can separate commands with ";" instead of return in bash).  
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        grep -Pc "\t1\t" test_table_col_cut.txt 
+        # The -P option allows for Perl regular expressions. 
+        # This option may not be available depending on your version of grep 
+        # in which case you could type in the special tab character ("^I") directly, 
+        # similar to how we did above for ^M.
+    </code></pre></details>
+
+12. Using "head", "less" and a pipe ("|") look at ONLY the first 5 lines of "test_table_col_cut.txt" with less.
+
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        head -n 5 test_table_col_cut.txt | less 
+        # You will need to hit q to exit less
+    </code></pre></details>
+
+13. Using the _awk_ command, print out all rows of test_table_col_cut.txt where the first column has a value greater than 
+10. Write this output to a new file called "test_table_col_cut_first10.txt". You should not print the header line, which you can avoid by using an option in awk or by piping the output of the "tail" command (the opposite of "head") to awk, similar to Q13.
+
+    <details> 
+      <summary>Click here for answer</summary>
+    <pre><code>
+        
+    </code></pre></details>
+
+14. Create 10 folders called "parent_i" (where the i is an integer ranging from 1 to 10). In each of these folders also create a folder called "child_i" (where the last i is the same integer from the parent folder's name). This can be done with 1 line of bash code, but multiple commands (you can separate commands with ";" instead of return in bash).  
