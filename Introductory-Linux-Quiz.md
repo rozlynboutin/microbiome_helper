@@ -15,8 +15,8 @@ These commands are not covered below, but you should also become familiar with t
 
 This is just a small number of commands that I find useful, but there are many others!
 
-## Working with folders and files
-
+Below is a 14 question quiz, which hopefully will help you become more comfortable using command-line Linux!  
+  
 1. Go to your home directory and make a new folder called "tmp". Go into this folder.
 
     <details> 
