@@ -1,6 +1,6 @@
 __Author:__ Gavin Douglas  
 __First created:__ 1 June 2016  
-__Last significant update:__ 9 Nov 2016 
+__Last updated:__ 10 Nov 2016 
 
 This quiz is designed to make sure that you understand command-line Linux basics. If you're having trouble you should try to google the problem (or look at the "man" page for a particular command) before clicking for the answer. Note that the answer shown in most cases is just one possible method.  
 
