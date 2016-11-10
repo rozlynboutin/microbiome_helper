@@ -6,4 +6,6 @@ This is a list of tutorials and workshop material that have been used in the pas
 * [CBW 2016 PICRUSt Tutorial](CBW-2016-PICRUSt-tutorial)
 * [CBW 2016 Metagenomic Taxonomic Tutorial](CBW-2016-Metagenomic-Taxonomic-Tutorial)
 * [CBW 2016 Metagenomics Functional Tutorial](CBW-2016-Metagenomics-Functional-Tutorial)
+
+* [Introductory Linux Quiz](Introductory-Linux-Quiz)
  
