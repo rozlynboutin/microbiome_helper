@@ -143,8 +143,7 @@ Below is the quiz, which hopefully will help you become more comfortable using c
         # You will need to hit q to exit less
     </code></pre></details>
 
-13. Using the _awk_ command, print out all rows of test_table_col_cut.txt where the first column has a value greater than 
-10. You should not print the header line, which you can avoid by using an option in awk or by piping the output of the "tail" command (the opposite of "head") to awk, similar to Q13.
+13. Using the _awk_ command, print out all rows of test_table_col_cut.txt where the first column has a value > 10. You should not print the header line, which you can avoid by using an option in awk or by piping the output of the "tail" command (the opposite of "head") to awk, similar to Q13.
 
     <details> 
       <summary>Click here for answer</summary>
