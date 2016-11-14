@@ -1,8 +1,8 @@
 __Author:__ Gavin Douglas  
 __First created:__ 1 June 2016  
-__Last updated:__ 10 Nov 2016 
+__Last updated:__ 14 Nov 2016 
 
-This quiz is designed to make sure that you understand command-line Linux basics. If you're having trouble you should try to google the problem (or look at the "man" page for a particular command) before clicking for the answer. Note that the answer shown in most cases is just one possible method.  
+This quiz is designed to make sure that you understand command-line Linux basics. If you're having trouble you should try to google the problem (or look at the "man" page for a particular command) before clicking for the answer. Note that the answer shown in most cases is just one possible method. I ran these commands on Ubuntu 14.04.5 LTS, if you are using a different system (esp. Mac OS X) the syntax might need to be a little different.
 
 Although I will briefly review some Linux commands, this is not intended to be an exhaustive overview. If you're totally new to Linux I would recommend starting with a general tutorial, such as this one: http://korflab.ucdavis.edu/bootcamp.html. 
 
@@ -15,7 +15,7 @@ These commands are not covered below, but you should also become familiar with t
 
 This is just a small number of commands that I find useful, but there are many others!
 
-Below is the quiz, which hopefully will help you become more comfortable using command-line Linux!  
+Below is the quiz, which hopefully will help you become more comfortable using command-line Linux.
   
 1. Go to your home directory and make a new folder called "tmp". Go into this folder.
 
