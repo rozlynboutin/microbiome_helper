@@ -5,7 +5,7 @@
 2) PICRUSt: normalize OTU table by predicted 16S copy numbers. 
 
 
-        normalize_by_copy_number.py -i final_otu_tables/closed_otus_json.biom -o final_otu_tables/closed_otus_norm.biom
+        normalize_by_copy_number.py -i final_otu_tables/closed_otus.biom -o final_otu_tables/closed_otus_norm.biom
 
 3) PICRUSt: Predict KOs .... this is magical :)
 
