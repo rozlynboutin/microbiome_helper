@@ -1,8 +1,8 @@
 Below is the quick and dirty description of our recommended 16S pipeline. See the sidebar menu for more detailed descriptions. 
   
-_Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally.  _
+_Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._  
   
-_Last updated: 15 Nov 2016 (see "revisions" above for earlier versions)  _
+_Last updated: 15 Nov 2016 (see "revisions" above for earlier versions)_  
   
 *This workflow starts with raw paired-end MiSeq data in demultiplexed fastq format assumed to be located within a folder called `raw_data`*
 
