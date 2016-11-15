@@ -39,7 +39,7 @@ _Last updated: 15 Nov 2016 (see "revisions" above for earlier versions)_
 
         run_pre_humann.pl -p 4 -o pre_humann/ trimmomatic_filtered/*fastq
 
-9. Run HUMAnN (link files to HUMAnN "input" directory and then run HUMAnN with scons command). Note that you can run this in parallel with `-j` option (e.g. scons -j 4), but I have found this often causes HUMAnN to unexpectedly error. Note that the "/home/shared/humann-0.99/" is the location of HUMAnN on our virtual box. You could install this into your own home directory if you are running it on a different system.  
+9. Run HUMAnN (link files to HUMAnN "input" directory and then run HUMAnN with scons command). Note that you can run this in parallel with `-j` option (e.g. scons -j 4), but I have found this often causes HUMAnN to unexpectedly error. Note that the "/home/shared/humann-0.99/" is the location of HUMAnN on our virtual box. You could install this into your own home directory if you are running it on a different system (esp. if there are multiple users).
   
         rm /home/shared/humann-0.99/input/*txt 
         rm /home/shared/humann-0.99/output/*
