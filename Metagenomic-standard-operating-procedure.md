@@ -1,5 +1,10 @@
-Below is the quick and dirty description of our recommended metagenomics pipeline. See the sidebar menu for more detailed descriptions.
-
+Below is the quick and dirty description of our recommended metagenomics pipeline. See the sidebar menu for more detailed descriptions.  
+    
+_Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._   
+    
+_Last updated: 15 Nov 2016 (see "revisions" above for earlier versions)_   
+     
+    
 1. (Optional) Concatenate multiple lanes of sequencing together (e.g. for NextSeq data). If you do this step remember to change "raw_data" to "concat_data" below.
 
         concat_lanes.pl raw_data/* -o concat_data -p 4
