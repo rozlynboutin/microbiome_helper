@@ -1,5 +1,10 @@
 Below is the quick and dirty description of our recommended 18S pipeline.
-
+  
+_Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._    
+    
+_Last updated: 15 Nov 2016 (see "revisions" above for earlier versions)_    
+     
+  
 *Note that this workflow starts with raw paired-end MiSeq data in demultiplexed fastq format assumed to be located within a folder called `raw_data`*
 
 1. (Optional) Run FastQC to allow manual inspection of the quality of sequences
