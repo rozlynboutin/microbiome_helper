@@ -18,7 +18,7 @@ _Last updated: 24 Nov 2016 (see "revisions" above for earlier versions)_
 
 3. Filter stitched reads by quality score (at least Q30 over at least 90% of the read), length (at least 200 bp) and ensure forward and reverse primers match 100% each read (summary written to "read_filter_log.txt" by default). If you do not wish to force primer matching, then you must remove the -f/-r/-c options below. 
 
-        read_filter.pl -f CYGCGGTAATTCCAGCTC -r CRAAGAYGATYAGATACCRT -c both -t 4 -q 30 -p 90 -l 200 stitched_reads/*.assembled.*
+        read_filter.pl -f CYGCGGTAATTCCAGCTC -r CRAAGAYGATYAGATACCRT -c both --thread 4 -q 30 -p 90 -l 200 stitched_reads/*.assembled.*
 									
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
 
