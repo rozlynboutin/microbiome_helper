@@ -22,7 +22,7 @@ You will also need to convert the BIOM file to JSON format. The below command is
   
 ### FAPROTAX
 
-Functional Annotation of Prokaryotic Taxa (FAPROTAX) is a database that maps prokaryotic taxa with functions reported in the literature. See the (FAPROTAX website)[http://www.zoology.ubc.ca/louca/FAPROTAX/lib/php/index.php?section=Home] for details. If you want to make changes to the database be sure to check out the (license agreement)[http://www.zoology.ubc.ca/louca/FAPROTAX/lib/php/index.php?section=License]. 
+Functional Annotation of Prokaryotic Taxa (FAPROTAX) is a database that maps prokaryotic taxa with functions reported in the literature. See the [FAPROTAX website](http://www.zoology.ubc.ca/louca/FAPROTAX/lib/php/index.php?section=Home) for details. If you want to make changes to the database be sure to check out the [license agreement](http://www.zoology.ubc.ca/louca/FAPROTAX/lib/php/index.php?section=License). 
 
 The script collapse_table.py can be used for linking your OTUs of interest with this database (which is "FAPROTAX.txt").
   
