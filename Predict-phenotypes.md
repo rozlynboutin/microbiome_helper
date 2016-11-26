@@ -2,7 +2,9 @@ We have packaged two tools with the Microbiome Helper VBox that can link OTUs wi
   
 If you are more interested in predicting gene-based functions then you should check out the PICRUSt [workflow](https://github.com/mlangill/microbiome_helper/wiki/PICRUSt-workflow) and/or [tutorial](https://github.com/mlangill/microbiome_helper/wiki/PICRUSt-tutorial) we have written.
   
-1) BugBase is a tool that links OTUs with high-level phenotypes such as whether they are gram positive or negative, whether they form biofilms, are pathogenic, etc. An in-depth description is available on the [BugBase website](https://bugbase.cs.umn.edu/index.html). Note that for most users you'll likely be able to use [BugBase online on the authors' website](https://bugbase.cs.umn.edu/upload.html). 
+### BugBase   
+    
+BugBase is a tool that links OTUs with high-level phenotypes such as whether they are gram positive or negative, whether they form biofilms, are pathogenic, etc. An in-depth description is available on the [BugBase website](https://bugbase.cs.umn.edu/index.html). Note that for most users you'll likely be able to use [BugBase online on the authors' website](https://bugbase.cs.umn.edu/upload.html). 
   
 To try out BugBase on the Virtual Box you can run the demo data (you can view all options with run.bugbase.r -h):
     
