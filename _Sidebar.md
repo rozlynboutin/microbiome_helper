@@ -2,7 +2,7 @@
 * [Requirements](https://github.com/mlangill/microbiome_helper/wiki/Requirements)
 * [Brief description of scripts](https://github.com/mlangill/microbiome_helper/wiki/Brief-description-of-scripts)
 * [Virtual Box image](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box)
-* [Contact](https://github.com/mlangill/microbiome_helper/wiki/Predict-phenotypes#contact)
+* [Contact](https://github.com/mlangill/microbiome_helper/wiki#contact)
 
 **Metagenomic resources**
    * [Metagenomic SOP](Metagenomic-standard-operating-procedure)
