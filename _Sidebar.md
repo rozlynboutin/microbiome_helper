@@ -24,6 +24,7 @@
    * [Alpha and beta diversity](https://github.com/mlangill/microbiome_helper/wiki/Alpha-and-beta-diversity)
    * [PICRUSt workflow](https://github.com/mlangill/microbiome_helper/wiki/PICRUSt-workflow)
    * [Additional QIIME analysis](https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis)
+   * [Predict phenotypes](https://github.com/mlangill/microbiome_helper/wiki/Predict-phenotypes)
 
 **Tutorials**
    * [16S tutorial](16S-tutorial-(chemerin))
