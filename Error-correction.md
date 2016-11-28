@@ -1,0 +1,1 @@
+There are some alternatives to to OTU picking that can be useful for microbiome sequencing analyses.
