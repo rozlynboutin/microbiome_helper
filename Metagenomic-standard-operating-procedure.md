@@ -2,7 +2,7 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
     
 _Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._   
     
-_Last updated: 15 Nov 2016 (see "revisions" above for earlier versions)_   
+_Last updated: 28 Nov 2016 (see "revisions" above for earlier versions)_   
      
     
 1. (Optional) Concatenate multiple lanes of sequencing together (e.g. for NextSeq data). If you do this step remember to change "raw_data" to "concat_data" below.
@@ -23,7 +23,7 @@ _Last updated: 15 Nov 2016 (see "revisions" above for earlier versions)_
         echo "--local" >> ./bowtie2_config.txt ### add the bowtie2 options you want to use to a config file
         run_contaminant_filter.pl -p 4 -o screened_reads/ stitched_reads/*.assembled* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt
   
-5. Run Trimmomatic to trim off bases under specified quality values and to discard reads under a certain length after trimming (running FastQC on the screened reads is helpful for choosing these parameters). 
+5. Run Trimmomatic to trim off bases under specified quality values and to discard reads under a certain length after trimming (running FastQC on the screened reads is helpful for choosing these parameters). This script will automatically assume that sample IDs are the first field when the filename is delimited by "_". You may instead want to use "." as the delimiter with "--delimiter .".  
 
         run_trimmomatic.pl -l 5 -t 5 -r 15 -w 4 -m 70 -j /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar --thread 4 -o trimmomatic_filtered screened_reads/*fastq  
   
