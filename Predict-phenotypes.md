@@ -10,7 +10,9 @@ To try out BugBase on the Virtual Box you can run the demo data (you can view al
     
     cd /home/shared/predict_pheno/BugBase_demo  
     run.bugbase.r -i HMP_s15.txt -m HMP_map.txt -c HMPBODYSUBSITE -o output   
-
+  
+In the folder "output" there will be a number of summary tables and plots which you can check out.  
+  
 The demo data has already been prepped in advance, but you might need a few extra steps to prepare your own data for BugBase. Firstly, BugBase requires a closed OTU table (meaning that _de novo_ OTUs should be excluded). If you ran open-reference OTU picking you can exclude _de novo_ OTUs with a command like this:
 
         filter_otus_from_otu_table.py -i otu_table.biom -o closed_otus.biom --negate_ids_to_exclude -e /usr/local/lib/python2.7/dist-packages/qiime_default_reference/gg_13_8_otus/rep_set/97_otus.fasta
