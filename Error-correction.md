@@ -7,7 +7,8 @@ There are some alternatives to to OTU picking that can be useful for microbiome 
 
 Note that the "-T" option above turns of multi-threading, which might be necessary if you only have 1 CPU enabled on the virtual box. If you have more CPU to spare and you omit this option the command should run much faster. 
   
-Once this job completes you'll be able to take a loop at the summary file below in FireFox.
+Once this job completes you'll be able to take a loop at the summary file below in FireFox.  
+  
     sponge-1K-m0.10-A0-M0-d4/HTML-OUTPUT/index.html
 
 
