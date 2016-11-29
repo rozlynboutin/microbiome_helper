@@ -9,7 +9,7 @@ _Callahan et al. 2016. DADA2: High-resolution sample inference from Illumina amp
 ### Minimum Entropy Decomposition (MED)
 MED is a core part of the oligotyping pipeline, which is described in detail [here](http://merenlab.org/software/oligotyping/). It takes in a FASTA file (so no quality info, unlike DADA2) and decomposes reads into nodes rather than OTUs. 
   
-You can check out the MED paper for details:
+You can check out the MED paper for details:  
 _Eren AM, Morrison HG, Lescault PJ, Reveillaud J, Vineis JH, Sogin ML. 2015. Minimum entropy decomposition: Unsupervised oligotyping for sensitive partitioning of high-throughput marker gene sequences. ISME J 9:968–979_.
   
 If you just want to run MED and aren't interested in the rest of the Microbiome Helper resources then you might be interested in the [Meren lab's virtual box](http://merenlab.org/2014/09/02/virtualbox/). If not, you can try it out on our virtual box with these commands:
