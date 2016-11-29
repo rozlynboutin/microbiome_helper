@@ -31,6 +31,8 @@ If you want to try IPED out on our virtual box then you can use the below comman
   
 **Step 1:** Create assembled FASTA and custom quality files required by IPED
   
+(Note that IPED requires full paths to be specified for all arguments)
+   
     /usr/local/prg/IPED/IPED_V1.run _F /home/shared/err_corr_examples/IPED_example/sample.forward.fastq _R /home/shared/err_corr_examples/IPED_example/sample.reverse.fastq _o /home/shared/err_corr_examples/IPED_example/step1_out_
   
 **Step 2:** Run error correction algorithm
