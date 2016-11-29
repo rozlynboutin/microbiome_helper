@@ -25,16 +25,21 @@ Once this job completes you'll be able to take a loop at the summary file below 
 
 
 ### IPED
-
-**Step 1**
-
-    /usr/local/prg/IPED/IPED_V1.run _F /home/shared/err_corr_examples/IPED_example/sample.forward.fastq _R /home/shared/err_corr_examples/IPED_example/sample.reverse.fastq _o /home/shared/err_corr_examples/IPED_example/step1_out_
-
-**Step 2**
+IPED is an algorithm design to correct sequencing errors specifically in paired-end Illumina MiSeq reads. These reads can then be used for OTU picking. 
   
+If you want to try IPED out on our virtual box then you can use the below commands.
+  
+**Step 1:** Create assembled FASTA and custom quality files required by IPED
+  
+    /usr/local/prg/IPED/IPED_V1.run _F /home/shared/err_corr_examples/IPED_example/sample.forward.fastq _R /home/shared/err_corr_examples/IPED_example/sample.reverse.fastq _o /home/shared/err_corr_examples/IPED_example/step1_out_
+  
+**Step 2:** Run error correction algorithm
+    
 Note that you'll need to replace "TMP_DIRECTORY" below with the large number which is the name of the folder in the Step 1 directory (e.g. for me it was "952567556015314", but it will be different each time you run it).
-
+  
     mkdir step2_out
-
+  
     /usr/local/prg/IPED/IPED_V1.run _f /home/shared/err_corr_examples/IPED_example/sample.fasta _n /home/shared/err_corr_examples/IPED_example/sample.names _c /home/shared/err_corr_examples/IPED_example/step1_out_IPED_Final/TMP_DIRECTORY/sample.forward.trim.contigs.fasta _q /home/shared/err_corr_examples/IPED_example/step1_out_IPED_Final/TMP_DIRECTORY/sample.forward.contigs.qual _o /home/shared/err_corr_examples/IPED_example/step2_out
-
+   
+You can check out the [IPED site](http://science.sckcen.be/en/Institutes/EHS/MCB/MIC/Bioinformatics/IPED) or the paper below for details:
+_M. Mysara, N. Leys, J. Raes, P. Monsieurs. 2016. IPED: A highly efficient denoising tool for Illumina MiSeq Paired-end 16S rRNA gene amplicon sequencing data. BMC Bioinformatics 17:192_.
