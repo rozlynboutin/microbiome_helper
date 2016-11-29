@@ -1,4 +1,4 @@
-* [Home](https://github.com/mlangill/microbiome_helper/wiki/Home)
+* [Wiki home](https://github.com/mlangill/microbiome_helper/wiki/Home)
 * [GitHub repository](https://github.com/mlangill/microbiome_helper/)
 * [Requirements](https://github.com/mlangill/microbiome_helper/wiki/Requirements)
 * [Brief description of scripts](https://github.com/mlangill/microbiome_helper/wiki/Brief-description-of-scripts)
