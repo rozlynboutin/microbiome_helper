@@ -25,7 +25,7 @@ Once this job completes you'll be able to take a loop at the summary file below 
 
 
 ### IPED
-IPED is an algorithm design to correct sequencing errors specifically in paired-end Illumina MiSeq reads. These reads can then be used for OTU picking. 
+IPED is an algorithm designed to correct sequencing errors specifically in paired-end Illumina MiSeq reads. These reads can then be used for OTU picking. 
   
 If you want to try IPED out on our virtual box then you can use the below commands.
   
