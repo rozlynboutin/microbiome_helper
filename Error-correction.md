@@ -45,3 +45,5 @@ Note that you'll need to replace "TMP_DIRECTORY" below with the large number whi
    
 You can check out the [IPED site](http://science.sckcen.be/en/Institutes/EHS/MCB/MIC/Bioinformatics/IPED) or the paper below for details:
 _M. Mysara, N. Leys, J. Raes, P. Monsieurs. 2016. IPED: A highly efficient denoising tool for Illumina MiSeq Paired-end 16S rRNA gene amplicon sequencing data. BMC Bioinformatics 17:192_.
+  
+Note that IPED comes packaged with [mothur](https://www.mothur.org/) and [WEKA](http://www.cs.waikato.ac.nz/ml/weka/).
