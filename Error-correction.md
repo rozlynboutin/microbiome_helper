@@ -5,7 +5,7 @@ DADA2 takes in a directory of FASTQ files and models and corrects errors found w
   
 Besides the DADA2 website linked to above, you can check out the DADA2 paper for details:
   
-_Callahan et al. 2016. DADA2: High-resolution sample inference from Illumina amplicon data. Nature Methods 13:581-583_
+_Callahan et al. 2016. DADA2: High-resolution sample inference from Illumina amplicon data. Nature Methods 13:581-583_.
 
 ### Minimum Entropy Decomposition (MED)
     cd /home/shared/err_corr_examples/med_example
