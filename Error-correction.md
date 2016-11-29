@@ -4,7 +4,7 @@ There are some alternatives to to OTU picking that can be useful for microbiome 
 DADA2 takes in a directory of FASTQ files and models and corrects errors found within the reads. This approach allows exact sequence variants to be inferred, which is an alternative to OTU clustering. This is the approach that [QIIME 2](https://qiime2.org/) (which is still in alpha phase) is moving towards. There is a [tutorial](http://benjjneb.github.io/dada2/tutorial.html) available for DADA2 that you can walk through. You'll be able to run this in RStudio or using command-line R in our virtual box. 
   
 Besides the DADA2 website linked to above, you can check out the DADA2 paper for details:
-Callahan et al. 2016. DADA2: High-resolution sample inference from Illumina amplicon data. Nature Methods 13:581-583. 
+_Callahan et al. 2016. DADA2: High-resolution sample inference from Illumina amplicon data. Nature Methods 13:581-583. _
 
 ### Minimum Entropy Decomposition (MED)
     cd /home/shared/err_corr_examples/med_example
