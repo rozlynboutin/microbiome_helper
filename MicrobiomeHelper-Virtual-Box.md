@@ -4,7 +4,7 @@ We have constructed a Linux (Ubuntu v16.04 LTS Desktop) Virtual Box image that c
 * Any desktop or laptop purchased within the last 3-5 years should work.
 * Must be 64-bit
 * >4 GB RAM
-* At least 35 GB available hard drive space: the OVA file is 11.5 GB and the imported image is 21.5 GB (Note that you can delete the OVA file once the image is imported).
+* At least 35 GB available hard drive space: the OVA file is 11.5 GB and the imported image is 21.5 GB (note that you can delete the OVA file once the image is imported).
 
 ## Installation
 1. Download and install VirtualBox for the operating system you are using. https://www.virtualbox.org/wiki/Downloads
