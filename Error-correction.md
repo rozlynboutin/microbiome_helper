@@ -19,7 +19,7 @@ If you just want to run MED and aren't interested in the rest of the Microbiome 
 
 Note that the "-T" option above turns of multi-threading, which might be necessary if you only have 1 CPU enabled on the virtual box. If you have more CPUs to spare and you omit this option the command should run much faster. 
   
-Once this job completes you'll be able to take a look at the HTML file in FireFox which summarizes the analyses: 
+Once this job completes you'll be able to take a look at the below HTML file in FireFox which summarizes the analyses: 
   
     sponge-1K-m0.10-A0-M0-d4/HTML-OUTPUT/index.html
 
