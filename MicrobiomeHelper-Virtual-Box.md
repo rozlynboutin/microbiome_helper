@@ -1,26 +1,23 @@
-We have constructed a Linux (Ubuntu v16.04 LTS Desktop) Virtual Box image that can be used to run all Microbiome Helper workflows and tutorials. This Virtual Box image can be run on any operating system (Windows, Mac, Linux) and saves the time consuming task of installing and configuring multiple bioinformatic packages. 
-
-## Includes
-The MicrobiomeHelper VirtualBox includes [several bioinformatic packages](https://github.com/mlangill/microbiome_helper/wiki/Requirements). Please cite all of the specific tools that you use for your analysis. 
-
+We have constructed a Linux (Ubuntu v16.04 LTS Desktop) Virtual Box image that can be used to run all Microbiome Helper workflows and tutorials. This Virtual Box image can be run on any operating system (Windows, Mac, Linux) and saves the time consuming task of installing and configuring multiple bioinformatic packages. If you use any tools packaged with this image be sure to cite the tool's authors. 
+   
 ## Requirements
 * Any desktop or laptop purchased within the last 3-5 years should work.
 * Must be 64-bit
-* >4GB RAM
-* >25GB available hard drive space
+* >4 GB RAM
+* >35 GB available hard drive space (The OVA file is 11.5 GB and the installed image is 21.5 GB)
 
 ## Installation
 1. Download and install VirtualBox for the operating system you are using. https://www.virtualbox.org/wiki/Downloads
-2. Download the latest version of [Microbiome Helper Vbox (v0.2.10)](https://www.dropbox.com/s/rijey4hshe4927k/MicrobiomeHelper_v0.2.10.ova?dl=1) (11.9 GB - OVA file). If that doesn't work, try the [alternate link](http://kronos.pharmacology.dal.ca/public_files/Microbiome_Helper_Vbox/MicrobiomeHelper_v0.2.10.ova) (check out the [CHANGELOG](http://kronos.pharmacology.dal.ca/public_files/Microbiome_Helper_Vbox/CHANGELOG) for details).
-3. "Import" the Microbiome Helper Vbox into VirtualBox by opening the OVA file or within VirtualBox `File->Import Appliance`. More detailed and graphical instructions for importing the image are [available here] (https://www.maketecheasier.com/import-export-ova-files-in-virtualbox).
+2. Download the latest version of [Microbiome Helper Vbox (v1.0.0)](https://www.dropbox.com/s/pxhtt0iss3r0k7a/MicrobiomeHelper_v1.0.0.ova?dl=1) (11.5 GB - OVA file). If that doesn't work, try the [alternate link](http://kronos.pharmacology.dal.ca/public_files/Microbiome_Helper_Vbox/MicrobiomeHelper_v1.0.0.ova) (check out the [CHANGELOG](http://kronos.pharmacology.dal.ca/public_files/Microbiome_Helper_Vbox/CHANGELOG) for details).
+3. "Import" the Microbiome Helper Vbox into VirtualBox by opening the OVA file or within VirtualBox `File->Import Appliance`. More detailed and graphical instructions for importing the image are [available here] (https://www.maketecheasier.com/import-export-ova-files-in-virtualbox). You can delete the OVA file once it is finished importing to save space!
 
 ## Optional Configuration
 * During the import step (or later in settings) you can change the default amount of RAM and number of CPU available for use by the VirtualBox.
     * If your computer has 8GB of RAM or more, we would recommend configuring the virtual image with RAM: 4000MB. 
-    * If your computer has 2 or more cores you can configure the virtual image with  CPU == 2 (or more).
+    * If your computer has 2 or more cores you can configure the virtual image with CPU == 2 (or more).
 
-## Moving files to the virtualbox image
-* To move files in and out of the virtualbox image you can create a "shared folder":
+## Moving files to the VBox image
+* To move files in and out of the VBox image you can create a "shared folder":
     * Settings->Shared Folders (Note this is in the VirtualBox GUI on your local PC) 
     * Click on the little "+" sign on the folder on the right.
     * Choose a "Folder Path" and "Folder Name"
