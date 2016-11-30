@@ -37,4 +37,4 @@ To learn how to do this you can try the two example commands described in the do
     collapse_table.py -i otu_table.biom -o functional_table.biom -g ../FAPROTAX.txt -r report_example2.txt -n columns_after_collapsing -v --collapse_by_metadata 'taxonomy'
 
 Be sure to cite the FAPROTAX paper if you use it:  
-Louca, S., Parfrey, L.W., Doebeli, M. (2016) - Decoupling function and taxonomy in the global ocean microbiome. Science 353:1272-1277
+_Louca, S., Parfrey, L.W., Doebeli, M. (2016) - Decoupling function and taxonomy in the global ocean microbiome. Science 353:1272-1277_.
