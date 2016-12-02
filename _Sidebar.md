@@ -26,7 +26,7 @@
    * [Alpha and beta diversity](https://github.com/mlangill/microbiome_helper/wiki/Alpha-and-beta-diversity)
    * [PICRUSt workflow](https://github.com/mlangill/microbiome_helper/wiki/PICRUSt-workflow)
    * [Predict phenotypes](https://github.com/mlangill/microbiome_helper/wiki/Predict-phenotypes)
-   * [Error correction](https://github.com/mlangill/microbiome_helper/wiki/Error-correction)
+   * [Sequence Error correction](https://github.com/mlangill/microbiome_helper/wiki/Sequence-Error-correction)
    * [Additional QIIME analysis](https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis)
 
 **Tutorials**
