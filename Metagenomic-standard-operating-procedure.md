@@ -18,7 +18,7 @@ _Last updated: 6 Dec 2016 (see "revisions" above for earlier versions)_
 
         run_pear.pl -p 4 -o stitched_reads raw_data/*
   
-_If you don't stitch your reads together at this step you will need to unzip your FASTQ files before running the below command._
+ _If you don't stitch your reads together at this step you will need to unzip your FASTQ files before running the below command._
   
 4. Run Bowtie2 to screen out contaminant sequences, here we are screening out reads that map to the human or PhiX genomes (log written to "screened_reads.log" by default). Note: you can use run_deconseq.pl instead but it is much slower.
     
