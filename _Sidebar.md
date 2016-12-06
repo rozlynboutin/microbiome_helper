@@ -5,6 +5,9 @@
 * [Virtual Box image](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box)
 * [Contact](https://github.com/mlangill/microbiome_helper/wiki#contact)
 
+**Wet-Lab protocols**
+   * [Microbiome Amplicon Sequencing Workflow](Microbiome Amplicon Sequencing Workflow)
+
 **Metagenomic resources**
    * [Metagenomic SOP](Metagenomic-standard-operating-procedure)
    * [Metagenomics tutorial](Metagenomics-Tutorial-(Downsampled))
