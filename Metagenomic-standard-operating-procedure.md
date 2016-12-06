@@ -2,19 +2,19 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
     
 _Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._   
     
-_Last updated: 28 Nov 2016 (see "revisions" above for earlier versions)_   
+_Last updated: 6 Dec 2016 (see "revisions" above for earlier versions)_   
      
     
 1. (Optional) Concatenate multiple lanes of sequencing together (e.g. for NextSeq data). If you do this step remember to change "raw_data" to "concat_data" below.
 
         concat_lanes.pl raw_data/* -o concat_data -p 4
 
-2. (Optional) Run FastQC to allow manual inspection of the quality of sequences.
+2. Run FastQC to allow manual inspection of the quality of sequences.
 
         mkdir fastqc_out
         fastqc -t 4 raw_data/* -o fastqc_out/
 
-3. Stich paired end reads together (summary of stitching results are written to "pear_summary_log.txt"). Note: it is important to check the % of reads assembled. It may be better to concatenate the forward and reverse reads together if the assembly % is too low.
+3. (Optional) Stitch paired end reads together (summary of stitching results are written to "pear_summary_log.txt"). Note: it is important to check the % of reads assembled. It may be better to concatenate the forward and reverse reads together if the assembly % is too low (see step 6).
 
         run_pear.pl -p 4 -o stitched_reads raw_data/*
 
@@ -27,19 +27,23 @@ _Last updated: 28 Nov 2016 (see "revisions" above for earlier versions)_
 
         run_trimmomatic.pl -l 5 -t 5 -r 15 -w 4 -m 70 -j /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar --thread 4 -o trimmomatic_filtered screened_reads/*fastq  
   
-6. Run MetaPhlAn2 for taxonomic composition.
+6. (Optional) If you did not stitch your PE reads together with PEAR then you could concatenate the forward and reverse FASTQs together now. Note this is done after quality filtering so that both reads in a pair are either discarded or retained.  
+   
+        concat_paired_end.pl -p 4 -o cat_reads trimmomatic_filtered/*fastq 
+
+7. Run MetaPhlAn2 for taxonomic composition (note the input FASTQs will be in "cat_reads" if you ran step 6):
 
         run_metaphlan2.pl -p 4 -o metaphlan_taxonomy.txt trimmomatic_filtered/*fastq
   
-7. Convert from MetaPhlAn to STAMP profile file.
+8. Convert from MetaPhlAn to STAMP profile file.
 
         metaphlan_to_stamp.pl metaphlan_taxonomy.txt > metaphlan_taxonomy.spf
 
-8. Run pre-HUMAnN (DIAMOND search).
+9. Run pre-HUMAnN (DIAMOND search).
 
         run_pre_humann.pl -p 4 -o pre_humann/ trimmomatic_filtered/*fastq
 
-9. Run HUMAnN (link files to HUMAnN "input" directory and then run HUMAnN with scons command). Note that you can run this in parallel with `-j` option (e.g. scons -j 4), but I have found this often causes HUMAnN to unexpectedly error. Note that "/home/shared/humann-0.99/" is the location of HUMAnN on our virtual box. You could install this into your own home directory if you are running it on a different system (esp. if there are multiple users).
+10. Run HUMAnN (link files to HUMAnN "input" directory and then run HUMAnN with scons command). Note that you can run this in parallel with `-j` option (e.g. scons -j 4), but I have found this often causes HUMAnN to unexpectedly error. Note that "/home/shared/humann-0.99/" is the location of HUMAnN on our virtual box. You should install this into your own home directory if you are running it on a different system (esp. if there are multiple users).
   
         rm /home/shared/humann-0.99/input/*txt 
         rm /home/shared/humann-0.99/output/*
@@ -48,7 +52,7 @@ _Last updated: 28 Nov 2016 (see "revisions" above for earlier versions)_
         cd /home/shared/humann-0.99/
         scons
   
-10. Convert HUMAnN output to STAMP format
+11. Convert HUMAnN output to STAMP format
 
         cd output/
         humann_to_stamp.pl 04b-hit-keg-mpm-cop-nul-nve-nve.txt > humann_modules.spf
