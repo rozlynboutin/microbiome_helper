@@ -78,3 +78,10 @@ H. _Optional: For the generation of 18S V4 amplicons from microbiome samples con
 ## 1.0 – DNA Extraction (1 day)
 
 1. Extract DNAs from your samples using the method/kit appropriate to the specific samples (ex: generally stool [with bead-beating kits], but also urine, etc.). For example, we have had good success with the _MO-BIO PowerFecal Kit_ for mouse pellets and human stool. _Note: Do not overload the kit columns with excessive amounts of sample material as this reduces extraction efficiencies and can allow contaminants/inhibitors to co-purify with the DNAs._
+
+2. Quantify and quality-check your final DNAs via _NanoDrop_ or _Qubit_ to verify success. The A280/260 ratios should be 1.8 or better and our experience with community DNAs has shown that a concentration of at least 1 ng/µL is required to get consistent PCR results. Avoid costly secondary extractions/clean-ups for inhibitors (unless obvious) until PCRs below have truly shown inhibition – many sub-optimal DNAs will still perform adequately in PCR. _Optional: A gel can be run to verify integrity (generally unnecessary for PCR-only studies)._
+
+3. Aliquot 5 µL of each of the 380 DNA samples into 4 × 96-well PCR plates (**DNA Plates 1-4**) in the order desired (we prefer by column), allowing for one PCR negative control well (position H12) on each plate; the layout of the primers (for ex: showing F1+R2 sets are used for Plate 2) are also indicated on this figure:
+
+[[images/PlateLayout.jpg]]
+
