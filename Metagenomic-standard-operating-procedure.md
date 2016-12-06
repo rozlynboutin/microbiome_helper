@@ -39,7 +39,7 @@ _Last updated: 6 Dec 2016 (see "revisions" above for earlier versions)_
 
         metaphlan_to_stamp.pl metaphlan_taxonomy.txt > metaphlan_taxonomy.spf
 
-9. Run pre-HUMAnN (DIAMOND search).
+9. Run pre-HUMAnN DIAMOND search (Note the input FASTQs will be in "cat_reads" if you ran step 6):
 
         run_pre_humann.pl -p 4 -o pre_humann/ trimmomatic_filtered/*fastq
 
