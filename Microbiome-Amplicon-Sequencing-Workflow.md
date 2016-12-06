@@ -146,18 +146,22 @@ H. _Optional: For the generation of 18S V4 amplicons from microbiome samples con
 6. Once all four pools are complete, pipette 100 µL of each of the four tubes into one 1.5 mL Eppendorf tube and label Final Library Pool (add the run name to the tube or some other identifier to keep your various pools separate).
 
 7. Quantify the Final Library Pool using the Invitrogen Qubit dsDNA HS assay (or similar fluorescence-based alternative; 5 µL of pool to be assayed) and calculate the molar concentration using the following formula, knowing that 1 ng/µL of a 500 bp amplicon = 3.29 nM:
+
 [[images/Equation.jpg]]
+
 For the 16S amplicon generated using our V6-V8 primers (= 574 bp, including target region + adaptors + indices) at a concentration of 3.0 ng/µL, for example:
+
 [[images/EquationExample.jpg]]
+
 _Note: We have found that the anticipated 1-2 ng/µL output from the SequalPrep plate is near impossible to achieve; we typically see concentrations in the range of 0.3-0.9 ng/µL._
 
 ## 5.0 - _Illumina MiSeq_ Sequencing (~3 days [only ~2 h hands-on at the start and end])
 
 This section is based upon the following Illumina documents, with some small procedural changes (including using the NextSeq variant for sample denaturation), and the inclusion of instructions to be able to load >96 samples (i.e.: 384 combinations of indices) which are not written out by Illumina – familiarize yourself with these documents / have them on-hand:
-* _MiSeq Reagent Kit v3 – Reagent Preparation Guide_
-* _Preparing Libraries for Sequencing on the MiSeq_
-* _Denaturing and Diluting Libraries for the NextSeq 500_
-* _MiSeq System User Guide_
+    * _MiSeq Reagent Kit v3 – Reagent Preparation Guide_
+    * _Preparing Libraries for Sequencing on the MiSeq_
+    * _Denaturing and Diluting Libraries for the NextSeq 500_
+    * _MiSeq System User Guide_  
 
 1. Begin thawing the _v3 Reagent Cartridge_ and tube of _HT1_ as instructed. Put at 4°C when complete. _Optional: Take out the day before and thaw the reagents overnight at 4°C._
 
