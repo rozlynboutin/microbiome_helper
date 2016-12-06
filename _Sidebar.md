@@ -36,5 +36,5 @@
    * [Other tutorials](other-tutorials)
 
 **Datasets**
-   * [mSystems paper data](Microbiome paper data)
+   * [mSystems paper data](mSystems paper data)
 
