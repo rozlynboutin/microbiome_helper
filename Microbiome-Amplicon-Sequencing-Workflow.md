@@ -83,6 +83,8 @@ H. _Optional: For the generation of 18S V4 amplicons from microbiome samples con
 3. Aliquot 5 µL of each of the 380 DNA samples into 4 × 96-well PCR plates (**DNA Plates 1-4**) in the order desired (we prefer by column), allowing for one PCR negative control well (position H12) on each plate; the layout of the primers (for ex: showing F1+R2 sets are used for Plate 2) are also indicated on this figure:
 [[images/PlateLayout.jpg]]
 
+***
+
 ## 2.0 – 16S or 18S PCR (1 day)
 
 1. Prepare the following PCR master-mix for Plate 1 in a 1.5 mL Eppendorf tube (adjust if not using _Phusion_):[[images/PCRmastermix.jpg]]
@@ -155,13 +157,17 @@ For the 16S amplicon generated using our V6-V8 primers (= 574 bp, including targ
 
 _Note: We have found that the anticipated 1-2 ng/µL output from the SequalPrep plate is near impossible to achieve; we typically see concentrations in the range of 0.3-0.9 ng/µL._
 
+***
+
 ## 5.0 - _Illumina MiSeq_ Sequencing (~3 days [only ~2 h hands-on at the start and end])
 
 This section is based upon the following Illumina documents, with some small procedural changes (including using the NextSeq variant for sample denaturation), and the inclusion of instructions to be able to load >96 samples (i.e.: 384 combinations of indices) which are not written out by Illumina – familiarize yourself with these documents / have them on-hand:
-    * _MiSeq Reagent Kit v3 – Reagent Preparation Guide_
-    * _Preparing Libraries for Sequencing on the MiSeq_
-    * _Denaturing and Diluting Libraries for the NextSeq 500_
-    * _MiSeq System User Guide_  
+
+* _MiSeq Reagent Kit v3 – Reagent Preparation Guide_
+* _Preparing Libraries for Sequencing on the MiSeq_
+* _Denaturing and Diluting Libraries for the NextSeq 500_
+* _MiSeq System User Guide_  
+  
 
 1. Begin thawing the _v3 Reagent Cartridge_ and tube of _HT1_ as instructed. Put at 4°C when complete. _Optional: Take out the day before and thaw the reagents overnight at 4°C._
 
