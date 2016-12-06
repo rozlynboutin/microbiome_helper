@@ -18,8 +18,8 @@
    * [Functional profiling](https://github.com/mlangill/microbiome_helper/wiki/Functional-profiling)
 
 **16S/18S resources**
-   * [16S SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure)
-   * [18S SOP](https://github.com/mlangill/microbiome_helper/wiki/18S-standard-operating-procedure)
+   * [16S Bacteria SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure)
+   * [18S Eukarya SOP](https://github.com/mlangill/microbiome_helper/wiki/18S-standard-operating-procedure)
    * [16S tutorials](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorials)
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
