@@ -17,7 +17,9 @@ _Last updated: 6 Dec 2016 (see "revisions" above for earlier versions)_
 3. (Optional) Stitch paired end reads together (summary of stitching results are written to "pear_summary_log.txt"). Note: it is important to check the % of reads assembled. It may be better to concatenate the forward and reverse reads together if the assembly % is too low (see step 6).
 
         run_pear.pl -p 4 -o stitched_reads raw_data/*
-
+  
+**If you don't stitch your reads together at this step you will need to unzip your FASTQ files before running the below command. **
+  
 4. Run Bowtie2 to screen out contaminant sequences, here we are screening out reads that map to the human or PhiX genomes (log written to "screened_reads.log" by default). Note: you can use run_deconseq.pl instead but it is much slower.
     
         echo "--local" >> ./bowtie2_config.txt ### add the bowtie2 options you want to use to a config file
