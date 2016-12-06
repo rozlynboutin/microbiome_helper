@@ -46,7 +46,7 @@ _Last updated: 06 Dec 2016 (see "revisions" above for earlier versions)_
 
 ## Optional/Case-Dependent Reagents & Consumables
 * Ethanol (usually a requirement for extraction/purification kits)
-* Mammalian blocking primer (see **viii** below; if substantial host contamination in 18S) 
+* Mammalian blocking primer (see **H.** below; if substantial host contamination in 18S) 
 * Thin-wall 0.2 mL PCR tubes or strips with caps (for re-amplifying recalcitrant samples)
 * Agarose, loading buffer/stain and 100 bp ladder (for analyzing recalcitrant samples)
 * PCR product purification kit (if need to concentrate final library)
@@ -55,20 +55,26 @@ _Last updated: 06 Dec 2016 (see "revisions" above for earlier versions)_
 
 ## Advance Preparation – Order and Aliquot Primers (1 h)
 
-i. Use our Excel template to copy existing 16S/18S/ITS primers or to design your own custom gene primers with the proper _Illumina_ indices and _Nextera_ adapter orientations. We order _IDT “Ultramers”_ (www.idtdna.com) for such long primers (~80-90 nt) as their coupling efficiency is one of the highest available (critical for obtaining high proportions of full-length oligos in the mix you obtain). Order the fusion primers at 4 nmole scale in deep-well plates; one set per 96-well plate, arranged as follows, leaving blank rows in between sets:
+A. Use our Excel template to copy existing 16S/18S/ITS primers or to design your own custom gene primers with the proper _Illumina_ indices and _Nextera_ adapter orientations. We order _IDT “Ultramers”_ (www.idtdna.com) for such long primers (~80-90 nt) as their coupling efficiency is one of the highest available (critical for obtaining high proportions of full-length oligos in the mix you obtain). Order the fusion primers at 4 nmole scale in deep-well plates; one set per 96-well plate, arranged as follows, leaving blank rows in between sets:
 
 PrimerLayout.jpg
 
-ii. Once arrived, add 400 µL of PCR-grade water to each well containing the primers in order to reconstitute them at a concentration of 10 µM (1/10th the typical 100 µM working stock concentration for primers). We have found that these usually need a significant incubation time for the lyophilized pellets to re-suspend – we typically leave them overnight at 4°C.
+B. Once arrived, add 400 µL of PCR-grade water to each well containing the primers in order to reconstitute them at a concentration of 10 µM (1/10th the typical 100 µM working stock concentration for primers). We have found that these usually need a significant incubation time for the lyophilized pellets to re-suspend – we typically leave them overnight at 4°C.
 
-iii. Prepare the 1 µM working stock **Forward Set 1 Primer Plate** by pipetting 63 µL of PCR-grade water into each well of the 96-well PCR plate from a sterile reservoir. Rotate the deep-well primer plate 90° clockwise and align it so that the 8 occupied wells (= 8 different indices) of **row 1** line up with the 8 rows of the new plate. Working by **column** and keeping the same set of tips, transfer 7 µL of reconstituted primer into each well of each column, mixing well by pipetting. Once complete, each column of the resulting plate will have enough primer for one complete 96-well plate PCR (leaving some extra for pipetting error; 12 columns × 5 µL = 60 µL required). Seal the plate with PCR film and store at -20°C. 
+C. Prepare the 1 µM working stock **Forward Set 1 Primer Plate** by pipetting 63 µL of PCR-grade water into each well of the 96-well PCR plate from a sterile reservoir. Rotate the deep-well primer plate 90° clockwise and align it so that the 8 occupied wells (= 8 different indices) of **row 1** line up with the 8 rows of the new plate. Working by **column** and keeping the same set of tips, transfer 7 µL of reconstituted primer into each well of each column, mixing well by pipetting. Once complete, each column of the resulting plate will have enough primer for one complete 96-well plate PCR (leaving some extra for pipetting error; 12 columns × 5 µL = 60 µL required). Seal the plate with PCR film and store at -20°C. 
 
-iv. Prepare the 1 µM working stock **Forward Set 2 Primer Plate** by repeating step **iii**, but using **row 3** of the reconstituted deep-well primer plate.
+D. Prepare the 1 µM working stock **Forward Set 2 Primer Plate** by repeating step **C**, but using **row 3** of the reconstituted deep-well primer plate.
 
-v. Prepare the 1 µM working stock **Reverse Set 1 Primer Plate** by pipetting 45 µL of PCR-grade water into each well of the 96-well PCR plate from a sterile reservoir. Align the deep-well primer plate horizontally (normal orientation) so that the 12 occupied wells (= 12 different indices) of **row 5** line up with the 12 columns of the new plate. Working by **row** and keeping the same set of tips, transfer 5 µL of reconstituted primer into each well of each row, mixing well by pipetting. Once complete, each row of the resulting plate will have enough primer for one complete 96-well plate PCR (leaving some extra; 8 rows × 5 µL = 40 µL required). Seal the plate with PCR film and store at -20°C.
+E. Prepare the 1 µM working stock **Reverse Set 1 Primer Plate** by pipetting 45 µL of PCR-grade water into each well of the 96-well PCR plate from a sterile reservoir. Align the deep-well primer plate horizontally (normal orientation) so that the 12 occupied wells (= 12 different indices) of **row 5** line up with the 12 columns of the new plate. Working by **row** and keeping the same set of tips, transfer 5 µL of reconstituted primer into each well of each row, mixing well by pipetting. Once complete, each row of the resulting plate will have enough primer for one complete 96-well plate PCR (leaving some extra; 8 rows × 5 µL = 40 µL required). Seal the plate with PCR film and store at -20°C.
 
-vi. Prepare the 1 µM working stock **Reverse Set 2 Primer Plate** by repeating step **v**, but using **row 7** of the reconstituted deep-well primer plate.
+F. Prepare the 1 µM working stock **Reverse Set 2 Primer Plate** by repeating step **E**, but using **row 7** of the reconstituted deep-well primer plate.
 
-vii. Once all aliquoting is complete, seal the deep-well plate with PCR film and archive at -20°C until new aliquots are required (minimized freeze-thaw cycles).
+G. Once all aliquoting is complete, seal the deep-well plate with PCR film and archive at -20°C until new aliquots are required (minimized freeze-thaw cycles).
 
-viii. _Optional: For the generation of 18S V4 amplicons from microbiome samples containing substantial non-target host DNA (ex: human, mouse, etc.), order a custom PNA mammalian blocking primer (elongation arrest in the V4 region courtesy of Laura Parfrey and Matt Lemay [UBC]) with the sequence: 5’-TCTTAATCATGGCCTCAGTT-3’. Once arrived, prepare an archival stock of 100 µM and a working stock of 10 µM using PCR-grade water._
+H. _Optional: For the generation of 18S V4 amplicons from microbiome samples containing substantial non-target host DNA (ex: human, mouse, etc.), order a custom PNA mammalian blocking primer (elongation arrest in the V4 region courtesy of Laura Parfrey and Matt Lemay [UBC]) with the sequence: 5’-TCTTAATCATGGCCTCAGTT-3’. Once arrived, prepare an archival stock of 100 µM and a working stock of 10 µM using PCR-grade water._
+
+***
+
+## 1.0 – DNA Extraction (1 day)
+
+1. Extract DNAs from your samples using the method/kit appropriate to the specific samples (ex: generally stool [with bead-beating kits], but also urine, etc.). For example, we have had good success with the _MO-BIO PowerFecal Kit_ for mouse pellets and human stool. _Note: Do not overload the kit columns with excessive amounts of sample material as this reduces extraction efficiencies and can allow contaminants/inhibitors to co-purify with the DNAs._
