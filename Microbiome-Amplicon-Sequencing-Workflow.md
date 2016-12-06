@@ -1,6 +1,6 @@
 The following detailed protocol is for the generation of paired-end sequencing reads of 16S or 18S PCR amplicons with multiple barcodes (i.e.: “indices”) on the _Illumina MiSeq_ machine of length ≈450 bp (300+300 bp with ~150 bp overlap) using v3 chemistry. It assumes an input of 380 individual samples (+4 controls = 384) in four 96-well plates (384-well plates are discouraged). Catalog numbers are given when items from specific vendors (vs. generic choices) are required.  
 
-_Note that this workflow is continually being updated. If you want a specific version for printing (including the current one), select one of the PDFs._
+_Note that this workflow is continually being updated. If you want a specific version for printing (including the current one), select one of the PDFs below._
     
 _Last updated: 06 Dec 2016 (see "revisions" above for earlier versions)_
 
@@ -85,3 +85,54 @@ H. _Optional: For the generation of 18S V4 amplicons from microbiome samples con
 
 [[images/PlateLayout.jpg]]
 
+## 2.0 – 16S or 18S PCR (1 day)
+
+1. Prepare the following PCR master-mix for Plate 1 in a 1.5 mL Eppendorf tube (adjust if not using _Phusion_):[[images/PCRmastermix.jpg]]
+
+2. Dispense 78.5 µL of the master-mix into the 16 wells of 2 columns (or 105 µL in 12 wells of one row) of a 96-well plate (remaining wells to be used in subsequent PCR preps) – this plate now becomes the **Master-Mix Plate** and is used to transfer the master-mix into the PCR plate using an MCP.
+
+3. Dispense 13 µL of master-mix into each well of the **PCR Plate 1 (2 µL)**, one column (or row) at a time with the MCP.
+
+4. Remove the protective film (“uncover”) from one **column** of the **Forward Set 1 Primer Plate**, align it horizontally on the bench to the left of **PCR Plate 1 (2 µL)** and dispense 5 µL into each well, one **column** at a time using the MCP. _Note: You can use the same set of 8 tips for all._
+
+5. Uncover one **row** of the **Reverse Set 1 Primer Plate**, align it vertically on the bench along the top of **PCR Plate 1 (2 µL)** and dispense 5 µL into each well, one **row** at a time using the MCP. _Note: You must now **change tips** after every row to avoid cross-contamination (since different F primers/indices are now in each row)._
+
+6. Uncover the **DNA Plate 1**, align it along the top of **PCR Plate 1 (2 µL)** and dispense 2 µL into each well, one **column** at a time using the MCP. _Note: Remember to **change tips** after every column._
+
+7. Once complete, seal the plate with PCR film, place in a thermocycler and run the following program (~1.5 h; adjust if not using _Phusion_):[[images/PCRthermalprofile.jpg]]
+
+8. While the first PCR is running, prepare the 1/10th dilution of **DNA Plate 1** – add 27 µL of PCR-grade water to each well of the remaining 3 µL of template in **DNA Plate 1**, for a total of 30 µL final volume per well, using a reservoir (~3 mL required) and MCP. _Note: Remember to **change tips** after every column._
+
+9. Once the first PCR is complete (or nearly so), repeat **steps 1-7** to prepare **PCR Plate 1 (0.2 µL)** using the newly diluted templates. _Optional: Here, and for the subsequent plates below, once the two PCRs of the same plate are complete you can proceed to **steps 3.1-3.4** and verify the PCR products before continuing with the next plate each time._
+
+10. Once the two PCRs for **Plate 1** are complete, repeat **steps 1-9** to prepare **PCR Plates 2 (2 µL) & (0.2 µL)** from **DNA Plate 2** using **Forward Set 1 Primer Plate** and **Reverse Set 2 Primer Plate** (_note change to F1+R2 here_).
+
+11. Once the two PCRs for **Plate 2** are complete, repeat **steps 1-9** to prepare **PCR Plates 3 (2 µL) & (0.2 µL)** from **DNA Plate 3** using **Forward Set 2 Primer Plate** and **Reverse Set 1 Primer Plate** (_note change to F2+R1 here_).
+
+12. Once the two PCRs for **Plate 3** are complete, repeat **steps 1-9** to prepare **PCR Plates 4 (2 µL) & (0.2 µL)** from **DNA Plate 4** using **Forward Set 2 Primer Plate** and **Reverse Set 2 Primer Plate** (_note change to F2+R2 here_).
+
+***
+
+## 3.0 - Gel Verification (2 h)
+
+1. Plug in the _Mother E-Base_, unwrap a fresh _E-Gel 96_ and insert it into the base.
+
+2. The duplicate PCR reactions of **Plate 1** are aggregated then loaded onto the gel in the same action: using the MCP and working by **rows** (the gel cannot be loaded by columns as they are staggered), pipette 20 µL out of the **PCR Plate 1 (0.2 µL)** into the corresponding wells of **PCR Plate 1 (2 µL)** and mix by pipetting up and down, then take 20 µL of this aggregate and load into the appropriate wells of the gel. _Note: Remember to **change tips** after every row. Discard the empty **PCR Plate 1 (0.2 µL)** when finished and relabel the **PCR Plate 1 (2 µL)** the **Aggregated PCR Plate 1**._
+
+3. Once all rows are complete, load 20 µL of the _E-Gel Low Range Ladder_ into some of the marker (“M”) wells, then run the gel for the pre-set 12 min.
+
+4. Visualize the gel and photograph on a UV/blue transilluminator with a SYBR filter. Example gels of 16S and 18S amplicons from this protocol are included in the PDF version of this document for reference.
+
+5. Repeat **steps 1-4** for **PCR Plates 2 (2 µL) & (0.2 µL)**.
+
+6. Repeat **steps 1-4** for **PCR Plates 3 (2 µL) & (0.2 µL)**.
+
+7. Repeat **steps 1-4** for **PCR Plates 4 (2 µL) & (0.2 µL)**.
+
+8. Any samples with failed PCRs (or spurious bands) are re-amplified by optimizing the PCR (further template dilution to 1:100 or using BSA/other additives) to produce correct bands in order to complete the amplicon plate. Unless this represents the majority of a plate (in which case continue with plates and E-gels), PCRs are done in standard tubes/strips and visualized using a traditional gel box. Once correct bands have been obtained, amalgamate those few tubes into the appropriate wells of the respective **Aggregated PCR Plates** before continuing.
+
+***
+
+## 4.0 - PCR Clean-up + Normalization & Final Library Pool (2 h)
+
+1. 
