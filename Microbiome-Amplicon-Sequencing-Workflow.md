@@ -153,4 +153,10 @@ _Note: We have found that the anticipated 1-2 ng/µL output from the SequalPrep 
 
 ## 5.0 - _Illumina MiSeq_ Sequencing (~3 days [only ~2 h hands-on at the start and end])
 
+This section is based upon the following Illumina documents, with some small procedural changes (including using the NextSeq variant for sample denaturation), and the inclusion of instructions to be able to load >96 samples (i.e.: 384 combinations of indices) which are not written out by Illumina – familiarize yourself with these documents / have them on-hand:
+*_MiSeq Reagent Kit v3 – Reagent Preparation Guide_
+*_Preparing Libraries for Sequencing on the MiSeq_
+*_Denaturing and Diluting Libraries for the NextSeq 500_
+*_MiSeq System User Guide_
+
 1. 
