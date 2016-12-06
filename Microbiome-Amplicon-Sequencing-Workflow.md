@@ -154,9 +154,47 @@ _Note: We have found that the anticipated 1-2 ng/µL output from the SequalPrep 
 ## 5.0 - _Illumina MiSeq_ Sequencing (~3 days [only ~2 h hands-on at the start and end])
 
 This section is based upon the following Illumina documents, with some small procedural changes (including using the NextSeq variant for sample denaturation), and the inclusion of instructions to be able to load >96 samples (i.e.: 384 combinations of indices) which are not written out by Illumina – familiarize yourself with these documents / have them on-hand:
-*_MiSeq Reagent Kit v3 – Reagent Preparation Guide_
-*_Preparing Libraries for Sequencing on the MiSeq_
-*_Denaturing and Diluting Libraries for the NextSeq 500_
-*_MiSeq System User Guide_
+* _MiSeq Reagent Kit v3 – Reagent Preparation Guide_
+* _Preparing Libraries for Sequencing on the MiSeq_
+* _Denaturing and Diluting Libraries for the NextSeq 500_
+* _MiSeq System User Guide_
 
-1. 
+1. Begin thawing the _v3 Reagent Cartridge_ and tube of _HT1_ as instructed. Put at 4°C when complete. _Optional: Take out the day before and thaw the reagents overnight at 4°C._
+
+2. While waiting, prepare the _Sample Plate_ and _Sample Sheet_ files that will be used to run the _MiSeq_ by opening the _Illumina Experiment Manager (iEM)_ software.
+
+3. Create the _Sample Plates_ first – in order to run all 384 combinations of indices, 4 separate _Sample Plates_ (one per plate from our protocol above) will be required. For the samples that were in **DNA Plate 1**:
+* Choose _Nextera XT v2 (Set A)_ in the _iEM_ wizard.
+* Give the plate a unique name (we usually use our run number and append an “**A**” to the end; ex.: _15A_).
+* Copy-and-paste the 96 sample names from your Excel sheet (after having brought the file over to the _MiSeq_ via USB, _Dropbox_ or email) into the _Plate_ tab, then press _Apply Default Index Layout_. You will sometimes not see the index names show up on the top row and left-hand column of this tab, but if you switch to the _Plate Graphic_ or _Table_ views, they will be there correctly.
+* Click on _Finish_ and save the _*A.nexxt28.plt_ file in the directory of your choice.
+
+4. For the samples that were in **DNA Plate 2**, repeat **step 3** except change to _Nextera XT v2 (Set B)_ and append a “**B**” to the filename.
+
+5. For the samples that were in **DNA Plate 3**, repeat **step 3** except change to _Nextera XT v2 (Set B)_ and append a “**C**” to the filename.
+
+6. For the samples that were in **DNA Plate 4**, repeat **step 3** except change to _Nextera XT v2 (Set B)_ and append a “**D**” to the filename.
+
+7. Now create the _Sample Sheet_ by bringing in the 4 _Sample Plates_ that belong to it:
+* Select _MiSeq_ in the _iEM_ wizard, then _Other --­> FASTQ Only_.
+* Input your Reagent Cartridge barcode, select _Nextera XT v2_ for the Sample Prep Kit, input your Experiment Name (we usually use our complete run name now; ex.: _IMR-Run15_) and change the cycles to **301** for both reads.
+* On the next screen, uncheck the _Maximize_ box, choose _Select Plate_ at left and navigate to and select your _*A.nexxt28.plt_ file (_Plate A_).
+* Once the samples are displayed, choose _Select All + Add Selected Samples_.
+* Repeat the above two steps for the remaining plate files (_Plates B/C/D_).
+* The Sample Sheet Status should show as **Valid** and, if so, click _Finish_ to save the file, appending the run name to the end of the filename (for the above ex.: _MSxxxxxxx-600V3-Run15.csv_). We find it helpful having the run name/# when returning to the files, otherwise they are only labeled with the less-informative cartridge barcode by default. If your Sample Sheet Status is showing as **Invalid**, then it is often due to identical sample names being used in error. Once corrected, the status will update.
+* It is a good idea to then simply verify that the CSV file is all correct by opening the file in _WordPad_ and checking that the header information is correct (date, run name, FASTQ generation, etc.) and that you see the four sets of samples below in the [Data] section (_Plate A_ samples, followed by _Plate B_, etc.).
+
+8. Prepare 0.2 N NaOH as instructed, except make 10-fold less (20 µL of 1 N NaOH + 80 µL of water).
+
+9. Use the nanomolar concentration from **step 4.7** to determine whether the final amplicon library must be diluted or concentrated prior to continuing. A fixed concentration of **4 nM** is the standard requirement for the _MiSeq_, however, using the _NextSeq_ loading protocol, a library between **0.4-4 nM** can be accommodated by simply using a larger volume of a more dilute library. Use the following guidelines:
+[[images/LoadingTable.jpg]]
+
+10. Denature the library, using the indicated volume of 0.2 N NaOH in the table above, for 5 min. at room temperature.
+
+11. Neutralize the reaction by adding the equivalent volume of Tris-HCl as indicated.
+
+12. Dilute out the library to 20 pM using the indicated amount of chilled _HT1_ and place on ice.
+
+13. Combine 570 µL of the library with 30 µL (=**5%**) of the already diluted and denatured _PhiX Control Library_. We always use **5%** with amplicon libraries, regardless of anticipated diversity.
+
+14. Proceed with loading the 600 µL sample in the _v3 Reagent Cartridge_ and continue the _MiSeq_ run start procedure, as instructed – the only slight change is that the default filename (just the cartridge barcode) of the _Sample Sheet_ will not be found since we appended the run name to the end of the CSV file (for the above ex.: _MSxxxxxxx-600V3-Run15.csv_); browse to and select the correct file.
