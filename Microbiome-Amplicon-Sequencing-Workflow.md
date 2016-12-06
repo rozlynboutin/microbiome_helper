@@ -1,6 +1,8 @@
 The following detailed protocol is for the generation of paired-end sequencing reads of 16S or 18S PCR amplicons with multiple barcodes (i.e.: “indices”) on the _Illumina MiSeq_ machine of length ≈450 bp (300+300 bp with ~150 bp overlap) using v3 chemistry. It assumes an input of 380 individual samples (+4 controls = 384) in four 96-well plates (384-well plates are discouraged). Catalog numbers are given when items from specific vendors (vs. generic choices) are required.  
 
-_Note that this workflow is continually being updated. If you want a specific version for printing (including the current one), select one of the PDFs below._
+_Note that this workflow is continually being updated. If you want a specific version for printing (including the current one), select one of the PDFs below:_
+
+Link to **Version 1** PDF (as originally published) - coming soon!
     
 _Last updated: 06 Dec 2016 (see "revisions" above for earlier versions)_
 
