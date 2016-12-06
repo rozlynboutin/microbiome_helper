@@ -12,15 +12,15 @@ _Last updated: 06 Dec 2016 (see "revisions" above for earlier versions)_
 * Multi-channel (8) pipette(s) (MCP; 2-100 µL)
 * Required equipment for the DNA extraction kit(s) of your choice
 * PCR machine with 96-well block
-* Invitrogen Mother E-Base (#EB-M03) for E-Gels 96
+* _Invitrogen Mother E-Base_ (#EB-M03) for _E-Gels 96_
 * Documentation system for DNA gels (SYBR Safe filter)
-* Microvolume DNA fluorescence reader (such as Invitrogen Qubit)
-* Illumina Experiment Manager (iEM) software
-* Illumina MiSeq sequencer with RTA v1.17.28 / MCS v2.2 or later
+* Microvolume DNA fluorescence reader (such as _Invitrogen Qubit_)
+* _Illumina Experiment Manager (iEM)_ software
+* _Illumina MiSeq_ sequencer with _RTA v1.17.28 / MCS v2.2_ or later
 
 ## Optional/Case-Dependent Equipment
 * Bead-mill / TissueLyser / Homogenizer (if using bead-based DNA extractions)
-* Microvolume DNA spectrophotometer (such as NanoDrop; for quantifying extracts)
+* Microvolume DNA spectrophotometer (such as _NanoDrop_; for quantifying extracts)
 * Centrifuge with rotor for 96-well plates (useful for spinning down condensation)
 * Standard gel electrophoresis system (for analyzing recalcitrant samples)
 
@@ -29,65 +29,46 @@ _Last updated: 06 Dec 2016 (see "revisions" above for earlier versions)_
 * Reagent reservoirs for MCP
 * 1.5 mL Eppendorf tubes
 * DNA extraction kit(s)
-* 96-well thin-wall 0.2 mL PCR plates (such as Bio-Rad #HSP9601)
-* PCR plate films (such as Bio-Rad #MSB1001)
-* Thermo Phusion High-Fidelity DNA Polymerase (#F-530L) or similar
+* 96-well thin-wall 0.2 mL PCR plates (such as _Bio-Rad_ #HSP9601)
+* PCR plate films (such as _Bio-Rad_ #MSB1001)
+* _Thermo Phusion_ High-Fidelity DNA Polymerase (#F-530L) or similar
 * dNTP mix (at 40 mM = 10 mM of each base)
-* Illumina fusion primers (see below and Excel template)
+* _Illumina_ fusion primers (see below and Excel template)
 * PCR-grade water
-* Invitrogen E-Gels 96 2% with SYBR Safe (#G7208-02)
-* Invitrogen E-Gel Low Range Ladder (#12373-031; diluted 1:1 with PCR-grade water)
-* Invitrogen SequalPrep Normalization Kit (#A10510-01)
-* Invitrogen Qubit dsDNA HS reagent and assay tubes (clear 0.2 mL)
+* _Invitrogen E-Gels 96 2% with SYBR Safe_ (#G7208-02)
+* _Invitrogen E-Gel Low Range Ladder_ (#12373-031; diluted 1:1 with PCR-grade water)
+* _Invitrogen SequalPrep Normalization Kit_ (#A10510-01)
+* _Invitrogen Qubit dsDNA HS_ reagent and assay tubes (clear 0.2 mL)
 * 2 N NaOH
 * 200 mM Tris-HCl, pH 7
-* Illumina PhiX Control Kit v3 (#FC-110-3001)
-* Illumina MiSeq Reagent Kit v3 (600 cycle) (#MS-102-3003)
+* _Illumina PhiX Control Kit v3_ (#FC-110-3001)
+* _Illumina MiSeq Reagent Kit v3_ (600 cycle) (#MS-102-3003)
 
 ## Optional/Case-Dependent Reagents & Consumables
 * Ethanol (usually a requirement for extraction/purification kits)
-* Mammalian blocking primer (see viii below; if substantial host contamination in 18S) 
+* Mammalian blocking primer (see **viii** below; if substantial host contamination in 18S) 
 * Thin-wall 0.2 mL PCR tubes or strips with caps (for re-amplifying recalcitrant samples)
 * Agarose, loading buffer/stain and 100 bp ladder (for analyzing recalcitrant samples)
 * PCR product purification kit (if need to concentrate final library)
 
+***
+
 ## Advance Preparation – Order and Aliquot Primers (1 h)
 
-i. Use our Excel template to copy existing 16S/18S/ITS primers or to design your own custom gene primers with the proper Illumina indices and Nextera adaptor orientations. We order IDT “Ultramers” (www.idtdna.com) for such long primers (~80-90 nt) as their coupling efficiency is one of the highest available (critical for obtaining high proportions of full-length oligos in the mix you obtain). Order the fusion primers at 4 nmole scale in deep-well plates; one set per 96-well plate, arranged as follows, leaving blank rows in between sets:
+i. Use our Excel template to copy existing 16S/18S/ITS primers or to design your own custom gene primers with the proper _Illumina_ indices and _Nextera_ adapter orientations. We order _IDT “Ultramers”_ (www.idtdna.com) for such long primers (~80-90 nt) as their coupling efficiency is one of the highest available (critical for obtaining high proportions of full-length oligos in the mix you obtain). Order the fusion primers at 4 nmole scale in deep-well plates; one set per 96-well plate, arranged as follows, leaving blank rows in between sets:
 
-        mkdir fastqc_out
-        fastqc -t 4 raw_data/* -o fastqc_out/
+PrimerLayout.jpg
 
-ii. Stich paired end reads together (summary of stitching results are written to "pear_summary_log.txt")
+ii. Once arrived, add 400 µL of PCR-grade water to each well containing the primers in order to reconstitute them at a concentration of 10 µM (1/10th the typical 100 µM working stock concentration for primers). We have found that these usually need a significant incubation time for the lyophilized pellets to re-suspend – we typically leave them overnight at 4°C.
 
-        run_pear.pl -p 4 -o stitched_reads raw_data/* 
+iii. Prepare the 1 µM working stock **Forward Set 1 Primer Plate** by pipetting 63 µL of PCR-grade water into each well of the 96-well PCR plate from a sterile reservoir. Rotate the deep-well primer plate 90° clockwise and align it so that the 8 occupied wells (= 8 different indices) of **row 1** line up with the 8 rows of the new plate. Working by **column** and keeping the same set of tips, transfer 7 µL of reconstituted primer into each well of each column, mixing well by pipetting. Once complete, each column of the resulting plate will have enough primer for one complete 96-well plate PCR (leaving some extra for pipetting error; 12 columns × 5 µL = 60 µL required). Seal the plate with PCR film and store at -20°C. 
 
-iii. Filter stitched reads by quality score (at least Q30 over at least 90% of the read), length (at least 200 bp) and ensure forward and reverse primers match 100% each read (summary written to "read_filter_log.txt" by default). If you do not wish to force primer matching, then you must remove the -f/-r/-c options below. 
+iv. Prepare the 1 µM working stock **Forward Set 2 Primer Plate** by repeating step **iii**, but using **row 3** of the reconstituted deep-well primer plate.
 
-        read_filter.pl -f CYGCGGTAATTCCAGCTC -r CRAAGAYGATYAGATACCRT -c both --thread 4 -q 30 -p 90 -l 200 stitched_reads/*.assembled.*
-									
-iv. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
+v. Prepare the 1 µM working stock **Reverse Set 1 Primer Plate** by pipetting 45 µL of PCR-grade water into each well of the 96-well PCR plate from a sterile reservoir. Align the deep-well primer plate horizontally (normal orientation) so that the 12 occupied wells (= 12 different indices) of **row 5** line up with the 12 columns of the new plate. Working by **row** and keeping the same set of tips, transfer 5 µL of reconstituted primer into each well of each row, mixing well by pipetting. Once complete, each row of the resulting plate will have enough primer for one complete 96-well plate PCR (leaving some extra; 8 rows × 5 µL = 40 µL required). Seal the plate with PCR film and store at -20°C.
 
-        run_fastq_to_fasta.pl -p -o fasta_files filtered_reads/*fastq
+vi. Prepare the 1 µM working stock **Reverse Set 2 Primer Plate** by repeating step **v**, but using **row 7** of the reconstituted deep-well primer plate.
 
-v. Remove chimeric sequences with VSEARCH (summary written to "chimera_filter_log.txt" by default).
+vii. Once all aliquoting is complete, seal the deep-well plate with PCR film and archive at -20°C until new aliquots are required (minimized freeze-thaw cycles).
 
-        chimera_filter.pl -thread 4 -type 1 -db /home/shared/rRNA_db/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fasta fasta_files/*	
-
-vi. Create a QIIME "map.txt" file with the first column containing the sample names and another column called "FileInput" containing the filenames. This is a tab-delimited file and there must be columns named "BarcodeSequence" and "LinkerPrimerSequence" that are empy. This file can then contain other columns to group samples which will be used when figures are created later.
-
-        create_qiime_map.pl non_chimeras/* > map.txt
-		
-vii. Combine files into single QIIME "seqs.fna" file (~5 minutes).
-
-        add_qiime_labels.py -i non_chimeras/ -m map.txt -c FileInput -o combined_fasta
-		
-viii. Create OTU picking parameter file.
-
-        echo "pick_otus:threads 4" >> clustering_params.txt
-        echo "pick_otus:sortmerna_coverage 0.8" >> clustering_params.txt
-        echo "pick_otus:similarity 0.98" >> clustering_params.txt
-        echo "align_seqs:template_fp /home/shared/rRNA_db/90_Silva_111_rep_set_euk_aligned.filter.fasta" >> clustering_params.txt 
-        echo "assign_taxonomy:id_to_taxonomy_fp /home/shared/rRNA_db/gb203_pr2_all_10_28_99p_tax_Xs-fixed_poly-fixed.txt" >> clustering_params.txt
-        echo "assign_taxonomy:reference_seqs_fp /home/shared/rRNA_db/gb203_pr2_all_10_28_99p_clean.fasta" >> clustering_params.txt
-        
+viii. _Optional: For the generation of 18S V4 amplicons from microbiome samples containing substantial non-target host DNA (ex: human, mouse, etc.), order a custom PNA mammalian blocking primer (elongation arrest in the V4 region courtesy of Laura Parfrey and Matt Lemay [UBC]) with the sequence: 5’-TCTTAATCATGGCCTCAGTT-3’. Once arrived, prepare an archival stock of 100 µM and a working stock of 10 µM using PCR-grade water._
