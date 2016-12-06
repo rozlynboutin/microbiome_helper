@@ -56,7 +56,6 @@ _Last updated: 06 Dec 2016 (see "revisions" above for earlier versions)_
 ## Advance Preparation – Order and Aliquot Primers (1 h)
 
 A. Use our Excel template to copy existing 16S/18S/ITS primers or to design your own custom gene primers with the proper _Illumina_ indices and _Nextera_ adapter orientations. We order _IDT “Ultramers”_ (www.idtdna.com) for such long primers (~80-90 nt) as their coupling efficiency is one of the highest available (critical for obtaining high proportions of full-length oligos in the mix you obtain). Order the fusion primers at 4 nmole scale in deep-well plates; one set per 96-well plate, arranged as follows, leaving blank rows in between sets:
-
 [[images/PrimerLayout.jpg]]
 
 B. Once arrived, add 400 µL of PCR-grade water to each well containing the primers in order to reconstitute them at a concentration of 10 µM (1/10th the typical 100 µM working stock concentration for primers). We have found that these usually need a significant incubation time for the lyophilized pellets to re-suspend – we typically leave them overnight at 4°C.
@@ -82,7 +81,6 @@ H. _Optional: For the generation of 18S V4 amplicons from microbiome samples con
 2. Quantify and quality-check your final DNAs via _NanoDrop_ or _Qubit_ to verify success. The A280/260 ratios should be 1.8 or better and our experience with community DNAs has shown that a concentration of at least 1 ng/µL is required to get consistent PCR results. Avoid costly secondary extractions/clean-ups for inhibitors (unless obvious) until PCRs below have truly shown inhibition – many sub-optimal DNAs will still perform adequately in PCR. _Optional: A gel can be run to verify integrity (generally unnecessary for PCR-only studies)._
 
 3. Aliquot 5 µL of each of the 380 DNA samples into 4 × 96-well PCR plates (**DNA Plates 1-4**) in the order desired (we prefer by column), allowing for one PCR negative control well (position H12) on each plate; the layout of the primers (for ex: showing F1+R2 sets are used for Plate 2) are also indicated on this figure:
-
 [[images/PlateLayout.jpg]]
 
 ## 2.0 – 16S or 18S PCR (1 day)
@@ -134,5 +132,25 @@ H. _Optional: For the generation of 18S V4 amplicons from microbiome samples con
 ***
 
 ## 4.0 - PCR Clean-up + Normalization & Final Library Pool (2 h)
+
+1. Use the remaining 20 µL of each well in the **Aggregated PCR Plate 1** to cleaned-up and normalize the amplicons using the high-throughput _Invitrogen SequalPrep 96-well Plate Kit_. Label this final plate **SequalPrep Plate 1**. _Note: We have found it more convenient to inverse steps 1 & 2 of the SequalPrep protocol (i.e.: buffer first with one set of tips, then amplicons with another set). Only one set of tips (per step) is need in this kit as carry-over is minimal, amplicons are barcoded (therefore can’t “contaminate” each other’s reads) and amplicons will shortly be pooled anyways._
+
+2. Once the _SequalPrep_ protocol is complete, pool the 95 samples from **SequalPrep Plate 1** by using the MCP to transfer 5 µL of each column into one column of a new 96-well plate named the **Library Pool Plate** (remaining columns to be used in subsequent pooling). _Note: You can use the same set of 8 tips for all._ Once complete, pipette 50 µL of each of the 8 wells into one 1.5 mL Eppendorf tube and label **Plate 1 Library Pool**.
+
+3. Repeat **steps 1-2** for **Aggregated PCR Plate 2**.
+
+4. Repeat **steps 1-2** for **Aggregated PCR Plate 3**.
+
+5. Repeat **steps 1-2** for **Aggregated PCR Plate 4**.
+
+6. Once all four pools are complete, pipette 100 µL of each of the four tubes into one 1.5 mL Eppendorf tube and label Final Library Pool (add the run name to the tube or some other identifier to keep your various pools separate).
+
+7. Quantify the Final Library Pool using the Invitrogen Qubit dsDNA HS assay (or similar fluorescence-based alternative; 5 µL of pool to be assayed) and calculate the molar concentration using the following formula, knowing that 1 ng/µL of a 500 bp amplicon = 3.29 nM:
+[[images/Equation.jpg]]
+For the 16S amplicon generated using our V6-V8 primers (= 574 bp, including target region + adaptors + indices) at a concentration of 3.0 ng/µL, for example:
+[[images/EquationExample.jpg]]
+_Note: We have found that the anticipated 1-2 ng/µL output from the SequalPrep plate is near impossible to achieve; we typically see concentrations in the range of 0.3-0.9 ng/µL._
+
+## 5.0 - _Illumina MiSeq_ Sequencing (~3 days [only ~2 h hands-on at the start and end])
 
 1. 
