@@ -151,9 +151,7 @@ H. _Optional: For the generation of 18S V4 amplicons from microbiome samples con
 
 [[images/Equation.jpg]]
 
-For the 16S amplicon generated using our V6-V8 primers (= 574 bp, including target region + adaptors + indices) at a concentration of 3.0 ng/µL, for example:
-
-[[images/EquationExample.jpg]]
+For the 16S amplicon generated using our V6-V8 primers (= 574 bp, including target region + adapters + indices) at a concentration of 3.0 ng/µL, for example: (500 bp / 574 bp) x 3.0 x 3.29 = 8.6 nM
 
 _Note: We have found that the anticipated 1-2 ng/µL output from the SequalPrep plate is near impossible to achieve; we typically see concentrations in the range of 0.3-0.9 ng/µL._
 
