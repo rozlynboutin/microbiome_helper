@@ -8,20 +8,13 @@
 **Wet-Lab Protocols**
    * [Microbiome Amplicon Sequencing Workflow](Microbiome Amplicon Sequencing Workflow)
 
-**Metagenomic SOP**
-   * [Metagenomic SOP](Metagenomic-standard-operating-procedure)
-
-**Metagenomic Resources**
-   * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
-   * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
-   * [Screen out human sequences](https://github.com/mlangill/microbiome_helper/wiki/Screen-out-human-sequences)
-   * [Taxonomic composition](https://github.com/mlangill/microbiome_helper/wiki/Taxonomic-composition)
-   * [Functional profiling](https://github.com/mlangill/microbiome_helper/wiki/Functional-profiling)
-
 **16S/18S/ITS SOPs**
    * [16S Bacteria SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure)
    * [18S Eukarya SOP](https://github.com/mlangill/microbiome_helper/wiki/18S-standard-operating-procedure)
    * [ITS2 Fungi SOP](ITS2-Standard-Operating-Procedure)
+
+**Metagenomic SOP**
+   * [Metagenomic SOP](Metagenomic-standard-operating-procedure)
 
 **16S/18S/ITS Detailed Resources**
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
@@ -34,6 +27,13 @@
    * [Predict phenotypes](https://github.com/mlangill/microbiome_helper/wiki/Predict-phenotypes)
    * [Sequence error correction](https://github.com/mlangill/microbiome_helper/wiki/Sequence-Error-correction)
    * [Additional QIIME analysis](https://github.com/mlangill/microbiome_helper/wiki/Additional-QIIME-analysis)
+
+**Metagenomic Resources**
+   * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
+   * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
+   * [Screen out human sequences](https://github.com/mlangill/microbiome_helper/wiki/Screen-out-human-sequences)
+   * [Taxonomic composition](https://github.com/mlangill/microbiome_helper/wiki/Taxonomic-composition)
+   * [Functional profiling](https://github.com/mlangill/microbiome_helper/wiki/Functional-profiling)
 
 **Tutorials**
    * [16S tutorial](16S-tutorial-(chemerin))
