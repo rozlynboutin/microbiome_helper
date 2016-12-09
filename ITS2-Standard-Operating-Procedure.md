@@ -5,14 +5,14 @@ _Note that this workflow is continually being updated. If you want to use the be
 _Last updated: 9 Dec 2016 (see "revisions" above for earlier versions)_    
      
   
-*Note that this workflow starts with raw paired-end MiSeq data in demultiplexed fastq format assumed to be located within a folder called `raw_data`*
+*This workflow starts with raw paired-end MiSeq data in demultiplexed FASTQ format assumed to be located within a folder called `raw_data`*
 
 1. (Optional) Run FastQC to allow manual inspection of the quality of sequences
 
         mkdir fastqc_out
         fastqc -t 4 raw_data/* -o fastqc_out/
 
-2. Stitch paired end reads together (summary of stitching results are written to "pear_summary_log.txt")
+2. Stitch paired-end reads together (summary of stitching results are written to "pear_summary_log.txt")
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
