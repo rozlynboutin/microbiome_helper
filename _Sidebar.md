@@ -5,22 +5,25 @@
 * [Virtual Box image](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box)
 * [Contact](https://github.com/mlangill/microbiome_helper/wiki#contact)
 
-**Wet-Lab protocols**
+**Wet-Lab Protocols**
    * [Microbiome Amplicon Sequencing Workflow](Microbiome Amplicon Sequencing Workflow)
 
-**Metagenomic resources**
+**Metagenomic SOP**
    * [Metagenomic SOP](Metagenomic-standard-operating-procedure)
-   * [Metagenomics tutorial](Metagenomics-Tutorial-(Downsampled))
+
+**Metagenomic Resources**
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
    * [Screen out human sequences](https://github.com/mlangill/microbiome_helper/wiki/Screen-out-human-sequences)
    * [Taxonomic composition](https://github.com/mlangill/microbiome_helper/wiki/Taxonomic-composition)
    * [Functional profiling](https://github.com/mlangill/microbiome_helper/wiki/Functional-profiling)
 
-**16S/18S resources**
+**16S/18S SOPs**
    * [16S Bacteria SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure)
    * [18S Eukarya SOP](https://github.com/mlangill/microbiome_helper/wiki/18S-standard-operating-procedure)
-   * [16S tutorials](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorials)
+   * [ITS2 Fungi SOP](ITS2-Standard-Operating-Procedure)
+
+**16S/18S/ITS Detailed Resources**
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
    * [Remove low quality reads](https://github.com/mlangill/microbiome_helper/wiki/Remove-low-quality-reads)
