@@ -30,9 +30,9 @@ _Last updated: 6 Dec 2016 (see "revisions" above for earlier versions)_
 
         run_trimmomatic.pl -l 5 -t 5 -r 15 -w 4 -m 70 -j /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar --thread 4 -o trimmomatic_filtered screened_reads/*fastq  
   
-6. (Optional) If you did not stitch your paired-end reads together with PEAR, then you could concatenate the forward and reverse FASTQs together now. Note this is done after quality filtering so that both reads in a pair are either discarded or retained.  
+6. (Optional) If you did not stitch your paired-end reads together with PEAR, then you could concatenate the forward and reverse FASTQs together now. Note this is done after quality filtering so that both reads in a pair are either discarded or retained. It's important to only specify the "paired" FASTQs outputted by trimmomatic in the below command.
    
-        concat_paired_end.pl -p 4 -o cat_reads trimmomatic_filtered/*fastq 
+        concat_paired_end.pl -p 4 -o cat_reads trimmomatic_filtered/*_paired*fastq 
 
 7. Run MetaPhlAn2 for taxonomic composition (note the input FASTQs will be in "cat_reads" if you ran step 6):
 
