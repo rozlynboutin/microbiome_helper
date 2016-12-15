@@ -66,8 +66,7 @@ _Last updated: 9 Dec 2016 (see "revisions" above for earlier versions)_
 
 14. Create alpha diversity rarefaction plot - values min (first point on graph) and max rare depth (last point on graph = your max. above) as well as number of steps (= number of points on graph, not including first min point) should be based on the number of sequences within your OTU table.
 
-        echo "alpha_diversity:metrics chao1,observed_otus,shannon,simpson_e" >> rarefaction_params.txt
-        alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -m map.txt --min_rare_depth X --max_rare_depth X --num_steps X
+        alpha_diversity.py -i final_otu_tables/otu_table.biom -o final_otu_tables/alpha_diversity.txt -m chao1,observed_otus,shannon,simpson_e
 
 15. Convert BIOM OTU table to tab-separated file to be opened/explored in text editors or Excel, etc.
 
