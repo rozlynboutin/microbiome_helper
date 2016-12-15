@@ -64,7 +64,7 @@ _Last updated: 9 Dec 2016 (see "revisions" above for earlier versions)_
 
 13. Manually add column(s) to map.txt that contain information to group your samples (e.g. healthy vs disease).
 
-14. Create alpha diversity rarefaction plot - values min (first point on graph) and max rare depth (last point on graph = your max. above) as well as number of steps (= number of points on graph, not including first min point) should be based on the number of sequences within your OTU table.
+14. Calculate alpha diversity metrics (you may add/modify the desired metrics with the -m parameter).
 
         alpha_diversity.py -i final_otu_tables/otu_table.biom -o final_otu_tables/alpha_diversity.txt -m chao1,observed_otus,shannon,simpson_e
 
