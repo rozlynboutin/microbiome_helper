@@ -8,11 +8,11 @@ The Microbiome Helper VirtualBox includes several [bioinformatic packages and da
 * Any desktop or laptop purchased within the last 3-5 years should work.
 * Must be 64-bit
 * >4 GB RAM
-* At least 35 GB available hard drive space: the OVA file is 11.5 GB and the imported image is 21.5 GB (note that you can delete the OVA file once the image is imported).
+* At least 35 GB available hard drive space: the OVA file is 11.9 GB and the imported image is 22 GB (note that you can delete the OVA file once the image is imported).
 
 ## Installation
 1. Download and install VirtualBox for the operating system you are using. https://www.virtualbox.org/wiki/Downloads
-2. Download the latest version of [Microbiome Helper Vbox (v1.0.0)](https://www.dropbox.com/s/pxhtt0iss3r0k7a/MicrobiomeHelper_v1.0.0.ova?dl=1) (11.5 GB - OVA file). If that doesn't work, try the [alternate link](http://kronos.pharmacology.dal.ca/public_files/Microbiome_Helper_Vbox/MicrobiomeHelper_v1.0.0.ova) (check out the [CHANGELOG](http://kronos.pharmacology.dal.ca/public_files/Microbiome_Helper_Vbox/CHANGELOG) for details).
+2. Download the latest version of [Microbiome Helper Vbox (v1.0.1)](http://kronos.pharmacology.dal.ca/public_files/Microbiome_Helper_Vbox/MicrobiomeHelper_v1.0.1.ova) (11.9 GB - OVA file). If that doesn't work, try the [alternate link](https://www.dropbox.com/s/iwbcfuwvhle6v5n/MicrobiomeHelper_v1.0.1.ova?dl=1) (check out the [CHANGELOG](http://kronos.pharmacology.dal.ca/public_files/Microbiome_Helper_Vbox/CHANGELOG) for details).
 3. "Import" the Microbiome Helper Vbox into VirtualBox by opening the OVA file or within VirtualBox `File->Import Appliance`. More detailed and graphical instructions for importing the image are [available here] (https://www.maketecheasier.com/import-export-ova-files-in-virtualbox). You can delete the OVA file once it is finished importing to save space!
 
 ## Optional Configuration
