@@ -29,15 +29,15 @@ In addition, the following programs should be installed with commands accessible
 **Databases (dropbox download links)**
 * 16S chimera checking: [Bacteria_RDP_trainset15_092015.fa](https://www.dropbox.com/s/r290fbzgi216kja/Bacteria_RDP_trainset15_092015.fa?dl=1) (17 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include only bacteria.   
 * 18S chimera checking: [Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fa] (https://www.dropbox.com/s/p4wnjyvatdobq5h/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fasta?dl=1) (117 MB). This DB was taken from SILVA and was parsed to include only eukaryotes and all Us were converted to Ts.
-* ITS2 chimera checking: [UNITE_uchime_ITS2only_01.01.2016.fasta](https://www.dropbox.com/s/nraevyc2fjyd7bv/UNITE_uchime_ITS2only_01.01.2016.fasta?dl=1) (8.6 MB) 
+* ITS2 chimera checking: [UNITE_uchime_ITS2only_01.01.2016.fasta](https://www.dropbox.com/s/nraevyc2fjyd7bv/UNITE_uchime_ITS2only_01.01.2016.fasta?dl=1) (8.6 MB) taken from [UNITE database](https://unite.ut.ee/).
 * Eukaryotic OTU-picking files:
    * [gb203_pr2_all_10_28_99p_tax_Xs-fixed_poly-fixed.txt] (https://www.dropbox.com/s/bvot58v47rfc6a2/gb203_pr2_all_10_28_99p_tax_Xs-fixed_poly-fixed.txt?dl=1) (9 MB)
    * [gb203_pr2_all_10_28_99p_clean.fasta](https://www.dropbox.com/s/m1i6cdyj2hwgs2e/gb203_pr2_all_10_28_99p_clean.fasta?dl=1) (98 MB)
    * [90_Silva_111_rep_set_euk_aligned.filter.fasta](https://www.dropbox.com/s/z104yn84rgsltip/90_Silva_111_rep_set_euk_aligned.filter.fasta?dl=1) (95 MB)
   
-* ITS2 OTU-picking files:
-   * [UNITE_sh_refs_qiime_ver7_dynamic_20.11.2016.fasta](https://www.dropbox.com/s/pqa6kbxa8ojb75b/UNITE_sh_refs_qiime_ver7_dynamic_20.11.2016.fasta?dl=1) (16.9 MB)
-   * [UNITE_sh_refs_qiime_ver7_dynamic_20.11.2016.goodASCII.txt](https://www.dropbox.com/s/9ya2smevrf0zdhz/UNITE_sh_refs_qiime_ver7_dynamic_20.11.2016.goodASCII.txt?dl=1) (4.2 MB)
+* ITS2 OTU-picking files (taken from [UNITE database](https://unite.ut.ee/)):
+   * [UNITE_sh_refs_qiime_ver7_dynamic_20.11.2016.fasta](https://www.dropbox.com/s/pqa6kbxa8ojb75b/UNITE_sh_refs_qiime_ver7_dynamic_20.11.2016.fasta?dl=1) (16.9 MB).
+   * [UNITE_sh_refs_qiime_ver7_dynamic_20.11.2016.goodASCII.txt](https://www.dropbox.com/s/9ya2smevrf0zdhz/UNITE_sh_refs_qiime_ver7_dynamic_20.11.2016.goodASCII.txt?dl=1) (4.2 MB) - we converted all non-ASCII characters to ASCII format.
   
 * To use "run_human_filter.pl" you will need to download the appropriate [Bowtie2 index](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml). 
   
