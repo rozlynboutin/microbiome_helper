@@ -6,7 +6,7 @@ Microbiome Helper is a repository that contains several resources to help resear
   
 These scripts were produced by the [Integrated Microbiome Resource](http://cgeb-imr.ca/index.html). It is important that you [cite](https://github.com/mlangill/microbiome_helper/wiki/Requirements) the tools that are wrapped by our [scripts](https://github.com/mlangill/microbiome_helper).
   
-Microbiome Helper has been [published in mSystems](http://msystems.asm.org/content/2/1/e00127-16). **Please cite the below paper if you use this repository**:  
+Microbiome Helper has been [published in mSystems](http://msystems.asm.org/content/2/1/e00127-16). Please cite the below paper if you use this repository:  
 
     Comeau AM, Douglas GM, Langille MGI. 2017. mSystems 2(1): e00127-16; DOI: 10.1128/mSystems.00127-16    
       
