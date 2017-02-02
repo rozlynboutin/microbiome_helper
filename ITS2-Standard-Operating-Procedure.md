@@ -36,7 +36,7 @@ _Last updated: 2 Feb 2017 (see "revisions" above for earlier versions)_
 
         add_qiime_labels.py -i non_chimeras/ -m map.txt -c FileInput -o combined_fasta
 		
-8. Create OTU picking parameter file. We cluster the ITS sequences here at the 97% identity which is considered the appropriate level for determining species (see Blaalid et al., 2013 [link](https://www.ncbi.nlm.nih.gov/pubmed/23350562)).
+8. Create OTU picking parameter file. We cluster the ITS sequences here at the 97% identity which is considered the appropriate level for determining species (see [Blaalid et al., 2013](https://www.ncbi.nlm.nih.gov/pubmed/23350562)).
 
         echo "pick_otus:threads 4" >> clustering_params.txt
         echo "pick_otus:sortmerna_coverage 0.5" >> clustering_params.txt
