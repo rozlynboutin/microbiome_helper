@@ -1,8 +1,8 @@
-Below is the quick and dirty description of our recommended ITS2 pipeline.
+Below is the quick description of our recommended ITS2 pipeline.
   
 _Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._    
     
-_Last updated: 9 Dec 2016 (see "revisions" above for earlier versions)_    
+_Last updated: 2 Feb 2017 (see "revisions" above for earlier versions)_    
      
   
 *This workflow starts with raw paired-end MiSeq data in demultiplexed FASTQ format assumed to be located within a folder called `raw_data`*
@@ -36,7 +36,7 @@ _Last updated: 9 Dec 2016 (see "revisions" above for earlier versions)_
 
         add_qiime_labels.py -i non_chimeras/ -m map.txt -c FileInput -o combined_fasta
 		
-8. Create OTU picking parameter file.
+8. Create OTU picking parameter file. We cluster the ITS sequences here at the 97% identity which is considered the appropriate level for determining species (see Blaalid et al., 2013)
 
         echo "pick_otus:threads 4" >> clustering_params.txt
         echo "pick_otus:sortmerna_coverage 0.5" >> clustering_params.txt
