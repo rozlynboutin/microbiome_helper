@@ -15,15 +15,15 @@ _Last updated: 7 Feb 2017 (see "revisions" above for earlier versions)_
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
-3. Filter stitched reads by quality score and length. Summary written to "read_filter_log.txt" by default.
+3A. Filter stitched reads by quality score and length. Summary written to "read_filter_log.txt" by default.
 
         read_filter.pl -q 30 -p 90 -l 400 --primer_check none --thread 4 stitched_reads/*.assembled.*
 
-Optionally, can ensure forward and reverse primers match each read by using the following for V6/V8 amplicons.
+3B. Optionally, can ensure forward and reverse primers match each read by using the following for V6/V8 amplicons.
 
         read_filter.pl -c both -q 30 -p 90 -l 400 --primer_check none --thread 4 stitched_reads/*.assembled.*
 
-...and the following for V4/V5 amplicons.
+3C. ...or the following for V4/V5 amplicons.
 
         read_filter.pl -f GTGYCAGCMGCCGCGGTAA -r AAACTYAAAKRAATTGRCGG -c both --thread 4 -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
 									
