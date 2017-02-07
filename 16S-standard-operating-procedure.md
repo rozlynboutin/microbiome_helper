@@ -15,16 +15,10 @@ _Last updated: 7 Feb 2017 (see "revisions" above for earlier versions)_
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
-3A. Filter stitched reads by quality score and length. Summary written to "read_filter_log.txt" by default.
+3. Filter stitched reads by quality score and length. Summary written to "read_filter_log.txt" by default. Use the first line when not requiring primers to match each read; use the second line to ensure forward and reverse primers match each read for V6/V8 amplicons; and use the third line for primer matching in V4/V5 amplicons.
 
         read_filter.pl -q 30 -p 90 -l 400 --primer_check none --thread 4 stitched_reads/*.assembled.*
-
-3B. Optionally, can ensure forward and reverse primers match each read by using the following for V6/V8 amplicons.
-
         read_filter.pl -c both -q 30 -p 90 -l 400 --primer_check none --thread 4 stitched_reads/*.assembled.*
-
-3C. ...or the following for V4/V5 amplicons.
-
         read_filter.pl -f GTGYCAGCMGCCGCGGTAA -r AAACTYAAAKRAATTGRCGG -c both --thread 4 -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
 									
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
