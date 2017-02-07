@@ -1,8 +1,8 @@
-Below is the quick and dirty description of our recommended 18S pipeline.
+Below is the description of our recommended 18S pipeline.
   
 _Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._    
     
-_Last updated: 24 Nov 2016 (see "revisions" above for earlier versions)_    
+_Last updated: 7 Feb 2017 (see "revisions" above for earlier versions)_    
      
   
 *This workflow starts with raw paired-end MiSeq data in demultiplexed FASTQ format assumed to be located within a folder called `raw_data`*
@@ -16,9 +16,9 @@ _Last updated: 24 Nov 2016 (see "revisions" above for earlier versions)_
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
-3. Filter stitched reads by quality score (at least Q30 over at least 90% of the read), length (at least 200 bp) and ensure forward and reverse primers match 100% each read (summary written to "read_filter_log.txt" by default). If you do not wish to force primer matching, then you must remove the -f/-r/-c options below. 
+3. Filter stitched reads by quality score (at least Q30 over at least 90% of the read), length (at least 400 bp) and ensure forward and reverse primers match 100% each read (summary written to "read_filter_log.txt" by default). If you do not wish to force primer matching, then you must remove the -f/-r/-c options below. 
 
-        read_filter.pl -f CYGCGGTAATTCCAGCTC -r CRAAGAYGATYAGATACCRT -c both --thread 4 -q 30 -p 90 -l 200 stitched_reads/*.assembled.*
+        read_filter.pl -f CYGCGGTAATTCCAGCTC -r CRAAGAYGATYAGATACCRT -c both --thread 4 -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
 									
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
 
