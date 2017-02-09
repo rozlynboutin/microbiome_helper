@@ -22,7 +22,7 @@ _Last updated: 7 Feb 2017 (see "revisions" above for earlier versions)_
 									
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
 
-        run_fastq_to_fasta.pl -p -o fasta_files filtered_reads/*fastq
+        run_fastq_to_fasta.pl -p 4 -o fasta_files filtered_reads/*fastq
 
 5. Remove chimeric sequences with VSEARCH (summary written to "chimera_filter_log.txt" by default).
 
