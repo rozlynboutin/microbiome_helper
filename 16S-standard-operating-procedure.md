@@ -2,7 +2,7 @@ Below is the quick and dirty description of our recommended 16S pipeline. See th
   
 _Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._  
   
-_Last updated: 7 Feb 2017 (see "revisions" above for earlier versions)_  
+_Last updated: 10 Feb 2017 (see "revisions" above for earlier versions)_  
    
 *This workflow starts with raw paired-end MiSeq data in demultiplexed FASTQ format assumed to be located within a folder called `raw_data`*
 
@@ -15,12 +15,20 @@ _Last updated: 7 Feb 2017 (see "revisions" above for earlier versions)_
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
-3. Filter stitched reads by quality score and length. Summary written to "read_filter_log.txt" by default. Use the first line when not requiring primers to match each read; use the second line to ensure forward and reverse primers match each read for V6/V8 amplicons; and use the third line for primer matching in V4/V5 amplicons.
+3. Filter stitched reads by quality score and length. Summary written to "read_filter_log.txt" by default. Three common options for primer matching are shown below.
+  
+    * Option A: Read filtering without requiring primer sequences to be at the beginning and end of each read    
+  
+            read_filter.pl -q 30 -p 90 -l 400 --primer_check none --thread 4 stitched_reads/*.assembled.*  
+   
+    * Option B: Read filtering with the requirement of forward and reverse primers matching each read for V6/V8 amplicons (the primers we use for this region are the default sequences) 
+  
+            read_filter.pl -c both -q 30 -p 90 -l 400 --thread 4 stitched_reads/*.assembled.*  
 
-        read_filter.pl -q 30 -p 90 -l 400 --primer_check none --thread 4 stitched_reads/*.assembled.*
-        read_filter.pl -c both -q 30 -p 90 -l 400 --primer_check none --thread 4 stitched_reads/*.assembled.*
-        read_filter.pl -f GTGYCAGCMGCCGCGGTAA -r AAACTYAAAKRAATTGRCGG -c both --thread 4 -q 30 -p 90 -l 400 stitched_reads/*.assembled.*
-									
+    * Option C: Read filtering with primer matching as above, but for V4/V5 amplicons  
+  
+            read_filter.pl -f GTGYCAGCMGCCGCGGTAA -r AAACTYAAAKRAATTGRCGG -c both --thread 4 -q 30 -p 90 -l 400 stitched_reads/*.assembled.*  
+		
 4. Convert FASTQ stitched files to FASTA AND remove any sequences that have an 'N' in them.
 
         run_fastq_to_fasta.pl -p 4 -o fasta_files filtered_reads/*fastq
