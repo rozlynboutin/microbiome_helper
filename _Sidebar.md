@@ -16,6 +16,12 @@
 **Metagenomic SOP**
    * [Metagenomic SOP](Metagenomic-standard-operating-procedure)
 
+**Tutorials**
+   * [16S tutorial](16S-tutorial-(chemerin))
+   * [Metagenomics Tutorial](Metagenomics-Tutorial-(Downsampled))
+   * [PICRUSt Tutorial](PICRUSt-tutorial)
+   * [Other tutorials](other-tutorials)
+
 **16S/18S/ITS Detailed Resources**
    * [Stitch reads](https://github.com/mlangill/microbiome_helper/wiki/Stitch-reads)
    * [Sequence QC](https://github.com/mlangill/microbiome_helper/wiki/Sequence-QC)
@@ -34,12 +40,6 @@
    * [Screen out human sequences](https://github.com/mlangill/microbiome_helper/wiki/Screen-out-human-sequences)
    * [Taxonomic composition](https://github.com/mlangill/microbiome_helper/wiki/Taxonomic-composition)
    * [Functional profiling](https://github.com/mlangill/microbiome_helper/wiki/Functional-profiling)
-
-**Tutorials**
-   * [16S tutorial](16S-tutorial-(chemerin))
-   * [Metagenomics Tutorial](Metagenomics-Tutorial-(Downsampled))
-   * [PICRUSt Tutorial](PICRUSt-tutorial)
-   * [Other tutorials](other-tutorials)
 
 **Datasets**
    * [mSystems paper data](mSystems paper data)
