@@ -3,7 +3,6 @@
 * [Requirements](https://github.com/mlangill/microbiome_helper/wiki/Requirements)
 * [Brief description of scripts](https://github.com/mlangill/microbiome_helper/wiki/Brief-description-of-scripts)
 * [Virtual Box image](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box)
-* [Citing Microbiome Helper](Citing-Microbiome-Helper)
 * [Contact](https://github.com/mlangill/microbiome_helper/wiki#contact)
 
 **Wet-Lab Protocols**
