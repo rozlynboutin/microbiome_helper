@@ -1,4 +1,4 @@
-Below is the quick and dirty description of our recommended 16S pipeline. See the sidebar menu for more detailed descriptions. 
+Below is the quick description of our recommended 16S pipeline. See the sidebar menu for more detailed descriptions. 
   
 _Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._  
   
