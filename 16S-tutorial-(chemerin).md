@@ -42,7 +42,7 @@ __Last edited:__ Oct 2016
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * The exact commands we'll be running assume that you're running this tutorial on our [Ubuntu Desktop virtual box](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-Box). If you are running it elsewhere just be aware you will need to change the file paths. 
 * Download the [tutorial dataset](https://www.dropbox.com/s/r2jqqc7brxg4jhx/16S_chemerin_tutorial.zip?dl=1) (9 MB). I'm assuming the unzipped folder will be in your Desktop.
-* We will be following [our 16S pipeline](https://github.com/mlangill/microbiome_helper/wiki/16S-standard-operating-procedure), which uses several wrapper scripts to help automate running many files.
+* We will be following [our 16S pipeline](16S-Bacteria-Standard-Operating-Procedure), which uses several wrapper scripts to help automate running many files.
 
 ### Background
 16S analysis is a method of microbiome analysis (compared to [shotgun metagenomics](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-%28Downsampled%29)) that targets the 16S ribosomal RNA gene, as this gene is present in all prokaryotes. It features regions that are conserved among these organisms, as well as variable regions that allow distinction among organisms. These characteristics make this gene useful for analyzing microbial communities at reduced cost compared to metagenomic techniques. A similar workflow can be applied to eukaryotic micro-organisms using the 18S rRNA gene.
