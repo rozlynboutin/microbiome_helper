@@ -11,7 +11,7 @@
 **16S/18S/ITS SOPs**
    * [16S Bacteria SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-Bacteria-standard-operating-procedure)
    * [18S Eukarya SOP](https://github.com/mlangill/microbiome_helper/wiki/18S-Eukarya-standard-operating-procedure)
-   * [ITS2 Fungi SOP](ITS2-Standard-Operating-Procedure)
+   * [ITS2 Fungi SOP](ITS2-Fungi-Standard-Operating-Procedure)
 
 **Metagenomic SOP**
    * [Metagenomic SOP](Metagenomic-standard-operating-procedure)
