@@ -9,7 +9,7 @@
    * [Microbiome Amplicon Sequencing Workflow](Microbiome Amplicon Sequencing Workflow)
 
 **16S/18S/ITS SOPs**
-   * [16S Bacteria SOP](16S-Bacteria-Standard-Operating-Procedure)
+   * [16S Bacteria/Archaea SOP](16S Bacteria and Archaea Standard Operating Procedure)
    * [18S Eukarya SOP](18S-Eukarya-Standard-Operating-Procedure)
    * [ITS2 Fungi SOP](ITS2-Fungi-Standard-Operating-Procedure)
 
