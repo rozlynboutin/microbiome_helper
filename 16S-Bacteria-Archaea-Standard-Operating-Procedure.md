@@ -15,7 +15,7 @@ _Last updated: 27 Feb 2017 (see "revisions" above for earlier versions)_
 
         run_pear.pl -p 4 -o stitched_reads raw_data/* 
 
-3. Filter stitched reads by quality score and length. Summary written to "read_filter_log.txt" by default. Three common options for primer matching are shown below.
+3. Filter stitched reads by quality score and length. Summary written to "read_filter_log.txt" by default. Four common options for primer matching are shown below.
   
     * Option A: Read filtering without requiring primer sequences to be at the beginning and end of each read    
   
@@ -83,8 +83,9 @@ _Last updated: 27 Feb 2017 (see "revisions" above for earlier versions)_
 
 16. Make stacked bar charts of either all samples individually or collapsed into your various categories.
 
+        #For Individual Samples:
         summarize_taxa_through_plots.py -i final_otu_tables/otu_table.biom -o plots/taxa_summary
-        #Note: you can also collapse samples by a category
+        #Collapsed by Category:
         summarize_taxa_through_plots.py -i final_otu_tables/otu_table.biom -o plots/taxa_summary -m map.txt -c category_type_here
 
 17. Convert BIOM OTU table to tab-separated file to be opened/explored in text editors or Excel, etc.
@@ -92,12 +93,10 @@ _Last updated: 27 Feb 2017 (see "revisions" above for earlier versions)_
         biom convert -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_w_tax.txt --to-tsv --header-key taxonomy
 
 18. Convert BIOM OTU table to STAMP. Note: the genus _Clostridium_ is within two families, which can cause downstream problems. To get around this, we add quotations around the genus name so that it is "_Clostridium_" in one of the families.
-
         
         biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom >final_otu_tables/otu_table.spf
 
         sed -i 's/f__Erysipelotrichaceae\tg__Clostridium/f__Erysipelotrichaceae\tg__"Clostridium"/g' final_otu_tables/otu_table.spf  
-
 
 19. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
 
