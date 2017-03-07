@@ -24,9 +24,13 @@ This tutorial is intended to teach beginners the basics of running random forest
 Often when running machine learning tools you would split up your samples into a training set (~80%) to build your model and a test set (~20%) to evaluate your model. Partitioning allows an estimate of the model performance to be inferred on different data than was used to train the model. When sample sizes are large enough researchers sometimes create a third partition, the validation set, which is used to select (or _tune_) parameters for the model. However, often in microbial datasets sample sizes are small (e.g. often in the range of 10-50 samples), in which case alternative approaches need to be taken. Cross-validation, where different subsets of your data are systematically split into training and test sets to estimate model performance, is a family of approaches to get around this problem (a few examples are shown in this [blog post](http://appliedpredictivemodeling.com/blog/2014/11/27/vpuig01pqbklmi72b8lcl3ij5hj2qm)). Often this actually isn't necessary for RF models given the internal measure of out-of-bag error which is calculated for each model (described below). 
   
 The below tutorial will focus on a dataset of 40 samples, where partitioning the data into training and test sets would not be helpful. [Operational taxonomic unit (OTU)](https://en.wikipedia.org/wiki/Operational_taxonomic_unit) relative abundances are the features of this dataset. All samples have inflammation scores (IS) associated with them (ranging from 0-1). Samples with IS >= 0.5 were grouped as _inflamed_, while those with a value < 0.5 were put in the _control_ group. This means that each sample has an inflammation category and a quantitative value associated with it, which will allow us to try running RF classification and regression models using the same features. Note that this example dataset was simulated for this tutorial.    
-  
+
 ### Requirements
-  
+Example dataset
+[R](https://www.r-project.org/) (this tutorial was run with version 3.3.2)
+[RStudio](https://www.rstudio.com/) (recommended if running R commands yourself)
+[randomForest R package](https://cran.r-project.org/web/packages/randomForest/index.html)
+
 ### Other Resources
 * Original RF paper: [Leo Breiman. 2001. Random Forests. Machine Learning 45(1):5-32.](https://link.springer.com/article/10.1023%2FA%3A1010933404324)
 * Paper describing the randomForest R package (includes a great description of the algorithm and helpful examples): [Andy Liaw and Matthew Wiener. 2002. Classification and Regression by randomForest. R News 2(3):18-22.](http://www.bios.unc.edu/~dzeng/BIOS740/randomforest.pdf)
