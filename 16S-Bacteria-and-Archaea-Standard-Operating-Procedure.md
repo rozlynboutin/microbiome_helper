@@ -81,12 +81,12 @@ _Last updated: 27 Feb 2017 (see "revisions" above for earlier versions)_
 
         alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -t clustering/rep_set.tre -m map.txt --min_rare_depth X --max_rare_depth X --num_steps X
 
-16. Make stacked bar charts of either all samples individually or collapsed into your various categories.
+16. Make stacked bar charts of either all samples individually or collapsed into your various categories (the -s at the end sorts the samples alphabetically in the charts).
 
         #For Individual Samples:
-        summarize_taxa_through_plots.py -i final_otu_tables/otu_table.biom -o plots/taxa_summary
+        summarize_taxa_through_plots.py -i final_otu_tables/otu_table.biom -o plots/taxa_summary -s
         #Collapsed by Category:
-        summarize_taxa_through_plots.py -i final_otu_tables/otu_table.biom -o plots/taxa_summary -m map.txt -c category_type_here
+        summarize_taxa_through_plots.py -i final_otu_tables/otu_table.biom -o plots/taxa_summary -m map.txt -c category_type_here -s
 
 17. Convert BIOM OTU table to tab-separated file to be opened/explored in text editors or Excel, etc.
 
