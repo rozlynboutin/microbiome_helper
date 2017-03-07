@@ -1,5 +1,4 @@
-# Please note that this page is under construction
-
+# Please note that this page is currently being written.
 * [Introduction](#introduction)  
     * [Requirements](#requirements)  
     * [General Background](#background)  
