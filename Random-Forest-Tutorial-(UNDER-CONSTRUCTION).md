@@ -26,10 +26,10 @@ Often when running machine learning tools you would split up your samples into a
 The below tutorial will focus on a dataset of 40 samples, where partitioning the data into training and test sets would not be helpful. [Operational taxonomic unit (OTU)](https://en.wikipedia.org/wiki/Operational_taxonomic_unit) relative abundances are the features of this dataset. All samples have inflammation scores (IS) associated with them (ranging from 0-1). Samples with IS >= 0.5 were grouped as _inflamed_, while those with a value < 0.5 were put in the _control_ group. This means that each sample has an inflammation category and a quantitative value associated with it, which will allow us to try running RF classification and regression models using the same features. Note that this example dataset was simulated for this tutorial.    
 
 ### Requirements
-Example dataset
-[R](https://www.r-project.org/) (this tutorial was run with version 3.3.2)
-[RStudio](https://www.rstudio.com/) (recommended if running R commands yourself)
-[randomForest R package](https://cran.r-project.org/web/packages/randomForest/index.html)
+* Example dataset  
+* [R](https://www.r-project.org/) (this tutorial was run with version 3.3.2)  
+* [RStudio](https://www.rstudio.com/) (recommended if running R commands yourself)  
+* [randomForest R package](https://cran.r-project.org/web/packages/randomForest/index.html)  
 
 ### Other Resources
 * Original RF paper: [Leo Breiman. 2001. Random Forests. Machine Learning 45(1):5-32.](https://link.springer.com/article/10.1023%2FA%3A1010933404324)
