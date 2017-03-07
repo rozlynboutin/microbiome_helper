@@ -13,7 +13,7 @@
 * [Identifying Important Features](#identifying-important-features)  
   
 ## Introduction
-This tutorial is intended to teach beginners the basics of running random forest (RF) models on microbial sequencing data. Importantly, the below commands are **not the optimal settings to use for all datasets**. An important part of data analysis is exploring your data and deciding on what approaches would be best for your particular problem. However, as shall be described below, parameterizing models based upon your training and/or test set can resulting in biased models.  
+This tutorial is intended to teach beginners the basics of running random forest (RF) models on microbial sequencing data. Importantly, the below commands are **not the optimal settings to use for all datasets**. An important part of data analysis is exploring your data and deciding on what approaches would be best for your particular problem. However, as shall be described below, parameterizing models based upon your training and/or test set can result in biased models.  
   
 Typically RF models are run when researchers are interested in classifying samples into categories (called **classes**) of interest based upon many different variables, such as taxa, functional categories, etc (called **features**). Random forest can also be run on quantitative data (e.g. height in cm rather than splitting samples into categorical groups like _short_ and _tall_).  
     
