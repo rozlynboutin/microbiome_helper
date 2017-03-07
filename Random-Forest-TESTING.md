@@ -5,24 +5,24 @@
 * [Pre-processing](#pre-processing)
     * [Removing Rare Features](#removing-rare-features)
   
-# Introduction
+## Introduction
   
-## Requirements
+### Requirements
   
-## Other Resources
+### Other Resources
   
-## Background
+### Background
 
-# Pre-processing
+## Pre-processing
   
-## Removing Rare Features
+### Removing Rare Features
   
-## Transforming your data
+### Transforming your data
   
-# Assessing Model Fit
+## Assessing Model Fit
 
-## Permutation Test
+### Permutation Test
 
-## Receiver Operating Characteristic Curve   
+### Receiver Operating Characteristic Curve   
   
-# Identifying Important Features  
+## Identifying Important Features  
