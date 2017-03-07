@@ -1,7 +1,8 @@
 * [Introduction](#introduction)  
     * [Requirements](#requirements)  
-    * [Background](#background)  
+    * [General Background](#background)  
     * [Other Resources](#other-resources)  
+* [Important Considerations](#important-considerations)  
 * [Pre-processing](#pre-processing)  
     * [Removing Rare Features](#removing-rare-features)  
     * [Transforming Your Data](#transforming-your-data)   
@@ -11,13 +12,19 @@
 * [Identifying Important Features](#identifying-important-features)  
   
 ## Introduction
+This tutorial is intended to teach beginners the basics of running random forest (RF) models on microbial sequencing data. Importantly, the below commands are **not the optimal settings to use for all datasets**. An important part of data analysis is exploring your data and deciding on what approaches would be best for your particular problem. However, as shall be described below, parameterizing models based upon your training and/or test set can resulting in biased models.  
+  
+Typically RF models are run when researchers are interested in classifying samples into two groups of interest based upon 
   
 ### Requirements
   
-### Other Resources
-  
 ### Background
+  
+### Other Resources
+* The Segata Lab from Trento University has produced [a Python package for running machine learning on metagenomics datasets (MetAML)](http://segatalab.cibio.unitn.it/tools/metaml/), for which they have written a [tutorial](https://bitbucket.org/CibioCM/metaml/wiki/Home) and [research paper](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004977). 
 
+## Important Considerations
+  
 ## Pre-processing
   
 ### Removing Rare Features
