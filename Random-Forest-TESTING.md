@@ -21,7 +21,7 @@ Typically RF models are run when researchers are interested in classifying sampl
 ### Background
   
 ### Other Resources
-* The Segata Lab from Trento University has produced a Python package for running machine learning on metagenomics datasets ([MetAML](http://segatalab.cibio.unitn.it/tools/metaml/)), for which they have written a [tutorial](https://bitbucket.org/CibioCM/metaml/wiki/Home) and [research paper](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004977). 
+* [MetAML](http://segatalab.cibio.unitn.it/tools/metaml/) - A Python packaged produced by the Segata Lab from Trento University for running machine learning on metagenomics datasets. They have written a [tutorial](https://bitbucket.org/CibioCM/metaml/wiki/Home) and [research paper](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004977) for this tool. 
 
 ## Important Considerations
   
