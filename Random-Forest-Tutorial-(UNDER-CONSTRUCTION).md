@@ -10,7 +10,7 @@
     * [Requirements](#requirements)  
     * [Other Resources](#other-resources)  
 * [Background](#background)   
-    * [Classification and Regression Tree (CART) Methods](#classification-and-regression-tree-(cart)-methods)  
+    * [Classification and Regression Tree Methods](#classification-and-regression-tree-methods)  
     * [Out-of-bag Error](#out-of-bag-error)  
     * [Variable Importance](#variable-importance)  
     * [Proximities](#proximities)   
@@ -48,7 +48,7 @@ RF models are run when researchers are interested in classifying samples into ca
 
 Sometimes RF is run to perform feature selection on a dataset. This can be useful when there are thousands of features and you'd like to reduce the number to a less complex subset. However, it's important to realize that you need to validate selected features on independent data. [Click here to see a simple demonstration for why this is important.](https://github.com/mlangill/microbiome_helper/wiki/Random-Forest-Feature-Selection-Caution)  
         
-### Classification and Regression Tree (CART) Methods
+### Classification and Regression Tree Methods
   
 ### Out-of-bag Error  
   
