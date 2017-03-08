@@ -51,7 +51,7 @@ To sort and plot the features by their variable importance:
     barplot(toy_example_RF_mod_imp_sorted$MeanDecreaseAccuracy, ylab="Variable Importance")
 [[images/random_feature_selection_varImp_dist.jpg|width=500px|height=500px]]
   
-In the above figure each of the 1000 features is ranked along the x-axis by their variable importance in decreasing order. Based on this distribution it looks like a small subset of features are useful for classification. How well would a random forest model perform based on only the top features?
+In the above figure all of the 1000 features are ranked along the x-axis by their variable importance in decreasing order. Based on this distribution it looks like a small subset of features are useful for classification. How well would a random forest model perform based on only the top features?
   
 Get the subset of 10 top features:  
   
