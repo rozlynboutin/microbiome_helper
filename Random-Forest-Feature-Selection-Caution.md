@@ -50,6 +50,8 @@ To sort and plot the features by their variable importance:
     toy_example_RF_mod_imp_sorted <- arrange( toy_example_RF_mod_imp  , desc(MeanDecreaseAccuracy)  )
     barplot(toy_example_RF_mod_imp_sorted$MeanDecreaseAccuracy, ylab="Variable Importance")
 
+[[images/random_feature_selection_varImp_dist.jpg|width=500px|height=500px]]
+
 Based on this distribution it looks like a small subset of features are useful for classification. How well would a random forest model perform based on only the top features?
   
 Get the subset of 10 top features:  
