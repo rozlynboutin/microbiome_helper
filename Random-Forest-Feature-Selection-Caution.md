@@ -15,7 +15,7 @@ To simulate a toy example OTU table I started out by making a table filled with 
 
     random_table <- data.frame( matrix(0, nrow=40 , ncol=1000) )
     
-For each sample I generated 1000 values from a Poisson distribution with lambda=0.3. This a crude way to get a random present/absence pattern across the table. You shouldn't use these commands if you want to simulate realistic OTU tables.
+For each sample I generated 1000 values from a Poisson distribution with lambda=0.3. This a crude way to get a random present/absence pattern across the table (note that there are values >1 as well). You shouldn't use these commands if you want to simulate realistic OTU tables.
    
     for(r in 1:nrow(random_table)) {
         random_table[r,] <- rpois(1000, lambda=0.3)*sample(x=2:1000, size=1000, replace=TRUE)
