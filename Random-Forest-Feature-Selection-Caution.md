@@ -63,5 +63,5 @@ Re-run random forest with just this subset:
   
     toy_example_RF_mod_top
 
-Which returns an out-of-bag error rate of 15%, which is much better. However, in this case we know that the input features are totally random and **we are overfitting the model and simply fitting noise**. In other words, you can't validate your model using the same data you used for training. For real datasets you would need an independent dataset/partition to validate the selected features.  
+Which returns an out-of-bag error rate of 15%, which is much better. However, in this case we know that the input features were distributed randomly: **we are overfitting the model and simply fitting noise**. In other words, you can't validate your model using the same data you used for training. For real datasets you would need an independent dataset/partition to validate the selected features.  
       
