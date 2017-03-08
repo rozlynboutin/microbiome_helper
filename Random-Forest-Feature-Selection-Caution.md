@@ -7,7 +7,7 @@ Load required packages:
     library("randomForest")
     library("plyr") # for "arrange" function
 
-Set seed so that the analysis is reproducible:
+Set the random seed so that the analysis is reproducible:
   
     set.seed(441)
 
