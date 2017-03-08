@@ -4,12 +4,16 @@
     
 **First Created**: 7 March 2017
   
-**Last Edited**: 7 March 2017
+**Last Edited**: 8 March 2017
 
 * [Introduction](#introduction)  
     * [Requirements](#requirements)  
     * [Other Resources](#other-resources)  
-* [Background](#background)  
+* [Background](#background)   
+    *[Classification and Regression Tree (CART) Methods](#classification-and-regression-tree-(cart)-methods)  
+    *[Out-of-bag Error](#out-of-bag-error)  
+    *[Variable Importance](#variable-importance)  
+    *[Proximities](#proximities)   
 * [Pre-processing](#pre-processing)  
     * [Removing Rare Features](#removing-rare-features)  
     * [Transforming Your Data](#transforming-your-data)   
@@ -40,8 +44,18 @@ The below tutorial will focus on a dataset of 40 samples, where partitioning the
 
 ## Background
 
-RF models can be used to run are run when researchers are interested in classifying samples into categories (called **classes**) of interest based upon many different variables, such as taxa, functional categories, etc (called **features**). RF can also be run on quantitative data (e.g. height in cm rather than splitting samples into categorical groups like _short_ and _tall_).  
-      
+RF models are run when researchers are interested in classifying samples into categories (called **classes**) of interest based upon many different variables, such as taxa, functional categories, etc (called **features**). RF can also be run on quantitative data (e.g. height in cm rather than splitting samples into categorical groups like _short_ and _tall_).  
+
+Sometimes RF is run to perform feature selection on a dataset. This can be useful when there are thousands of features and you'd like to reduce the number to a less complex subset. However, it's important to realize that you need to validate selected features on independent data. [Click here to see a simple demonstration for why this is important.](https://github.com/mlangill/microbiome_helper/wiki/Random-Forest-Feature-Selection-Caution)  
+        
+### Classification and Regression Tree (CART) Methods
+  
+### Out-of-bag Error  
+  
+### Variable Importance   
+
+### Proximities  
+
 ## Pre-processing
   
 ### Removing Rare Features
