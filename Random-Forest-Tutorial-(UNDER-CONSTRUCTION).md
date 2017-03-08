@@ -34,7 +34,8 @@ The below tutorial will focus on a dataset of 40 samples, where partitioning the
 * [R](https://www.r-project.org/) (this tutorial was run with version 3.3.2)  
 * [RStudio](https://www.rstudio.com/) (recommended if running R commands yourself)  
 * [randomForest R package](https://cran.r-project.org/web/packages/randomForest/index.html)  
-
+* **Several other R packages described below**
+  
 ### Other Resources
 * Original RF paper: [Leo Breiman. 2001. Random Forests. Machine Learning 45(1):5-32.](https://link.springer.com/article/10.1023%2FA%3A1010933404324)
 * Paper describing the randomForest R package (includes a great description of the algorithm and helpful examples): [Andy Liaw and Matthew Wiener. 2002. Classification and Regression by randomForest. R News 2(3):18-22.](http://www.bios.unc.edu/~dzeng/BIOS740/randomforest.pdf)
@@ -57,9 +58,15 @@ Sometimes RF is run to perform feature selection on a dataset. This can be usefu
 ### Proximities  
 
 ## Pre-processing
-  
+
+* One of the most important steps in machine learning
+* Often the difference between the best performing model isn't the choice of algorithm, but simply how the data is pre-processed
+* Possible to transform the data using a dimension reduction technique like principal component analysis, but the downside is that it's much harder to interpret
+* RF doesn't make any assumptions about how the data is distributed so it often is not necessary to transform your data
+* However, reducing noise in your input data will improve model performance. An easy way to do this is to throw out features that are rare or have very low variance across samples. Any cut-offs used at this step are slightly arbitrary and would depend on the dataset.
+
 ### Removing Rare Features
-  
+
 ### Transforming Your Data
   
 ## Assessing Model Fit
