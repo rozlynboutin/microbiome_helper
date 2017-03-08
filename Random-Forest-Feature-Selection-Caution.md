@@ -15,7 +15,8 @@ To simulate a toy example OTU table I started out by making a table filled with 
 
     random_table <- data.frame( matrix(0, nrow=40 , ncol=1000) )
     
-For each sample I generated 1000 values from a Poisson distribution with lambda=0.3. This a crude way to get a random present/absence pattern across the table. You shouldn't use these commands if you want to simulate realistic OTU tables. 
+For each sample I generated 1000 values from a Poisson distribution with lambda=0.3. This a crude way to get a random present/absence pattern across the table. You shouldn't use these commands if you want to simulate realistic OTU tables.
+   
     for(r in 1:nrow(random_table)) {
         random_table[r,] <- rpois(1000, lambda=0.3)*sample(x=2:1000, size=1000, replace=TRUE)
     }
@@ -61,5 +62,5 @@ Re-run random forest with just this subset:
   
     toy_example_RF_mod_top
 
-Which returns an out-of-bag error rate of 15%, which is much better. However, in this case we know that the input features are totally random and **we are overfitting the model and simply fitting noise**. In other words, you can't validate your model using the same data you used for training. For real datasets you would need an independent dataset to validate the selected features.  
+Which returns an out-of-bag error rate of 15%, which is much better. However, in this case we know that the input features are totally random and **we are overfitting the model and simply fitting noise**. In other words, you can't validate your model using the same data you used for training. For real datasets you would need an independent dataset/partition to validate the selected features.  
       
