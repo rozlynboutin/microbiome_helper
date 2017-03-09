@@ -4,7 +4,7 @@
     
 **First Created**: 7 March 2017
   
-**Last Edited**: 8 March 2017
+**Last Edited**: 9 March 2017
 
 * [Introduction](#introduction)  
     * [Requirements](#requirements)  
@@ -149,16 +149,113 @@ How many OTUs are left?
 
 647 OTUs are remaining, which means that 35% of the OTUs were excluded.  
   
+To re-normalize_table so that each sample's column sums to 100 (you can use the _ColSums_ function afterwards for a sanity check):
+  
+    otu_table_rare_removed_norm <- sweep(otu_table_rare_removed, 2, colSums(otu_table_rare_removed) , '/')*100
+  
 We might also be interested in excluding OTUs that don't vary much across samples. This usually isn't different from excluding OTUs based on their number of non-zero values. However, this can be useful for other types of feature tables. You may be interested in trying out the _nearZeroVar()_ function from the caret R package to perform this filtering.    
   
 ### Transforming Your Data
   
+Random forest doesn't make any assumptions about how your input features are distributed so in many cases it isn't necessary to transform your data. However, certain transformations that help make features more comparable across samples can be useful when using relative abundance data.  
   
+One approach is to standardize the data by subtracting each sample's mean (_center_) and then dividing by the sample's standard deviation (_scale_). In other words, each value is converted into a Z-score. This is easy to do in R:  
+  
+    otu_table_scaled <- scale(otu_table_rare_removed_norm, center = TRUE, scale = TRUE)  
+  
+Another method is to take the inverse hyperbolic sine and then to mean center by sample, which is also straight-forward to run in R:  
+  
+    otu_table_asinh_mean_centred <- scale( asinh(otu_table), center=TRUE, scale=FALSE)  
+  
+In this case I will use the standardized data although both of these transformations are used in practice. There are many other possible transformations that could be performed as well; you should think carefully about what transformation is most likely to help your model's performance without detracting too much from the interpretability.  
 
-## Assessing Model Fit
+## Running Model  
+  
+Know that we're content with our pre-processing steps, we need to get the input tables into the correct format (note that the metadata column will be the last column of each input dataframe).  
+  
+To prep input tables for classification of _state_:  
+  
+    otu_table_scaled_state <- data.frame(t(otu_table_scaled))  
+    otu_table_scaled_state$state <- metadata[rownames(otu_table_scaled_state), "state"]  
+  
+To prep input tables for regression of _inflammation score_ (IS):  
+  
+    otu_table_scaled_IS <- data.frame(t(otu_table_scaled))  
+    otu_table_scaled_IS$IS <- metadata[rownames(otu_table_scaled_IS), "IS"]  
+   
+As described above, the 2 parameters for a RF model are the number of trees in the forest (_ntree_) and the number of features randomly sampled at each node in a tree (_mtry_). The more trees you run in your forest the better the model will converge. Below I used 501, which is similar to the default, but in practice you may want to use something like 10,001 trees for a robust model (depending on the computational time). Note that I usually choose odd numbers of trees to ensure there are never any ties for binary classification models. Unless you have a reason to change mtry beforehand it's better to use the default values. The default mtry values differ for RF classification and regression - as shown in the below plots.  
+  
+**Plots of mtry values over a range of # of features goes here**   
+  
+Run RF to **classify** inflamed and control samples:  
+  
+    RF_state_classify <- randomForest( x=otu_table_scaled_state[,1:(ncol(otu_table_scaled_state)-1)] , y=otu_table_scaled_state[ , ncol(otu_table_scaled_state)] , ntree=501, importance=TRUE, proximities=TRUE )
+  
+Run RF to regress OTUs against inflammation score (IS):  
+  
+    RF_IS_regress <- randomForest( x=otu_table_scaled_IS[,1:(ncol(otu_table_scaled_IS)-1)] , y=otu_table_scaled_IS[ , ncol(otu_table_scaled_IS)] , ntree=501, importance=TRUE, proximities=TRUE )  
 
-### Permutation Test
+## Assessing Model Fit  
+  
+Remember that if you partition your data into a training and test set beforehand (which we didn't do in this case due to low sample sizes) you would be able to directly validate your trained model on independent data. Without this partitioning the simplest way to assess model fit is to take a look at the model summaries by just typing the model name. For example, for the classification model:  
+  
+    RF_state_classify  
 
+Which returns:  
+    
+    Call: randomForest(x = otu_table_scaled_state[, 1:(ncol(otu_table_scaled_state) -      1)], y = otu_table_scaled_state[, ncol(otu_table_scaled_state)],      ntree =501, importance = TRUE, proximities = TRUE)   
+    Type of random forest: classification  
+    Number of trees: 501  
+    No. of variables tried at each split: 25  
+    OOB estimate of  error rate: 0%  
+    Confusion matrix:  
+        control inflamed class.error  
+    control       20        0           0  
+    inflamed       0       20           0  
+    
+The out-of-bag error rate is 0%, which is really good! Note that this summary also gives us the mtry parameter, which was 25 in this case. We can also take a look at the regression RF summary, which returns this (excluding the "Call" line):    
+    
+    Type of random forest: regression  
+    Number of trees: 501  
+    No. of variables tried at each split: 215  
+    Mean of squared residuals: 0.02508508  
+    % Var explained: 71.09  
+
+Note the much higher mtry parameter and that instead of out-of-bag error and a confusion matrix, we can use the mean of squared residuals and the % variance explained as performance metrics. These metrics suggest that this model is also performing extremely well although it isn't quite as clear as for the classification model.     
+  
+### Permutation Test  
+  
+Although the above performance metrics provided by the models were encouraging, often it isn't so clear that a model is working well. Testing whether your model's performance metric is more extreme than expected by chance based on a permutation test is one method to assess model significance. 
+  
+To run these significance tests with 1000 permutations:  
+  
+    RF_state_classify_sig <- rf.significance( x=RF_state_classify ,  xdata=otu_table_scaled_state[,1:(ncol(otu_table_scaled_state)-1)] , nperm=1000 , ntree=501 )  
+    RF_IS_regress_sig <- rf.significance( x=RF_IS_regress ,  xdata=otu_table_scaled_IS[,1:(ncol(otu_table_scaled_IS)-1)] , nperm=1000 , ntree=501 )  
+  
+Both models are highly significant based upon these tests.  
+  
+### Accuracy Estimated by Cross-validation   
+  
 ### Receiver Operating Characteristic Curve   
   
 ## Identifying Important Features  
+  
+    par(mfrow=c(1,2))
+    RF_state_classify_imp <- as.data.frame( RF_state_classify$importance )
+    RF_state_classify_imp$features <- rownames( RF_state_classify_imp )
+    RF_state_classify_imp_sorted <- arrange( RF_state_classify_imp  , desc(MeanDecreaseAccuracy)  )
+    barplot(RF_state_classify_imp_sorted$MeanDecreaseAccuracy, ylab="Mean Decrease in Accuracy (Variable Importance)", main="RF Classification Variable Importance Distribution")
+
+    RF_IS_regress_imp <- as.data.frame( RF_IS_regress$importance )
+    RF_IS_regress_imp$features <- rownames( RF_IS_regress_imp )
+    RF_IS_regress_imp_sorted <- arrange( RF_IS_regress_imp  , desc(`%IncMSE`)  )
+    barplot(RF_IS_regress_imp_sorted$`%IncMSE`, ylab="% Increase in Mean Squared Error (Variable Importance)", main="RF Regression Variable Importance Distribution")
+  
+**Full variable importance barplots go here**
+  
+    barplot(RF_state_classify_imp_sorted[1:10,"MeanDecreaseAccuracy"], names.arg=RF_state_classify_imp_sorted[1:10,"features"] , ylab="Mean Decrease in Accuracy (Variable Importance)", las=2, ylim=c(0,0.02))
+    barplot(RF_IS_regress_imp_sorted[1:10,"%IncMSE"], names.arg=RF_IS_regress_imp_sorted[1:10,"features"] , ylab="% Increase in Mean Squared Error (Variable Importance)", las=2, ylim=c(0,0.012))
+  
+**Top 10 variable importance barplots go here**  
+  
+**A footnote on how to save and load R objects goes here**  
