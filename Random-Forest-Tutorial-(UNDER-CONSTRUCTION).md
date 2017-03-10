@@ -247,6 +247,33 @@ Both models are highly significant based upon these tests.
   
 ### Accuracy Estimated by Cross-validation   
   
+One method to estimate model performance is to systematically partition the data into training and test sets and repeatedly see how the model performs (cross-validation). There are many different ways to partition the data, but the simplest is leave-one-out cross-validation. The model is trained _n_ times, where _n_ is the number of samples, and one sample is left out each time for testing. This provides estimates of model performance, which tend to be quite similar to the internal measures (out-of-bag error and mean of squared residuals) described above. We will run this cross-validation using the _caret_ R package.  
+  
+The first step is defining the parameters we want to use for training:  
+  
+    fit_control <- trainControl( method = "LOOCV" )    
+  
+In this case we are just specifying leave-one-out cross-validation, but caret can be used for much more sophisticated purposes.  
+
+These commands would run the leave-one-out cross-validation, note the same ntree and mtry parameters are being used as above:  
+  
+    RF_state_classify_loocv <- train( otu_table_scaled_state[,1:(ncol(otu_table_scaled_state)-1)] , y=otu_table_scaled_state[, ncol(otu_table_scaled_state)] , method="rf", ntree=501 , tuneGrid=data.frame( mtry=25 ) , trControl=fit_control )
+  
+    RF_IS_regress_loocv <- train( otu_table_scaled_IS[,1:(ncol(otu_table_scaled_IS)-1)] , y=otu_table_scaled_IS[, ncol(otu_table_scaled_IS)] , method="rf", ntree=501 , tuneGrid=data.frame( mtry=215 ) , trControl=fit_control )
+  
+To see the performance metrics:  
+  
+    RF_state_classify_loocv$results    
+        mtry Accuracy Kappa  
+    1   25        1     1    
+    
+    
+    RF_IS_regress_loocv$results  
+      mtry      RMSE  Rsquared  
+    1  215 0.1590113 0.7106778  
+  
+Both the Accuracy and Kappa metrics are 100%, which should make us extremely confident in our classification model (you won't see models perform this well usually!). Also, the R-squared of the regression model is very similar to what we previously found based on the internal testing, which is typical since the internal RF performance metrics should not be biased. 
+     
 ### Receiver Operating Characteristic Curve   
   
 ## Identifying Important Features  
