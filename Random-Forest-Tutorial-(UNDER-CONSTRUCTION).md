@@ -297,7 +297,7 @@ Both the Accuracy and Kappa metrics are 100%, which should make us extremely con
       
 ## Saving and Re-loading R Objects
   
-Often it's better to save your R environment or particular R objects so that you don't need to re-run analyses. I tend to just save objects and then re-load them later. There are a few ways to do this, but what I find easiest is to use the _saveRDS_ and _readRDS_ functions. However, these functions restrict you to saving/reading one object at time. If you want to save many or all of the objects in your environment then you can just use the _save_ and _load_ functions. The issue with these functions is that it can be easy to overwrite existing objects in your global environment, which is why I recommend the simpler functions that give you more control.   
+Often it's better to save your R environment or particular R objects so that you don't need to re-run analyses. There are a few ways to do this, but what I find easiest is to use the _saveRDS_ and _readRDS_ functions. However, these functions restrict you to saving/reading one object at time. If you want to save many or all of the objects in your environment then you can just use the _save_ and _load_ functions. The issue with the save and load functions is that it can be easy to overwrite existing objects in your global environment, which is why I recommend the saveRDS and readRDS functions.  
      
 For instance, these commands will save each RF model objects to a .rda file:  
    
