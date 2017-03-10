@@ -76,7 +76,7 @@ You'll need to load R packages for this tutorial (which require a number of depe
   
 Often setting your working environment simplifies working in R:
   
-    setwd("/Path/to/my/RF_tutorial/")
+    setwd("/Path/to/my/RF_tutorial/")  
 
 After downloading the tutorial OTU table and map file from the above links you can read them into R:  
   
@@ -193,6 +193,10 @@ To prep input tables for regression of _inflammation score_ (IS):
 As described above, the 2 parameters for a RF model are the number of trees in the forest (_ntree_) and the number of features randomly sampled at each node in a tree (_mtry_). The more trees you run in your forest the better the model will converge. Below I used 501, which is similar to the default, but in practice you may want to use something like 10,001 trees for a robust model (depending on the computational time). Note that I usually choose odd numbers of trees to ensure there are never any ties for binary classification models. Unless you have a reason to change mtry beforehand it's better to use the default values. The default mtry values differ for RF classification and regression - as shown in the below plots.  
   
 **Plots of mtry values over a range of # of features goes here**   
+  
+Finally, before running the models you should set the random seed so that they will be reproducible. 
+  
+    set.seed(151)  
   
 Run RF to **classify** inflamed and control samples:  
   
