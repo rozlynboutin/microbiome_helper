@@ -126,8 +126,7 @@ To quickly figure out and plot how many non-zero values each OTU has:
   
     otu_nonzero_counts <- apply(otu_table, 1, function(y) sum(length(which(y > 0))))
     hist(otu_nonzero_counts, breaks=100, col="grey", main="", ylab="Number of OTUs", xlab="Number of Non-Zero Values")
-  
-**HISTOGRAM GOES HERE**
+[[images/random_forest_tutorial/hist_nonzero_OTU_values.png|width=500px|height=350px]]  
   
 This histogram shows a typical distributions for OTU tables: most OTUs are rare and found in only a few samples. These OTUs are less likely to help our model so we can throw them out. Typically researchers discard OTUs that are zero in greater than 75-90% of samples although these cut-offs are somewhat arbitrary. This cut-off could be optimized if you had an independent dataset or partition of your data that you could use as a validation set.  
 
@@ -289,11 +288,11 @@ Both the Accuracy and Kappa metrics are 100%, which should make us extremely con
     RF_IS_regress_imp_sorted <- arrange( RF_IS_regress_imp  , desc(`%IncMSE`)  )
     barplot(RF_IS_regress_imp_sorted$`%IncMSE`, ylab="% Increase in Mean Squared Error (Variable Importance)", main="RF Regression Variable Importance Distribution")
   
-**Full variable importance barplots go here**
+[[images/random_forest_tutorial/full_RF_varImp_distributions.png|width=500px|height=350px]]  
   
     barplot(RF_state_classify_imp_sorted[1:10,"MeanDecreaseAccuracy"], names.arg=RF_state_classify_imp_sorted[1:10,"features"] , ylab="Mean Decrease in Accuracy (Variable Importance)", las=2, ylim=c(0,0.02), main="Classification RF")  
     barplot(RF_IS_regress_imp_sorted[1:10,"%IncMSE"], names.arg=RF_IS_regress_imp_sorted[1:10,"features"] , ylab="% Increase in Mean Squared Error (Variable Importance)", las=2, ylim=c(0,0.012), main="Regression RF")  
   
-**Top 10 variable importance barplots go here**  
+[[images/random_forest_tutorial/RF_top10_features_varImp.png|width=500px|height=350px]]    
   
 **A footnote on how to save and load R objects goes here**  
