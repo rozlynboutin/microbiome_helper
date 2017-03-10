@@ -304,7 +304,7 @@ For instance, these commands will save each RF model objects to a .rda file:
     saveRDS( file = "RF_state_model.rda" , RF_state_classify )
     saveRDS( file = "RF_IS_model.rda" , RF_IS_regress )
   
-Now if you create a new RStudio environment and go back to the same working directory as before you'll be able to re-load these objects:  
+Now if you create a new RStudio environment and go back to the same working directory as before you'll be able to re-load these objects (I re-named the objects to demonstrate that you don't need to use their previous names):  
     
     setwd("/Path/to/my/RF_tutorial/")    
     RF_state_model <- readRDS("RF_state_model.rda")     
