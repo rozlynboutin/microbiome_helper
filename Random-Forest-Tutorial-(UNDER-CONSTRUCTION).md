@@ -294,5 +294,19 @@ Both the Accuracy and Kappa metrics are 100%, which should make us extremely con
     barplot(RF_IS_regress_imp_sorted[1:10,"%IncMSE"], names.arg=RF_IS_regress_imp_sorted[1:10,"features"] , ylab="% Increase in Mean Squared Error (Variable Importance)", las=2, ylim=c(0,0.012), main="Regression RF")  
   
 [[images/random_forest_tutorial/RF_top10_features_varImp.png|width=500px|height=350px]]    
+      
+## Saving and Re-loading R Objects
   
-**A footnote on how to save and load R objects goes here**  
+Often it's better to save your R environment or particular R objects so that you don't need to re-run analyses. I tend to just save objects and then re-load them later. There are a few ways to do this, but what I find easiest is to use the _save_ and _attach_ functions.  
+  
+For instance, these commands will save each RF model objects to a .rda file:  
+  
+    saveRDS( file = "RF_state_model.rda" , RF_state_classify )
+    saveRDS( file = "RF_IS_model.rda" , RF_IS_regress )
+  
+Now if you create a new RStudio environment and go back to the same working directory as before you'll be able to re-load these objects:  
+    
+    setwd("/Path/to/my/RF_tutorial/")    
+    RF_state_model <- readRDS("RF_state_model.rda")     
+    RF_IS_model <- readRDS("RF_IS_model.rda")  
+    
