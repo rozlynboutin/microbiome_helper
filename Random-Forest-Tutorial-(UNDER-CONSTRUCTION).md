@@ -126,7 +126,7 @@ To quickly figure out and plot how many non-zero values each OTU has:
   
     otu_nonzero_counts <- apply(otu_table, 1, function(y) sum(length(which(y > 0))))
     hist(otu_nonzero_counts, breaks=100, col="grey", main="", ylab="Number of OTUs", xlab="Number of Non-Zero Values")
-[[images/random_forest_tutorial/hist_nonzero_OTU_values.png|width=250px|height=175px]]  
+[[images/random_forest_tutorial/hist_nonzero_OTU_values.png|width=300px|height=215px]]  
   
 This histogram shows a typical distributions for OTU tables: most OTUs are rare and found in only a few samples. These OTUs are less likely to help our model so we can throw them out. Typically researchers discard OTUs that are zero in greater than 75-90% of samples although these cut-offs are somewhat arbitrary. This cut-off could be optimized if you had an independent dataset or partition of your data that you could use as a validation set.  
 
