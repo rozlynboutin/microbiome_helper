@@ -191,7 +191,7 @@ To prep input tables for regression of _inflammation score_ (IS):
    
 As described above, the 2 parameters for a RF model are the number of trees in the forest (_ntree_) and the number of features randomly sampled at each node in a tree (_mtry_). The more trees you run in your forest the better the model will converge. Below I used 501, which is similar to the default, but in practice you may want to use something like 10,001 trees for a robust model (depending on the computational time). Note that I usually choose odd numbers of trees to ensure there are never any ties for binary classification models. Unless you have a reason to change mtry beforehand it's better to use the default values. The default mtry values differ for RF classification and regression - as shown in the below plots.  
   
-[[images/random_forest_tutorial/default_mtry.png|width=300px|height=300px]]    
+[[images/random_forest_tutorial/default_mtry.png|width=400px|height=400px]]    
       
 Finally, before running the models you should set the random seed so that they will be reproducible. 
   
