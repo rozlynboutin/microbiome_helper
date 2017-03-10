@@ -30,12 +30,18 @@ Often when running machine learning tools you would split up your samples into a
   
 The below tutorial will focus on a dataset of 40 samples, where partitioning the data into training and test sets would not be helpful. [Operational taxonomic unit (OTU)](https://en.wikipedia.org/wiki/Operational_taxonomic_unit) relative abundances are the features of this dataset. All samples have inflammation scores (IS) associated with them (ranging from 0-1). Samples with IS >= 0.5 were grouped as _inflamed_, while those with a value < 0.5 were put in the _control_ group. This means that each sample has an inflammation category and a quantitative value associated with it, which will allow us to try running RF classification and regression models using the same features. Note that this example dataset was simulated for this tutorial.    
 
-### Requirements
+### Requirements 
+You will need the below data and R packages to run all the commands in this tutorial. I have also noted the version of each package that I was using for this tutorial. You shouldn't need to use exactly the same versions as I did, but be aware that there could be updates to these packages since this tutorial was posted.    
+   
 * Tutorial [OTU table](https://www.dropbox.com/s/ekdtod64ov0i9s7/otu_table_RF_tutorial.txt?dl=1) and [mapfile](https://www.dropbox.com/s/9t9hfh0fomwqu8c/metadata_RF_tutorial.txt?dl=1).
-* [R](https://www.r-project.org/) (this tutorial was run with version 3.3.2)  
-* [RStudio](https://www.rstudio.com/) (recommended if running R commands yourself)  
-* [randomForest R package](https://cran.r-project.org/web/packages/randomForest/index.html)  
-* **Several other R packages described below**
+* [R](https://www.r-project.org/) (v3.3.2)  
+* [RStudio](https://www.rstudio.com/) - recommended, but not necessary (v1.0.136)
+* [randomForest R package](https://cran.r-project.org/web/packages/randomForest/index.html) (v4.6-12)   
+* [rfUtilities R package](https://cran.r-project.org/web/packages/rfUtilities/index.html) (v2.0-0)  
+* [caret R package](https://cran.r-project.org/web/packages/caret/index.html) (v6.0-73)  
+* [plyr R package](https://cran.r-project.org/web/packages/plyr/index.html) (v1.8.4)    
+
+
   
 ### Other Resources
 * Original RF paper: [Leo Breiman. 2001. Random Forests. Machine Learning 45(1):5-32.](https://link.springer.com/article/10.1023%2FA%3A1010933404324)
