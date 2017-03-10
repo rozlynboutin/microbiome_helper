@@ -178,7 +178,7 @@ In this case I will use the standardized data although both of these transformat
 
 ## Running Model  
   
-Know that we're content with our pre-processing steps, we need to get the input tables into the correct format (note that the metadata column will be the last column of each input dataframe).  
+Now that we're content with our pre-processing steps, we need to get the input tables into the correct format (note that the metadata column will be the last column of each input dataframe).  
   
 To prep input tables for classification of _state_:  
   
