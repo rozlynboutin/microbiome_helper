@@ -67,7 +67,7 @@ Sometimes RF is run to perform feature selection on a dataset. This can be usefu
  
 ## Load Packages and Read in Data    
 
-You'll need to load R packages for this tutorial (which require a number of dependencies as well):
+Once you're in the R environment you'll need to load the required R packages (which have a number of dependencies as well):
   
     library("randomForest")
     library("plyr") # for the "arrange" function
