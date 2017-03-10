@@ -291,8 +291,8 @@ Both the Accuracy and Kappa metrics are 100%, which should make us extremely con
   
 **Full variable importance barplots go here**
   
-    barplot(RF_state_classify_imp_sorted[1:10,"MeanDecreaseAccuracy"], names.arg=RF_state_classify_imp_sorted[1:10,"features"] , ylab="Mean Decrease in Accuracy (Variable Importance)", las=2, ylim=c(0,0.02))
-    barplot(RF_IS_regress_imp_sorted[1:10,"%IncMSE"], names.arg=RF_IS_regress_imp_sorted[1:10,"features"] , ylab="% Increase in Mean Squared Error (Variable Importance)", las=2, ylim=c(0,0.012))
+    barplot(RF_state_classify_imp_sorted[1:10,"MeanDecreaseAccuracy"], names.arg=RF_state_classify_imp_sorted[1:10,"features"] , ylab="Mean Decrease in Accuracy (Variable Importance)", las=2, ylim=c(0,0.02), main="Classification RF")  
+    barplot(RF_IS_regress_imp_sorted[1:10,"%IncMSE"], names.arg=RF_IS_regress_imp_sorted[1:10,"features"] , ylab="% Increase in Mean Squared Error (Variable Importance)", las=2, ylim=c(0,0.012), main="Regression RF")  
   
 **Top 10 variable importance barplots go here**  
   
