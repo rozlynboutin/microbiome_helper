@@ -201,7 +201,7 @@ Run RF to **classify** inflamed and control samples:
   
     RF_state_classify <- randomForest( x=otu_table_scaled_state[,1:(ncol(otu_table_scaled_state)-1)] , y=otu_table_scaled_state[ , ncol(otu_table_scaled_state)] , ntree=501, importance=TRUE, proximities=TRUE )
   
-Run RF to regress OTUs against inflammation score (IS):  
+Run RF to **regress** OTUs against inflammation score (IS):  
   
     RF_IS_regress <- randomForest( x=otu_table_scaled_IS[,1:(ncol(otu_table_scaled_IS)-1)] , y=otu_table_scaled_IS[ , ncol(otu_table_scaled_IS)] , ntree=501, importance=TRUE, proximities=TRUE )  
 
