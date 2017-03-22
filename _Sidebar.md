@@ -6,7 +6,7 @@
 * [Contact](https://github.com/mlangill/microbiome_helper/wiki#contact)
 
 **Wet-Lab Protocols**
-   * [Microbiome Amplicon Sequencing Workflow](https://github.com/mlangill/microbiome_helper/wiki/MicrobiomeHelper-Virtual-BoxMicrobiome-Amplicon-Sequencing-Workflow)
+   * [Microbiome Amplicon Sequencing Workflow](https://github.com/mlangill/microbiome_helper/wiki/Microbiome-Amplicon-Sequencing-Workflow)
 
 **16S/18S/ITS SOPs**
    * [16S Bacteria/Archaea SOP](https://github.com/mlangill/microbiome_helper/wiki/16S-Bacteria-and-Archaea-Standard-Operating-Procedure)
