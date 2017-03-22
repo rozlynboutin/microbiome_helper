@@ -13,11 +13,11 @@
 
 4) PICRUSt: Collapse KOs into KEGG Pathways.
 
-        categorize_by_function.py -i final_otu_tables/ko.biom -l 3 -c KEGG_Pathways -o ko_L3.biom
+        categorize_by_function.py -i final_otu_tables/ko.biom -l 3 -c KEGG_Pathways -o final_otu_tables/ko_L3.biom
 
 5) Convert BIOM to STAMP format.
 
-        biom_to_stamp.py -m KEGG_Pathways ko_L3.biom > ko_L3.spf
+        biom_to_stamp.py -m KEGG_Pathways final_otu_tables/ko_L3.biom > final_otu_tables/ko_L3.spf
 
 
 **Note:**
