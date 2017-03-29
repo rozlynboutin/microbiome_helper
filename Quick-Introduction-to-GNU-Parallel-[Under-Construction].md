@@ -9,7 +9,7 @@ If you plan on running parallel on a server with many CPUs you should note that 
     
 ### Downloading the data  
   
-I downloaded Protein Data Bank sequences from here and generated a blast database, which we will blast against as an example. You'll need to download [this database and the tutorial data](https://www.dropbox.com/s/v7twasg0fro45x0/parallel_example.tar.gz?dl=1) (45 MB) if you want to run the examples commands below. This data is just a toy example and isn't meant to demonstrate the best way to run blastp!    
+I downloaded example sequences from the [Protein Data Bank sequences](http://www.rcsb.org/pdb/home/home.do) and generated a blast database. You'll need to download [this database and the tutorial data](https://www.dropbox.com/s/v7twasg0fro45x0/parallel_example.tar.gz?dl=1) (45 MB) if you want to run the examples commands below. This data is just a toy example and isn't meant to demonstrate the best way to run blastp!    
   
 You can download the data with this command: 
    
