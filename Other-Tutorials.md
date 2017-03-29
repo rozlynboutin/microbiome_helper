@@ -1,7 +1,7 @@
 
 This is a list of tutorials and workshop material that have been used in the past. They may still be useful but may be slightly outdated.
 
-* [GLBIO/CCBC Metagenomics Workshop 2016] (https://github.com/mlangill/microbiome_helper/wiki/CCBC-Workshop-2016)
+* [GLBIO/CCBC Metagenomics Workshop 2016](https://github.com/mlangill/microbiome_helper/wiki/CCBC-Workshop-2016)
    
 * [CBW 2016 PICRUSt Tutorial](https://github.com/mlangill/microbiome_helper/wiki/CBW-2016-PICRUSt-tutorial)
 * [CBW 2016 Metagenomic Taxonomic Tutorial](https://github.com/mlangill/microbiome_helper/wiki/CBW-2016-Metagenomic-Taxonomic-Tutorial)
