@@ -19,6 +19,10 @@ And decompress the data with this command:
   
     tar xfvz parallel_example.tar.gz  
   
+Enter this folder:  
+  
+    cd parallel_example
+  
 The commands below assume you are within this decompressed directory.    
   
 ### Resources  
