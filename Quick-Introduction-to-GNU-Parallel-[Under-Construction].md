@@ -55,11 +55,15 @@ The options we passed to parallel are:
 
 You can put options you want to use every time in a global configuration file here: /etc/parallel/config. Command-line inputs take precedence over these options.  
    
+### Piping a list of input files     
+  
 Note that at the end of the parallel command we used the ":::" syntax to indicate the input files. You can also pipe ("|") in input files to parallel rather than using the ":::" syntax. If you're not familiar with piping in Linux then you should look-up an online tutorial like the one [here](http://ryanstutorials.net/linuxtutorial/piping.php). Piping input files can be a little easier to understand due to the simpler syntax. This parallel command runs the same jobs as the earlier example:  
   
     mkdir blastp_outfiles2  
     
     ls test_seq*.fas | parallel --eta -j 2 --load 80% --noswap 'blastp -db pdb_blast_db_example/pdb_seqres.txt -query {} -out blastp_outfiles2/{.}.out -evalue 0.0001 -word_size 7 -outfmt "6 std stitle staxids sscinames" -max_target_seqs 10 -num_threads 1'  
+  
+### Piping commands from a file  
   
 You can also pipe lines of a file to parallel. As an example I will use a simple bash loop to write the commands we ran above to a file and then input these commands line-by-line to parallel. For this example writing a bash loop is much more complicated then just running the commands using either of the methods shown above, but I'll show it anyway since it could be useful in other contexts. 
 
