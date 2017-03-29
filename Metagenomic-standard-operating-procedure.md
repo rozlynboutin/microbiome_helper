@@ -44,7 +44,7 @@ _Last updated: 13 Dec 2016 (see "revisions" above for earlier versions)_
 
 9. Run pre-HUMAnN DIAMOND search (Note the input FASTQs will be in "cat_reads" if you ran step 6):
 
-        ls trimmomatic_filtered/* | parallel --eta diamond blastx -p 1 -d /home/shared/kegg/diamond_db/kegg.reduced -q {} -o pre_humann/{/.}.txt --quiet
+        ls trimmomatic_filtered/* | parallel --eta -j 0 diamond blastx -p 1 -d /home/shared/kegg/diamond_db/kegg.reduced -q {} -o pre_humann/{/.}.txt --quiet
 
 10. Run HUMAnN (link files to HUMAnN "input" directory and then run HUMAnN with scons command). Note that you can run this in parallel with `-j` option (e.g. scons -j 4), but I have found this often causes HUMAnN to unexpectedly error. Note that "/home/shared/humann-0.99/" is the location of HUMAnN on our virtual box. You should install this into your own home directory if you are running it on a different system (esp. if there are multiple users).
   
