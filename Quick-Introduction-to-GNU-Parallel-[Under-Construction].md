@@ -76,7 +76,7 @@ Bash loop to produce the commands:
     for f in test_seq*.fas  
     do  
     out=${f/.fas/.out};  
-    echo "blastp -db pdb_blast_db_example/pdb_seqres.txt -query {} -out blastp_outfiles3/{.}.out -evalue 0.0001 -word_size 7 -outfmt "6 std stitle staxids sscinames" -max_target_seqs 10 -num_threads 1" >> blastp_cmds.txt    
+    echo "blastp -db pdb_blast_db_example/pdb_seqres.txt -query $f -out blastp_outfiles3/$out -evalue 0.0001 -word_size 7 -outfmt "6 std stitle staxids sscinames" -max_target_seqs 10 -num_threads 1" >> blastp_cmds.txt    
     done   
   
 Cat file of commands and pipe to parallel:  
