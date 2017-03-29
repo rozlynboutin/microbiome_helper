@@ -5,7 +5,7 @@ Last Updated: 29 March 2017
   
 [GNU Parallel](https://www.gnu.org/software/parallel/) is a helpful tool for threading repetitive commands. This is especially useful in bioinformatics where often we want to run exactly the same command on a large batch of files. GNU Parallel has extensive documentation and can give users sophisticated control. Below I'm just going to demonstrate how a user would run the basic commands to run many jobs in parallel.  
   
-If you plan on running parallel on a server with many CPUs you should note that it will likely be more efficient to run fewer jobs if they are mainly doing reading from input and writing to output (i.e. IO-bound). So if you want to run many gzip, cp, or similar commands in parallel it will likely be better to set "--load" to a lower percentage then we have set below.  
+If you plan on running parallel on a server with many CPUs you should note that it will likely be more efficient to run fewer jobs if they are spending most of their time on input/output operations (i.e. I/O bound). So if you want to run many gzip, cp, or similar commands in parallel it will likely be better to set "--load" to a lower percentage then we have set below.  
     
 ### Downloading the data  
   
