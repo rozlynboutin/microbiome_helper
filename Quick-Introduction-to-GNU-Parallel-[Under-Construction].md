@@ -1,3 +1,6 @@
+Author: Gavin Douglas  
+Last Updated: 29 March 2017  
+  
 ## Introduction  
   
 [GNU Parallel](https://www.gnu.org/software/parallel/) is a helpful tool for threading repetitive commands. This is especially useful in bioinformatics where often we want to run exactly the same command on a large batch of files. GNU Parallel has extensive documentation and can give users sophisticated control. Below I'm just going to demonstrate how a user would run the basic commands to run many jobs in parallel.  
