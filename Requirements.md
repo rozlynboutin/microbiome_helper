@@ -4,8 +4,9 @@ In addition, the following programs should be installed with commands accessible
 
 **Both pipelines**
 * FastQC (optional): http://www.bioinformatics.babraham.ac.uk/projects/fastqc/
-* PEAR: http://sco.h-its.org/exelixis/web/software/pear/doc.html
- 
+* PEAR: http://sco.h-its.org/exelixis/web/software/pear/doc.html  
+* GNU Parallel (>= v20170322): https://www.gnu.org/software/parallel/  
+   
 **Metagenomics**
 * Bowtie2: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 * Human pre-indexed database: ftp://ftp.ccb.jhu.edu/pub/data/bowtie2_indexes/hg19.zip
