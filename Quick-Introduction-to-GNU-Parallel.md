@@ -3,9 +3,9 @@ Last Updated: 29 March 2017
   
 ## Introduction  
   
-[GNU Parallel](https://www.gnu.org/software/parallel/) is a helpful tool for threading repetitive commands. This is especially useful in bioinformatics where often we want to run exactly the same command on a large batch of files. GNU Parallel has extensive documentation and can give users sophisticated control. Below I'm just going to demonstrate how a user would run the basic commands to run many jobs in parallel.  
+[GNU Parallel](https://www.gnu.org/software/parallel/) is a helpful tool for threading repetitive commands. This is especially useful in bioinformatics where often we want to run exactly the same command on a large batch of files. GNU Parallel has extensive documentation and can give users sophisticated control. Below I'm just going to demonstrate how a user would run the basic commands to run many jobs in simultaneously.  
   
-If you plan on running parallel on a server with many CPUs you should note that it will likely be more efficient to run fewer jobs if they are spending most of their time on input/output operations (i.e. I/O bound). So if you want to run many gzip, cp, or similar commands in parallel it will likely be better to set "--load" to a lower percentage then we have set below.  
+If you plan on running GNU Parallel on a server with many CPUs you should note that it will likely be more efficient to run fewer jobs if they are spending most of their time on input/output operations (i.e. I/O bound). So if you want to run many gzip, cp, or similar commands in parallel it will likely be better to set "--load" to a lower percentage then we have set below.  
     
 ### Downloading the data  
   
@@ -40,11 +40,11 @@ You'll need to understand what the below syntax stands for to understand the tut
   
 There are many other possible options for GNU Parallel as well, which you can read about [here](https://www.gnu.org/software/parallel/man.html).  
 
-## Running blastp in parallel  
+## Running blastp commands with GNU parallel  
   
 To demonstrate how to run basic commands in parallel we'll be running blastp on a number of different FASTA files (see above for how to download them) simultaneously. Note that blastp supports multi-threading (e.g. a single job can be split over multiple CPUs), but this isn't the case for all programs.   
   
-Often in bioinformatics we want to repeat a command over a large number of files. In this example there are 10 files we want to run blastp on with the same options. With the below parallel command we'll run blastp on two files at a time with 1 thread allocated for each file.   
+Often in bioinformatics we want to repeat a command over a large number of files. In this example there are 10 files we want to run blastp on with the same options. With the below _parallel_ command we'll run blastp on two files at a time with 1 thread allocated for each file.   
   
     mkdir blastp_outfiles    
     
@@ -52,9 +52,9 @@ Often in bioinformatics we want to repeat a command over a large number of files
     
 You should find that only four query sequences actually match anything in the database.  
     
-Again, the options being given to parallel is everything before the single-quotes. The command inside the single-quotes contains options for blastp only, which were chosen just for this example (one to note is "-num_threads" which is the number of threads to use for each blastp command). 
+Again, the options being given to _parallel_ is everything before the single-quotes. The command inside the single-quotes contains options for blastp only, which were chosen just for this example (one to note is "-num_threads" which is the number of threads to use for each blastp command). 
   
-The options we passed to parallel are:  
+The options we passed to _parallel_ are:  
 * "--eta": Shows the estimated time remaining to run all jobs.  
 * "-j 2" (or "--jobs 2"): The number of commands to run at the same time, which in this case was set to 2.
 * "--load 80%": The maximum CPU load at which new jobs will not be started. So in this case we are specifying that jobs can be run simultaneously up to 80% of the CPUs being run. This is more important when you are dealing with larger numbers of long-running commands.  
@@ -64,7 +64,7 @@ You can put options you want to use every time in a global configuration file he
    
 ### Piping a list of input files     
   
-Note that at the end of the parallel command we used the ":::" syntax to indicate the input files. You can also pipe ("|") in input files to parallel rather than using the ":::" syntax. If you're not familiar with piping in Linux then you should look-up an online tutorial like the one [here](http://ryanstutorials.net/linuxtutorial/piping.php). Piping input files can be a little easier to understand due to the simpler syntax. This parallel command runs the same jobs as the earlier example:  
+Note that at the end of the _parallel_ command we used the ":::" syntax to indicate the input files. You can also pipe ("|") in input files to _parallel_ rather than using the ":::" syntax. If you're not familiar with piping in Linux then you should look-up an online tutorial like the one [here](http://ryanstutorials.net/linuxtutorial/piping.php). Piping input files can be a little easier to understand due to the simpler syntax. This _parallel_ command runs the same jobs as the earlier example:  
   
     mkdir blastp_outfiles2  
     
@@ -72,7 +72,7 @@ Note that at the end of the parallel command we used the ":::" syntax to indicat
   
 ### Piping commands from a file  
   
-You can also pipe lines of a file to parallel. As an example I will use a simple bash loop to write the commands we ran above to a file and then input these commands line-by-line to parallel. For this example writing a bash loop is much more complicated then just running the commands using either of the methods shown above, but I'll show it anyway since it could be useful in other contexts. 
+You can also pipe lines of a file to _parallel_. As an example I will use a simple bash loop to write the commands we ran above to a file and then input these commands line-by-line to _parallel_. For this example writing a bash loop is much more complicated then just running the commands using either of the methods shown above, but I'll show it anyway since it could be useful in other contexts. 
 
 Make new output folder:
   
@@ -86,7 +86,7 @@ Bash loop to produce the commands:
     echo "blastp -db pdb_blast_db_example/pdb_seqres.txt -query $f -out blastp_outfiles3/$out -evalue 0.0001 -word_size 7 -outfmt \"6 std stitle staxids sscinames\" -max_target_seqs 10 -num_threads 1" >> blastp_cmds.txt    
     done   
   
-Cat file of commands and pipe to parallel:  
+Cat file of commands and pipe to _parallel_:  
   
     cat blastp_cmds.txt | parallel --eta -j 2 --load 80% --noswap '{}'  
   
