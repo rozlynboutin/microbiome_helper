@@ -2,7 +2,7 @@ Below is the quick and dirty description of our recommended metagenomics pipelin
     
 _Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._   
     
-_Last updated: 13 Dec 2016 (see "revisions" above for earlier versions)_   
+_Last updated: 29 March 2017 (see "revisions" above for earlier versions)_   
 
 *This workflow starts with raw paired-end MiSeq or NextSeq data in demultiplexed FASTQ format assumed to be located within a folder called `raw_data`*     
     
