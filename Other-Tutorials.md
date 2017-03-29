@@ -1,5 +1,5 @@
 
-This is a list of tutorials and workshop material that have been used in the past. They may still be useful but may be slightly outdated.
+This is a list of tutorials and workshop material that have been used in the past. They may still be useful but some may be slightly outdated.
 
 * [CBW 2016 PICRUSt Tutorial](https://github.com/mlangill/microbiome_helper/wiki/CBW-2016-PICRUSt-tutorial)
   
