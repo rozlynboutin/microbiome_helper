@@ -4,7 +4,7 @@
     
 ### Downloading the data  
   
-You'll need to download the [tutorial data](https://www.dropbox.com/s/glb161j05vyxx4v/parallel_examples.tar.gz?dl=1) if you want to run the examples commands below.  
+You'll need to download the [tutorial data](https://www.dropbox.com/s/glb161j05vyxx4v/parallel_examples.tar.gz?dl=1) if you want to run the examples commands below. This data is just a toy example and isn't meant to demonstrate the best way to run blastp!    
   
 You can download the data with this command: 
    
@@ -45,7 +45,7 @@ Often in bioinformatics we want to repeat a command over a large number of files
     
     parallel --eta -j 2 --load 80% --noswap 'blastp -db pdb_blast_db_example/pdb_seqres.txt -query {} -out blastp_outfiles/{.}.out -evalue 0.0001 -word_size 7 -outfmt "6 std stitle staxids sscinames" -max_target_seqs 10 -num_threads 1' ::: test_seq*.fas
   
-Again, the options being given to parallel is everything before the single-quotes. The command inside the single-quotes contains options for blastp only, which were chosen just for this example (one to note is "-num_threads" which is the number of threads to use for each blastp command). 
+Only four query sequences actually match anything in the database. Again, the options being given to parallel is everything before the single-quotes. The command inside the single-quotes contains options for blastp only, which were chosen just for this example (one to note is "-num_threads" which is the number of threads to use for each blastp command). 
   
 The options we passed to parallel are:  
 * "--eta": Shows the estimated time remaining to run all jobs.  
