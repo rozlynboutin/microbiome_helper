@@ -6,15 +6,15 @@ If you plan on running parallel on a server with many CPUs you should note that 
     
 ### Downloading the data  
   
-You'll need to download the [tutorial data](https://www.dropbox.com/s/glb161j05vyxx4v/parallel_examples.tar.gz?dl=1) if you want to run the examples commands below. This data is just a toy example and isn't meant to demonstrate the best way to run blastp!    
+I downloaded Protein Data Bank sequences from here and generated a blast database, which we will blast against as an example. You'll need to download [this database and the tutorial data](https://www.dropbox.com/s/v7twasg0fro45x0/parallel_example.tar.gz?dl=1) (45 MB) if you want to run the examples commands below. This data is just a toy example and isn't meant to demonstrate the best way to run blastp!    
   
 You can download the data with this command: 
    
-    wget https://www.dropbox.com/s/glb161j05vyxx4v/parallel_examples.tar.gz?dl=1 -O parallel_examples.tar.gz  
+    wget https://www.dropbox.com/s/v7twasg0fro45x0/parallel_example.tar.gz?dl=1 -O parallel_example.tar.gz  
   
 And decompress the data with this command:  
   
-    tar xfvz parallel_examples.tar.gz  
+    tar xfvz parallel_example.tar.gz  
   
 The commands below assume you are within this decompressed directory.    
   
