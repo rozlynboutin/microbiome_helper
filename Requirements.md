@@ -28,7 +28,7 @@ In addition, the following programs should be installed with commands accessible
 
 
 **Databases (dropbox download links)**
-* 16S chimera checking: [Bacteria_RDP_trainset15_092015.fa](https://www.dropbox.com/s/r290fbzgi216kja/Bacteria_RDP_trainset15_092015.fa?dl=1) (17 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include only bacteria.   
+* 16S chimera checking: [RDP_trainset16_022016.fa](https://www.dropbox.com/s/qnlsv7ve2lg6qfp/RDP_trainset16_022016.fa?dl=1) (17 MB). This DB was originally from the Ribosome Database Project (RDP) and was parsed to include only bacteria.   
 * 18S chimera checking: [Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fa] (https://www.dropbox.com/s/p4wnjyvatdobq5h/Eukaryota_SILVA_123_SSURef_Nr99_tax_silva_U-replaced.fasta?dl=1) (117 MB). This DB was taken from SILVA and was parsed to include only eukaryotes and all Us were converted to Ts.
 * ITS2 chimera checking: [UNITE_uchime_ITS2only_01.01.2016.fasta](https://www.dropbox.com/s/nraevyc2fjyd7bv/UNITE_uchime_ITS2only_01.01.2016.fasta?dl=1) (8.6 MB) taken from [UNITE database](https://unite.ut.ee/).
 * Eukaryotic OTU-picking files:
