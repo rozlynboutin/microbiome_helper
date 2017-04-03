@@ -32,7 +32,7 @@ Remember to cite the paper if you use this tool: [GNU Parallel: The Command-Line
     
 This [detailed forum post](https://www.biostars.org/p/63816/) is really useful and shows some more sophisticated examples. 
     
-Also, be sure to get some [GNU parallel merch](https://gnuparallel.threadless.com/) to get in the mood for some serious multi-threading.  
+Also, be sure to get some [GNU parallel merch](https://gnuparallel.threadless.com/) to get in the mood for some serious multi-processing.  
   
 ## Unique Options  
 You'll need to understand what the below syntax stands for to understand the tutorial commands. 
