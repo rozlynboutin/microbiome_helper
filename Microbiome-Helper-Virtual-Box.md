@@ -1,4 +1,4 @@
-We have constructed a Linux (Ubuntu v16.04 LTS Desktop) Virtual Box image that can be used to run all Microbiome Helper workflows and tutorials. This Virtual Box image can be run on any operating system (Windows, Mac, Linux) and saves the time consuming task of installing and configuring multiple bioinformatic packages. If you use any tools packaged with this image be sure to cite the tool's authors. 
+Our Linux (Ubuntu v16.04 LTS Desktop) Virtual Box image that can be used to run all Microbiome Helper workflows and tutorials. This Virtual Box image can be run on any operating system (Windows, Mac, Linux) and saves the time consuming task of installing and configuring multiple bioinformatic packages. If you use any tools packaged with this image be sure to cite the tool's authors. 
 
 ## Includes
 
