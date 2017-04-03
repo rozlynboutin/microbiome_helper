@@ -1,6 +1,6 @@
 Author: Gavin Douglas  
 First Created: 29 March 2017  
-Last Updated: 29 March 2017  
+Last Updated: 3 April 2017  
   
 ## Introduction  
   
@@ -37,10 +37,10 @@ Also, be sure to get some [GNU parallel merch](https://gnuparallel.threadless.co
 ## Unique Options  
 You'll need to understand what the below syntax stands for to understand the tutorial commands. 
   
-* The file name: **{}**  
-* The file name with the extension removed: **{.}**  
+* The file name: `{}`   
+* The file name with the extension removed: `{.}`  
     e.g. test.fa would become test  
-* To indicate that everything that follows should be read in from the command line: **:::**   
+* To indicate that everything that follows should be read in from the command line: `:::`    
     e.g. "parallel gzip ::: *" means to gzip all files in the current working directory, while "parallel gzip *" wont work. You need to include ":::".  
   
 There are many other possible options for GNU Parallel as well, which you can read about [here](https://www.gnu.org/software/parallel/man.html).  
@@ -95,5 +95,5 @@ Cat file of commands and pipe to _parallel_:
   
     cat blastp_cmds.txt | parallel --eta -j 2 --load 80% --noswap '{}'  
   
-In this case since the whole command is being input we can just refer to the input itself with '{}'.  
+In this case since the whole command is being input we can just refer to the input itself with `{}`.  
   
