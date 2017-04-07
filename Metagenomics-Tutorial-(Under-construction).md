@@ -273,7 +273,8 @@ First we will make a directory to store our sequence search outputs:
 
     mkdir pre_humann
 
-Now we will run DIAMOND on our metagenomic sequences for the sample SRS015044:
+Now we will run DIAMOND on our metagenomic sequences for the sample SRS015044:  
+  
     diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -q ./fastq/SRS015044.fastq -o pre_humann/SRS015044.txt -b 0.4  
    
 The options used in this command are:
