@@ -28,7 +28,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 
 **First Created**: Summer 2015 for CBW Metagenomics
 
-**Last Edited**: Spring 2016 for CCBC, Toronto
+**Last Significant Edit**: Spring 2016 for CCBC, Toronto
 
 ## Requirements
 
