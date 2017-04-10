@@ -2,7 +2,7 @@ Our Linux (Ubuntu v16.04 LTS Desktop) Virtual Box image that can be used to run 
 
 ## Includes
 
-The Microbiome Helper VirtualBox includes several [bioinformatic packages and databases](https://github.com/mlangill/microbiome_helper/wiki/requirements) used in our standard operating procedures and tutorials. The image also includes other tools for microbiome analyses such as for [sequencing error correction](https://github.com/mlangill/microbiome_helper/wiki/Sequence-Error-correction) or [predicting phenotypes](https://github.com/mlangill/microbiome_helper/wiki/Predict-phenotypes). Please cite all of the tools that you use for your analyses. 
+The Microbiome Helper Virtual Box includes several [bioinformatic packages and databases](https://github.com/mlangill/microbiome_helper/wiki/requirements) used in our standard operating procedures and tutorials. The image also includes other tools for microbiome analyses such as for [sequencing error correction](https://github.com/mlangill/microbiome_helper/wiki/Sequence-Error-correction) or [predicting phenotypes](https://github.com/mlangill/microbiome_helper/wiki/Predict-phenotypes). Please cite all of the tools that you use for your analyses. 
   
 ## Requirements
 * Any desktop or laptop purchased within the last 3-5 years should work.
