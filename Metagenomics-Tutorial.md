@@ -310,16 +310,16 @@ Each column tells us different information about the match:
 11.	e-value  
 12.	bit score  
 
-Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database as above.
-
+Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database as above.   
+  
 ### Running HUMAnN
- 
-Now we are going to run HUMAnN on three pre-processed files. To use HUMAnN you are going to make a symbolic link between the BLAST tabular format files and the HUMAnN "input" directory (HUMAnN reads in input files from this directory):
-
+  
+Now we are going to run HUMAnN on the three output files. To use HUMAnN you are going to make a symbolic link between the BLAST tabular format files and the HUMAnN "input" directory (HUMAnN reads in input files from this directory).  
+  
     rm /home/shared/humann-0.99/input/*txt 
     rm /home/shared/humann-0.99/output/*
-    ln -s $PWD/pre-computed_results/diamond_alignments/*txt /home/shared/humann-0.99/input
-
+    ln -s $PWD/pre_humann/*txt /home/shared/humann-0.99/input
+  
 (It's ok if the 'rm' commands give the error "No such file or directory", I just added that in to make sure no previous files will mess up HUMAnN).
 
 Then move into the HUMAnN directory:
