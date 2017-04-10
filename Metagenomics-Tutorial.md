@@ -326,10 +326,10 @@ Then move into the HUMAnN directory:
  
     cd /home/shared/humann-0.99
 
-To being running HUMAnN on all the samples you pre-processed with DIAMOND, you use the “scons” command (using 2 cores). Note this will take ~20 minutes.
-
-    scons -j 2
-
+To being running HUMAnN on all the samples you pre-processed with DIAMOND, you use the “scons” command. Note this will take ~20 minutes.
+  
+    scons  
+  
 A bunch of messages will pass on your screen as this command runs. All of the output is contained in the “/home/shared/humann-0.99/output” directory. To see a list of them, once the job is done, type:
  
     ls output
@@ -345,31 +345,37 @@ These files contain relative abundances for each of these different functional c
     less output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
 
 The output should look like this:
-
-    ID      NAME    SRS015044-hit-keg-mpt-cop-nul-nve-nve   SRS015893-hit-keg-mpt-cop-nul-nve-nve   SRS097871-hit-keg-mpt-cop-nul-nve-nve
-    RANDSID RANDSID 763901136       764305738        
-    START   START   Q1_2009 Q2_2009  
-    GENDER  GENDER  female  male     
-    VISNO   VISNO   1       1        
-    STSite  STSite  Supragingival_plaque    Tongue_dorsum    
-    Parent_Specimen Parent_Specimen 700023699       700024548        
-    Run ID  Run ID  620DH   61NTL    
-    Lane    Lane    7       7        
-    SRS     SRS     700023699       700024548        
-    Mean Quality    Mean Quality            32.57    
-    Number of Quality Bases Number of Quality Bases         4175865122       
-    Percent of Human Reads  Percent of Human Reads          0.0348   
-    Unique Non-Human Bases  Unique Non-Human Bases          4359898255       
-    InverseSimpson  InverseSimpson  63.0934 59.9058 52.2271
-    Shannon Shannon 4.29404 4.249   4.15629
-    Pielou  Pielou  0.876722        0.867524        0.848597
-    Richness        Richness        1       1       1
-    ko00564 ko00564: Glycerophospholipid metabolism 0.00859336      0.0065723       0.00667417
-    ko00680 ko00680: Methane metabolism     0.00513046      0.00520955      0.00517978
-    ko00562 ko00562: Inositol phosphate metabolism  0.0029209       0.00343245      0.00543941
-    ko00563 ko00563: Glycosylphosphatidylinositol(GPI)-anchor biosynthesis  0.000187998     0       0
-    ko00561 ko00561: Glycerolipid metabolism        0.00500182      0.00491387      0.00500633
-
+    
+    ID      NAME    SRS015044-hit-keg-mpt-cop-nul-nve-nve   SRS015893-hit-keg-mpt-cop-nul-nve-nve   SRS097871-hit-keg-mpt-cop-nul-nve-nve  
+    RANDSID RANDSID 763901136       764305738          
+    START   START   Q1_2009 Q2_2009    
+    GENDER  GENDER  female  male       
+    VISNO   VISNO   1       1          
+    STSite  STSite  Supragingival_plaque    Tongue_dorsum      
+    Parent_Specimen Parent_Specimen 700023699       700024548          
+    Run ID  Run ID  620DH   61NTL      
+    Lane    Lane    7       7          
+    SRS     SRS     700023699       700024548          
+    Mean Quality    Mean Quality            32.57      
+    Number of Quality Bases Number of Quality Bases         4175865122         
+    Percent of Human Reads  Percent of Human Reads          0.0348     
+    Unique Non-Human Bases  Unique Non-Human Bases          4359898255         
+    InverseSimpson  InverseSimpson  63.1705 59.9415 52.4014  
+    Shannon Shannon 4.29471 4.24922 4.15983  
+    Pielou  Pielou  0.878201        0.8689  0.85062  
+    Richness        Richness        1       1       1  
+    ko00564 ko00564: Glycerophospholipid metabolism 0.00852428      0.00633934      0.00662779  
+    ko00680 ko00680: Methane metabolism     0.00515712      0.0052314       0.00512276  
+    ko00562 ko00562: Inositol phosphate metabolism  0.00293604      0.00345021      0.0054698  
+    ko00563 ko00563: Glycosylphosphatidylinositol(GPI)-anchor biosynthesis  0.000189354     0       0  
+    ko00561 ko00561: Glycerolipid metabolism        0.00498252      0.00491085      0.00503682  
+    ko00440 ko00440: Phosphonate and phosphinate metabolism 0.00311794      0.00103415      0.00611991  
+    ko00250 ko00250: Alanine, aspartate and glutamate metabolism    0.020349        0.0223569       0.0203559  
+    ko00565 ko00565: Ether lipid metabolism 0.000426284     0.000316276     0  
+    ko00072 ko00072: Synthesis and degradation of ketone bodies     0.00366787      0       0  
+    ko04111 ko04111: Cell cycle - yeast     0       4.32745e-06     0  
+    ko00010 ko00010: Glycolysis / Gluconeogenesis   0.016986        0.0146625       0.0163483  
+    
 
 * The first line indicates that the first column is a short id for the KEGG Pathway, the second column is a longer description of the KEGG Pathway, and the remaining columns represent the sample identifiers. 
 * The next 13 lines contain metadata for each sample.
