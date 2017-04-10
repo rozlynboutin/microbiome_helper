@@ -310,7 +310,7 @@ Each column tells us different information about the match:
 11.	e-value  
 12.	bit score  
 
-Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database and convert the output to BLAST tabular format as above.
+Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database as above.
 
 ### Running HUMAnN
  
