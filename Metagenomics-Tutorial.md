@@ -37,7 +37,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 * [Tutorial Data](https://www.dropbox.com/s/ofulbuie6kuc1w2/hmp_metagenomics_downsampled.zip?dl=1)
 
 ## Initial Setup
-* Open this tutorial within the Microbiome Helper Virtual Box
+* Open this tutorial within the Microbiome Helper Virtual Box. **Note that this tutorial will only work with versions 1.1.0 and greater.**  
 * Download the tutorial data, save it to the Desktop (within Ubuntu), unzip the folder, and enter this folder. You can do this using the below commands.  
   
 Open a terminal/console and change to the directory containing the tutorial data:  
