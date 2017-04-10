@@ -37,7 +37,7 @@ This lab component will use samples collected and sequenced through the Human Mi
 * [Tutorial Data](https://www.dropbox.com/s/ofulbuie6kuc1w2/hmp_metagenomics_downsampled.zip?dl=1)
 
 ## Initial Setup
-* Open this tutorial within the Microbiome Helper VirtualBox
+* Open this tutorial within the Microbiome Helper Virtual Box
 * Download the tutorial data, save it to the Desktop (within Ubuntu), unzip the folder, and enter this folder. You can do this using the below commands.  
   
 Open a terminal/console and change to the directory containing the tutorial data:  
@@ -69,7 +69,7 @@ Remember you can count the lines of a file using _wc -l_. For example,
 **Q3)** How many sequences are there in each of the samples? Remember there are 4 lines in a fastq file for each sequence. 
 
 ## Taxonomic Profiling with Metaphlan2
-We will use Metaphlan2 to determine the taxonomic composition of each sample.  As with all other tools, Metaphlan2 has already been installed within the Microbiome Helper Virtualbox. 
+We will use Metaphlan2 to determine the taxonomic composition of each sample.  As with all other tools, Metaphlan2 has already been installed within the Microbiome Helper Virtual Box. 
 
 Similar to other bioinformatic programs you can get the full help for the program by typing the ‘-h’ option after the program name:
  
@@ -261,13 +261,13 @@ You can exit STAMP once you're done with this section.
 
 We will now functionally annotate the metagenomes using HUMAnN. HUMAnN analyzes metagenomic data in the context of biochemical pathways, elucidating the distribution of roles among microbial community members. 
 
-If you are running this tutorial on our Virtual Box with low RAM and a low number of CPUs then you should close everything else except for Terminal. Also, if you don't have at least 2GB of memory available for the virtual box (you can change this before running the virtual box, but of course this is limited by the specs of your actual computer) the following commands could be quite slow (especially the "scons" command). If you notice your commands seem to be frozen you can quit them with "CTRL-C" and skip that step, you will be able to analyze the data with STAMP in either case.  
+If you are running this tutorial on our virtual box with low RAM and a low number of CPUs then you should close everything else except for Terminal. Also, if you don't have at least 2GB of memory available for the virtual box (you can change this before running the virtual box, but of course this is limited by the specs of your actual computer) the following commands could be quite slow (especially the "scons" command). If you notice your commands seem to be frozen you can quit them with "CTRL-C" and skip that step, you will be able to analyze the data with STAMP in either case.  
 
 ### Running DIAMOND search against KEGG
 
 If you are short on time you can skip to [interpreting the functional results](#running-all-samples-with-microbiome-helper). 
 
-Before running HUMAnN, it is first necessary run a similarity search against the KEGG database. This database is a collection of pathways for metabolic and other functional molecular and cellular processes, and is located at “/home/shared/kegg/diamond_db” on the Virtual Box. This is a reduced KEGG database that the authors of HUMAnN created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called [DIAMOND](http://ab.inf.uni-tuebingen.de/software/diamond/).
+Before running HUMAnN, it is first necessary run a similarity search against the KEGG database. This database is a collection of pathways for metabolic and other functional molecular and cellular processes, and is located at “/home/shared/kegg/diamond_db” on the virtual box. This is a reduced KEGG database that the authors of HUMAnN created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called [DIAMOND](http://ab.inf.uni-tuebingen.de/software/diamond/).
 
 First we will make a directory to store our sequence search outputs:
 
