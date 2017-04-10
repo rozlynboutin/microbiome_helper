@@ -387,11 +387,11 @@ Now, use less to look at the KO predictions and the KEGG Module predictions:
 ### Running all samples with Microbiome Helper
 
 So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper package called run_pre_humann.pl. All 30 samples _could be_ processed with a single command like:
-
-    run_pre_humann.pl -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -o pre_humann ./fastq/*
-
+  
+     ls trimmomatic_filtered/* | parallel --eta -j 2 --load 90% diamond blastx -p 1 -d /home/shared/kegg/diamond_db/kegg.reduced -b 0.4 -q {} -o pre_humann/{/.}.txt --quiet  
+  
 However, this would take several hours to complete (this is much faster when more CPUs are used). The HUMAnN step would take at least 10 minutes to complete.  
-
+  
 To make things easier the output for all 30 samples has been pre-computed and is located in  “./pre-computed_results/humann_output”. 
 
 If you browse the output using _less_ you can see that they are in the same format but with 30 columns representing the 30 samples (below "~" specifies your home directory):
