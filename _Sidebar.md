@@ -18,7 +18,7 @@
 
 **Tutorials**
    * [16S tutorial](https://github.com/mlangill/microbiome_helper/wiki/16S-tutorial-(chemerin))
-   * [Metagenomics Tutorial](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-(Downsampled))
+   * [Metagenomics Tutorial](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-(Older))
    * [PICRUSt Tutorial](https://github.com/mlangill/microbiome_helper/wiki/PICRUSt-tutorial)
    * [Other tutorials](https://github.com/mlangill/microbiome_helper/wiki/other-tutorials)
 
