@@ -33,11 +33,11 @@ This lab component will use samples collected and sequenced through the Human Mi
 ## Requirements
 
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
-* [Microbiome Helper VirtualBox](https://github.com/mlangill/microbiome_helper/wiki/Microbiome-Helper-Virtual-Box) (install it and ensure it is working)
+* [Microbiome Helper VirtualBox](https://github.com/mlangill/microbiome_helper/wiki/Microbiome-Helper-Virtual-Box) (install it and ensure it is working). **Note that this version of the tutorial will only work with versions < 1.1.0 of the virtual box. **
 * [Tutorial Data](https://www.dropbox.com/s/ofulbuie6kuc1w2/hmp_metagenomics_downsampled.zip?dl=1)
 
 ## Initial Setup
-* Open this tutorial within the Microbiome Helper VirtualBox
+* Open this tutorial within the Microbiome Helper Virtual Box
 * Download the tutorial data, save it to the Desktop (within Ubuntu), and unzip the folder.
 
 ### Explore Samples
