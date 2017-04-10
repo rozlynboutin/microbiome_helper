@@ -1,4 +1,4 @@
-These are the answers to the questions from the Metagenomics Tutorial
+These are the answers to the questions from the [downsampled Metagenomics Tutorial](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-(Downsampled))  
 
 **Introduction and taxonomic section:**
 
