@@ -388,7 +388,7 @@ Now, use less to look at the KO predictions and the KEGG Module predictions:
 
 So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper package called run_pre_humann.pl. All 30 samples _could be_ processed with a single command like:
   
-     ls trimmomatic_filtered/* | parallel --eta -j 2 --load 90% diamond blastx -p 1 -d /home/shared/kegg/diamond_db/kegg.reduced -b 0.4 -q {} -o pre_humann/{/.}.txt --quiet  
+     ls fastq/*fastq | parallel --eta -j 2 --load 90% diamond blastx -p 1 -d /home/shared/kegg/diamond_db/kegg.reduced -b 0.4 -q {} -o pre_humann/{/.}.txt --quiet  
   
 However, this would take several hours to complete (this is much faster when more CPUs are used). The HUMAnN step would take at least 10 minutes to complete.  
   
