@@ -52,7 +52,7 @@ Briefly, the RF algorithm involves randomly subsetting samples from your dataset
   
 Since each decision tree in the forest is only based on a subset of samples, each tree's performance can be evaluated on the left out samples. When this validation is performed on all samples and trees in a RF the resulting metric is called the **out-of-bag error**. The advantage of using this metric is that it removes the need for a test set to evaluate the performance of your model.  
   
-Also, the out-of-bag error can be used to estimate the **variable importance** of all the features in the model. Variable importance is usually calculated by re-running the RF with one feature's values scrambled across all samples. This difference in accuracy between this model with the scrambled feature and the original model is one measure of variable importance.  
+Also, the out-of-bag error can be used to calculate the **variable importance** of all the features in the model. Variable importance is usually calculated by re-running the RF with one feature's values scrambled across all samples. This difference in accuracy between this model with the scrambled feature and the original model is one measure of variable importance.  
   
 Sometimes RF is run to perform feature selection on a dataset. This can be useful when there are thousands of features and you'd like to reduce the number to a less complex subset. However, it's important to realize that you need to validate selected features on independent data. [Click here to see a simple demonstration for why this is important](https://github.com/mlangill/microbiome_helper/wiki/Random-Forest-Feature-Selection-Caution).
       
