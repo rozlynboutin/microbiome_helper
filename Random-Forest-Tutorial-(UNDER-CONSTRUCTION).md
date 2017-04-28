@@ -10,10 +10,6 @@
     * [Requirements](#requirements)  
     * [Other Resources](#other-resources)  
 * [Background](#background)   
-    * [Classification and Regression Tree Methods](#classification-and-regression-tree-methods)  
-    * [Out-of-bag Error](#out-of-bag-error)  
-    * [Variable Importance](#variable-importance)  
-    * [Proximities](#proximities) 
 * [Load Packages and Read in Data](#load-packages-and-read-in-data)    
 * [Pre-processing](#pre-processing)  
     * [Removing Rare Features](#removing-rare-features)  
@@ -51,20 +47,19 @@ You will need the below data and R packages to run all the commands in this tuto
 * [MetAML](http://segatalab.cibio.unitn.it/tools/metaml/): a Python package based on scikit-learn produced by the Segata Lab from Trento University for running machine learning on metagenomics datasets. They have written a [tutorial](https://bitbucket.org/CibioCM/metaml/wiki/Home) and [research paper](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004977) for this tool.  
 * [caret](https://topepo.github.io/caret/): an R package that wraps many machine learning and other predictive tools. There are many online tutorials on how to use caret to run RF models, such as this [short example](http://bigcomputing.blogspot.ca/2014/10/an-example-of-using-random-forest-in.html). The coursera course [Practical Machine Learning](https://www.coursera.org/learn/practical-machine-learning) focuses on this package.
 
-## Background
-
+## Background  
 RF models are run when researchers are interested in classifying samples into categories (called **classes**) of interest based upon many different variables, such as taxa, functional categories, etc (called **features**). RF can also be used to regress features against quantitative data (e.g. height in cm rather than splitting samples into categorical groups like _short_ and _tall_).  
-
-Sometimes RF is run to perform feature selection on a dataset. This can be useful when there are thousands of features and you'd like to reduce the number to a less complex subset. However, it's important to realize that you need to validate selected features on independent data. [Click here to see a simple demonstration for why this is important.](https://github.com/mlangill/microbiome_helper/wiki/Random-Forest-Feature-Selection-Caution)  
-        
-### Classification and Regression Tree Methods
   
-### Out-of-bag Error  
-  
-### Variable Importance   
+RF models are based on decision trees, which can be used for classification of a discrete variable or regression of a continuous variable. The term Classification and Regression Tree (CART) is often used to describe these decision trees. The [wikipedia article on RF](https://en.wikipedia.org/wiki/Random_forest) describes how this method contrasts with other CART methods. 
 
-### Proximities  
- 
+Briefly, the RF algorithm involves randomly subsetting samples from your dataset and building a decision tree based on these samples. At each node in the tree _mtry_ (a set parameter) number of features are selected from the set of all features. The feature that provides the best split (given any preceding nodes) is chosen and then the procedure is repeated. This algorithm is run on a large number of trees, based on different sample subsets, which means that this method is less prone to overfitting than other CART methods.   
+  
+Since each decision tree in the forest is only based on a subset of samples, each tree's performance can be evaluated on the left out samples. When this validation is performed on all samples and trees in a RF the resulting metric is called the **out-of-bag error**. The advantage of using this metric is that it removes the need for a test set to evaluate the performance of your model.  
+  
+Also, the out-of-bag error can be used to estimate the **variable importance** of all the features in the model. Variable importance is usually calculated by re-running the RF with one feature's values scrambled across all samples. This difference in accuracy between this model with the scrambled feature and the original model is one measure of variable importance.  
+  
+Sometimes RF is run to perform feature selection on a dataset. This can be useful when there are thousands of features and you'd like to reduce the number to a less complex subset. However, it's important to realize that you need to validate selected features on independent data. [Click here to see a simple demonstration for why this is important](https://github.com/mlangill/microbiome_helper/wiki/Random-Forest-Feature-Selection-Caution).
+      
 ## Load Packages and Read in Data    
 
 Once you're in the R environment you'll need to load the required R packages (which have a number of dependencies as well):
@@ -112,11 +107,8 @@ It's also a good idea to look at summaries of your data. This is a little more d
 These steps are important to make sure you're working with the right data and that it's in the format you're expecting. However, it's also important to avoid over-exploring your data so that you don't bias your analyses.  
   
 ## Pre-processing
-* One of the most important steps in machine learning
-* Often the difference between the best performing model isn't the choice of algorithm, but simply how the data is pre-processed
-* Possible to transform the data using a dimension reduction technique like principal component analysis, but the downside is that it's much harder to interpret
-* RF doesn't make any assumptions about how the data is distributed so it often is not necessary to transform your data
-* However, reducing noise in your input data will improve model performance. An easy way to do this is to throw out features that are rare or have very low variance across samples. Any cut-offs used at this step are slightly arbitrary and would depend on the dataset.
+  
+Pre-processing is one of the most important steps in machine learning. This is because often the difference between the best performing model isn't the choice of algorithm, but simply how the data is pre-processed. RF doesn't make any assumptions about how the data is distributed so it often is not necessary to transform your data. However, reducing noise in your input data will improve model performance. An easy way to do this is to throw out features that are rare or have very low variance across samples. Any cut-offs used at this step are slightly arbitrary and would depend on the dataset.
     
 ### Removing Rare Features  
   
