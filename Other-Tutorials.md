@@ -13,4 +13,4 @@ This is a list of additional tutorials along with past workshop material. Note t
   
 * [Introductory Linux Quiz](https://github.com/mlangill/microbiome_helper/wiki/Introductory-Linux-Quiz)
 * [Introduction to GNU Parallel](https://github.com/mlangill/microbiome_helper/wiki/Quick-Introduction-to-GNU-Parallel)  
-* [Random Forest Tutorial (Under Construction)](https://github.com/mlangill/microbiome_helper/wiki/Random-Forest-Tutorial-(UNDER-CONSTRUCTION))  
+* [Random Forest Tutorial](https://github.com/mlangill/microbiome_helper/wiki/Random-Forest-Tutorial)  
