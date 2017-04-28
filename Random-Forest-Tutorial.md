@@ -1,5 +1,3 @@
-# Please note that this page is currently being written.
- 
 **Author**: Gavin Douglas
     
 **First Created**: 7 March 2017
@@ -15,8 +13,6 @@
     * [Removing Rare Features](#removing-rare-features)  
     * [Transforming Your Data](#transforming-your-data)   
 * [Assessing Model Fit](#assessing-model-fit)  
-    * [Permutation Test](#permutation-test)  
-    * [Receiver Operating Characteristic Curve](#receiver-operating-characteristic-curve)   
 * [Identifying Important Features](#identifying-important-features)  
 
 ## Introduction
@@ -265,8 +261,6 @@ To see the performance metrics:
   
 Both the Accuracy and Kappa metrics are 100%, which should make us extremely confident in our classification model (you won't see models perform this well usually!). Also, the R-squared of the regression model is very similar to what we previously found based on the internal testing, which is typical since the internal RF performance metrics should not be biased. 
      
-### Receiver Operating Characteristic Curve   
-  
 ## Identifying Important Features  
   
     par(mfrow=c(1,2))
