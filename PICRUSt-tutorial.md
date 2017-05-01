@@ -1,5 +1,5 @@
 
-##Introduction
+## Introduction
 
 This lab will walk you through the basic steps of using PICRUSt to make functional predictions (e.g. predicted metagenome) from your 16S data.
 
