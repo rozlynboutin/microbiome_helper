@@ -7,7 +7,7 @@ The Microbiome Helper Virtual Box includes several [bioinformatic packages and d
 ## Requirements
 * Any desktop or laptop purchased within the last 3-5 years should work.
 * Must be 64-bit
-* More than 4 GB RAM
+* More than 4 GB RAM to process the tutorial data. You may require additional RAM depending on the commands and size of the data you're processing.   
 * At least 40 GB available hard drive space: the OVA file is 11 GB and the imported image is over 20 GB (note that you can delete the OVA file once the image is imported).
 
 ## Installation
