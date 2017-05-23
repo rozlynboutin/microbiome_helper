@@ -256,8 +256,8 @@ To see the performance metrics:
     
     
     RF_IS_regress_loocv$results  
-      mtry      RMSE  Rsquared  
-    1  215 0.1590113 0.7106778  
+    mtry      RMSE  Rsquared  
+    1  215 0.1585135 0.7128165  
   
 Both the Accuracy and Kappa metrics are 100%, which should make us extremely confident in our classification model (you won't see models perform this well usually!). Also, the R-squared of the regression model is very similar to what we previously found based on the internal testing, which is typical since the internal RF performance metrics should not be biased. 
      
