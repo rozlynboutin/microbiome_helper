@@ -122,9 +122,9 @@ This R function removes features that are non-zero less than a specified proport
   
     remove_rare <- function( table , cutoff_pro ) {
       row2keep <- c()
+      cutoff <- ceiling( cutoff_pro * ncol(table) )  
       for ( i in 1:nrow(table) ) {
         row_nonzero <- length( which( table[ i , ]  > 0 ) ) 
-        cutoff <- ceiling( cutoff_pro * ncol(table) )
         if ( row_nonzero > cutoff ) {
           row2keep <- c( row2keep , i)
         }
