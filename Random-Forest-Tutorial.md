@@ -211,7 +211,7 @@ Which returns:
     control       20        0           0  
     inflamed       0       20           0  
     
-The out-of-bag error rate is 0%, which is really good! Note that this summary also gives us the mtry parameter, which was 25 in this case. We can also take a look at the regression RF summary, which returns this (excluding the "Call" line):    
+The out-of-bag error rate is 0%, which is perfect! Note that this summary also gives us the mtry parameter, which was 25 in this case. We can also take a look at the regression RF summary, which returns this (excluding the "Call" line):    
     
     Type of random forest: regression  
     Number of trees: 501  
