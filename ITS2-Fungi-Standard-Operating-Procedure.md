@@ -64,18 +64,26 @@ _Last updated: 2 Feb 2017 (see "revisions" above for earlier versions)_
 
 13. Manually add column(s) to map.txt that contain information to group your samples (e.g. healthy vs disease).
 
-14. Calculate alpha diversity metrics (you may add/modify the desired metrics with the -m parameter).
+14. Create alpha-diversity rarefaction plot - values min (first point on graph) and max rare depth (last point on graph = your max. above) as well as number of steps (= number of points on graph, not including first min point) should be based on the number of sequences within your OTU table.
 
-        alpha_diversity.py -i final_otu_tables/otu_table.biom -o final_otu_tables/alpha_diversity.txt -m chao1,observed_otus,shannon,simpson_e
+        echo "alpha_diversity:metrics observed_otus" >> rarefaction_params.txt
+        alpha_rarefaction.py -i final_otu_tables/otu_table.biom -o plots/alpha_rarefaction_plot -p rarefaction_params.txt -m map.txt --min_rare_depth X --max_rare_depth X --num_steps X
 
-15. Convert BIOM OTU table to tab-separated file to be opened/explored in text editors or Excel, etc.
+15. Make stacked bar charts of either all samples individually or collapsed into your various categories (the -s at the end sorts the samples alphabetically in the charts).
+
+        #For Individual Samples:
+        summarize_taxa_through_plots.py -i final_otu_tables/otu_table.biom -o plots/taxa_summary -s
+        #Collapsed by Category:
+        summarize_taxa_through_plots.py -i final_otu_tables/otu_table.biom -o plots/taxa_summary -m map.txt -c category_type_here -s
+
+16. Convert BIOM OTU table to tab-separated file to be opened/explored in text editors or Excel, etc.
 
         biom convert -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_w_tax.txt --to-tsv --header-key taxonomy
 
-16. Convert BIOM OTU table to STAMP:
+17. Convert BIOM OTU table to STAMP:
 
         biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom > final_otu_tables/otu_table.spf
 
-17. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
+18. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
 
         biom add-metadata -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_with_metadata.biom -m map.txt
