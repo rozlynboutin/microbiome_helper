@@ -134,6 +134,10 @@ The counts and percentages of reads dropped is reported in _trimmomatic\_tabular
 
 Lastly, since we didn't stitch the paired-end reads together at the beginning of this workflow we will concatenate the FASTQs together now before running Metaphlan2 and HUMAnN2 since these programs [do not use paired-end information](https://bitbucket.org/biobakery/humann2/wiki/Home#markdown-header-humann2-and-paired-end-sequencing-data). 
 
+```
+concat_paired_end.pl -p 4 -o cat_reads trimmomatic_filtered/*_paired*fastq 
+```
+
 ## Taxonomic Profiling with Metaphlan2
 We will use Metaphlan2 to determine the taxonomic composition of each sample.  As with all other tools, Metaphlan2 has already been installed within the Microbiome Helper Virtual Box. 
 
