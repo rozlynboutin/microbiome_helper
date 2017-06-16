@@ -1,74 +1,96 @@
-THIS PAGE IS CURRENTLY UNDER CONSTRUCTION 
-
- * [Introduction](#introduction)
-    * [Requirements](#requirements)
-    * [Initial Setup](#initial-setup)
-    * [Explore Samples](#explore-samples)
-  * [Taxonomic Profiling with Metaphlan2](#taxonomic-profiling-with-metaphlan2)
-    * [Running Metaphlan2](#running-metaphlan2)
-    * [Metaphlan2 Output](#metaphlan2-output)
-    * [Merging Metaphlan2 Results](#merging-metaphlan2-results)
-    * [Running Metaphlan2 on a large number of samples](#running-metaphlan2-on-a-large-number-of-samples-using-microbiome-helper)
-    * [Analyzing Metaphlan2 output with STAMP](#analyzing-metaphlan2-output-with-stamp)
-  * [Determining Functional Composition with HUMAnN](#determining-functional-composition-with-humann)
-    * [Running DIAMOND search against KEGG](#running-diamond-search-against-kegg)
-    * [Running HUMAnN](#running-humann)
-    * [Running all samples with Microbiome Helper](#running-all-samples-with-microbiome-helper)
-    * [STAMP with HUMAnN Output](#stamp-with-humann-output)
+**THIS PAGE IS CURRENTLY UNDER CONSTRUCTION **
 
 # Introduction
 
-This tutorial is set-up to walk you through the process of determining the taxonomic and functional composition of several metagenomic samples. It covers the use of [Metaphlan2](http://huttenhower.sph.harvard.edu/metaphlan2) (for taxonomy), [HUMAnN](https://huttenhower.sph.harvard.edu/humann) (for functional) and [STAMP](http://kiwi.cs.dal.ca/Software/STAMP) (for visualization and statistical evaluation).  
+This tutorial is set-up to walk you through the process of determining the taxonomic and functional composition of several metagenomic samples. It covers the use of [Metaphlan2](http://huttenhower.sph.harvard.edu/metaphlan2) (for taxonomic classification), [HUMAnN2](http://huttenhower.sph.harvard.edu/humann2) (for functional classification), and [STAMP](http://kiwi.cs.dal.ca/Software/STAMP) (for visualization and statistical evaluation).
 
-Throughout the tutorial, there are several questions to ensure that you are understanding the process (and not just copy and pasting). You can check the [answer sheet](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-Answers) after you have answered them yourself.
+Throughout the tutorial, there are several questions to ensure that you are understanding the process (and not just copy and pasting). You can check the [answer sheet](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Summer-School-Tutorial-Answers) after you have answered them yourself.
 
-This lab component will use samples collected and sequenced through the Human Microbiome Project (HMP).  We will be analyzing samples collected from three oral sites including subgingival, supragingival, and the tongue. These samples have been downloaded for you already from the HMP-DACC (http://hmpdacc.org/HMIWGS/all/) and have been randomly subsampled to a much smaller number of reads to allow faster computation time. Real data will require more waiting time between each step!
+We'll be using a subsampled version of the metagenomics dataset from [Schmidt et al. (PLoS ONE 2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098741) that investigated changes in the oral microbiome associated with oral cancers.  
 
-**Author**: Morgan Langille
+**Authors**: Morgan Langille and Gavin Douglas
 
-**Contributions by**: Gavin Douglas
-
-**First Created**: Summer 2015 for CBW Metagenomics
-
-**Last Edited**: 7 April 2017
+**First Created**: Summer 2017
 
 ## Requirements
 
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
-* [Microbiome Helper Virtual Box](https://github.com/mlangill/microbiome_helper/wiki/Microbiome-Helper-Virtual-Box) (install it and ensure it is working)
-* [Tutorial Data](https://www.dropbox.com/s/ofulbuie6kuc1w2/hmp_metagenomics_downsampled.zip?dl=1)
+* [Tutorial Data]()
 
 ## Initial Setup
-* Open this tutorial within the Microbiome Helper Virtual Box. **Note that this tutorial will only work with versions 1.1.0 and greater.**  
-* Download the tutorial data, save it to the Desktop (within Ubuntu), unzip the folder, and enter this folder. You can do this using the below commands.  
+Download the tutorial data, save it to the Desktop (within Ubuntu), unzip the folder, and enter this folder. You can do this using the below commands.  
   
 Open a terminal/console and change to the directory containing the tutorial data:  
 (paste the below command with your mouse, you probably wont be able to copy/paste text in the VBox with keyboard commands)  
- 
-    cd ~/Desktop/  
-    wget https://www.dropbox.com/s/ofulbuie6kuc1w2/hmp_metagenomics_downsampled.zip?dl=1 -O hmp_metagenomics_downsampled.zip  
-    unzip hmp_metagenomics_downsampled.zip   
-    cd hmp_metagenomics_downsampled  
-  
+
+```
+cd ~/Desktop/  
+wget XXXXX -O mgs_tutorial.zip  
+unzip mgs_tutorial.zip   
+cd mgs_tutorial  
+```
+
 ### Explore Samples  
   
-The tutorial data consists of a "map file" containing information about each of the samples called **hmp_map.txt**, along with the sequence data for each sample being contained within a separate fastq file within the directory **fastq**.
+The first step in any metagenomics pipeline should be to explore your raw files. For this tutorial there should be a "mapping file", which contains information about each of the samples called **map.txt**, along with the sequence data for each sample contained within separate FASTQ files within the directory **subsampled_fastq**.
 
-Lets take a look at the **hmp_map.txt** using _less_ (type q to quit out of the program when done)
+Lets take a look at the **map.txt** using _less_ (type q to quit out of the program when done)
 
-    less hmp_map.txt
+```
+less map.txt
+```
 
 You will have noticed that this map file contains three columns with the first being sample ids, the middle column being the body site, and the third being the sex of the person. 
 
 Remember you can count the lines of a file using _wc -l_. For example,
 
-    wc -l hmp_map.txt
+```
+wc -l map.txt
+```
 
-**Q1)** How many samples are there in total (you can either look at the hmp_map.txt file or count the fastq files)?
+**Q1)** How many samples are there in total (you can either look at the map.txt file or count the FASTQ files)?
 
 **Q2)** How many samples are from each of the different sample sites?
 
-**Q3)** How many sequences are there in each of the samples? Remember there are 4 lines in a fastq file for each sequence. 
+Before continuing let's take a look at the raw sequence files themselves. Typically it's better to keep these files in gzipped format to save disk space. However, since several commands below require the files to be uncompressed we can gunzip them now:
+
+```
+gunzip subsampled_fastqs/*gz
+```
+
+[FASTQ format](https://en.wikipedia.org/wiki/FASTQ_format) is currently the most common format for raw sequencing reads. In this format, information for each read is split over 4 lines: a header (i.e. the read name and other details), the sequence, a line containing "+", and the quality scores for each nucleotide.  
+  
+To visualize this we can look at the first 8 lines of one of the FASTQs using the _head_ command:
+
+```
+head -n 8 subsampled_fastqs/p136C_R1.fastq
+
+@SRR3586062.883556
+CTTGGGGCTGCTGAGCTTCATGCTCCCCTCCTGCCTCAAGGACAATAAGGAGATCTTCGACAAGCCTGCAGCAGCTCGCATCGACGCCCTCATCGCTGAGG
++
+CCCFFFFFHHHHHIJJJJJJJIJIJJJJGIJDGIJEIIJIJJJJJJJJIJJJJIJJIJJJJJHHHFFFFECEEEDDDDD?BDDDDDDBDDDDDDDDBBBDD
+@SRR3586062.7587400
+CCAGCAAACACCTAATCTTACAGATAATTATGGTGCTTGGGAAGCGTTAGATAATTTTAAAAACGTATGGAAAATAGTTTATAGTTTGCTTTTTGTTGTTG
++
+@@CFDEFFGGHHHGGEHJIIJGJGGIIJJJGIIB?FGIGJIFHIJJEHJJ<FGIGIIJJJJJJIJGIEHFHHEEECDCFE@ACEDFEDDCDD@CBBC@DD9
+```
+
+**Q3)** To save time each sample has been subsampled to a relatively low number of reads. How many sequences are there in each FASTQ? 
+
+For your own data you may identify outlier samples with low read depth at this stage. It would also be advisable to explore the quality of your data with a tool like [FASTQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). 
+
+## Pre-processing  
+
+The strength of shotgun metagenomics is also its weakness: any DNA in your samples will be sequenced with similar efficiencies. This is a problem when host microbiome samples are taken since it's possible to get substantial amounts of host DNA included in your samples. You should screen out these contaminant sequences before running taxonomic and functional classification. It's also a good idea to screen out PhiX sequences in your data: this virus is a common sequencing control since it has such a small genome.
+
+Below we will screen out reads that map to the human and/or PhiX genomes. If your samples were taken from a different host you will need to map your reads to that genome instead.
+
+```
+echo "--very-sensitive-local" >> ./bowtie2_config.txt
+run_contaminant_filter.pl -p 4 -o screened_reads/ subsampled_fastqs/* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt 
+```
+The numbers and percentages of reads removed from each FASTQ are reported in the _screened\_reads.log_ file by default.
+
 
 ## Taxonomic Profiling with Metaphlan2
 We will use Metaphlan2 to determine the taxonomic composition of each sample.  As with all other tools, Metaphlan2 has already been installed within the Microbiome Helper Virtual Box. 
