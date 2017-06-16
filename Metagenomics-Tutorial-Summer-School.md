@@ -49,7 +49,7 @@ wc -l map.txt
 
 **Q1)** How many samples are there in total (you can either look at the map.txt file or count the FASTQ files)?
 
-**Q2)** How many samples are from each of the different sample sites?
+**Q2)** How many samples are there of each sample type?
 
 Before continuing let's take a look at the raw sequence files themselves. Typically it's better to keep these files in gzipped format to save disk space. However, since several commands below require the files to be uncompressed we can gunzip them now:
 
@@ -91,6 +91,8 @@ run_contaminant_filter.pl -p 4 -o screened_reads/ subsampled_fastqs/* -d /home/s
 ```
 The numbers and percentages of reads removed from each FASTQ are reported in the _screened\_reads.log_ file by default.
 
+**Q4)** Which sample had the highest number of reads screened out?
+
 Next it's a good idea to run quality filtering of your samples. [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) is one popular tool for filtering and trimming next-generation sequencing data. Typically you would first explore the quality of your data to choose sensible cut-offs using FASTQC or a similar alternative. The below command will run trimmomatic on each sample (both forward and reverse reads at once) and use some typical quality cut-offs. Note that if you have overlapping reads you might want to stitch them together first using [PEAR](https://sco.h-its.org/exelixis/web/software/pear/).
 
 ```
@@ -131,7 +133,7 @@ To see what each option means you can type _run\_trimmomatic.pl -h_, which will 
         Path to Trimmomatic jarfile (default:
         /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar).
 ```
-The counts and percentages of reads dropped is reported in _trimmomatic\_tabular\_log.txt_ by default.  
+The counts and percentages of reads dropped is reported in _trimmomatic\_tabular\_log.txt_ by default. Only read pairs that both passed the quality thresholds will be retained for downstream steps.    
 
 Lastly, since we didn't stitch the paired-end reads together at the beginning of this workflow we will concatenate the FASTQs together now before running Metaphlan2 and HUMAnN2 since these programs [do not use paired-end information](https://bitbucket.org/biobakery/humann2/wiki/Home#markdown-header-humann2-and-paired-end-sequencing-data). 
 
@@ -145,11 +147,78 @@ Metaphlan2 is a standalone tool and can be run with the _metaphlan2.py_ command.
 
 To begin with make sure the program _humann2_ is in your PATH. This program is frequently updated so it's a good idea to check what version you're running.
 
-**Q4)** What version of HUMAnN2 are you using? What version of metaphlan2.py?
+**Q5)** What version of HUMAnN2 are you using? What version of metaphlan2.py?
 
 ### Running the HUMAnN2 Pipeline (which includes Metaphlan2)
 
-Both HUMAnN2 and metaphlan2.py come with a large number of options which could be useful (take a look by running each program with the _-h_ option). Below we will run HUMAnN2 on each FASTQ using default options using [GNU parallel](https://www.gnu.org/software/parallel/) to loop over each file. You can see [our tutorial](https://github.com/mlangill/microbiome_helper/wiki/Quick-Introduction-to-GNU-Parallel) for more details on this command, but briefly:
+Both humann2 and metaphlan2.py come with a large number of options which could be useful (take a look by running each program with the _-h_ option). Since humann2 can take a while to run we'll just run one sample for this tutorial (key output files are in the _precalculated_ folder already).
+
+```
+humann2 --threads 4 --input cat_reads/p144C.fastq  --output humann2_out/
+```
+
+You should see a log of what HUMAnN2 is doing printed to screen:
+
+```
+Running metaphlan2.py ........
+
+Found g__Fusobacterium.s__Fusobacterium_nucleatum : 22.70% of mapped reads
+Found g__Neisseria.s__Neisseria_unclassified : 18.81% of mapped reads
+Found g__Fusobacterium.s__Fusobacterium_periodonticum : 10.78% of mapped reads
+Found g__Prevotella.s__Prevotella_melaninogenica : 10.48% of mapped reads
+Found g__Haemophilus.s__Haemophilus_parainfluenzae : 9.52% of mapped reads
+Found g__Gemella.s__Gemella_unclassified : 5.48% of mapped reads
+Found g__Veillonella.s__Veillonella_unclassified : 3.84% of mapped reads
+Found g__Sphingomonas.s__Sphingomonas_melonis : 2.01% of mapped reads
+Found g__Gemella.s__Gemella_haemolysans : 1.16% of mapped reads
+
+Total species selected from prescreen: 9
+```
+
+The Metaphlan2 output file is the "*bugs_list.tsv" in the temp folder within the output folder. You can take a look at it with _less_. 
+
+Your should see something like this:
+
+```
+#SampleID       Metaphlan2_Analysis
+k__Bacteria     100.0
+k__Bacteria|p__Fusobacteria     48.69306
+k__Bacteria|p__Proteobacteria   30.34017
+k__Bacteria|p__Firmicutes       10.48718
+k__Bacteria|p__Bacteroidetes    10.47959
+k__Bacteria|p__Fusobacteria|c__Fusobacteriia    48.69306
+k__Bacteria|p__Proteobacteria|c__Betaproteobacteria     18.80684
+k__Bacteria|p__Bacteroidetes|c__Bacteroidia     10.47959
+k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria    9.51996
+k__Bacteria|p__Firmicutes|c__Bacilli    6.64301
+k__Bacteria|p__Firmicutes|c__Negativicutes      3.84417
+```
+
+You can see that the output contains two columns, with the first column being the taxonomy name and the second column representing the relative abundance of that taxa (out of 100 total).
+
+This output file provides summaries at each taxonomic level (e.g. phylum, class, family, genus, species, and sometimes strain level). At each taxonomic level the relative abundances will sum to 100. 
+
+If reads can only be assigned to a certain taxonomic level (e.g. say the family level), then Metaphlan2 will put those unassigned reads into a lower level taxonomic rank with the name "unclassified" appended.
+
+For example lets pull out all the reads assigned to the genus _Gemella_ using the _grep_ command:
+
+    grep g__Gemella p144C_metaphlan_bugs_list.tsv
+ 
+You should get output like this:
+
+```
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella	6.64301
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella|s__Gemella_unclassified	5.48167
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella|s__Gemella_haemolysans	1.16134
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella|s__Gemella_haemolysans|t__Gemella_haemolysans_unclassified	1.16134
+```
+
+You can see that 6.64% of the metagenome is predicted from organisms in the genus _Gemella_. Of those 1.16% are assigned to the species _Gemella haemolysans_, while 5.48% are assigned to s__Gemella_unclassified, which means Metaphlan2 doesn't know what species to actually call them. 
+
+**Q6)** What is the relative abundance of organisms unclassified at the species level for the genus _Neisseria_? (Remember to use the grep command)
+
+### Running HUMAnN2 on all FASTQs with GNU Parallel
+**You don't need to do this for the tutorial**, but the below command could be used to run HUMAnN2 on each FASTQ using default options with [GNU parallel](https://www.gnu.org/software/parallel/) to loop over each file. You can see [our tutorial](https://github.com/mlangill/microbiome_helper/wiki/Quick-Introduction-to-GNU-Parallel) for more details on this command, but briefly:
 * _-j_ indicates the number of jobs to run.
 * _--eta_ outputs the expected time to finish as individual jobs end.
 * The files being looped over follow _:::_.
@@ -160,115 +229,37 @@ Both HUMAnN2 and metaphlan2.py come with a large number of options which could b
 **It's a good idea to run parallel with the _--dry-run_ option** the first time you are running a set of files. This option will echo the commands that would have been run to screen without running them. This can be very helpful for troubleshooting parallel syntax errors! 
 
 ```
-mkdir humann2_out
-
 parallel -j 1 'humann2 --threads 4 --input {} --output humann2_out/' ::: cat_reads/*fastq
 ```
 
 Setting the option _--memory-use maximum_ will speed up the program **if you have enough available memory**.
 
-### Metaphlan2 Output
-Once these jobs are finished running we'll start out by looking at the output metaphlan2 files. You can inspect the output of sample p136C by using the _less_ command (or your favourite editor): 
-
-Your output should looks something like this:
-
-```
-#SampleID       Metaphlan2_Analysis
-k__Bacteria     100.0
-k__Bacteria|p__Bacteroidetes    51.46498
-k__Bacteria|p__Fusobacteria     29.40276
-k__Bacteria|p__Firmicutes       14.5533
-k__Bacteria|p__Proteobacteria   4.16533
-k__Bacteria|p__Actinobacteria   0.41362
-k__Bacteria|p__Bacteroidetes|c__Flavobacteriia  37.14954
-k__Bacteria|p__Fusobacteria|c__Fusobacteriia    29.40276
-k__Bacteria|p__Bacteroidetes|c__Bacteroidia     14.31543
-k__Bacteria|p__Firmicutes|c__Clostridia 7.18765
-k__Bacteria|p__Firmicutes|c__Bacilli    5.17317
-k__Bacteria|p__Firmicutes|c__Erysipelotrichia   2.19248
-k__Bacteria|p__Proteobacteria|c__Epsilonproteobacteria  1.91225
-k__Bacteria|p__Proteobacteria|c__Betaproteobacteria     1.4506
-k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria    0.80248
-```
-
-You can see that the output contains two columns, with the first column being the taxonomy name and the second column representing the relative abundance of that taxa (out of 100 total).
-
-This output file provides summaries at each taxonomic level (e.g. phylum, class, family, genus, species, and sometimes strain level). At each taxonomic level the relative abundances will sum to 100. 
-
-If reads can only be assigned to a certain taxonomic level (e.g. say the family level), then Metaphlan2 will put those unassigned reads into a lower level taxonomic rank with the name "unclassified" appended.
-
-For example lets pull out all the reads assigned to the genus _Veillonella_ using the _grep_ command:
-
-    grep g__Veillonella SRS015044.txt
-
-You should get output like this:
-
-```
-k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella	10.85284
-k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_parvula	9.97732
-k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_unclassified	0.87552
-k__Bacteria|p__Firmicutes|c__Negativicutes|o__Selenomonadales|f__Veillonellaceae|g__Veillonella|s__Veillonella_parvula|t__Veillonella_parvula_unclassified	9.97732
-```
-
-You can see that 10.85% of the metagenome is predicted from organisms in the genus _Veillonella_. Of those ~9.98% are assigned to the species _Veillonella parvula_, while ~0.88% are assigned to s__Veillonella_unclassified which means Metaphlan2 doesn't know what species to actually call them. 
-
-**Q5)** What is the relative abundance of organisms unclassified at the species level for the genus _Neisseria_ in sample SRS015044? (Remember to use the grep command)
- 
-**Q6)** What phylum has the highest relative abundance in sample SRS015044? And SRS015893?
-
 ### Merging Metaphlan2 Results 
 
-Run Metaphlan2 on sample SRS097871 as well, just like for the other 2 samples.
+We've placed all of the Metaphlan2 output files in _precalculated/metaphlan2_out_. All of these files can be merged into one table with this command:
 
-Now, lets combine all of the Metaphlan2 output files into a single merged output file:
+```
+/usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py precalculated/metaphlan2_out/*tsv > etaphlan2_merged.tsv
+```
 
-    /usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py SRS015044.txt SRS015893.txt SRS097871.txt > metaphlan_merged.txt
-
-Note that this script 'merge_metaphlan_tables.py' takes one or more Metaphlan2 output files as input and combines them into a single output file. The output file is indicated using the stdout redirect symbol '>' and is written in this case to **metaphlan_merged.txt**
+Note that this script 'merge_metaphlan_tables.py' takes one or more Metaphlan2 output files as input and combines them into a single output file. 
 
 The merged output file should look like this:
 ```
-ID      SRS015044       SRS015893       SRS097871
-#SampleID       Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis
-k__Bacteria     100.0   100.0   100.0
-k__Bacteria|p__Actinobacteria   33.07678        7.41456 100.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.07678        7.41456 100.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales      33.07678        7.41456 100.0
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae  1.75917 7.41456 2.12537
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces   1.75917 7.41456 2.12537
-k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces|s__Actinomyces_graevenitzii
-       0.0     7.41456 0.0
+ID      p136C_metaphlan_bugs_list       p136N_metaphlan_bugs_list       p143C_metaphlan_bugs_list       p143N_metaphlan_bugs_list       p144C_metaphlan_bugs_list       p144N_metaphlan_bugs_list       p153C_metaphlan_bugs_list       p153N_metaphlan_bugs_list       p156C_metaphlan_bugs_list       p156N_metaphlan_bugs_list
+#SampleID       Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis     Metaphlan2_Analysis
+k__Bacteria     100.0   100.0   100.0   100.0   100.0   100.0   100.0   100.0   100.0   100.0
+k__Bacteria|p__Actinobacteria   0.10365 0.72239 0.0     29.62481        0.0     13.21533        0.0     30.90135        0.36794 6.80878
+k__Bacteria|p__Actinobacteria|c__Actinobacteria 0.10365 0.72239 0.0     29.62481        0.0     13.21533        0.0     30.90135        0.36794 6.80878
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales      0.0     0.50942 0.0     29.62481        0.0     13.21533        0.0     30.90135        0.36794 6.80878
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae  0.0     0.0     0.0     0.22061 0.0     0.0     0.0     0.0     0.0     0.0
+k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomycetaceae|g__Actinomyces   0.0     0.0     0.0     0.22061 0.0     0.0     0.0     0.0     0.0     0.0
 ```
+To read this table into [STAMP](http://kiwi.cs.dal.ca/Software/STAMP) we'll need to convert it to unstratified format with this command:
+
+```
+
 Now each sample is listed as a different column within this output file. You can view this file again using 'less' or you can import it into your favourite spreadsheet program.
-
-**Q7)** What phylum is present in one of the samples but is absent in the others? What sample is this phylum in? 
-
-Reminder: to get information about the individual samples you can look in the hmp_map.txt file using 'less':
-
-    less hmp_map.txt
-
-**Q8)** What body site is the sample taken from that contains the unique phylum from question 7?
-
-### Running Metaphlan2 on a large number of samples using Microbiome Helper
-
-Running Metaphlan2 on more than a few samples can be tedious. I wrote a script to make this easier as part of the package “Microbiome Helper” (https://github.com/mlangill/microbiome_helper). **Note you do not have to do this today** as we have already pre-computed the combined Metaphlan2 output, but this is how you would do it.
-
-To run Metaphlan2 on all of the samples using 'run_metaphlan2.pl' (this would take ~30 min):
-
-    run_metaphlan2.pl -p 2 -o metaphlan_merged_all.txt ./fastq/*
-
-This command uses the following options:
-* '-p 2' runs metaphlan in parallel using 2 processors.
-* '-o' is the name for the merged output file.
-* ' ./fastq/*' indicates that all of the files within this directory will be used as input. 
-
-On your screen you would see the commands that the microbiome helper script is running automatically for you:
-```
- cat ./fastq/SRS014477.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS014477
- cat ./fastq/SRS011343.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS011343
- cat ./fastq/SRS019129.fastq | /usr/local/metaphlan2/metaphlan2.py  --input_type multifastq --mpa_pkl /usr/local/metaphlan2/db_v20/mpa_v20_m200.pkl --bt2_ps sensitive-local --min_alignment_len 50 --bowtie2db /usr/local/metaphlan2/db_v20/mpa_v20_m200 --no_map > ./metaphlan_out/SRS019129
-```
-**Q9)** Based on the above example commands being written to the screen, what directory would the Metaphlan2 individual output files be stored in?
 
 ### Analyzing Metaphlan2 output with STAMP
 
@@ -320,181 +311,6 @@ Explore each of the different visualizations by changing "Bar plot" to each of t
 You can exit STAMP once you're done with this section.
 
 ***
-
-## Determining Functional Composition with HUMAnN
-
-We will now functionally annotate the metagenomes using HUMAnN. HUMAnN analyzes metagenomic data in the context of biochemical pathways, elucidating the distribution of roles among microbial community members. 
-
-If you are running this tutorial on our virtual box with low RAM and a low number of CPUs then you should close everything else except for Terminal. Also, if you don't have at least 2GB of memory available for the virtual box (you can change this before running the virtual box, but of course this is limited by the specs of your actual computer) the following commands could be quite slow (especially the "scons" command). If you notice your commands seem to be frozen you can quit them with "CTRL-C" and skip that step, you will be able to analyze the data with STAMP in either case.  
-
-### Running DIAMOND search against KEGG
-
-If you are short on time you can skip to [interpreting the functional results](#running-all-samples-with-microbiome-helper). 
-
-Before running HUMAnN, it is first necessary run a similarity search against the KEGG database. This database is a collection of pathways for metabolic and other functional molecular and cellular processes, and is located at “/home/shared/kegg/diamond_db” on the virtual box. This is a reduced KEGG database that the authors of HUMAnN created and which they make available through personal correspondence. This similarity search can be done using various tools such as BLAST, USEARCH, RapSearch, etc. In this tutorial we will use a relatively new similarity search tool that is much faster and works well for large metagenomic datasets called [DIAMOND](http://ab.inf.uni-tuebingen.de/software/diamond/).
-
-First we will make a directory to store our sequence search outputs:
-
-    mkdir pre_humann
-
-Now we will run DIAMOND on our metagenomic sequences for the sample SRS015044:  
-  
-    diamond blastx -p 2 -d /home/shared/kegg/diamond_db/kegg.reduced -q ./fastq/SRS015044.fastq -o pre_humann/SRS015044.txt -b 0.4  
-   
-The options used in this command are:
-
-* 'blastx': Tells DIAMOND to run in “blastx” mode meaning that we will search a nucleotide query against a protein database in all 6 frame translations (3 forward and 3 reverse).
-* '-p 2' indicates that DIAMOND should use 2 threads to do the search.
-*  '-d kegg/kegg.reduced' points at the KEGG database which has already been formatted for use with DIAMOND. 
-* '-q ./fastq/SRS015044.fastq' is the input metagenomic sample.
-* '-o pre_humann/SRS015044.txt' is the name of the output file.  
-* '-b 0.4' indicates that the sequence block-size in billions of letters should be 5 times lower than the default, which will mean the program will run slower, but use less memory.   
-* Note: The default e-value cutoff used by DIAMOND is 0.001.  
-  
-A lot of information is printed to screen while this command is running. You can silence this information by using the "--quiet" option.  
-    
-The previous command is comparing 60k sequences vs. the KEGG database (~1.3 million sequences) and takes about 10 minutes with 2 CPUs. If we had used the NCBI BLASTX it would have taken a couple of days!
-
-You can see the output using _less_:
-
-    less pre_humann/SRS015044.txt
-
-Each column tells us different information about the match:
-
-1.	Query  
-2.	Subject  
-3.	% id  
-4.	alignment length  
-5.	Mistmatches  
-6.	gap openings  
-7.	q.start  
-8.	q.end  
-9.	s.start  
-10.	s.end  
-11.	e-value  
-12.	bit score  
-
-Now run DIAMOND for samples SRS015893 and SRS097871 against the KEGG database as above.   
-  
-### Running HUMAnN
-  
-Now we are going to run HUMAnN on the three output files. To use HUMAnN you are going to make a symbolic link between the BLAST tabular format files and the HUMAnN "input" directory (HUMAnN reads in input files from this directory).  
-  
-    rm /home/shared/humann-0.99/input/*txt 
-    rm /home/shared/humann-0.99/output/*
-    ln -s $PWD/pre_humann/*txt /home/shared/humann-0.99/input
-  
-(It's ok if the 'rm' commands give the error "No such file or directory", I just added that in to make sure no previous files will mess up HUMAnN).
-
-Then move into the HUMAnN directory:
- 
-    cd /home/shared/humann-0.99
-
-To being running HUMAnN on all the samples you pre-processed with DIAMOND, you use the “scons” command. Note this will take ~20 minutes.
-  
-    scons  
-  
-A bunch of messages will pass on your screen as this command runs. All of the output is contained in the “/home/shared/humann-0.99/output” directory. To see a list of them, once the job is done, type:
- 
-    ls output
-
-There are MANY output files from HUMAnN. The ones we care about are called:
-
-* **01b-hit-keg-cat.txt** –> KEGG KOs
-* **04b-hit-keg-mpm-cop-nul-nve-nve.txt** -> KEGG Modules
-* **04b-hit-keg-mpt-cop-nul-nve-nve.txt** -> KEGG Pathways
-
-These files contain relative abundances for each of these different functional classifications. You can look at the format of these using _less_. For example to look at the KEGG Pathways:
-
-    less output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
-
-The output should look like this:
-    
-    ID      NAME    SRS015044-hit-keg-mpt-cop-nul-nve-nve   SRS015893-hit-keg-mpt-cop-nul-nve-nve   SRS097871-hit-keg-mpt-cop-nul-nve-nve  
-    RANDSID RANDSID 763901136       764305738          
-    START   START   Q1_2009 Q2_2009    
-    GENDER  GENDER  female  male       
-    VISNO   VISNO   1       1          
-    STSite  STSite  Supragingival_plaque    Tongue_dorsum      
-    Parent_Specimen Parent_Specimen 700023699       700024548          
-    Run ID  Run ID  620DH   61NTL      
-    Lane    Lane    7       7          
-    SRS     SRS     700023699       700024548          
-    Mean Quality    Mean Quality            32.57      
-    Number of Quality Bases Number of Quality Bases         4175865122         
-    Percent of Human Reads  Percent of Human Reads          0.0348     
-    Unique Non-Human Bases  Unique Non-Human Bases          4359898255         
-    InverseSimpson  InverseSimpson  63.1705 59.9415 52.4014  
-    Shannon Shannon 4.29471 4.24922 4.15983  
-    Pielou  Pielou  0.878201        0.8689  0.85062  
-    Richness        Richness        1       1       1  
-    ko00564 ko00564: Glycerophospholipid metabolism 0.00852428      0.00633934      0.00662779  
-    ko00680 ko00680: Methane metabolism     0.00515712      0.0052314       0.00512276  
-    ko00562 ko00562: Inositol phosphate metabolism  0.00293604      0.00345021      0.0054698  
-    ko00563 ko00563: Glycosylphosphatidylinositol(GPI)-anchor biosynthesis  0.000189354     0       0  
-    ko00561 ko00561: Glycerolipid metabolism        0.00498252      0.00491085      0.00503682  
-    ko00440 ko00440: Phosphonate and phosphinate metabolism 0.00311794      0.00103415      0.00611991  
-    ko00250 ko00250: Alanine, aspartate and glutamate metabolism    0.020349        0.0223569       0.0203559  
-    ko00565 ko00565: Ether lipid metabolism 0.000426284     0.000316276     0  
-    ko00072 ko00072: Synthesis and degradation of ketone bodies     0.00366787      0       0  
-    ko04111 ko04111: Cell cycle - yeast     0       4.32745e-06     0  
-    ko00010 ko00010: Glycolysis / Gluconeogenesis   0.016986        0.0146625       0.0163483  
-    
-
-* The first line indicates that the first column is a short id for the KEGG Pathway, the second column is a longer description of the KEGG Pathway, and the remaining columns represent the sample identifiers. 
-* The next 13 lines contain metadata for each sample.
-* The following 4 lines (starting at "InverseSimpson") calculate different alpha-diversity metrics for each sample, but in general these are usually not that useful and can be ignored.
-* From line 19 onward, each row indicates the different relative abundance for each KEGG Pathway. Note that these values are small because they have been normalized so that each sample will sum to 1. 
-* It should be noted that whether metadata rows are included or not depends on your settings.
-
-Now, use less to look at the KO predictions and the KEGG Module predictions:
-
-    less output/01b-hit-keg-cat.txt
-    less output/04b-hit-keg-mpm-cop-nul-nve-nve.txt
-
-**Q1)** Which of the three samples has the lowest relative abundance of the KEGG Module: “M00319: Manganese/zinc/iron transport system”?
-
-### Running all samples with Microbiome Helper
-
-So what about all of our samples? To do the DIAMOND searches for all 30 you could use a wrapper script provided by the microbiome_helper package called run_pre_humann.pl. All 30 samples _could be_ processed with a single command like:
-  
-     ls fastq/*fastq | parallel --eta -j 2 --load 90% diamond blastx -p 1 -d /home/shared/kegg/diamond_db/kegg.reduced -b 0.4 -q {} -o pre_humann/{/.}.txt --quiet  
-  
-However, this would take several hours to complete (this is much faster when more CPUs are used). The HUMAnN step would take at least 10 minutes to complete.  
-  
-To make things easier the output for all 30 samples has been pre-computed and is located in  “./pre-computed_results/humann_output”. 
-
-If you browse the output using _less_ you can see that they are in the same format but with 30 columns representing the 30 samples (below "~" specifies your home directory):
-
-    cd ~/Desktop/hmp_metagenomics_downsampled
-    less ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt
-
-You will notice that the output looks fairly messy because the terminal will automatically line wrap and it becomes hard to see where one line ends and the next begins. I often find the "cut" command useful to browse data like this. "cut" allows you to just look at particular columns from the data. For example:
-
-    cut -f 1-5 ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt | less
-
-* '-f 1-5' indicates that we want to look at the first 5 columns. We could just have easily used '-f 1,3,10' (to view columns 1, 3 and 10) or '-f 1-3,20-' (to view columns 1 to 3 and columns 20 onwards).
-* '| less' "pipes" the output from the "cut" command and lets us view the output one screen at a time using our 'less' tool.  
-
-Now, we are going to use STAMP to visualize the humann output just like we did with the taxonomic data. 
-
-First, we need to convert the HUMAnN output files file into STAMP format:
-
-    humann_to_stamp.pl ./pre-computed_results/humann_output/04b-hit-keg-mpt-cop-nul-nve-nve.txt > pathways.spf
-    humann_to_stamp.pl ./pre-computed_results/humann_output/04b-hit-keg-mpm-cop-nul-nve-nve.txt > modules.spf
-    humann_to_stamp.pl ./pre-computed_results/humann_output/01b-hit-keg-cat.txt > kos.spf
-
-You should now have the 3 files 'pathways.spf', 'modules.spf', and 'kos.spf' in the current directory. You can check to make sure they are there with 'ls'
-
-    ls
-
-Your output should look like this:
-
-    mh_user@MicrobiomeHelper:~/Desktop/hmp_metagenomics_downsampled$ ls
-    fastq        kos.spf                   metaphlan_merged.txt  pathways.spf          pre_humann     SRS015893.txt
-    hmp_map.txt  metaphlan_merged_all.spf  modules.spf           pre-computed_results  SRS015044.txt  SRS097871.txt
-
-
 
 ### STAMP with HUMAnN Output
 
