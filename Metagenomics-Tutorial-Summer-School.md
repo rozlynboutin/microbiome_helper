@@ -13,7 +13,6 @@ We'll be using a subsampled version of the metagenomics dataset from [Schmidt et
 **First Created**: Summer 2017
 
 ## Requirements
-
 * Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * [Tutorial Data]()
 
@@ -81,7 +80,7 @@ For your own data you may identify outlier samples with low read depth at this s
 
 ## Pre-processing  
 
-The strength of shotgun metagenomics is also its weakness: any DNA in your samples will be sequenced with similar efficiencies. This is a problem when host microbiome samples are taken since it's possible to get substantial amounts of host DNA included in your samples. You should screen out these contaminant sequences before running taxonomic and functional classification. It's also a good idea to screen out PhiX sequences in your data: this virus is a common sequencing control since it has such a small genome.
+The strength of shotgun metagenomics is also its weakness: all DNA in your samples will be sequenced with similar efficiencies. This is a problem when host microbiome samples are taken since it's possible to get substantial amounts of host DNA included in your raw sequences. You should screen out these contaminant sequences before running taxonomic and functional classification. It's also a good idea to screen out PhiX sequences in your data: this virus is a common sequencing control since it has such a small genome. 
 
 Below we will screen out reads that map to the human and/or PhiX genomes. If your samples were taken from a different host you will need to map your reads to that genome instead.
 
@@ -132,6 +131,8 @@ To see what each option means you can type _run\_trimmomatic.pl -h_, which will 
         /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar).
 ```
 The counts and percentages of reads dropped is reported in _trimmomatic\_tabular\_log.txt_ by default.  
+
+Lastly, since we didn't stitch the paired-end reads together at the beginning of this workflow we will concatenate the FASTQs together now before running Metaphlan2 and HUMAnN2 since these programs [do not use paired-end information](https://bitbucket.org/biobakery/humann2/wiki/Home#markdown-header-humann2-and-paired-end-sequencing-data). 
 
 ## Taxonomic Profiling with Metaphlan2
 We will use Metaphlan2 to determine the taxonomic composition of each sample.  As with all other tools, Metaphlan2 has already been installed within the Microbiome Helper Virtual Box. 
