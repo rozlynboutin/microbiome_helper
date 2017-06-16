@@ -162,34 +162,43 @@ Both HUMAnN2 and metaphlan2.py come with a large number of options which could b
 **It's a good idea to run parallel with the _--dry-run_ option** the first time you are running a set of files. This option will echo the commands that would have been run to screen without running them. This can be very helpful for troubleshooting parallel syntax errors! 
 
 ```
-parallel --eta -j 1 'humann2 --threads 4 --input {} --output humann2_out/{/.}_humann2_out' ::: cat_reads/*fastq
+mkdir metaphlan2_out
+
+parallel --eta -j 1 'humann2 --threads 4 --input {} --output humann2_out/{/.}_humann2_out \
+--taxonomic-profile metaphlan2_out/{/.}_metphlan2_out.tsv' ::: cat_reads/*fastq
 ```
 
 Setting the option _--memory-use maximum_ will speed up the program **if you have enough available memory**.
 
 ### Metaphlan2 Output
-You can inspect the output of these two samples by using the _less_ command (or your favourite editor): 
+Once these jobs are finished running we'll start out by looking at the output metaphlan2 files. You can inspect the output of sample p136C by using the _less_ command (or your favourite editor): 
 
 Your output should looks something like this:
 
-    #SampleID       Metaphlan2_Analysis
-    k__Bacteria     100.0
-    k__Bacteria|p__Actinobacteria   33.07678
-    k__Bacteria|p__Firmicutes       24.51694
-    k__Bacteria|p__Proteobacteria   18.5776
-    k__Bacteria|p__Bacteroidetes    11.65762
-    k__Bacteria|p__Candidatus_Saccharibacteria      7.73074
-    k__Bacteria|p__Fusobacteria     4.44031
-    k__Bacteria|p__Actinobacteria|c__Actinobacteria 33.07678
-    k__Bacteria|p__Firmicutes|c__Bacilli    13.6641
-    k__Bacteria|p__Proteobacteria|c__Betaproteobacteria     12.55122
-    k__Bacteria|p__Bacteroidetes|c__Flavobacteriia  11.23596
+```
+#SampleID       Metaphlan2_Analysis
+k__Bacteria     100.0
+k__Bacteria|p__Bacteroidetes    51.46498
+k__Bacteria|p__Fusobacteria     29.40276
+k__Bacteria|p__Firmicutes       14.5533
+k__Bacteria|p__Proteobacteria   4.16533
+k__Bacteria|p__Actinobacteria   0.41362
+k__Bacteria|p__Bacteroidetes|c__Flavobacteriia  37.14954
+k__Bacteria|p__Fusobacteria|c__Fusobacteriia    29.40276
+k__Bacteria|p__Bacteroidetes|c__Bacteroidia     14.31543
+k__Bacteria|p__Firmicutes|c__Clostridia 7.18765
+k__Bacteria|p__Firmicutes|c__Bacilli    5.17317
+k__Bacteria|p__Firmicutes|c__Erysipelotrichia   2.19248
+k__Bacteria|p__Proteobacteria|c__Epsilonproteobacteria  1.91225
+k__Bacteria|p__Proteobacteria|c__Betaproteobacteria     1.4506
+k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria    0.80248
+```
 
 You can see that the output contains two columns, with the first column being the taxonomy name and the second column representing the relative abundance of that taxa (out of 100 total).
 
 This output file provides summaries at each taxonomic level (e.g. phylum, class, family, genus, species, and sometimes strain level). At each taxonomic level the relative abundances will sum to 100. 
 
-If reads can only be assigned to a certain taxonomic level (e.g. say the family level), then metaphlan will put those unassigned reads into a lower level taxonomic rank with the name "unclassified" appended.
+If reads can only be assigned to a certain taxonomic level (e.g. say the family level), then Metaphlan2 will put those unassigned reads into a lower level taxonomic rank with the name "unclassified" appended.
 
 For example lets pull out all the reads assigned to the genus _Veillonella_ using the _grep_ command:
 
