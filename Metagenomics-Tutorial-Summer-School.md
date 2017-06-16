@@ -10,7 +10,7 @@ We'll be using a subsampled version of the metagenomics dataset from [Schmidt et
 
 **Authors**: Morgan Langille and Gavin Douglas
 
-**First Created**: Summer 2017
+**First Created**: June 2017
 
 ## Requirements
 * Basic unix skills (there are many tutorials online such as [this one](http://korflab.ucdavis.edu/bootcamp.html))  
@@ -160,10 +160,9 @@ Both HUMAnN2 and metaphlan2.py come with a large number of options which could b
 **It's a good idea to run parallel with the _--dry-run_ option** the first time you are running a set of files. This option will echo the commands that would have been run to screen without running them. This can be very helpful for troubleshooting parallel syntax errors! 
 
 ```
-mkdir metaphlan2_out
 mkdir humann2_out
 
-parallel --eta -j 1 'humann2 --threads 4 --input {} --output humann2_out/{/.}_humann2_out --taxonomic-profile metaphlan2_out/{/.}_metphlan2_out.tsv' ::: cat_reads/*fastq
+parallel -j 1 'humann2 --threads 4 --input {} --output humann2_out/ ::: cat_reads/*fastq
 ```
 
 Setting the option _--memory-use maximum_ will speed up the program **if you have enough available memory**.
