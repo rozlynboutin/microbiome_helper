@@ -1,4 +1,4 @@
-These are the answers to the questions from the [Metagenomics Summer School Tutorial](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Summer-School-Tutorial).  
+These are the answers to the questions from the [Metagenomics Summer School Tutorial](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-Summer-School).  
 
 1) 12 - since these are paired-end reads there is a forward and reverse FASTQ for each sample.
 2) 6 - from the mapping file there are 6 _Cancer_ and 6 _Normal_ samples.
