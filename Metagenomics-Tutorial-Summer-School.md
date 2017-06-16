@@ -24,7 +24,7 @@ Open a terminal/console and change to the directory containing the tutorial data
 
 ```
 cd ~/Desktop/  
-wget XXXXX -O mgs_tutorial.zip  
+wget http://kronos.pharmacology.dal.ca/public_files/tutorial_datasets/mgs_tutorial.zip -O mgs_tutorial.zip  
 unzip mgs_tutorial.zip   
 cd mgs_tutorial  
 ```
