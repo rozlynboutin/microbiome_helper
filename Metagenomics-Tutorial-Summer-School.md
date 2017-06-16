@@ -91,6 +91,47 @@ run_contaminant_filter.pl -p 4 -o screened_reads/ subsampled_fastqs/* -d /home/s
 ```
 The numbers and percentages of reads removed from each FASTQ are reported in the _screened\_reads.log_ file by default.
 
+Next it's a good idea to run quality filtering of your samples. [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) is one popular tool for filtering and trimming next-generation sequencing data. Typically you would first explore the quality of your data to choose sensible cut-offs using FASTQC or a similar alternative. The below command will run trimmomatic on each sample (both forward and reverse reads at once) and use some typical quality cut-offs. Note that if you have overlapping reads you might want to stitch them together first using [PEAR](https://sco.h-its.org/exelixis/web/software/pear/).
+
+```
+run_trimmomatic.pl -l 5 -t 5 -r 15 -w 4 -m 70 -j /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar --thread 4 -o trimmomatic_filtered screened_reads/*fastq 
+```
+
+To see what each option means you can type _run\_trimmomatic.pl -h_, which will output this description for the above options:
+
+```
+    -o, --out_dir <file>
+        Output directory for filtered fastq files (default:
+        "trimmomatic_filtered").
+
+    --thread <# of CPUs>
+        Number of CPUs to thread each job on (default: 1).
+
+    -l,--leading_quality <int>
+        The minimum quality for leading bases to be kept as required by
+        Trimmomatic's LEADING command (default: 5).
+
+    -t,--trailing_quality <int>
+        The minimum quality for trailing bases to be kept as required by
+        Trimmomatic's TRAILING command (default: 5).
+
+    -r,--required_quality <int>
+        Average quality required by Trimmomatic's SLIDINGWINDOW command
+        (default: 15).
+
+    -w,--window_size <int>
+        Window sizes of sliding windows required by Trimmomatic's
+        SLIDINGWINDOW command (default: 4).
+
+    -m,--min_length <int>
+        Min length of reads to be retained as required by Trimmomatic's MINLEN
+        command (default: 70).
+
+    -j,--jar <jarfile>
+        Path to Trimmomatic jarfile (default:
+        /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar).
+```
+The counts and percentages of reads dropped is reported in _trimmomatic\_tabular\_log.txt_ by default.  
 
 ## Taxonomic Profiling with Metaphlan2
 We will use Metaphlan2 to determine the taxonomic composition of each sample.  As with all other tools, Metaphlan2 has already been installed within the Microbiome Helper Virtual Box. 
