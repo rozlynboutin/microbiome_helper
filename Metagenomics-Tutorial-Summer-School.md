@@ -13,7 +13,7 @@ We'll be using a subsampled version of the metagenomics dataset from [Schmidt et
 **First Created**: Summer 2017
 
 ## Requirements
-* Basic unix skills (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
+* Basic unix skills (there are many tutorials online such as [this one](http://korflab.ucdavis.edu/bootcamp.html))  
 * [Tutorial Data]()
 
 ## Initial Setup
@@ -82,18 +82,21 @@ For your own data you may identify outlier samples with low read depth at this s
 
 The strength of shotgun metagenomics is also its weakness: all DNA in your samples will be sequenced with similar efficiencies. This is a problem when host microbiome samples are taken since it's possible to get substantial amounts of host DNA included in your raw sequences. You should screen out these contaminant sequences before running taxonomic and functional classification. It's also a good idea to screen out PhiX sequences in your data: this virus is a common sequencing control since it has such a small genome. 
 
-Below we will screen out reads that map to the human and/or PhiX genomes. If your samples were taken from a different host you will need to map your reads to that genome instead.
+Below we will screen out reads that map to the human and/or PhiX genomes. If your samples were taken from a different host you will need to map your reads to that genome instead. Note that the \ character below is just used to split 1 command over multiple lines so that it's easier to read.
 
 ```
 echo "--very-sensitive-local" >> ./bowtie2_config.txt
-run_contaminant_filter.pl -p 4 -o screened_reads/ subsampled_fastqs/* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt 
+
+run_contaminant_filter.pl -p 4 -o screened_reads/ subsampled_fastqs/* \
+-d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt 
 ```
 The numbers and percentages of reads removed from each FASTQ are reported in the _screened\_reads.log_ file by default.
 
 Next it's a good idea to run quality filtering of your samples. [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) is one popular tool for filtering and trimming next-generation sequencing data. Typically you would first explore the quality of your data to choose sensible cut-offs using FASTQC or a similar alternative. The below command will run trimmomatic on each sample (both forward and reverse reads at once) and use some typical quality cut-offs. Note that if you have overlapping reads you might want to stitch them together first using [PEAR](https://sco.h-its.org/exelixis/web/software/pear/).
 
 ```
-run_trimmomatic.pl -l 5 -t 5 -r 15 -w 4 -m 70 -j /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar --thread 4 -o trimmomatic_filtered screened_reads/*fastq 
+run_trimmomatic.pl -l 5 -t 5 -r 15 -w 4 -m 70 -j /usr/local/prg/Trimmomatic-0.36/trimmomatic-0.36.jar \
+--thread 4 -o trimmomatic_filtered screened_reads/*fastq 
 ```
 
 To see what each option means you can type _run\_trimmomatic.pl -h_, which will output this description for the above options:
@@ -138,49 +141,34 @@ Lastly, since we didn't stitch the paired-end reads together at the beginning of
 concat_paired_end.pl -p 4 -o cat_reads trimmomatic_filtered/*_paired*fastq 
 ```
 
-## Taxonomic Profiling with Metaphlan2
-We will use Metaphlan2 to determine the taxonomic composition of each sample.  As with all other tools, Metaphlan2 has already been installed within the Microbiome Helper Virtual Box. 
+## Taxonomic and Functional Profiling with Metaphlan2 and HUMAnN2 Respectively
 
-Similar to other bioinformatic programs you can get the full help for the program by typing the ‘-h’ option after the program name:
- 
-    metaphlan2.py -h
+Metaphlan2 is a standalone tool and can be run with the _metaphlan2.py_ command. It is easier to run a custom analysis with this script directly. However, since HUMAnN2 runs this script anyway (with default options unless specified otherwise) we can use the output files produced by this pipeline instead, which is simpler! 
 
-As you can see there are quite a few options. We won’t explore all of these in this tutorial, but it may be worth reading on your own time. 
+To begin with make sure the program _humann2_ is in your PATH. This program is frequently updated so it's a good idea to check what version you're running.
 
-Find the option which tells you the version of Metaphlan2 you are using. 
+**Q4)** What version of HUMAnN2 are you using? What version of metaphlan2.py?
 
-**Q4)** What version of Metaphlan2 are you using?
+### Running the HUMAnN2 Pipeline (which includes Metaphlan2)
 
-### Running Metaphlan2
+Both HUMAnN2 and metaphlan2.py come with a large number of options which could be useful (take a look by running each program with the _-h_ option). Below we will run HUMAnN2 on each FASTQ using default options using [GNU parallel](https://www.gnu.org/software/parallel/) to loop over each file. You can see [our tutorial](https://github.com/mlangill/microbiome_helper/wiki/Quick-Introduction-to-GNU-Parallel) for more details on this command, but briefly:
+* _-j_ indicates the number of jobs to run.
+* _--eta_ outputs the expected time to finish as individual jobs end.
+* The files being looped over follow _:::_.
+* Everything within the single-quotes (') is the actual command being run on every file. The options within the quotes are for the particular tool being run and NOT parallel.
+* {} specifies each individual filename being looped over.
+* {/.} specifies the individual filename being looped over with the extension and PATH removed.
 
-Now we are going to run Metaphlan2 on the sample "SRS015044". 
+**It's a good idea to run parallel with the _--dry-run_ option** the first time you are running a set of files. This option will echo the commands that would have been run to screen without running them. This can be very helpful for troubleshooting parallel syntax errors! 
 
-First change back to your working directory:
+```
+parallel --eta -j 1 'humann2 --threads 4 --input {} --output humann2_out/{/.}_humann2_out' ::: cat_reads/*fastq
+```
 
-    cd ~/Desktop/hmp_metagenomics_downsampled
-
-Now we are going to run Metaphlan2 on a single example with the following (long) command:
-    
-    metaphlan2.py --mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl --input_type fastq --bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200 --no_map --nproc 2 -o SRS015044.txt fastq/SRS015044.fastq
-
-The command will run for 1-2 minutes on this single sample (it'll be faster if you have more CPUs enabled, see the _nproc_ option described below).
-
-The command line parameters are:
-* `--mpa_pkl /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200.pkl `: Indicates where the Metaphlan2 marker database is located which contains metadata information about each of the markers
-* `--input_type fastq`: Indicates that our input files are in fastq format. (If we wanted to use fasta files as input then we would change this to 'fasta').
-* `--bowtie2db /usr/local/prg/metaphlan2/db_v20/mpa_v20_m200`: This indicates the location of the marker database formatted for use with bowtie2
-* `--no_map` We use this flag to prevent Metaphlan2 from storing the intermediate bowtie output files. 
-* '--nproc 2' Indicates that 2 cores should be used to run this program, but will only work if you have enabled at least 2 cores already, otherwise only 1 core will be used.
-* `-o SRS015044.txt`: Indicates the name of output file that Metaphlan2 will use to write results to.
-* `fastq/SRS015044.fastq`: Metaphlan2 takes the input file containing our metagenomic reads as the last argument
-
-Now run Metaphlan2 for sample SRS015893 as well (swap out the sample names for the above command).
+Setting the option _--memory-use maximum_ will speed up the program **if you have enough available memory**.
 
 ### Metaphlan2 Output
 You can inspect the output of these two samples by using the _less_ command (or your favourite editor): 
-
-    less SRS015044.txt
-    less SRS015893.txt
 
 Your output should looks something like this:
 
