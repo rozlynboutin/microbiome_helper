@@ -161,6 +161,7 @@ Both HUMAnN2 and metaphlan2.py come with a large number of options which could b
 
 ```
 mkdir metaphlan2_out
+mkdir humann2_out
 
 parallel --eta -j 1 'humann2 --threads 4 --input {} --output humann2_out/{/.}_humann2_out --taxonomic-profile metaphlan2_out/{/.}_metphlan2_out.tsv' ::: cat_reads/*fastq
 ```
