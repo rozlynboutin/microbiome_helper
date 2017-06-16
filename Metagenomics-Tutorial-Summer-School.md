@@ -6,7 +6,7 @@ This tutorial is set-up to walk you through the process of determining the taxon
 
 Throughout the tutorial, there are several questions to ensure that you are understanding the process (and not just copy and pasting). You can check the [answer sheet](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Summer-School-Tutorial-Answers) after you have answered them yourself.
 
-We'll be using a subsampled version of the metagenomics dataset from [Schmidt et al. (PLoS ONE 2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098741) that investigated changes in the oral microbiome associated with oral cancers.  
+We'll be using a subsampled version of the metagenomics dataset from [Schmidt et al. (PLoS ONE 2014)](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098741) that investigated changes in the oral microbiome associated with oral cancers. **Note: since these files have been drastically subsampled they do not represent typical metagenomics raw files.** For instance, many more taxonomic and functional classifications would be output if the full datasets were used. However, due to the shallow read depth the running time of the workflow is extremely fast! 
 
 **Authors**: Morgan Langille and Gavin Douglas
 
@@ -162,7 +162,7 @@ Both HUMAnN2 and metaphlan2.py come with a large number of options which could b
 ```
 mkdir humann2_out
 
-parallel -j 1 'humann2 --threads 4 --input {} --output humann2_out/ ::: cat_reads/*fastq
+parallel -j 1 'humann2 --threads 4 --input {} --output humann2_out/' ::: cat_reads/*fastq
 ```
 
 Setting the option _--memory-use maximum_ will speed up the program **if you have enough available memory**.
