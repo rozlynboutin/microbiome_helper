@@ -284,7 +284,7 @@ You may have noticed that a "Cancer" and "Normal" samples was taken from the sam
 
 You should now be looking at a PCA plot that is coloured by which individual the samples came from:
 
-![]
+[[images/mgs_tutorial_2017_images/individual_pca.png]]
 
 As you can see there is no obvious separation in the data points when coloured by individual - at the very least this isn't driving the major axes of variation. 
 
@@ -296,7 +296,7 @@ Now lets test what is significantly different between the groups at the Genus ra
 
 Under the “Two groups” dialog on the left, check that Welch's t-test is being used as the statistical test, and select “Benjamini-Hochberg FDR” for the multiple test correction. 
 
-![]
+[[images/mgs_tutorial_2017_images/metaphlan2_sampletype_stamp_settings.png]]
 
 No genera are significantly different between samples based on sample type. This is likely at least partially due to the low sample sizes and low sequencing depths used for this tutorial. For the purposes of this tutorial we will focus on one genus that was significant before FDR correction. If we were to report this finding elsewhere we would need to clearly state the caveat that this genus was not significant after multiple-test corrections.
 
