@@ -239,7 +239,7 @@ Setting the option _--memory-use maximum_ will speed up the program **if you hav
 We've placed all of the Metaphlan2 output files in _precalculated/metaphlan2_out_. All of these files can be merged into one table with this command:
 
 ```
-/usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py precalculated/metaphlan2_out/*tsv > etaphlan2_merged.tsv
+/usr/local/prg/metaphlan2/utils/merge_metaphlan_tables.py precalculated/metaphlan2_out/*tsv > metaphlan2_merged.tsv
 ```
 
 Note that this script 'merge_metaphlan_tables.py' takes one or more Metaphlan2 output files as input and combines them into a single output file. 
@@ -258,6 +258,14 @@ k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Actinomycetales|f__Actinomyce
 To read this table into [STAMP](http://kiwi.cs.dal.ca/Software/STAMP) we'll need to convert it to unstratified format with this command:
 
 ```
+metaphlan_to_stamp.pl metaphlan2_merged.tsv > metaphlan2_merged.spf
+```
+
+Finally, notice that the sample names in _map.txt_ don't match the column names in _metaphlan2_merged.spf_. These need to match for STAMP to read the table. This can be fixed by removing all instances of "_metaphlan_bugs_list".
+
+```
+sed -i 's/_metaphlan_bugs_list//g' metaphlan2_merged.spf 
+```
 
 Now each sample is listed as a different column within this output file. You can view this file again using 'less' or you can import it into your favourite spreadsheet program.
 
@@ -265,85 +273,85 @@ Now each sample is listed as a different column within this output file. You can
 
 STAMP takes two main files as input the profile data which is a table that contains the abundance of features (i.e. taxonomic or functions) and a group metadata file which provides more information about each of the samples in the profile data file. 
 
-The metadata file is the **hmp_map.txt** file. This file is present already in the "hmp_metagenomics_downsampled" directory.
-You will also need the profile data file which is in a different format than what Metaphlan2 outputs. Therefore we first need to convert it using a script from the microbiome_helper package. You can convert the pre-computed Metaphlan2 output for all samples like this:
+The metadata file is the **map.txt** file. This file is present already in the _mgs\_tutorial_ directory.
+You will also need the profile data file that we just created. 
 
-    metaphlan_to_stamp.pl pre-computed_results/metaphlan2_output/metaphlan_merged_all.txt > metaphlan_merged_all.spf
-
-As you can see this file takes the Metaphlan2 output file (from all the merged samples), which we already made for you, as the only parameter and then writes the output to a new file called "metaphlan_merged_all.spf".
-
-Now load the profile file (metaphlan_merged_all.spf and the metadata file (hmp_map.txt) files by going to "File->load data" within STAMP:
+Load the profile file (metaphlan2_merged.spf and the metadata file (map.txt) files by going to "File->load data" within STAMP:
 
 ![](https://www.dropbox.com/s/o20hvb0m2fsgcyq/STAMP_File_Menu.png?raw=1)
 
-Change the “Profile level” (top left) to “Genus”, ensure that the Group legend (top right) has been set to “sex”, and that “PCA plot” has been set below the large middle window. 
+You may have noticed that a "Cancer" and "Normal" samples was taken from the same individuals. A pertinent question is whether these profiles are more similar simply because they are from the same individual. To investigate this, change the “Profile level” (top left) to “Genus”, ensure that the Group legend (top right) has been set to _Individual_, and that “PCA plot” has been set below the large middle window. 
 
-You should now be looking at a PCA plot that is coloured by the samples being male or female like this:
+You should now be looking at a PCA plot that is coloured by which individual the samples came from:
 
-![](https://www.dropbox.com/s/hs3au04ftlsofyb/sex_PCA_taxonomy_downsampled_redone.png?raw=1)
+![]
 
-As you can see there is no obvious separation in the data points when coloured by sex of the person giving the sample. 
+As you can see there is no obvious separation in the data points when coloured by individual - at the very least this isn't driving the major axes of variation. 
 
-Now change the group field (top right) to “body_site” and the PCA will be coloured according to that grouping instead.  
+Now change the group field (top right) to “Sample Type” and the PCA will be coloured according to that grouping instead.  
 
-**Q10)** Do you see any separation in the samples when coloured by body site? If so, describe the body sites that separate and which PC axis differentiates these samples.
+**Q7)** How much of the variation is explained by PC3?
 
 Now lets test what is significantly different between the groups at the Genus rank. 
 
-Under the “Multiple groups” dialog on the left, check that ANOVA is being used as the statistical test, and select “Benjamini-Hochberg FDR” for the multiple test correction. The box at bottom will say how the “Number of active features” using these set of statistics and should indicate that there are 3 organisms at the genus level that are statistically different in their means across the three body sites. 
+Under the “Two groups” dialog on the left, check that Welch's t-test is being used as the statistical test, and select “Benjamini-Hochberg FDR” for the multiple test correction. 
 
-<img src="https://www.dropbox.com/s/6xxroa5z4jwno5s/taxonomy_bodytype_downsampled_setup.png?raw=1" alt="body_site config" width="526" height="600">
+![]
 
-Now lets look at visualizations of these different taxonomic groups. 
+No genera are significantly different between samples based on sample type. This is likely at least partially due to the low sample sizes and low sequencing depths used for this tutorial. For the purposes of this tutorial we will focus on one genus that was significant before FDR correction. If we were to report this finding elsewhere we would need to clearly state the caveat that this genus was not significant after multiple-test corrections.
 
-Change the drop-down box that says "PCA plot" to "Bar plot".
+**Q8)** Which genus is significant based on its _raw_ P-value?
 
-A new window will show a list of all the Genera. You can filter this list to just the 3 Genera passing the statistical test by clicking the "Show only active features" box below the list of Genera. 
+Now lets look at a visualization of this genus.
 
-You can also order the list of Genera by the most significant by clicking on the "corrected p-value" header. Now if you click on the feature "g_Granulicatella" you should see a bar chart representing the relative abundance for each sample for this Genera along with the mean value for the group indicated by a horizontal line. The plot should look like this:
+Change the drop-down box that says "PCA plot" to "Box plot".
 
-<img src="https://www.dropbox.com/s/q9bwtdse5q33ods/graniculata_downsampled.png?raw=1" alt="graniculata" width="500" height="500">
+A new window will show a list of all the Genera. Select just the genus of interest to plot its relative abundance.
 
-Explore each of the different visualizations by changing "Bar plot" to each of the other options available (e.g. Heatmap plot, Post-hoc plot, and Box plot).
+**Q9)** Save this boxplot by going to File -> Save plot...
 
-**Q11)** Create a box plot for the family Streptococcaceae (Change "Profile Level" to "Family" in the top left). Save the box plot as a .png image by using the File->Save plot feature in STAMP.
+In the next section we'll be reading in the HUMAnN2 output into STAMP - it's easier to close and reopen STAMP when reading in new files.
 
-You can exit STAMP once you're done with this section.
+### Analyzing a Subset of the HUMAnN2 output 
 
-***
+Similar analyses can be run on the pathway abundances identified with HUMAnN2 as above. To begin with we can join all individual tables into a single table as above.
 
-### STAMP with HUMAnN Output
+```
+humann2_join_tables --input precalculated/humann2_out/ --file_name pathabundance --output humann2_pathabundance.tsv
+```
 
-Load the kos.spf file along with the original hmp_map.txt file into STAMP. (File->Load)
+Then we'll want to normalize each sample into relative abundance (so that the counts for each sample sum to 100).
 
-Click on the "Two Groups" tab and choose "Benjamini-Hochberg FDR" for Multiple Test Correction. Look at the "Number of active features" to determine if there are any significant different features.
+```
+humann2_renorm_table --input humann2_pathabundance.tsv --units relab --output humann2_pathabundance_relab.tsv
+```
 
-**Q2)** Using a two group test with multiple test correction applied are there any significant differences between male and female samples?
+We could read this entire table (after running the reformatting commands below) and run similar analyses as we did above.
 
-Change to a Multiple Group Test using the same multiple test correction and change the Group field (top right) to "body_site".
+However, since HUMAnN2 yields functions stratified by taxa we could limit ourselves just to those functions that were found within the genus Streptococcus in order to focus on the above finding with the Metaphlan2 data. You could once again use _grep_ to slice out only those pathways that are linked to this genus specifically.
 
-**Q3)** Are there any significant differences in KOs across the body sites? If so, how many?
+In addition, more focused analyses could be based off of prior knowledge. For instance, pathways related to sugar degradation are especially of interest in the oral microbiome due to its relationship with dental health. We will test for differences between cancer and normal samples in STAMP similar to the earlier analysis based on this approach.
 
-Now load the "pathways.spf" file into STAMP using the same "hmp_map.txt" file. 
+First an unstratified version of the pathway abundance table needs to be generated (the below command will also create a stratified version only in the same directory):
 
-(Note: STAMP has a bug that will not load a new dataset on top of another, so you need to completely close and restart STAMP first before loading in a different dataset)
+```
+humann2_split_stratified_table --input humann2_pathabundance_relab.tsv --output ./
+```
 
-**Q4)** When comparing samples by body site, how many KEGG Pathways are significantly different when using a group test (ANOVA) with Benjamini-Hochberg FDR?
+Then we can parse out the headerline and any lines matching the pathway of interest (LACTOSECAT-PWY: lactose and galactose degradation I).
 
-Choose "Box plot" instead of PCA plot, and then expand the list of KEGG Pathways so you can see the corrected p-value. Order the list by corrected p-value by clicking on that column header. 
+```
+head -n 1 humann2_pathabundance_relab_unstratified.tsv >> humann2_pathabundance_relab_LACTOSECAT-PWY.tsv
+grep "LACTOSECAT-PWY" humann2_pathabundance_relab_unstratified.tsv >> humann2_pathabundance_relab_LACTOSECAT-PWY.tsv
+```
 
-**Q5)** What is the most significantly different KEGG Pathway? What is the corrected p-value for this KEGG Pathway?
+Using _sed_ to make string replacements we can also format the header-line for input into STAMP.
 
-Compare the tongue samples to all other samples using a Two Group test. First select “tongue_dorsum” for Group 1 (on the left hand side) and then select “All other samples” as Group 2. Use the default Welch’s t-test with BH FDR.
+```
+sed 's/_Abundance//g' humann2_pathabundance_relab_LACTOSECAT-PWY.tsv >  humann2_pathabundance_relab_LACTOSECAT-PWY.spf
+sed -i 's/# Pathway/MetaCyc_pathway/' humann2_pathabundance_relab_LACTOSECAT-PWY.spf
+```
 
-Your PCA plot should look like this:
+Read file into STAMP as before with the mapping file. 
 
-![](https://www.dropbox.com/s/ljdk2o39hopjlfe/functional_tongue_vs_others_downsampled.png?raw=1)
-
-**Q6)** How many KEGG Pathways are significantly different between the tongue and the plaque samples combined?
-
-Create a "Bar plot" for "ko00230: Purine metabolism".
-
-**Q7)** Is the relative abundance of “Purine metabolism” higher or lower in the tongue compared to the plaque samples?
-
-**Q8)** Create an “Extended error bar” plot and save the image as a .png using the File->Save Plot option.
+**Q10)** Run a two-sided Welch's t-test  between sample types for this pathway. What is the P-value?
