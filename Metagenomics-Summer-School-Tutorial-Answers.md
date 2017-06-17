@@ -9,3 +9,5 @@ These are the answers to the questions from the [Metagenomics Summer School Tuto
 7) 13.3%
 8) g__Streptococcus
 9) You should have saved a plot like this:
+[[images/mgs_tutorial_2017_images/g__Streptococcus_boxplot.png]]
+10) P=0.004
