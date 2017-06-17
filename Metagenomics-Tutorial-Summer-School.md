@@ -207,13 +207,13 @@ For example lets pull out all the reads assigned to the genus _Gemella_ using th
 You should get output like this:
 
 ```
-k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella	6.64301
-k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella|s__Gemella_unclassified	5.48167
-k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella|s__Gemella_haemolysans	1.16134
-k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella|s__Gemella_haemolysans|t__Gemella_haemolysans_unclassified	1.16134
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella	6.54147
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella|s__Gemella_unclassified	4.38417
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella|s__Gemella_haemolysans	2.1573
+k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_noname|g__Gemella|s__Gemella_haemolysans|t__Gemella_haemolysans_unclassified	2.1573
 ```
 
-You can see that 6.64% of the metagenome is predicted from organisms in the genus _Gemella_. Of those 1.16% are assigned to the species _Gemella haemolysans_, while 5.48% are assigned to s__Gemella_unclassified, which means Metaphlan2 doesn't know what species to actually call them. 
+You can see that 6.54% of the metagenome is predicted from organisms in the genus _Gemella_. More precisely: 2.16% are assigned to the species _Gemella haemolysans_, while 4.38% are assigned to s__Gemella_unclassified, which means Metaphlan2 doesn't know what species to actually call them. 
 
 **Q6)** What is the relative abundance of organisms unclassified at the species level for the genus _Neisseria_? (Remember to use the grep command)
 
