@@ -5,7 +5,7 @@ These are the answers to the questions from the [Metagenomics Summer School Tuto
 3) Each FASTQ is 300,000 lines long, which means there are 75,000 paired-end reads in each one.
 4) p144C
 5) humann2 v0.11.1 and MetaPhlAn version 2.5.0 (28 April 2015) were installed when this tutorial was written. Keeping track of this information (including for the other programs in your pipeline) is important for reproducibility.
-6) 18.8%
+6) 17.2%
 7) 13.3%
 8) g__Streptococcus
 9) You should have saved a plot like this:
