@@ -39,7 +39,7 @@ Lets take a look at the **map.txt** using _less_ (type q to quit out of the prog
 less map.txt
 ```
 
-You will have noticed that this map file contains three columns with the first being sample ids, the middle column being the body site, and the third being the sex of the person. 
+You will have noticed that this map file contains four columns with the first being sample ids, then sample type (Cancer or Normal), sex, and the individual. Samples nearby an oral tumor and distal from oral tumors were taken for each individual. 
 
 Remember you can count the lines of a file using _wc -l_. For example,
 
