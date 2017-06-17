@@ -280,9 +280,9 @@ Load the profile file (metaphlan2_merged.spf and the metadata file (map.txt) fil
 
 ![](https://www.dropbox.com/s/o20hvb0m2fsgcyq/STAMP_File_Menu.png?raw=1)
 
-You may have noticed that a "Cancer" and "Normal" samples was taken from the same individuals. A pertinent question is whether these profiles are more similar simply because they are from the same individual. To investigate this, change the “Profile level” (top left) to “Genus”, ensure that the Group legend (top right) has been set to _Individual_, and that “PCA plot” has been set below the large middle window. 
+You may have noticed that a "Cancer" and "Normal" samples was taken from the same individuals. A pertinent question is whether these profiles are more similar simply because they are from the same individual. To investigate this, change the “Profile level” (top left) to “Genus”, ensure that the Group legend (top right) has been set to _Individual_, and that “PCA plot” has been set below the large middle window.
 
-You should now be looking at a PCA plot that is coloured by which individual the samples came from:
+You should now be looking at a PCA plot that is coloured by which individual the samples came from (hit "Configure plot" to change settings):
 
 [[images/mgs_tutorial_2017_images/individual_pca.png]]
 
