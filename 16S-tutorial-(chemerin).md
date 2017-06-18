@@ -32,7 +32,7 @@ Also, be aware that for real datasets the run-times (and memory requirements) fo
 
 __Author:__ Gavin Douglas   
 
-__Contributions by:__ Molly Hayes
+__Contributions by:__ Molly Hayes, Morgan Langille
 
 __First created:__ Fall 2015  
 
