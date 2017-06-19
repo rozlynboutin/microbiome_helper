@@ -85,7 +85,7 @@ Below we will screen out reads that map to the human and/or PhiX genomes. If you
 ```
 echo "--very-sensitive-local" >> ./bowtie2_config.txt
 
-run_contaminant_filter.pl -p 4 -o screened_reads/ subsampled_fastqs/* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt 
+run_contaminant_filter.pl -p 1 -o screened_reads/ subsampled_fastqs/* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt 
 ```
 The numbers and percentages of reads removed from each FASTQ are reported in the _screened\_reads.log_ file by default.
 
@@ -136,7 +136,7 @@ The counts and percentages of reads dropped is reported in _trimmomatic\_tabular
 Lastly, since we didn't stitch the paired-end reads together at the beginning of this workflow we will concatenate the FASTQs together now before running Metaphlan2 and HUMAnN2 since these programs [do not use paired-end information](https://bitbucket.org/biobakery/humann2/wiki/Home#markdown-header-humann2-and-paired-end-sequencing-data). 
 
 ```
-concat_paired_end.pl -p 4 -o cat_reads trimmomatic_filtered/*_paired*fastq 
+concat_paired_end.pl -p 1 -o cat_reads trimmomatic_filtered/*_paired*fastq 
 ```
 
 ## Taxonomic and Functional Profiling with Metaphlan2 and HUMAnN2 Respectively
@@ -152,7 +152,7 @@ To begin with make sure the program _humann2_ is in your PATH. This program is f
 Both humann2 and metaphlan2.py come with a large number of options which could be useful (take a look by running each program with the _-h_ option). Since humann2 can take a while to run we'll just run one sample for this tutorial (key output files are in the _precalculated_ folder already).
 
 ```
-humann2 --threads 4 --input cat_reads/p144C.fastq  --output humann2_out/
+humann2 --threads 1 --input cat_reads/p144C.fastq  --output humann2_out/
 ```
 
 You should see a log of what HUMAnN2 is doing printed to screen:
@@ -227,7 +227,7 @@ You can see that 6.54% of the metagenome is predicted from organisms in the genu
 **It's a good idea to run parallel with the _--dry-run_ option** the first time you are running a set of files. This option will echo the commands that would have been run to screen without running them. This can be very helpful for troubleshooting parallel syntax errors! 
 
 ```
-parallel -j 1 'humann2 --threads 4 --input {} --output humann2_out/' ::: cat_reads/*fastq
+parallel -j 1 'humann2 --threads 1 --input {} --output humann2_out/' ::: cat_reads/*fastq
 ```
 
 Setting the option _--memory-use maximum_ will speed up the program **if you have enough available memory**.
