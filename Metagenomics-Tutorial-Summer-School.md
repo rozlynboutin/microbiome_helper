@@ -92,7 +92,7 @@ run_contaminant_filter.pl -p 1 -o screened_reads/ subsampled_fastqs/p144C* -d /h
 ```
 The numbers and percentages of reads removed from each FASTQ are reported in the _screened\_reads.log_ file by default.
 
-**Q4)** Which sample had the highest number of reads screened out?
+**Q4)** How many reads were filtered from the sample p144C?
 
 
 
