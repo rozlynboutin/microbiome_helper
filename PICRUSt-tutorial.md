@@ -26,21 +26,15 @@ If you are looking to use your own OTU table you might want to check out the [PI
 ## Initial Setup
 
 Open a terminal window by clicking on the little black box icon
- 
-Create a new directory that will store all of the files created in this lab.
-
-    rm -rf ~/Desktop/picrust_tutorial
-    mkdir -p ~/Desktop/picrust_tutorial
-    cd ~/Desktop/picrust_tutorial
 
 Now we need to download the data using 'wget':
  
     wget https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1 -O picrust_data.zip
 
-Now decompress the data using "unzip" command:
+Now decompress the data using "unzip" command and change into that directory:
 
     unzip picrust_data.zip
-    rm picrust_data.zip
+    cd picrust_data
 
 ## Running PICRUSt
 In your working directory you should have an OTU table called "otus.biom" and a mapping file "map.tsv". The OTU table has been produced within QIIME using the GreenGenes reference database. The mapping file is just a tab-delimited text file that has sample ids in the first column and a couple of additional columns with metadata for each sample. Take a look at these files:
