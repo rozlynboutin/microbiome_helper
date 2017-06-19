@@ -116,23 +116,13 @@ Again lets look at the output:
 
 ```
 # Constructed from biom file
-#OTU ID	9Y-June1	10Y-June1	8Y-May23	10Y-May23	6Y-June1	9Y-May23	Y7-Aug14	Y7-Aug15	6Y-May23	M1
-1-Aug14	M11-Aug15	M11-Jul13	11M-May23	M13-Jul13	13M-May23	2E-Aug14	2E-Aug15	2E-May24	4E-June1	1E
--Aug16	1E-May23	KEGG_Pathways
-1,1,1-Trichloro-2,2-bis(4-chlorophenyl)ethane (DDT) degradation	11.0	21.0	10.0	7.0	14.0	4.0	8.0	1.0	4.0	0.0	0.0	0.
-0	1.0	0.0	0.0	1.0	1.0	2.0	4.0	2.0	1.0	Metabolism; Xenobiotics Biodegradation and Metabolism; 1,1,1-Trichloro-2,2
--bis(4-chlorophenyl)ethane (DDT) degradation
-ABC transporters	200982.0	174898.0	195247.0	255298.0	147766.0	254328.0	306731.0	490225.0	36
-3852.0	217743.0	231867.0	239470.0	201328.0	237358.0	189880.0	199125.0	342119.0	294970.0	21
-3939.0	229000.0	451627.0	Environmental Information Processing; Membrane Transport; ABC transporters
-Adherens junction	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
-0	0.0	0.0	0.0	0.0	Cellular Processes; Cell Communication; Adherens junction
-Adipocytokine signaling pathway	6486.0	6300.0	7408.0	6562.0	7205.0	6982.0	6139.0	4365.0	5299.0	7160.0	7528.0	6977.0	8475.0	6064.0	7827.0	74
-04.0	7462.0	6411.0	7082.0	7654.0	5580.0	Organismal Systems; Endocrine System; Adipocytokine signaling pathway
-African trypanosomiasis	28.0	25.0	40.0	42.0	23.0	26.0	188.0	33.0	22.0	62.0	63.0	43.0	19.0	12.0	29.0	19.0	24
-.0	12.0	9.0	22.0	9.0	Human Diseases; Infectious Diseases; African trypanosomiasis
-Alanine, aspartate and glutamate metabolism	94807.0	90632.0	103163.0	103640.0	96543.0	104717.0	106172.0	112557.0	10
-5979.0	93152.0	100320.0	98573.0	101380.0	90366.0	98759.0	100108.0	113079.0	103468.0	98339.0	104441.0	115040.0	Metabolism; Amino Acid Metabolism; Alanine, aspartate and glutamate metabolism
+#OTU ID	9Y-June1	10Y-June1	8Y-May23	10Y-May23	6Y-June1	9Y-May23	Y7-Aug14	Y7-Aug15	6Y-May23	M11-Aug14	M11-Aug15	M11-Jul13	11M-May23	M13-Jul13	13M-May23	2E-Aug14	2E-Aug15	2E-May24	4E-June1	1E-Aug16	1E-May23	KEGG_Pathways
+1,1,1-Trichloro-2,2-bis(4-chlorophenyl)ethane (DDT) degradation	11.0	21.0	10.0	7.0	14.0	4.0	8.0	1.0	4.0	0.0	0.0	0.0	1.0	0.0	0.0	1.0	1.0	2.0	4.0	2.0	1.0	Metabolism; Xenobiotics Biodegradation and Metabolism; 1,1,1-Trichloro-2,2-bis(4-chlorophenyl)ethane (DDT) degradation
+ABC transporters	200982.0	174898.0	195247.0	255298.0	147766.0	254328.0	306731.0	490225.0	363852.0	217743.0	231867.0	239470.0	201328.0	237358.0	189880.0	199125.0	342119.0	294970.0	213939.0	229000.0	451627.0	Environmental Information Processing; Membrane Transport; ABC transporters
+Adherens junction	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	Cellular Processes; Cell Communication; Adherens junction
+Adipocytokine signaling pathway	6486.0	6300.0	7408.0	6562.0	7205.0	6982.0	6139.0	4365.0	5299.0	7160.0	7528.0	6977.0	8475.0	6064.0	7827.0	7404.0	7462.0	6411.0	7082.0	7654.0	5580.0	Organismal Systems; Endocrine System; Adipocytokine signaling pathway
+African trypanosomiasis	28.0	25.0	40.0	42.0	23.0	26.0	188.0	33.0	22.0	62.0	63.0	43.0	19.0	12.0	29.0	19.0	24.0	12.0	9.0	22.0	9.0	Human Diseases; Infectious Diseases; African trypanosomiasis
+Alanine, aspartate and glutamate metabolism	94807.0	90632.0	103163.0	103640.0	96543.0	104717.0	106172.0	112557.0	105979.0	93152.0	100320.0	98573.0	101380.0	90366.0	98759.0	100108.0	113079.0	103468.0	98339.0	104441.0	115040.0	Metabolism; Amino Acid Metabolism; Alanine, aspartate and glutamate metabolism
 ```
 
 PICRUSt can directly connect the OTUs that are contributing to each KO by using the ''metagenome_contributions.py'' script. Here we specify 6 different KO ids. Usually the choice of KO ids would be driven by KOs that you are interested in, or KOs that are statistically signficant across your sample groupings. 
