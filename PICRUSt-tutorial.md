@@ -15,7 +15,7 @@ If you are looking to use your own OTU table you might want to check out the [PI
 
 **First Created**: June 2016 for CBW Metagenomics, Vancouver
 
-**Last Edited**: August 2016 for STAMPS, MBL
+**Last Edited**: June 2017
 
 ## Requirements
 * Basic unix skills 
