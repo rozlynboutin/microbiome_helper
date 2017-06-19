@@ -149,27 +149,9 @@ K01727  10Y-June1       183395  1.0     0.2     0.2     0.0196078431373 9.512409
 
 ```
 
-
-```
- Gene    Sample  OTU     GeneCountPerGenome      OTUAbundanceInSample    CountContributedByOTU   ContributionPercentOfSample     ContributionPercentOfAllSamples
- K01727  9Y-June1        190026  1.0     1.66666666667   1.66666666667   0.251889168766  0.000792700810933
- K01727  9Y-June1        4331760 3.0     1.0     3.0     0.453400503778  0.00142686145968
- K01727  9Y-June1        2594570 1.0     0.333333333333  0.333333333333  0.0503778337531 0.000158540162187
- K01727  9Y-June1        1106050 1.0     0.333333333333  0.333333333333  0.0503778337531 0.000158540162187
- K01727  9Y-June1        3090117 1.0     0.2     0.2     0.0302267002519 9.5124097312e-05
- K01727  9Y-June1        1051299 1.0     0.75    0.75    0.113350125945  0.00035671536492
- K01727  9Y-June1        2617854 1.0     0.333333333333  0.333333333333  0.0503778337531 0.000158540162187
-
-```
-Each line in this file relates how much a single OTU (third column) contributes to a single KO (first column) within a single sample (second column). The fifth column contains the actual relative abundance contributed by this OTU, and the other columns contain other information about the abundance of the OTU and the percentage contribution of this OTU. 
+Each line in this file relates how much a single OTU (third column) contributes to a single KO (first column) within a single sample (second column). The fifth column contains the actual relative abundance contributed by this OTU, and the other columns contain other information about the abundance of the OTU and the percentage contribution of this OTU. The last columns provide the taxonomy information for the OTU.  
 
 You could use your favourite plotting program (e.g. excel, sigmaplot, etc) to plot the information from columns 1-3 and column 5. We also provide an Rscript with Microbiome Helper that can be used to create stack bar charts of which taxa are contributing to functional abundances, which is shown below.
-
-Since the OTU table used in this exercise is based on older taxonomies we'll need to fix a whitespace issue in the taxonomic labels before running this script. This command will remove spaces (not tabs!) in front of all instances of "g__" in the table we just generated (if you wanted to collapse taxa to the species level you would need to correct all instances of "s__" as well).
-
-```
-sed 's/ g__/g__/g' metagenome_contributions.txt > metagenome_contributions_cor.txt
-```
 
 We can now create a stacked bar chart for K01727 with the below command.
 
