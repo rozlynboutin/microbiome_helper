@@ -21,7 +21,7 @@ If you are looking to use your own OTU table you might want to check out the [PI
 * Basic unix skills 
     * (This is a good introductory tutorial: http://korflab.ucdavis.edu/bootcamp.html)
 * [Microbiome Helper VirtualBox](MicrobiomeHelper-Virtual-Box) (install it and ensure it is working)
-* [Tutorial Data](https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1)
+* [Tutorial Data](https://www.dropbox.com/s/v51fiyw5brauu2n/picrust_data.zip?dl=1)
 
 ## Initial Setup
 
@@ -29,7 +29,7 @@ Open a terminal window by clicking on the little black box icon
 
 Now we need to download the data using 'wget':
  
-    wget https://www.dropbox.com/sh/a35f90j8eh3r23j/AADzQ9zLrEud5xHAHG8kKxlua?dl=1 -O picrust_data.zip
+    wget https://www.dropbox.com/s/v51fiyw5brauu2n/picrust_data.zip?dl=1 -O picrust_data.zip
 
 Now decompress the data using "unzip" command and change into that directory:
 
