@@ -134,6 +134,21 @@ This is just a regular text file so can browse without conversion:
     less metagenome_contributions.txt
 
 The output should look like this:
+```
+Gene    Sample  OTU     GeneCountPerGenome      OTUAbundanceInSample    CountContributedByOTU   ContributionPercentOfSample     ContributionPercentOfAllSamples Kingdom Phylum  Class   Order   Family  Genus   Species
+K01727  9Y-June1        190026  1.0     1.66666666667   1.66666666667   0.251889168766  0.000792700810933       k__Bacteria      p__Bacteroidetes        c__Bacteroidia  o__Bacteroidales        f__Rikenellaceae       g__AF12  s__
+K01727  9Y-June1        4331760 3.0     1.0     3.0     0.453400503778  0.00142686145968        k__Bacteria      p__Bacteroidetes        c__Bacteroidia  o__Bacteroidales        f__Rikenellaceae       g__      s__
+K01727  9Y-June1        2594570 1.0     0.333333333333  0.333333333333  0.0503778337531 0.000158540162187       k__Bacteria      p__Bacteroidetes        c__Bacteroidia  o__Bacteroidales        f__Rikenellaceae       g__      s__
+K01727  9Y-June1        1106050 1.0     0.333333333333  0.333333333333  0.0503778337531 0.000158540162187       k__Bacteria      p__Bacteroidetes        c__Bacteroidia  o__Bacteroidales        f__Rikenellaceae       g__PW3   s__
+K01727  9Y-June1        3090117 1.0     0.2     0.2     0.0302267002519 9.5124097312e-05        k__Bacteria      p__Bacteroidetes        c__Bacteroidia  o__Bacteroidales        f__[Barnesiellaceae]   g__      s__
+K01727  9Y-June1        1051299 1.0     0.75    0.75    0.113350125945  0.00035671536492        k__Bacteria      p__Firmicutes   c__Bacilli      o__Lactobacillales      f__Streptococcaceae    g__Streptococcus         s__
+K01727  9Y-June1        2617854 1.0     0.333333333333  0.333333333333  0.0503778337531 0.000158540162187       k__Bacteria      p__Bacteroidetes        c__Bacteroidia  o__Bacteroidales        f__Rikenellaceae       g__      s__
+K01727  10Y-June1       190026  1.0     2.33333333333   2.33333333333   0.228758169935  0.00110978113531        k__Bacteria      p__Bacteroidetes        c__Bacteroidia  o__Bacteroidales        f__Rikenellaceae       g__AF12  s__
+K01727  10Y-June1       4331760 3.0     0.666666666667  2.0     0.196078431373  0.00095124097312        k__Bacteria      p__Bacteroidetes        c__Bacteroidia  o__Bacteroidales        f__Rikenellaceae       g__      s__
+K01727  10Y-June1       183395  1.0     0.2     0.2     0.0196078431373 9.5124097312e-05        k__Bacteria      p__Bacteroidetes        c__Bacteroidia  o__Bacteroidales        f__[Barnesiellaceae]   g__      s__
+
+```
+
 
 ```
  Gene    Sample  OTU     GeneCountPerGenome      OTUAbundanceInSample    CountContributedByOTU   ContributionPercentOfSample     ContributionPercentOfAllSamples
