@@ -205,7 +205,7 @@ If reads can only be assigned to a certain taxonomic level (e.g. say the family 
 
 For example lets pull out all the reads assigned to the genus _Gemella_ using the _grep_ command:
 
-    grep g__Gemella p144C_metaphlan_bugs_list.tsv
+    grep g__Gemella humann2_out/p144C_humann2_temp/p144C_metaphlan_bugs_list.tsv
  
 You should get output like this:
 
