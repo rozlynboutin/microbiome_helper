@@ -83,16 +83,18 @@ For your own data you may identify outlier samples with low read depth at this s
 
 The strength of shotgun metagenomics is also its weakness: all DNA in your samples will be sequenced with similar efficiencies. This is a problem when host microbiome samples are taken since it's possible to get substantial amounts of host DNA included in your raw sequences. You should screen out these contaminant sequences before running taxonomic and functional classification. It's also a good idea to screen out PhiX sequences in your data: this virus is a common sequencing control since it has such a small genome. 
 
-Below we will screen out reads that map to the human and/or PhiX genomes. If your samples were taken from a different host you will need to map your reads to that genome instead. 
+Below we will screen out reads that map to the human and/or PhiX genomes. If your samples were taken from a different host you will need to map your reads to that genome instead. (We will just run one of our samples for now).
 
 ```
 echo "--very-sensitive-local" >> ./bowtie2_config.txt
 
-run_contaminant_filter.pl -p 1 -o screened_reads/ subsampled_fastqs/* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt 
+run_contaminant_filter.pl -p 1 -o screened_reads/ subsampled_fastqs/p144C* -d /home/shared/bowtiedb/GRCh38_PhiX -c ./bowtie2_config.txt 
 ```
 The numbers and percentages of reads removed from each FASTQ are reported in the _screened\_reads.log_ file by default.
 
 **Q4)** Which sample had the highest number of reads screened out?
+***
+
 
 Next it's a good idea to run quality filtering of your samples. [Trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) is one popular tool for filtering and trimming next-generation sequencing data. Typically you would first explore the quality of your data to choose sensible cut-offs using FASTQC or a similar alternative. The below command will run trimmomatic on each sample (both forward and reverse reads at once) and use some typical quality cut-offs. Note that if you have overlapping reads you might want to stitch them together first using [PEAR](https://sco.h-its.org/exelixis/web/software/pear/).
 
