@@ -12,7 +12,7 @@ We'll be using a subsampled version of the metagenomics dataset from [Schmidt et
 
 ## Requirements
 * Basic unix skills (there are many tutorials online such as [this one](http://korflab.ucdavis.edu/bootcamp.html))  
-* Tutorial data (commands to download are below)
+* (Tutorial data)[https://www.dropbox.com/s/qjhs3g3muoxqnv4/mgs_tutorial.zip?dl=1] (commands to download are below)
 
 ## Initial Setup
 Download the tutorial data, save it to the Desktop (within Ubuntu), unzip the folder, and enter this folder. You can do this using the below commands.  
