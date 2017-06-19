@@ -94,23 +94,14 @@ We can check out these KO predictions again by converting the BIOM file first:
 
 ```
 # Constructed from biom file
-#OTU ID	9Y-June1	10Y-June1	8Y-May23	10Y-May23	6Y-June1	9Y-May23	Y7-Aug14	Y7-Aug15	6Y-May23	M1
-1-Aug14	M11-Aug15	M11-Jul13	11M-May23	M13-Jul13	13M-May23	2E-Aug14	2E-Aug15	2E-May24	4E-June1	1E
--Aug16	1E-May23	KEGG_Description
-K01365	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
-0	0.0	0.0	cathepsin L [EC:3.4.22.15]
-K01364	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
-0	0.0	0.0	streptopain [EC:3.4.22.10]
-K01361	18.0	20.0	9.0	4.0	11.0	4.0	9.0	6.0	6.0	7.0	10.0	11.0	9.0	11.0	8.0	32.0	8.0	15.0	17
-.0	8.0	9.0	lactocepin [EC:3.4.21.96]
-K01360	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
-0	0.0	0.0	proprotein convertase subtilisin/kexin type 2 [EC:3.4.21.94]
-K01362	3587.0	3559.0	3868.0	3428.0	3872.0	3462.0	3432.0	1913.0	2436.0	3219.0	3248.0	3081.0	3372.0	2602.0	3494.0	3566.0	3527.0	2616.0	31
-33.0	3457.0	2212.0	None
-K02249	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
-0	0.0	0.0	competence protein ComGG
-K05841	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.
-0	0.0	0.0	sterol 3beta-glucosyltransferase [EC:2.4.1.173]
+#OTU ID	9Y-June1	10Y-June1	8Y-May23	10Y-May23	6Y-June1	9Y-May23	Y7-Aug14	Y7-Aug15	6Y-May23	M11-Aug14	M11-Aug15	M11-Jul13	11M-May23	M13-Jul13	13M-May23	2E-Aug14	2E-Aug15	2E-May24	4E-June1	1E-Aug16	1E-May23	KEGG_Description
+K01365	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	cathepsin L [EC:3.4.22.15]
+K01364	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	streptopain [EC:3.4.22.10]
+K01361	18.0	20.0	9.0	4.0	11.0	4.0	9.0	6.0	6.0	7.0	10.0	11.0	9.0	11.0	8.0	32.0	8.0	15.0	17.0	8.0	9.0	lactocepin [EC:3.4.21.96]
+K01360	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	proprotein convertase subtilisin/kexin type 2 [EC:3.4.21.94]
+K01362	3587.0	3559.0	3868.0	3428.0	3872.0	3462.0	3432.0	1913.0	2436.0	3219.0	3248.0	3081.0	3372.0	2602.0	3494.0	3566.0	3527.0	2616.0	3133.0	3457.0	2212.0	None
+K02249	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	competence protein ComGG
+K05841	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	sterol 3beta-glucosyltransferase [EC:2.4.1.173]
 ```
 
 Note: Default predictions from PICRUSt are KOs (KEGG Orthologs) but PICRUSt can also predict COGs and Rfams.
