@@ -229,7 +229,7 @@ You can see that 6.54% of the metagenome is predicted from organisms in the genu
 * {} specifies each individual filename being looped over.
 * {/.} specifies the individual filename being looped over with the extension and PATH removed.
 
-**It's a good idea to run parallel with the _--dry-run_ option** the first time you are running a set of files. This option will echo the commands that would have been run to screen without running them. This can be very helpful for troubleshooting parallel syntax errors! 
+**It's a good idea to run parallel with the _--dry-run_ option** the first time you are running a set of files. This option will echo the commands that would have been run to screen without running them. This can be very helpful for troubleshooting parallel syntax errors! (**Do Not Run This Commands: It is for showing how all samples could be run**)
 
 ```
 parallel -j 1 'humann2 --threads 1 --input {} --output humann2_out/' ::: cat_reads/*fastq
