@@ -173,11 +173,22 @@ The output should look like this:
 ```
 Each line in this file relates how much a single OTU (third column) contributes to a single KO (first column) within a single sample (second column). The fifth column contains the actual relative abundance contributed by this OTU, and the other columns contain other information about the abundance of the OTU and the percentage contribution of this OTU. 
 
-You could use your favourite plotting program (e.g. excel, sigmaplot, etc) to plot the information from columns 1-3 and column 5. As an example of what the output might look, I have created the following image:
+You could use your favourite plotting program (e.g. excel, sigmaplot, etc) to plot the information from columns 1-3 and column 5. We also provide an Rscript with Microbiome Helper that can be used to create stack bar charts of which taxa are contributing to functional abundances, which is shown below.
 
-![](https://www.dropbox.com/s/qrx2sgdqxe93sjc/K00449_genus.png?raw=1)
+Since the OTU table used in this exercise is based on older taxonomies we'll need to fix a whitespace issue in the taxonomic labels before running this script. This command will remove spaces (not tabs!) in front of all instances of "g__" in the table we just generated (if you wanted to collapse taxa to the species level you would need to correct all instances of "s__" as well).
 
-This plot shows that the large increase in K00449 within sample 25 is contributed by the genus ''Citrobacter''.
+```
+sed 's/ g__/g__/g' metagenome_contributions.txt > metagenome_contributions_cor.txt
+```
+
+We can now create a stacked bar chart for K01727 with the below command.
+
+```
+/usr/local/prg/microbiome_helper/plot_metagenome_contributions.R --input metagenome_contributions_cor.txt --output K01727_contrib.pdf --function_id K01727 --rank Genus 
+```
+
+You should see the below plot. Note that there are a number of options that allow you to customize these figures.
+[[images/picrust_stacked_barchart.png]]
 
 ### PICRUSt visualization and statistics in STAMP
 
