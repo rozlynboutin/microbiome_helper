@@ -156,7 +156,7 @@ You could use your favourite plotting program (e.g. excel, sigmaplot, etc) to pl
 We can now create a stacked bar chart for K01727 with the below command.
 
 ```
-/usr/local/prg/microbiome_helper/plot_metagenome_contributions.R --input metagenome_contributions_cor.txt --output K01727_contrib.pdf --function_id K01727 --rank Genus 
+/usr/local/prg/microbiome_helper/plot_metagenome_contributions.R --input metagenome_contributions.txt --output K01727_contrib.pdf --function_id K01727 --rank Genus 
 ```
 
 You should see the below plot. Note that there are a number of options that allow you to customize these figures.
