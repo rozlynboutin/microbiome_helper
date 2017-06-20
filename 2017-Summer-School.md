@@ -6,3 +6,5 @@
 * [PICRUSt Tutorial](https://github.com/mlangill/microbiome_helper/wiki/PICRUSt-tutorial)
     * [PICRUSt Presentation](https://www.dropbox.com/s/orhtx4rykay5oim/PICRUSt.pptx?dl=1)
 * [Metatranscriptomics Tutorial](https://github.com/ParkinsonLab/2017-Microbiome-Workshop)
+
+### [Microbiome Developer Job Advertisement](https://bioinformatics.ca/resources/jobs/microbiome-bioinformatics-developer) ###
