@@ -13,7 +13,7 @@ If you are looking to use your own OTU table you might want to check out the [PI
 
 **Author**: Morgan Langille
 
-**First Created**: June 2016 for CBW Metagenomics, Vancouver
+**First Created**: June 2016
 
 **Last Edited**: June 2017
 
