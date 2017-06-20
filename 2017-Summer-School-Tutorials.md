@@ -4,3 +4,5 @@
 * [Metagenomics Tutorial](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-Summer-School)
     * [Metagenomics Presentation](https://www.dropbox.com/s/2qo1gwemjw4eqei/Metagenomics.pptx?dl=1)
 * [PICRUSt Tutorial](https://github.com/mlangill/microbiome_helper/wiki/PICRUSt-tutorial)
+
+*[Metatranscriptomics](https://github.com/ParkinsonLab/2017-Microbiome-Workshop)
