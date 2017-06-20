@@ -2,7 +2,7 @@ Below is the quick description of our recommended ITS2 pipeline.
   
 _Note that this workflow is continually being updated. If you want to use the below commands be sure to keep track of them locally._    
     
-_Last updated: 2 Feb 2017 (see "revisions" above for earlier versions)_    
+_Last updated: 20 June 2017 (see "revisions" above for earlier versions)_    
      
   
 *This workflow starts with raw paired-end MiSeq data in demultiplexed FASTQ format assumed to be located within a folder called `raw_data`*
@@ -80,10 +80,14 @@ _Last updated: 2 Feb 2017 (see "revisions" above for earlier versions)_
 
         biom convert -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_w_tax.txt --to-tsv --header-key taxonomy
 
-17. Convert BIOM OTU table to STAMP:
+17. Convert BIOM OTU table to STAMP format:
 
         biom_to_stamp.py -m taxonomy final_otu_tables/otu_table.biom > final_otu_tables/otu_table.spf
 
-18. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
+18. Fix instances of "unidentified" taxa at intermediate taxonomic levels so STAMP can read in table.
+
+        fix_ITS2_spf.py -i final_otu_tables/otu_table.spf -o final_otu_tables/otu_table_fix.spf 
+
+19. Add sample metadata to BIOM file so that it can be used by other tools like phinch.org and phyloseq.
 
         biom add-metadata -i final_otu_tables/otu_table.biom -o final_otu_tables/otu_table_with_metadata.biom -m map.txt
