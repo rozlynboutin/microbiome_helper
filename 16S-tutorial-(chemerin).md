@@ -49,6 +49,12 @@ __Last edited:__ June 2017
 
 This dataset was originally used in a project to determine whether knocking out the protein [chemerin](https://en.wikipedia.org/wiki/Chemerin) affects gut microbial composition. Originally 116 mouse samples acquired from two different facilities were used for this project (**only 24 samples were used in this tutorial dataset, for simplicity**). Metadata associated with each sample is indicated in the mapping file (map.txt). In this mapping file the genotypes of interest can be seen: wildtype (WT), chemerin knockout (chemerin_KO), chemerin receptor knockout (CMKLR1_KO) and a heterozygote for the receptor knockout (HET). Also of importance are the two source facilities: "BZ" and "CJS". It is generally a good idea to include as much metadata as possible, since this data can easily be explored later on.
 
+## Bug-fix
+
+We need to fix a temporary bug with the microbiome helper virtual box install. Please run the following command before continuing with the rest of the tutorial:
+
+    wget http://graal.ift.ulaval.ca/adrouin/patch_matplotlib.sh && sh ./patch_matplotlib.sh
+
 ## Pre-processing
 
 After downloading and unzipping the dataset above, open Terminal and go to the dataset's directory:
