@@ -83,8 +83,8 @@ Now you can look at them using `less`:
 ```
 
 As you can see the otus_corrected.txt file has "normalized" the OTU table according to the PICRUSt 16S copy number predictions. By looking at the differences between the two OTU files you can tell what the predicted 16S copy number is for each OTU.
-* Q4) What is the predicted 16S copy number for OTU 181348? 
-* Q5) What is the predicted 16S copy number for OTU 244484?
+* Q3) What is the predicted 16S copy number for OTU 181348? 
+* Q4) What is the predicted 16S copy number for OTU 244484?
 
 Ok, now lets actually make our functional predictions of KEGG Ortholog (KOs) predictions using the corrected OTU table as input:
 
