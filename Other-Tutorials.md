@@ -3,7 +3,8 @@ This is a list of additional tutorials along with past workshop material. Note t
 * [CBW 2016 PICRUSt Tutorial](https://github.com/mlangill/microbiome_helper/wiki/CBW-2016-PICRUSt-tutorial)
   
 ### Metagenomics tutorials
-  
+
+* [Metagenomics Tutorial Humann1](https://github.com/mlangill/microbiome_helper/wiki/Metagenomics-Tutorial-(Humann1))  
 * [GLBIO/CCBC Metagenomics Workshop 2016](https://github.com/mlangill/microbiome_helper/wiki/CCBC-Workshop-2016) 
 * [CBW 2016 Metagenomic Taxonomic Tutorial](https://github.com/mlangill/microbiome_helper/wiki/CBW-2016-Metagenomic-Taxonomic-Tutorial)
 * [CBW 2016 Metagenomics Functional Tutorial](https://github.com/mlangill/microbiome_helper/wiki/CBW-2016-Metagenomics-Functional-Tutorial)   
