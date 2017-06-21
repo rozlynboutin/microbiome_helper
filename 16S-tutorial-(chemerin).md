@@ -67,6 +67,8 @@ Now decompress the data using "unzip" command and change into that directory:
     unzip 16S_chemerin_tutorial.zip
     cd 16S_chemerin_tutorial 
 
+## Browse data
+
 You can see what is in this directory with the _ls_ command:
 
     ls  
@@ -98,7 +100,7 @@ You can get the number of FASTQ files in the directory with this command:
 
 **Q3)** Why isn't the number of FASTQ files equal to the number of samples?
 
-### Stitching paired-end reads 
+## Stitching paired-end reads 
 
 To start processing the data, we first need to stitch the paired-end reads together using PEAR (~1 min on 1 CPU):
 
