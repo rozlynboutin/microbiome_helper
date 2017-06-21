@@ -55,11 +55,17 @@ We need to fix a temporary bug with the microbiome helper virtual box install. P
 
     wget http://graal.ift.ulaval.ca/adrouin/patch_matplotlib.sh && sh ./patch_matplotlib.sh
 
-## Pre-processing
+## Initial Set-up
+Open a terminal window (by clicking on the little black box icon).
 
-After downloading and unzipping the dataset above, open Terminal and go to the dataset's directory:
+Now we need to download the data using 'wget':
 
-    cd ~/Desktop/16S_chemerin_tutorial  
+    wget https://www.dropbox.com/s/r2jqqc7brxg4jhx/16S_chemerin_tutorial.zip?dl=1 -O 16S_chemerin_tutorial.zip
+
+Now decompress the data using "unzip" command and change into that directory:
+
+    unzip 16S_chemerin_tutorial.zip
+    cd 16S_chemerin_tutorial 
 
 You can see what is in this directory with the _ls_ command:
 
