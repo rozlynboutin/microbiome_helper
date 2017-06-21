@@ -71,12 +71,7 @@ You can see what is in this directory with the _ls_ command:
 
     ls  
     
-You should see this:
-
-    mh_user@MicrobiomeHelper:~/Desktop/16S_chemerin_tutorial$ ls
-    fastq  map.txt
- 
-"fastq" is the directory containing all the sequencing files, which we are going to process. "map.txt" contains metadata about the samples. We can look at it with the _less_ command (hit "q" to exit):
+You should see two names: "fastq" is the directory containing all the sequencing files, which we are going to process. "map.txt" contains metadata about the samples. We can look at it with the _less_ command (hit "q" to exit):
 
     less map.txt
 
