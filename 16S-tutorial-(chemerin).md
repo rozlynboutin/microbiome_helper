@@ -2,7 +2,6 @@
     * [Requirements](#requirements)
     * [Background](#background)
     * [Initial Set-up](#initial-set-up)
-
 *[Pre-processing](#pre-processing)
     * [Stitching paired-end reads](#stitching-paired-end-reads)
     * [Quality metrics of stitched reads](#quality-metrics-of-stitched-reads)
