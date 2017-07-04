@@ -8,10 +8,9 @@ _Last updated: 4 July 2017 (see "revisions" above for earlier versions)_
 *This workflow starts with raw paired-end MiSeq data in demultiplexed FASTQ format assumed to be located within a folder called `raw_data`*
 
 1. As of v2.0.0 of the virtual box we recommend you use a conda environment to run this workflow, which makes sure the correct version of the Python packages required by qiime are being used. You can activate this conda environment with this command:
-```
-source activate qiime1
-```
-
+  
+        source activate qiime1
+  
 2. (Optional) Run FastQC to allow manual inspection of the quality of sequences
 
         mkdir fastqc_out
