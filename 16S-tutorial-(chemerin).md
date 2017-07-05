@@ -52,7 +52,7 @@ This dataset was originally used in a project to determine whether knocking out 
 
 ## Bug-fix
 
-We need to fix a temporary bug with the microbiome helper virtual box install. Please run the following command before continuing with the rest of the tutorial:
+If you get an error referring to "ImportError: No module named externals" when running add_qiime_labels.py then run the below command. 
 
     wget http://graal.ift.ulaval.ca/adrouin/patch_matplotlib.sh && sh ./patch_matplotlib.sh
 
