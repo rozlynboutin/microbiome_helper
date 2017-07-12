@@ -36,6 +36,14 @@ If you there are tools you think we are missing from this list then please let u
 
 ## Error correction 
 * AmpliconNoise
-* DADA2
+* DADA2*
 * Deblur
 
+# Amplicon Functional Prediction
+* PanFP
+* PAPRICA
+* PICRUSt*
+* Piphillin
+* SINAPS
+* Tax4Fun
+* Vikodak
